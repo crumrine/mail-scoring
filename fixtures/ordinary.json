@@ -1,0 +1,1 @@
+{"schemaVersion":"1","policyVersion":"synthetic-1","subject":"Synthetic update","headers":[{"name":"From","value":"sender@example.test"}],"text":"A synthetic status update.","sourceComplete":true}

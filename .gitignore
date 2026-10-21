@@ -9,3 +9,5 @@ coverage/
 *.eml
 private-data/
 .DS_Store
+.artifacts/
+workers/scorer/.*.capnp

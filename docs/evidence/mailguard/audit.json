@@ -1,0 +1,1416 @@
+{
+  "candidate": {
+    "repository": "https://github.com/Sarv/mailguard",
+    "sha": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+    "version": "0.4.3",
+    "tarballSha256": "a386709d0409b0a8b413e3be522797665e2a2b2678ca5416946e47c78d549cc9",
+    "sourceArchiveSha256": "e5678a8bb2e452df5df99536781ecce15990291fabf84e1829585d684278e7a0",
+    "sourceMapFilesVerified": [
+      "src/age.ts",
+      "src/attachments/bytes.ts",
+      "src/attachments/filename.ts",
+      "src/attachments/magic.ts",
+      "src/attachments/rules.ts",
+      "src/attachments/zip.ts",
+      "src/brand/bimi.ts",
+      "src/brand/bytes.ts",
+      "src/brand/favicon.ts",
+      "src/brand/fetch.ts",
+      "src/brand/logotype.ts",
+      "src/brand/mva-roots.ts",
+      "src/brand/peers.ts",
+      "src/brand/records.ts",
+      "src/brand/svg.ts",
+      "src/brand/vmc.ts",
+      "src/cause.ts",
+      "src/content/html-text.ts",
+      "src/content/quote.ts",
+      "src/content/rules.ts",
+      "src/content/vocabulary.ts",
+      "src/data/attachment-extensions.ts",
+      "src/data/brands/adobe.ts",
+      "src/data/brands/amazon.ts",
+      "src/data/brands/american-express.ts",
+      "src/data/brands/apple.ts",
+      "src/data/brands/axis-bank.ts",
+      "src/data/brands/bank-of-america.ts",
+      "src/data/brands/barclays.ts",
+      "src/data/brands/binance.ts",
+      "src/data/brands/citi.ts",
+      "src/data/brands/coinbase.ts",
+      "src/data/brands/dhl.ts",
+      "src/data/brands/docusign.ts",
+      "src/data/brands/dropbox.ts",
+      "src/data/brands/ebay.ts",
+      "src/data/brands/fedex.ts",
+      "src/data/brands/github.ts",
+      "src/data/brands/godaddy.ts",
+      "src/data/brands/google.ts",
+      "src/data/brands/hdfc-bank.ts",
+      "src/data/brands/hsbc.ts",
+      "src/data/brands/icici-bank.ts",
+      "src/data/brands/income-tax-india.ts",
+      "src/data/brands/index.ts",
+      "src/data/brands/intuit.ts",
+      "src/data/brands/irctc.ts",
+      "src/data/brands/kotak.ts",
+      "src/data/brands/linkedin.ts",
+      "src/data/brands/meta.ts",
+      "src/data/brands/metamask.ts",
+      "src/data/brands/microsoft.ts",
+      "src/data/brands/netflix.ts",
+      "src/data/brands/paypal.ts",
+      "src/data/brands/paytm.ts",
+      "src/data/brands/phonepe.ts",
+      "src/data/brands/sbi.ts",
+      "src/data/brands/spotify.ts",
+      "src/data/brands/usps.ts",
+      "src/data/brands/wells-fargo.ts",
+      "src/data/brands/wetransfer.ts",
+      "src/data/brands/zoom.ts",
+      "src/data/freemail-domains.ts",
+      "src/data/spam-phrases.ts",
+      "src/dns.ts",
+      "src/headers/auth-results.ts",
+      "src/headers/bulk.ts",
+      "src/headers/lookup.ts",
+      "src/headers/origin-ip.ts",
+      "src/headers/received-date.ts",
+      "src/identity.ts",
+      "src/links.ts",
+      "src/reputation.ts",
+      "src/rfc.ts",
+      "src/rules/header-rules.ts",
+      "src/scan.ts",
+      "src/security.ts",
+      "src/text.ts",
+      "src/urls.ts",
+      "src/verdict.ts",
+      "src/verify.ts"
+    ],
+    "packageManifestMatches": true,
+    "licenseMatches": true,
+    "lifecycleScripts": {
+      "build": "tsup",
+      "dev": "tsup --watch",
+      "test": "vitest run",
+      "test:watch": "vitest",
+      "test:coverage": "vitest run --coverage",
+      "type-check": "tsc --noEmit",
+      "lint": "eslint . --max-warnings 0",
+      "lint:fix": "eslint . --fix",
+      "format": "prettier --write .",
+      "format:check": "prettier --check .",
+      "verify": "pnpm run lint && pnpm run format:check && pnpm run type-check && pnpm run test:coverage",
+      "verify:brands": "pnpm run build && node scripts/verify-brands.mjs --resolver 1.1.1.1",
+      "clean": "rm -rf dist",
+      "prepublishOnly": "pnpm run build"
+    },
+    "optionalPeers": {
+      "@peculiar/x509": "^2.1.0",
+      "asn1js": "^3.0.6",
+      "mailauth": "^5.0.0",
+      "reflect-metadata": "^0.2.2"
+    }
+  },
+  "graph": {
+    ".": {
+      "files": [
+        "dist/chunk-334SRHOL.js",
+        "dist/chunk-4O64ECYO.js",
+        "dist/chunk-C6H26JHE.js",
+        "dist/chunk-FIMAFTOL.js",
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-HRVDCHYB.js",
+        "dist/chunk-HUGCJMWM.js",
+        "dist/chunk-JGBDUAYO.js",
+        "dist/chunk-K5CZSXLG.js",
+        "dist/chunk-KBWARERS.js",
+        "dist/chunk-KJX4EJSO.js",
+        "dist/chunk-L2YWY7C2.js",
+        "dist/chunk-S2TPPIRD.js",
+        "dist/chunk-SISHBP2S.js",
+        "dist/chunk-UHQKJLVV.js",
+        "dist/chunk-UNHSPNHF.js",
+        "dist/chunk-VG6EO5DS.js",
+        "dist/chunk-WXOZVIBB.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/chunk-XUWOUN52.js",
+        "dist/chunk-Y3RAONUJ.js",
+        "dist/chunk-YHPVCWM7.js",
+        "dist/index.js"
+      ],
+      "external": [
+        "@peculiar/x509",
+        "asn1js",
+        "dns/promises",
+        "email-addresses",
+        "htmlparser2",
+        "ipaddr.js",
+        "mailauth",
+        "postal-mime",
+        "reflect-metadata",
+        "tldts"
+      ]
+    },
+    "./verdict": {
+      "files": [
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/verdict.js"
+      ],
+      "external": []
+    },
+    "./identity": {
+      "files": [
+        "dist/chunk-FSHDBDTK.js",
+        "dist/identity.js"
+      ],
+      "external": [
+        "tldts"
+      ]
+    },
+    "./headers": {
+      "files": [
+        "dist/chunk-4O64ECYO.js",
+        "dist/chunk-UNHSPNHF.js",
+        "dist/chunk-WXOZVIBB.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/headers.js"
+      ],
+      "external": []
+    },
+    "./links": {
+      "files": [
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-HRVDCHYB.js",
+        "dist/chunk-S2TPPIRD.js",
+        "dist/links.js"
+      ],
+      "external": [
+        "htmlparser2",
+        "tldts"
+      ]
+    },
+    "./security": {
+      "files": [
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-HRVDCHYB.js",
+        "dist/chunk-HUGCJMWM.js",
+        "dist/chunk-S2TPPIRD.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/security.js"
+      ],
+      "external": [
+        "htmlparser2",
+        "tldts"
+      ]
+    },
+    "./attachments": {
+      "files": [
+        "dist/attachments.js",
+        "dist/chunk-C6H26JHE.js",
+        "dist/chunk-UHQKJLVV.js",
+        "dist/chunk-X7TUOLKZ.js"
+      ],
+      "external": []
+    },
+    "./content": {
+      "files": [
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-HRVDCHYB.js",
+        "dist/chunk-L2YWY7C2.js",
+        "dist/chunk-VG6EO5DS.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/chunk-XUWOUN52.js",
+        "dist/content.js"
+      ],
+      "external": [
+        "htmlparser2",
+        "tldts"
+      ]
+    },
+    "./quote": {
+      "files": [
+        "dist/chunk-XUWOUN52.js",
+        "dist/quote.js"
+      ],
+      "external": []
+    },
+    "./scan": {
+      "files": [
+        "dist/chunk-4O64ECYO.js",
+        "dist/chunk-C6H26JHE.js",
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-HRVDCHYB.js",
+        "dist/chunk-KBWARERS.js",
+        "dist/chunk-UNHSPNHF.js",
+        "dist/chunk-VG6EO5DS.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/chunk-XUWOUN52.js",
+        "dist/chunk-Y3RAONUJ.js",
+        "dist/scan.js"
+      ],
+      "external": [
+        "email-addresses",
+        "htmlparser2",
+        "ipaddr.js",
+        "postal-mime",
+        "tldts"
+      ]
+    },
+    "./verify": {
+      "files": [
+        "dist/chunk-334SRHOL.js",
+        "dist/chunk-KJX4EJSO.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/verify.js"
+      ],
+      "external": [
+        "mailauth"
+      ]
+    },
+    "./reputation": {
+      "files": [
+        "dist/chunk-4O64ECYO.js",
+        "dist/chunk-KBWARERS.js",
+        "dist/chunk-KJX4EJSO.js",
+        "dist/chunk-SISHBP2S.js",
+        "dist/chunk-X7TUOLKZ.js",
+        "dist/chunk-YHPVCWM7.js",
+        "dist/reputation.js"
+      ],
+      "external": [
+        "dns/promises",
+        "ipaddr.js"
+      ]
+    },
+    "./brand": {
+      "files": [
+        "dist/brand.js",
+        "dist/chunk-FIMAFTOL.js",
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-K5CZSXLG.js",
+        "dist/chunk-KJX4EJSO.js",
+        "dist/chunk-SISHBP2S.js"
+      ],
+      "external": [
+        "@peculiar/x509",
+        "asn1js",
+        "dns/promises",
+        "htmlparser2",
+        "reflect-metadata",
+        "tldts"
+      ]
+    },
+    "./age": {
+      "files": [
+        "dist/age.js",
+        "dist/chunk-FIMAFTOL.js",
+        "dist/chunk-FSHDBDTK.js",
+        "dist/chunk-JGBDUAYO.js",
+        "dist/chunk-KJX4EJSO.js",
+        "dist/chunk-X7TUOLKZ.js"
+      ],
+      "external": [
+        "tldts"
+      ]
+    }
+  },
+  "builds": {
+    "narrow-verdict": {
+      "bytes": 166,
+      "sha256": "386f7bbbea0560908b0c30f54c0c56b1aa9a9a0c9d7348a0da1537456be56942",
+      "inputs": [
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-X7TUOLKZ.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/verdict.js",
+        "narrow-verdict.js"
+      ],
+      "imports": []
+    },
+    "adapted-predicate": {
+      "bytes": 151,
+      "sha256": "0887dea23b715d40d39b93362b53bcc8c3248abc7e936d552b63171d6e5333df",
+      "inputs": [
+        "packages/core/src/vendor/authentication-failed.ts",
+        "adapted-predicate.js"
+      ],
+      "imports": []
+    },
+    "original-unknown-only": {
+      "bytes": 139,
+      "sha256": "4ea11155d40d11f788df3b6832eb5e69a4ee7ee1d004554ca0945edc4ff363fc",
+      "inputs": [
+        "original-unknown-only.js"
+      ],
+      "imports": []
+    },
+    "content-extract": {
+      "bytes": 242385,
+      "sha256": "79635b9c3fb612d13c2dfca86f8f7ce2bfa16e37df48a972575c83e7e21ede12",
+      "inputs": [
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-L2YWY7C2.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-X7TUOLKZ.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/domain.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/domain-without-suffix.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/extract-hostname.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/is-ip.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/is-special-use.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/is-valid.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/options.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/subdomain.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/factory.js",
+        "audit/install/node_modules/tldts-core/dist/es6/src/lookup/fast-path.js",
+        "audit/install/node_modules/tldts-core/dist/es6/index.js",
+        "audit/install/node_modules/tldts/dist/es6/src/data/trie.js",
+        "audit/install/node_modules/tldts/dist/es6/src/suffix-trie.js",
+        "audit/install/node_modules/tldts/dist/es6/index.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-FSHDBDTK.js",
+        "audit/install/node_modules/entities/dist/esm/decode-codepoint.js",
+        "audit/install/node_modules/entities/dist/esm/internal/decode-shared.js",
+        "audit/install/node_modules/entities/dist/esm/generated/decode-data-html.js",
+        "audit/install/node_modules/entities/dist/esm/generated/decode-data-xml.js",
+        "audit/install/node_modules/entities/dist/esm/internal/bin-trie-flags.js",
+        "audit/install/node_modules/entities/dist/esm/decode.js",
+        "audit/install/node_modules/htmlparser2/dist/esm/Tokenizer.js",
+        "audit/install/node_modules/htmlparser2/dist/esm/Parser.js",
+        "audit/install/node_modules/domelementtype/lib/esm/index.js",
+        "audit/install/node_modules/domhandler/lib/esm/node.js",
+        "audit/install/node_modules/domhandler/lib/esm/index.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-html.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-xml.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/decode_codepoint.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/decode.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/generated/encode-html.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/escape.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/encode.js",
+        "audit/install/node_modules/dom-serializer/node_modules/entities/lib/esm/index.js",
+        "audit/install/node_modules/dom-serializer/lib/esm/foreignNames.js",
+        "audit/install/node_modules/dom-serializer/lib/esm/index.js",
+        "audit/install/node_modules/domutils/lib/esm/stringify.js",
+        "audit/install/node_modules/domutils/lib/esm/traversal.js",
+        "audit/install/node_modules/domutils/lib/esm/manipulation.js",
+        "audit/install/node_modules/domutils/lib/esm/querying.js",
+        "audit/install/node_modules/domutils/lib/esm/legacy.js",
+        "audit/install/node_modules/domutils/lib/esm/helpers.js",
+        "audit/install/node_modules/domutils/lib/esm/feeds.js",
+        "audit/install/node_modules/domutils/lib/esm/index.js",
+        "audit/install/node_modules/htmlparser2/dist/esm/index.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-HRVDCHYB.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-XUWOUN52.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/chunk-VG6EO5DS.js",
+        "audit/install/node_modules/@sarv-in/mailguard/dist/content.js",
+        "content-extract.js"
+      ],
+      "imports": []
+    },
+    "umbrella": {
+      "failure": "browser_bundle_failed",
+      "unresolved": [
+        "Could not resolve \"dns/promises\""
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "name": "@sarv-in/mailguard",
+      "version": "0.4.3",
+      "license": "MIT",
+      "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "type-check": "tsc --noEmit",
+        "lint": "eslint . --max-warnings 0",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "verify": "pnpm run lint && pnpm run format:check && pnpm run type-check && pnpm run test:coverage",
+        "verify:brands": "pnpm run build && node scripts/verify-brands.mjs --resolver 1.1.1.1",
+        "clean": "rm -rf dist",
+        "prepublishOnly": "pnpm run build"
+      },
+      "integrity": "sha512-41QBqfaT69BHSuqhmsaFDU1nRURnui7fkiQ9L9FzdB/EzVVichTYnbcod7buqTBFNHa63e9qC/v5aMnTMWbu6g==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "3eb606fc51931b6f429afb3ac6b1fabd2e95e1ea68040daede9c8bae62c74c53"
+        }
+      ]
+    },
+    {
+      "name": "dom-serializer",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scripts": {
+        "test": "npm run test:jest && npm run lint",
+        "test:jest": "jest",
+        "lint": "npm run lint:es && npm run lint:prettier",
+        "lint:es": "eslint --ignore-path .gitignore .",
+        "lint:prettier": "npm run prettier -- --check",
+        "format": "npm run format:es && npm run format:prettier",
+        "format:es": "npm run lint:es -- --fix",
+        "format:prettier": "npm run prettier -- --write",
+        "prettier": "prettier \"**/*.{ts,md,json,yml}\" --ignore-path .gitignore",
+        "build": "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc",
+        "build:esm": "tsc --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+        "prepare": "npm run build"
+      },
+      "integrity": "sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "94cfe87de9b178e8fee313a19178e625129e2ce559db32e772e7bd95114ee6ff"
+        }
+      ]
+    },
+    {
+      "name": "entities",
+      "version": "4.5.0",
+      "license": "BSD-2-Clause",
+      "scripts": {
+        "test": "npm run test:jest && npm run lint",
+        "test:jest": "jest",
+        "lint": "npm run lint:es && npm run lint:prettier",
+        "lint:es": "eslint .",
+        "lint:prettier": "npm run prettier -- --check",
+        "format": "npm run format:es && npm run format:prettier",
+        "format:es": "npm run lint:es -- --fix",
+        "format:prettier": "npm run prettier -- --write",
+        "prettier": "prettier '**/*.{ts,md,json,yml}'",
+        "build": "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc --sourceRoot https://raw.githubusercontent.com/fb55/entities/$(git rev-parse HEAD)/src/",
+        "build:esm": "npm run build:cjs -- --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+        "build:docs": "typedoc --hideGenerator src/index.ts",
+        "build:trie": "ts-node scripts/write-decode-map.ts",
+        "build:encode-trie": "ts-node scripts/write-encode-map.ts",
+        "prepare": "npm run build"
+      },
+      "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+        }
+      ]
+    },
+    {
+      "name": "domelementtype",
+      "version": "2.3.0",
+      "license": "BSD-2-Clause",
+      "scripts": {
+        "test": "npm run lint && prettier --check **/*.{ts,json,md}",
+        "lint": "eslint src",
+        "format": "prettier --write **/*.{ts,json,md}",
+        "build": "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc",
+        "build:esm": "tsc --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+        "prepare": "npm run build"
+      },
+      "integrity": "sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+        }
+      ]
+    },
+    {
+      "name": "domhandler",
+      "version": "5.0.3",
+      "license": "BSD-2-Clause",
+      "scripts": {
+        "test": "npm run test:jest && npm run lint",
+        "test:jest": "jest",
+        "lint": "npm run lint:es && npm run lint:prettier",
+        "lint:es": "eslint --ignore-path .gitignore .",
+        "lint:prettier": "npm run prettier -- --check",
+        "format": "npm run format:es && npm run format:prettier",
+        "format:es": "npm run lint:es -- --fix",
+        "format:prettier": "npm run prettier -- --write",
+        "prettier": "prettier \"**/*.{ts,md,json,yml}\" --ignore-path .gitignore",
+        "build": "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc",
+        "build:esm": "tsc --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+        "prepare": "npm run build"
+      },
+      "integrity": "sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+        }
+      ]
+    },
+    {
+      "name": "domutils",
+      "version": "3.2.2",
+      "license": "BSD-2-Clause",
+      "scripts": {
+        "test": "npm run test:jest && npm run lint",
+        "test:jest": "jest",
+        "lint": "npm run lint:es && npm run lint:prettier",
+        "lint:es": "eslint --ignore-path .gitignore .",
+        "lint:prettier": "npm run prettier -- --check",
+        "format": "npm run format:es && npm run format:prettier",
+        "format:es": "npm run lint:es -- --fix",
+        "format:prettier": "npm run prettier -- --write",
+        "prettier": "prettier \"**/*.{ts,md,json,yml}\" --ignore-path .gitignore",
+        "build": "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc --sourceRoot https://raw.githubusercontent.com/fb55/domutils/$(git rev-parse HEAD)/src/",
+        "build:esm": "npm run build:cjs -- --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+        "build:docs": "typedoc src",
+        "prepare": "npm run build"
+      },
+      "integrity": "sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+        }
+      ]
+    },
+    {
+      "name": "email-addresses",
+      "version": "5.0.0",
+      "license": "MIT",
+      "scripts": {
+        "test": "tap ./test"
+      },
+      "integrity": "sha512-4OIPYlA6JXqtVn8zpHpGiI7vE6EQOAg16aGnDMIAlZVinnoZ8208tW1hAbjWydgN/4PLTT9q+O1K6AH/vALJGw==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "a4800665ab471dc46aa52fe244f9934f01c1690497cfb1566b2847993646fe3e"
+        }
+      ]
+    },
+    {
+      "name": "entities",
+      "version": "7.0.1",
+      "license": "BSD-2-Clause",
+      "scripts": {
+        "build:docs": "typedoc --hideGenerator src/index.ts",
+        "build:encode-trie": "node --import=tsx scripts/write-encode-map.ts",
+        "build:trie": "node --import=tsx scripts/write-decode-map.ts",
+        "benchmark": "node --import=tsx scripts/benchmark.ts",
+        "format": "npm run format:es && npm run format:biome",
+        "format:es": "npm run lint:es -- --fix",
+        "format:biome": "biome check --fix .",
+        "lint": "npm run lint:es && npm run lint:ts && npm run lint:biome",
+        "lint:es": "eslint . --ignore-path .gitignore",
+        "lint:biome": "biome check .",
+        "lint:ts": "tsc --noEmit",
+        "prepublishOnly": "tshy",
+        "test": "npm run test:vi && npm run lint",
+        "test:vi": "vitest run"
+      },
+      "integrity": "sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+        }
+      ]
+    },
+    {
+      "name": "htmlparser2",
+      "version": "10.1.0",
+      "license": "MIT",
+      "scripts": {
+        "build": "tshy",
+        "format": "npm run format:es && npm run format:prettier",
+        "format:es": "npm run lint:es -- --fix",
+        "format:prettier": "npm run format:prettier:raw -- --write",
+        "format:prettier:raw": "prettier '**/*.{ts,md,json,yml}'",
+        "lint": "npm run lint:es && npm run lint:ts && npm run lint:prettier",
+        "lint:es": "eslint src",
+        "lint:prettier": "npm run format:prettier:raw -- --check",
+        "lint:ts": "tsc --noEmit",
+        "prepare": "npm run build",
+        "test": "npm run test:vi && npm run lint",
+        "test:vi": "vitest run"
+      },
+      "integrity": "sha512-VTZkM9GWRAtEpveh7MSF6SjjrpNVNNVJfFup7xTY3UpFtm67foy9HDVXneLtFVt4pMz5kZtgNcvCniNFb1hlEQ==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "204cfa747341660e4da64cd23e8c876c6b20279d247f48564993d3fc4a2eab47"
+        }
+      ]
+    },
+    {
+      "name": "ipaddr.js",
+      "version": "2.5.0",
+      "license": "MIT",
+      "scripts": {
+        "lint": "npx eslint lib",
+        "lintfix": "npx eslint --fix lib test",
+        "test": "node --test",
+        "test:coverage": "node --test --experimental-test-coverage"
+      },
+      "integrity": "sha512-aq+t5NAc+cS6rZQQVWC2x98CPqGtKKTMDd4Gaodv0wShnItdKg/51djkGJ1hqH+Oy0ivDftCbSLCQob8zso01w==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "62568a2d1337b77171ecca9db10579163446de1ba6151678e81f06cdc199971b"
+        }
+      ]
+    },
+    {
+      "name": "postal-mime",
+      "version": "3.0.1",
+      "license": "MIT-0",
+      "scripts": {
+        "build": "node scripts/build-cjs.js",
+        "test": "npm run lint && npm run type-check && node --test",
+        "lint": "eslint src scripts test example",
+        "type-check": "tsc --noEmit",
+        "update": "rm -rf node_modules package-lock.json && ncu -u && npm install",
+        "format": "prettier --write \"**/*.{js,mjs,ts,json}\" --ignore-path .prettierignore",
+        "format:check": "prettier --check \"**/*.{js,mjs,ts,json}\" --ignore-path .prettierignore",
+        "prepublishOnly": "npm run build"
+      },
+      "integrity": "sha512-N86EnYOxZjW1uHQIgSXnnRdnJz+wxmtDsnk3C4R/9rQ1utj8A2znauXZ3Q3+stCHxG5ckY4/NrO09WiPU6rcdQ==",
+      "notices": [
+        {
+          "file": "LICENSE.txt",
+          "sha256": "831ad54932cb62a1fe0827ae7218a213875f1ddbd629c6432860928ba1c5234d"
+        }
+      ]
+    },
+    {
+      "name": "tldts",
+      "version": "7.4.19",
+      "license": "MIT",
+      "scripts": {
+        "clean": "rimraf dist coverage",
+        "build": "tsc --build ./tsconfig.json",
+        "bundle": "tsc --build ./tsconfig.bundle.json && rollup --config ./rollup.config.mjs",
+        "prepack": "yarn run bundle",
+        "test": "c8 ../../node_modules/.bin/mocha --config ../../.mocharc.cjs"
+      },
+      "integrity": "sha512-48dH6aSpQnpbzDUc4vIQZ1VjB8tkK+e8c1yx05/SZK+rkssgjEOlxDd/yU8/a4vGYQ9vRgJr9dwMq9TJ0b3X2Q==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "c64182d48160db948b6aa97a984f1a32974ce4d2053900361264cd33853796cb"
+        }
+      ]
+    },
+    {
+      "name": "tldts-core",
+      "version": "7.4.19",
+      "license": "MIT",
+      "scripts": {
+        "clean": "rimraf dist coverage",
+        "build": "tsc --build ./tsconfig.json",
+        "bundle": "tsc --build ./tsconfig.bundle.json && rollup --config ./rollup.config.mjs",
+        "prepack": "yarn run bundle",
+        "test": "c8 ../../node_modules/.bin/mocha --config ../../.mocharc.cjs"
+      },
+      "integrity": "sha512-goNXV6Ho9TIOfpJZanTd6CKG5DyYgYAL+k+22T0SLh8l6+KHIfBUPFuePuSZv05UttIaaLmI9tb7TmGIdK5AkQ==",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "c64182d48160db948b6aa97a984f1a32974ce4d2053900361264cd33853796cb"
+        }
+      ]
+    }
+  ],
+  "narrowWorkerd": "passed",
+  "files": [
+    {
+      "file": "age.cjs",
+      "bytes": 8800,
+      "sha256": "6fc47e1c2b8254328ed5e00026e6d9c201849d5572ef263b6e8b8c2886514acb"
+    },
+    {
+      "file": "age.cjs.map",
+      "bytes": 62177,
+      "sha256": "ab036cb7714310f36ee1b290a8fa07b36a8cdbe2c040afb33e8a4e01e96a100f"
+    },
+    {
+      "file": "age.d.cts",
+      "bytes": 7254,
+      "sha256": "b8b23445cbf1b14b1dd7c553bc4cf1a982b57cd70b42738481ae5fe7084143be"
+    },
+    {
+      "file": "age.d.ts",
+      "bytes": 7252,
+      "sha256": "b1813d8615a0e1da68b5e1b22d174189e48e9529041db724b69a0f3e659077df"
+    },
+    {
+      "file": "age.js",
+      "bytes": 384,
+      "sha256": "cab54d81e60150db759dbab3a22fd018be4756feb84d7147c7c45f0686c21da5"
+    },
+    {
+      "file": "age.js.map",
+      "bytes": 67,
+      "sha256": "8c56e481571ab48b686332762fd62a107aedcded9771e1472c56295c92696ad7"
+    },
+    {
+      "file": "attachments.cjs",
+      "bytes": 14557,
+      "sha256": "9dfb21b4bdd33284517d90b4a64de793040afe331c74031549e7c93db5080ee2"
+    },
+    {
+      "file": "attachments.cjs.map",
+      "bytes": 77795,
+      "sha256": "1fc977cddb0ef355b23f0c6f1c266eaf6be3c68680ad3d0b166aa53d9f5539c0"
+    },
+    {
+      "file": "attachments.d.cts",
+      "bytes": 19318,
+      "sha256": "8bf872620f36ea0bde84ae42a49df24380d9c228b34bc731d4c04143094b42c8"
+    },
+    {
+      "file": "attachments.d.ts",
+      "bytes": 19317,
+      "sha256": "0abc551e543590f4f653000b3f07564fdcd3fb9bc2dbb47f588dbcb5e269ba2f"
+    },
+    {
+      "file": "attachments.js",
+      "bytes": 500,
+      "sha256": "24c407a7888303362ebf53c5120cf550c6437d1772b39b85327f06c8fcc8788a"
+    },
+    {
+      "file": "attachments.js.map",
+      "bytes": 75,
+      "sha256": "d0efa703f30652e3b94915ae3f35029f8da29fa82210463130261d18ff9e0c52"
+    },
+    {
+      "file": "bimi-B4JT3JBE.d.ts",
+      "bytes": 5406,
+      "sha256": "239292befe41d8826cbdee5e00cb035ed9dfe8937301814c96b5c975ab7306b5"
+    },
+    {
+      "file": "bimi-Bkcofj_x.d.cts",
+      "bytes": 5408,
+      "sha256": "90614be9ce4dc1c8df43373be58a2534397e4081f4bfab364e5389d895d2709d"
+    },
+    {
+      "file": "brand.cjs",
+      "bytes": 37694,
+      "sha256": "075059385f2181705973f36fb82f8ab8832769bc8dba639818e7b5766d4edc9d"
+    },
+    {
+      "file": "brand.cjs.map",
+      "bytes": 120483,
+      "sha256": "c8bd21a2d2b757c7caead8780ff5b37c7d9bef36e980c52155b13bb3f911dc31"
+    },
+    {
+      "file": "brand.d.cts",
+      "bytes": 9224,
+      "sha256": "c6beff3da59fc78a90026d01e5ec4dd1ad3bbc89d96d6ff8979d57e3c95480e7"
+    },
+    {
+      "file": "brand.d.ts",
+      "bytes": 9219,
+      "sha256": "95379af0a7dc7301b55d7f05f0e559b08e23f686e6c577445ccc30ab007dbbe2"
+    },
+    {
+      "file": "brand.js",
+      "bytes": 660,
+      "sha256": "84368068817fc5c2565d3c9fea5968ae57084e6340ab25e6aaf1a828364a6007"
+    },
+    {
+      "file": "brand.js.map",
+      "bytes": 69,
+      "sha256": "33672eaaa6e2e9fe51629b4549fc1733ab97f36daba20c55de4cf131b873c255"
+    },
+    {
+      "file": "chunk-334SRHOL.js",
+      "bytes": 3741,
+      "sha256": "c0574b2e474d7723e09fe18b9eea5040484aee123f7e07e5c8b1aa96d0ed43c3"
+    },
+    {
+      "file": "chunk-334SRHOL.js.map",
+      "bytes": 19153,
+      "sha256": "be32eea5ce560477928f8a0827852f61ae5c4a6e435c23e92a418c1e1573f12a"
+    },
+    {
+      "file": "chunk-4O64ECYO.js",
+      "bytes": 6871,
+      "sha256": "9cf7a708d322eee63a1fe7dd302515894684a58119b6a2f44405fb781e82fb7e"
+    },
+    {
+      "file": "chunk-4O64ECYO.js.map",
+      "bytes": 28239,
+      "sha256": "216bc223988d27bd82d6418976cb3bcbc48060974b1884e54dfc50f3d5d65720"
+    },
+    {
+      "file": "chunk-C6H26JHE.js",
+      "bytes": 13839,
+      "sha256": "e70337a530aa77a6410d3014ddd10843d0152988e353bb66b2f6cf1cb32db9ca"
+    },
+    {
+      "file": "chunk-C6H26JHE.js.map",
+      "bytes": 60300,
+      "sha256": "d05adf9834083226174f98d6d727caa82584363f6c26c77f6ce5f5bf530a2205"
+    },
+    {
+      "file": "chunk-FIMAFTOL.js",
+      "bytes": 1265,
+      "sha256": "8544140345051dbd8ffb0ff69cf317ed692b964fdfd2e6315582454edfec7880"
+    },
+    {
+      "file": "chunk-FIMAFTOL.js.map",
+      "bytes": 5019,
+      "sha256": "adcd4631f3254d78de02be0ef7ee6dbf538bd19d2fe146bd52579ff9071e130b"
+    },
+    {
+      "file": "chunk-FSHDBDTK.js",
+      "bytes": 14106,
+      "sha256": "c56c37073a303f4ac99a7e4d772d05489afc77831d7a576471e373582ace1b18"
+    },
+    {
+      "file": "chunk-FSHDBDTK.js.map",
+      "bytes": 53047,
+      "sha256": "81e5cd4104dcd5034ed49bcfe7373239dbdbe13ab906cedd65f83b759f443499"
+    },
+    {
+      "file": "chunk-HRVDCHYB.js",
+      "bytes": 6034,
+      "sha256": "4af25724521f17b43c39c610444fe534981177e1ed40347208b631d533c5bccd"
+    },
+    {
+      "file": "chunk-HRVDCHYB.js.map",
+      "bytes": 24608,
+      "sha256": "ecc4b16319ae444f778d793fc37e4ad6a0b592f9d5c507600d408a58816cd6c0"
+    },
+    {
+      "file": "chunk-HUGCJMWM.js",
+      "bytes": 10502,
+      "sha256": "c474edb387870f831575df40b4dd7ac5bde529915559be8099eaa661c486b7bf"
+    },
+    {
+      "file": "chunk-HUGCJMWM.js.map",
+      "bytes": 36016,
+      "sha256": "bb3f7da750e2bfc61be8ae9be0e149254f975b9232e12146dbd3c10091559595"
+    },
+    {
+      "file": "chunk-JGBDUAYO.js",
+      "bytes": 7401,
+      "sha256": "eb44e70417216ebbb76caf4dda6553db2bb231cec8b0be4c720ef20f7e0005ea"
+    },
+    {
+      "file": "chunk-JGBDUAYO.js.map",
+      "bytes": 23310,
+      "sha256": "a0edf79d18c6c8dde7e229decc1350b3f61e1e498b9afbede6d7f237c127c1c7"
+    },
+    {
+      "file": "chunk-K5CZSXLG.js",
+      "bytes": 34968,
+      "sha256": "cfee02a677152a6175d0010f08794949e700fbc0d08a2d3e5ec2337240737f38"
+    },
+    {
+      "file": "chunk-K5CZSXLG.js.map",
+      "bytes": 94305,
+      "sha256": "3eb5c979d4f9bf4518d8611b8862242141f2e5512a1028980af50986e10dc2d4"
+    },
+    {
+      "file": "chunk-KBWARERS.js",
+      "bytes": 3690,
+      "sha256": "7d405ef2129e253f381360390120e3f4908297725e502372de2a94239168fa67"
+    },
+    {
+      "file": "chunk-KBWARERS.js.map",
+      "bytes": 17313,
+      "sha256": "72706f1d4302dff2cc96943ef9ce34af1ea1b509c414ffc84272b8d23e67683c"
+    },
+    {
+      "file": "chunk-KJX4EJSO.js",
+      "bytes": 221,
+      "sha256": "3e3957b9c926e34338ff214825af02bcc94b35f76e8f2372fce58cd7f8dcf34a"
+    },
+    {
+      "file": "chunk-KJX4EJSO.js.map",
+      "bytes": 858,
+      "sha256": "2cd5abdd47e90717e467bcea21080181125628475955b534dbbc670cb0af93e4"
+    },
+    {
+      "file": "chunk-L2YWY7C2.js",
+      "bytes": 86,
+      "sha256": "855d48d904cc7c9fbb7a84175f07b7a34a6b7ae7716d122069dcc85d11609453"
+    },
+    {
+      "file": "chunk-L2YWY7C2.js.map",
+      "bytes": 78,
+      "sha256": "86e6dbd617c91ac829549b9577c2187a6dcca04a4451327a03d4967a4175d52b"
+    },
+    {
+      "file": "chunk-S2TPPIRD.js",
+      "bytes": 3001,
+      "sha256": "f06dc5ae42b72073ce0b7e8fbb5222e64b9bcdffb786f1f61a5707396669083b"
+    },
+    {
+      "file": "chunk-S2TPPIRD.js.map",
+      "bytes": 15105,
+      "sha256": "89c9a2aa3140967494d803b4668d57b09ac17d410e0c83b9de2990c04cb774ac"
+    },
+    {
+      "file": "chunk-SISHBP2S.js",
+      "bytes": 886,
+      "sha256": "9589866fcc946914469594e166653448affed905a15af67985c939faf4e1bcc9"
+    },
+    {
+      "file": "chunk-SISHBP2S.js.map",
+      "bytes": 4457,
+      "sha256": "724e119f87a0b6a4e16e5cb598e58c2dc7630f9db73be9db71584d2531d23882"
+    },
+    {
+      "file": "chunk-UHQKJLVV.js",
+      "bytes": 86,
+      "sha256": "56f5f2d0d21e5ed421aeb1b372a667b176f6cb923160eaf5e134b4dbbc40d3f1"
+    },
+    {
+      "file": "chunk-UHQKJLVV.js.map",
+      "bytes": 78,
+      "sha256": "0fd9f81e5928d2a4a6a5fe73800139eb1154cea78efdced552152f163addce63"
+    },
+    {
+      "file": "chunk-UNHSPNHF.js",
+      "bytes": 2656,
+      "sha256": "92ed75ba2a07543d830d51878f49240ed3a909f9e3589f78b253f557cca69be2"
+    },
+    {
+      "file": "chunk-UNHSPNHF.js.map",
+      "bytes": 11670,
+      "sha256": "601557277088393f39c9928eb9154e8212abe9c8bb918281ca8c446a56e98f56"
+    },
+    {
+      "file": "chunk-VG6EO5DS.js",
+      "bytes": 8842,
+      "sha256": "70eae1903f6163d764d31b261a2f937dfd6e982822096257a71f0c0d02f8d0f9"
+    },
+    {
+      "file": "chunk-VG6EO5DS.js.map",
+      "bytes": 28451,
+      "sha256": "a6e3d5787d52e1537729fd83b7beaec8fdb3cea86da1e5321d3676c9a69595e4"
+    },
+    {
+      "file": "chunk-WXOZVIBB.js",
+      "bytes": 86,
+      "sha256": "f187974fdc2d49a101d2473495adf29889fc7ce81629f67884ad318b17bbe452"
+    },
+    {
+      "file": "chunk-WXOZVIBB.js.map",
+      "bytes": 78,
+      "sha256": "8035ec914972b1e758441667fd2600851b2f678e3e023ce8f653ccba00f74eb5"
+    },
+    {
+      "file": "chunk-X7TUOLKZ.js",
+      "bytes": 3898,
+      "sha256": "f2f9c84ca665c1f8ddea307f6abcdb832a2734375db750e8b310788d0b4f66e3"
+    },
+    {
+      "file": "chunk-X7TUOLKZ.js.map",
+      "bytes": 20674,
+      "sha256": "471532eca17b5db67de4deed7a718838374853e97be629f1223bfaafa6e57dea"
+    },
+    {
+      "file": "chunk-XUWOUN52.js",
+      "bytes": 3141,
+      "sha256": "7d2809aa639e004cb649cebb9fa1d79b7e798784df38cbc00b278bb792c96cb8"
+    },
+    {
+      "file": "chunk-XUWOUN52.js.map",
+      "bytes": 9501,
+      "sha256": "0b52c7c93f18d37ad8835ecec1c91404f34e3dc6c4b7be2adae00c787ebd128d"
+    },
+    {
+      "file": "chunk-Y3RAONUJ.js",
+      "bytes": 281538,
+      "sha256": "bf047f1a67998fa9df0a3b001af72ddb0ca5dade546f2bcf86be3e64dd887cc9"
+    },
+    {
+      "file": "chunk-Y3RAONUJ.js.map",
+      "bytes": 545985,
+      "sha256": "d356eef3eac4f80926f4062eb51f120a60a5dd92adaafb97274ff636555294d6"
+    },
+    {
+      "file": "chunk-YHPVCWM7.js",
+      "bytes": 13764,
+      "sha256": "95b28fabcc42d22ae8e5399e82aba0b1bcf188b34ef367370da2bb1da94ba06e"
+    },
+    {
+      "file": "chunk-YHPVCWM7.js.map",
+      "bytes": 52406,
+      "sha256": "3ad9ad91e5ce0b00d13cfc5283f5eba4ff0219290437cc479fa5f9512103e705"
+    },
+    {
+      "file": "content.cjs",
+      "bytes": 29292,
+      "sha256": "8e993e3e0b62ccfdfe44f21ad68dc08118d8c7131b95f941141ce39116f08d77"
+    },
+    {
+      "file": "content.cjs.map",
+      "bytes": 130160,
+      "sha256": "fdcd8a6b97918af78895c7b60d6cd04e868309e8fb90c9fc9cada451d94cb7a5"
+    },
+    {
+      "file": "content.d.cts",
+      "bytes": 15779,
+      "sha256": "14a575d8b6f7f8d40728853394cdd2de0cf75ac34da9c517ee8bf55deca2a91c"
+    },
+    {
+      "file": "content.d.ts",
+      "bytes": 15775,
+      "sha256": "3ee979c757b8c2f56213dc57de74e587ffb5ad950e0eee46c9cd0772ac9d6736"
+    },
+    {
+      "file": "content.js",
+      "bytes": 523,
+      "sha256": "3c3196e9124b8f1fce65bea9441851528f40830f719017ff4c92603ca28e3867"
+    },
+    {
+      "file": "content.js.map",
+      "bytes": 71,
+      "sha256": "78f782a853c2146818c60d181716588a06fa085e5fb502d0b5cefb88c28a093b"
+    },
+    {
+      "file": "dns-DTH8V526.d.cts",
+      "bytes": 1795,
+      "sha256": "ebfad8a072f821ac743fd1b7a69e1f473903c9bd16cc382bceb0decdbd131c10"
+    },
+    {
+      "file": "dns-DTH8V526.d.ts",
+      "bytes": 1795,
+      "sha256": "ebfad8a072f821ac743fd1b7a69e1f473903c9bd16cc382bceb0decdbd131c10"
+    },
+    {
+      "file": "fetch-9IRxDvDJ.d.cts",
+      "bytes": 2341,
+      "sha256": "1c3b13fcc8b4e72df16b5ca4dd0e82b834633a7ca21cf5119311241e4f636e75"
+    },
+    {
+      "file": "fetch-9IRxDvDJ.d.ts",
+      "bytes": 2341,
+      "sha256": "1c3b13fcc8b4e72df16b5ca4dd0e82b834633a7ca21cf5119311241e4f636e75"
+    },
+    {
+      "file": "headers.cjs",
+      "bytes": 10063,
+      "sha256": "2c72f1f7bbd96c1c0e0f71843860575fd10e8b4645d41ad6a2368a3598b52203"
+    },
+    {
+      "file": "headers.cjs.map",
+      "bytes": 57478,
+      "sha256": "9906e9c0fa49d21a4adff9c0d1436fa2e52e3ae92ed11af4156336d4fb06baaf"
+    },
+    {
+      "file": "headers.d.cts",
+      "bytes": 11605,
+      "sha256": "e66adfc93ab9f6f79ea3cde48b5025eeb71a68ec37c5983d18578d434423d5fe"
+    },
+    {
+      "file": "headers.d.ts",
+      "bytes": 11604,
+      "sha256": "5c90529fa326bace41c9cfdf4b6dc33a1b52e5919af2731dd6076f874e95a4fb"
+    },
+    {
+      "file": "headers.js",
+      "bytes": 439,
+      "sha256": "66cd9f09589e53f23ac26546f75da4d120d5638b609084ef2ab905e57d110a67"
+    },
+    {
+      "file": "headers.js.map",
+      "bytes": 71,
+      "sha256": "f2a983eb629ac9ff49a900ed74cf72dc4bffa1de5b326899a86b2993028bd61b"
+    },
+    {
+      "file": "identity.cjs",
+      "bytes": 14315,
+      "sha256": "5a578265f29a3d3540f43b55f11901b16060b112f3cbdd30b191e7497690ebbf"
+    },
+    {
+      "file": "identity.cjs.map",
+      "bytes": 53058,
+      "sha256": "10d08d60786f7db6e5d8cc365b16a68b791813b82b84371b01831978f0d49254"
+    },
+    {
+      "file": "identity.d.cts",
+      "bytes": 10771,
+      "sha256": "32c9841ec8a356078bce43f709ece7be51c3e94aa57fccd62209031a5b6a6cfb"
+    },
+    {
+      "file": "identity.d.ts",
+      "bytes": 10770,
+      "sha256": "0d59499e39fe78a2e89fd99bfae044be21892dd1293af133e53941873c95a733"
+    },
+    {
+      "file": "identity.js",
+      "bytes": 271,
+      "sha256": "31e4edf6fc306df82c95e2aed7b2162ef496975d95380e76156d0bc9c51c36bb"
+    },
+    {
+      "file": "identity.js.map",
+      "bytes": 72,
+      "sha256": "0e254323f2d9cc5061c4f4f1e891e6f76f64aed846dc6043c9fbf713a15b9537"
+    },
+    {
+      "file": "index.cjs",
+      "bytes": 420583,
+      "sha256": "93f614ecd3edd168ae1c058f0dae5d6dcae5a331672920d3f1ae53ba675b9b6f"
+    },
+    {
+      "file": "index.cjs.map",
+      "bytes": 1048921,
+      "sha256": "c83a4694c5defb54cc952d0c8c9a7c70472bea72841168f0497cadb418b7eedc"
+    },
+    {
+      "file": "index.d.cts",
+      "bytes": 12433,
+      "sha256": "f7775fb493efbf62c3bb2dce8a225f97a300ebf3dced714b960fe89894e1574e"
+    },
+    {
+      "file": "index.d.ts",
+      "bytes": 12413,
+      "sha256": "55b887b229fd273e644bda64ba55c0b5b526b63036c1526f60adaf208edbc225"
+    },
+    {
+      "file": "index.js",
+      "bytes": 3499,
+      "sha256": "4207bbc04d1209fc9bce337b5572dd8c8c620035607eaf82e7591349bcb06da1"
+    },
+    {
+      "file": "index.js.map",
+      "bytes": 69,
+      "sha256": "615a59e10461438901638fb5c2a1f5ba0510947938b682b73fc6c4014daf86f9"
+    },
+    {
+      "file": "links.cjs",
+      "bytes": 22638,
+      "sha256": "1bbda93b781783751730b3350a500127be4aa48183e6d49b12747521da93c92b"
+    },
+    {
+      "file": "links.cjs.map",
+      "bytes": 92580,
+      "sha256": "2441494d548950d713903bf4e88d3de94d63d0a63e0ae5041600f95d2b1c95b9"
+    },
+    {
+      "file": "links.d.cts",
+      "bytes": 7800,
+      "sha256": "953604c89a2236d72ce12a82171f6ca75f565de272f659da6b73523c8aa15556"
+    },
+    {
+      "file": "links.d.ts",
+      "bytes": 7796,
+      "sha256": "ec2c30fb2fc7986147216caf614fe87419997d5b739b12828f26ee029dd6d04b"
+    },
+    {
+      "file": "links.js",
+      "bytes": 314,
+      "sha256": "1d72494139186fb5a28bc9d603b52995e61fee7cd719dcf7e8a24b706412f9b0"
+    },
+    {
+      "file": "links.js.map",
+      "bytes": 69,
+      "sha256": "cd9233722161e463c20c987575485ca27217cf3a756595bb15a07437802fbf42"
+    },
+    {
+      "file": "quote.cjs",
+      "bytes": 3198,
+      "sha256": "8be90c67d15d4df8d38c00e2b841653797cafa1342f5706b9e1fcebc25770c14"
+    },
+    {
+      "file": "quote.cjs.map",
+      "bytes": 9495,
+      "sha256": "141db5a5c33129e1d7eec4c2f8e2c38995569de77201d238c675651dd621dbed"
+    },
+    {
+      "file": "quote.d.cts",
+      "bytes": 4685,
+      "sha256": "1535218cf2e9012a51246ea04fcbdb877fad77497848873e2d7ce0cdd2a1a90d"
+    },
+    {
+      "file": "quote.d.ts",
+      "bytes": 4685,
+      "sha256": "1535218cf2e9012a51246ea04fcbdb877fad77497848873e2d7ce0cdd2a1a90d"
+    },
+    {
+      "file": "quote.js",
+      "bytes": 147,
+      "sha256": "ca30aca5e9bf8060ff1ff457391d49669ccd57efa95de1b8accb34361f50caab"
+    },
+    {
+      "file": "quote.js.map",
+      "bytes": 69,
+      "sha256": "3c862f72e636873a25babace677d566039fe59a23c54998b19e6b940f101687b"
+    },
+    {
+      "file": "reputation.cjs",
+      "bytes": 16081,
+      "sha256": "969adedf54b8d0dd26c1dc49e203792223b69b53c60540c840125a33e8c17ad5"
+    },
+    {
+      "file": "reputation.cjs.map",
+      "bytes": 88828,
+      "sha256": "0f175030973b0c123abc12a1190b75bd5446439eab6bc0fc502f68b85a98400b"
+    },
+    {
+      "file": "reputation.d.cts",
+      "bytes": 17738,
+      "sha256": "1f4d7655f84af01a1eb6a3ee2529eee1b25070ecc593d0fe79fea99aa24c3f21"
+    },
+    {
+      "file": "reputation.d.ts",
+      "bytes": 17735,
+      "sha256": "0a5b9c39d772f5d1ab2aaed832a36e645eda9610da50532cfd59daec23b1e86b"
+    },
+    {
+      "file": "reputation.js",
+      "bytes": 535,
+      "sha256": "508306bdf90328b2a1618d3d6df2201e869e5ba38a6dfd3ce84c8dc62f1b9a15"
+    },
+    {
+      "file": "reputation.js.map",
+      "bytes": 74,
+      "sha256": "1a160bc2f4745c048581b326cf40219dd198e3034824173a7f271f98afb299af"
+    },
+    {
+      "file": "scan.cjs",
+      "bytes": 338485,
+      "sha256": "725a01b69e6a118d0bc3591322e609279a0ef638a6674bb4e661adc65154be45"
+    },
+    {
+      "file": "scan.cjs.map",
+      "bytes": 796322,
+      "sha256": "2fc89502d64804be478894f165b7c23ec7f65142024a15ae5493bd4b953d6d33"
+    },
+    {
+      "file": "scan.d.cts",
+      "bytes": 10789,
+      "sha256": "c7fd1fa51e448adcdaf130d503216aba9d41e5f7ef8dc6723f57238888d90b03"
+    },
+    {
+      "file": "scan.d.ts",
+      "bytes": 10787,
+      "sha256": "c44b6b41953b44c2b7a261ee46c99cb07a4cab60aa84b7e739b9936a7fa2f9a0"
+    },
+    {
+      "file": "scan.js",
+      "bytes": 421,
+      "sha256": "b13638501874b8229cbd66377dd1a030f815b5eb9d9ecef01ec711e764632446"
+    },
+    {
+      "file": "scan.js.map",
+      "bytes": 68,
+      "sha256": "ed27e1c469f9f79bc079241c2e5b5093340a0485db0f60b357fb9741c398fa5b"
+    },
+    {
+      "file": "security.cjs",
+      "bytes": 31806,
+      "sha256": "c0b0c0abf0ec476cdfb0d239c2887148c7cb15de021dd3a3808a44c1537f8b47"
+    },
+    {
+      "file": "security.cjs.map",
+      "bytes": 144535,
+      "sha256": "510723f39dcbb80df18d1a793ce3d4ec1b7d8ee229e15d2cdc8d6f006337a2a4"
+    },
+    {
+      "file": "security.d.cts",
+      "bytes": 8754,
+      "sha256": "b60309b208a7d30a484bee048920d215f2cf6ec01af7bc471eb87a552a041edf"
+    },
+    {
+      "file": "security.d.ts",
+      "bytes": 8748,
+      "sha256": "cec4710434deb1e2dc53abc5ab1db8e54d9222f3b7fd75d38b9ce794ccf52b9b"
+    },
+    {
+      "file": "security.js",
+      "bytes": 319,
+      "sha256": "5569aa35347a864b10e803bbcc6ae6ab10d833482475fc2e2f180ddd6dde723d"
+    },
+    {
+      "file": "security.js.map",
+      "bytes": 72,
+      "sha256": "dd48f4662422952a2a157b339b5bd5a8a688182115f9f1fd60fe44915e6f7811"
+    },
+    {
+      "file": "types-CW8m9Mqa.d.cts",
+      "bytes": 1018,
+      "sha256": "1dbcdc299c098615ed9714a08933d6c5a2878e9049a74267069757193eb346fb"
+    },
+    {
+      "file": "types-CW8m9Mqa.d.ts",
+      "bytes": 1018,
+      "sha256": "1dbcdc299c098615ed9714a08933d6c5a2878e9049a74267069757193eb346fb"
+    },
+    {
+      "file": "urls-D7BvGNQl.d.cts",
+      "bytes": 3826,
+      "sha256": "df32b477e3250ce30a1da898d3e4928d241cdcc7af4696ea8524046e3ddee559"
+    },
+    {
+      "file": "urls-D7BvGNQl.d.ts",
+      "bytes": 3826,
+      "sha256": "df32b477e3250ce30a1da898d3e4928d241cdcc7af4696ea8524046e3ddee559"
+    },
+    {
+      "file": "verdict.cjs",
+      "bytes": 4234,
+      "sha256": "ba38bd672f4f580b35e597e7cdefa394b030056e591211bd32341ae1099a8f0f"
+    },
+    {
+      "file": "verdict.cjs.map",
+      "bytes": 20670,
+      "sha256": "db645ed0949e64c759ea4cb0d4c72fb9ef8e1b99538e39ca7fb2381e78eb2c23"
+    },
+    {
+      "file": "verdict.d.cts",
+      "bytes": 10690,
+      "sha256": "0c1ec89b42c9c654d27271b16cb168fe5867b1bafddc8f4ebda6cfbaf0ef3afc"
+    },
+    {
+      "file": "verdict.d.ts",
+      "bytes": 10690,
+      "sha256": "0c1ec89b42c9c654d27271b16cb168fe5867b1bafddc8f4ebda6cfbaf0ef3afc"
+    },
+    {
+      "file": "verdict.js",
+      "bytes": 336,
+      "sha256": "5274db5134ec514311f08b38dcddc71befad033057c46983b3c4a60bd0a29f87"
+    },
+    {
+      "file": "verdict.js.map",
+      "bytes": 71,
+      "sha256": "8cac384e9cc68da4a60eb31da6e7f8fab438721e2aa4269d52b99d7e49b9cf27"
+    },
+    {
+      "file": "verify.cjs",
+      "bytes": 4227,
+      "sha256": "7956c68a3eba7bad97805614f42b1cafb5338ddf8a00edd0260bc441d9026f24"
+    },
+    {
+      "file": "verify.cjs.map",
+      "bytes": 37578,
+      "sha256": "a00fd35d428e4719c28d4468c18c9a3934a3011d80ac880331326b6a74925714"
+    },
+    {
+      "file": "verify.d.cts",
+      "bytes": 6549,
+      "sha256": "efc40f8c01ac69abe4fed724d2705647d5f4c9b9dc842d2eb86f0c6fe59f33b8"
+    },
+    {
+      "file": "verify.d.ts",
+      "bytes": 6548,
+      "sha256": "7c5b6bfad7c446e0433f181c6b81c0017787601a36c71a68f39f87458ffe72aa"
+    },
+    {
+      "file": "verify.js",
+      "bytes": 211,
+      "sha256": "ebf8f5275ac01753462a04f1dacaf83bda9e565842b4c92a45eb2601391df6b5"
+    },
+    {
+      "file": "verify.js.map",
+      "bytes": 70,
+      "sha256": "fa366f9703ca58d7a67e09e258eb6aa5767c66dc588b7a528647f66614e9607b"
+    }
+  ]
+}

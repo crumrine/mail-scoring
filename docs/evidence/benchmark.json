@@ -1,0 +1,91 @@
+{
+  "runtime": "v24.15.0",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
+  "sampleCount": 100,
+  "limits": {
+    "requestBytes": 262144,
+    "sourceBytes": 131072,
+    "extractedBytes": 65536,
+    "headerBytes": 32768,
+    "headers": 100,
+    "headerFieldBytes": 8192,
+    "urls": 100,
+    "attachments": 32,
+    "subjectBytes": 2048,
+    "addressBytes": 512,
+    "urlBytes": 2048,
+    "filenameBytes": 255,
+    "typeBytes": 127,
+    "jsonDepth": 6,
+    "jsonTokens": 4096,
+    "outputBytes": 4096
+  },
+  "samples": [
+    {
+      "sourceBytes": 0,
+      "firstMs": 1.8416780000000017,
+      "medianMs": 0.040168999999991684,
+      "p95Ms": 0.11764300000000105,
+      "maxMs": 0.279246999999998,
+      "heapDeltaBytes": 514864,
+      "rssDeltaBytes": 716800
+    },
+    {
+      "sourceBytes": 8192,
+      "firstMs": 0.2624840000000006,
+      "medianMs": 0.6556089999999983,
+      "p95Ms": 1.5601020000000005,
+      "maxMs": 17.77112199999999,
+      "heapDeltaBytes": -521712,
+      "rssDeltaBytes": 7680000
+    },
+    {
+      "sourceBytes": 32768,
+      "firstMs": 2.71967699999999,
+      "medianMs": 2.163353000000029,
+      "p95Ms": 2.272024999999985,
+      "maxMs": 11.269251999999994,
+      "heapDeltaBytes": -286864,
+      "rssDeltaBytes": 872448
+    },
+    {
+      "sourceBytes": 65536,
+      "firstMs": 4.321519999999964,
+      "medianMs": 4.2840739999999755,
+      "p95Ms": 4.370381000000066,
+      "maxMs": 4.451994000000013,
+      "heapDeltaBytes": 502112,
+      "rssDeltaBytes": 0
+    },
+    {
+      "sourceBytes": 131072,
+      "firstMs": 8.811844999999948,
+      "medianMs": 8.54741799999988,
+      "p95Ms": 12.391890999999987,
+      "maxMs": 36.61269499999992,
+      "heapDeltaBytes": -457624,
+      "rssDeltaBytes": 929792
+    },
+    {
+      "sourceBytes": 262144,
+      "firstMs": 9.818849,
+      "medianMs": 8.55019799999991,
+      "p95Ms": 24.70916999999963,
+      "maxMs": 63.35532899999998,
+      "heapDeltaBytes": 699816,
+      "rssDeltaBytes": 315392
+    },
+    {
+      "sourceBytes": 1048576,
+      "firstMs": 10.137113000000227,
+      "medianMs": 8.552984999999808,
+      "p95Ms": 9.69043799999963,
+      "maxMs": 16.48566899999969,
+      "heapDeltaBytes": 781176,
+      "rssDeltaBytes": 700416
+    }
+  ],
+  "caveat": "Local Node synthetic wall time; first invocation per case is not isolated process startup. GC and shared host noise affect memory deltas. No hosted CPU, efficacy, accuracy or billing conclusions. Adversarial growth stops at inspection ceilings; fixture allocation is outside measurement."
+}

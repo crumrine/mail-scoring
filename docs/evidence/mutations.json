@@ -1,0 +1,12 @@
+[
+  {
+    "mutation": "source-bound",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "network-deny",
+    "caught": true,
+    "exitCode": 1
+  }
+]

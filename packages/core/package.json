@@ -1,0 +1,26 @@
+{
+  "name": "@mail-scoring/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./contract": {
+      "types": "./dist/contract.d.ts",
+      "import": "./dist/contract.js"
+    },
+    "./schemas/ScoreInputV1.json": "./schemas/ScoreInputV1.json",
+    "./schemas/ScoreResultV1.json": "./schemas/ScoreResultV1.json"
+  },
+  "files": [
+    "dist",
+    "schemas"
+  ],
+  "engines": {
+    "node": ">=24"
+  }
+}
