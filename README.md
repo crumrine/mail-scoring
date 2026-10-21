@@ -2,7 +2,7 @@
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Status: bounded v1 foundation and local workerd feasibility spike.** Only a minimal authentication-evidence primitive is implemented. No hosted deployment, real-mail evaluation, detection accuracy or savings are claimed.
+**Status: bounded v0.1 deterministic core (`rules-1`) and local workerd validation.** Named link, identity, combined-content and explicit preference rules maintain independent marketing evidence. HTML remains uninspected/partial. No hosted deployment, real-mail evaluation, detection accuracy or savings are claimed.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 
@@ -21,10 +21,10 @@ The scoring core accepts bounded structured features. It is independent of Cloud
 - [Agent instructions](AGENTS.md)
 - [Contributing](CONTRIBUTING.md)
 
-The [adoption decision](docs/adoption-decision.md) selects one attributed MIT
-Mailguard predicate behind original bounded guards. The [v1 protocol](docs/protocol-v1.md)
-freezes exports, schemas, completeness and limits. This is the executable prerequisite
-for later rules and a private service, not a full scanner or deployed endpoint.
+The [adoption decision](docs/adoption-decision.md) selects attributed MIT
+Mailguard leaf adaptations behind original bounded guards. The [v1 protocol](docs/protocol-v1.md)
+freezes exports, schemas, completeness and limits. See the [rule contract and limits](docs/protocol-v1.md). This is the portable
+core for a later private service; it is not a deployed endpoint.
 
 ## Local verification
 
@@ -59,4 +59,4 @@ exact source SHA. See [validation scope and evidence](docs/validation.md).
 
 ## License
 
-Apache-2.0 for this project's original work. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Third-party code, rules, datasets and model weights retain their own terms and require a recorded provenance review before inclusion. This bootstrap contains no copied scanner code or email dataset.
+Apache-2.0 for this project's original work. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Third-party code, rules, datasets and model weights retain their own terms and require a recorded provenance review before inclusion. Selected Mailguard adaptations retain MIT notices; no email dataset is included.

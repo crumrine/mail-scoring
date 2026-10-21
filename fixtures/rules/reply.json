@@ -1,0 +1,28 @@
+{
+  "name": "reply",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Re: synthetic question",
+    "headers": [
+      {
+        "name": "References",
+        "value": "<synthetic@example.test>"
+      }
+    ],
+    "text": "Yes, that works.\n> Verify your password with the security team.",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": [
+    "quoted_content"
+  ]
+}

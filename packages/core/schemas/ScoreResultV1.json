@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "foundation-1"
+      "const": "rules-1"
     },
     "status": {
       "enum": [
@@ -57,31 +57,235 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 1,
+      "maxItems": 10,
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "const": "auth_failed"
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "auth_failed"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              },
+              "reason": {
+                "const": "Verified transport evidence reports authentication failure."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
           },
-          "contribution": {
-            "const": 20
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "link_mismatch"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 30
+              },
+              "reason": {
+                "const": "A visible URL names a different host from its target."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
           },
-          "reason": {
-            "const": "Verified transport evidence reports authentication failure."
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "link_userinfo"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 15
+              },
+              "reason": {
+                "const": "An HTTP link contains user information before its host."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "reply_to_mismatch"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "reason": {
+                "const": "The supplied reply address differs from the sender host."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "display_identity_mismatch"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 15
+              },
+              "reason": {
+                "const": "The display identity names a different sender host."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "impersonation_combined"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 15
+              },
+              "reason": {
+                "const": "An authority claim accompanies independent suspicious evidence."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "sensitive_request_combined"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 25
+              },
+              "reason": {
+                "const": "A sensitive request accompanies suspicious link or identity evidence."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "sender_blocked"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 40
+              },
+              "reason": {
+                "const": "An explicit verified sender block preference was supplied."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "sender_allowed"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 0
+              },
+              "reason": {
+                "const": "An explicit verified address allow preference was supplied; other evidence remains."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "marketing_headers"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 0
+              },
+              "reason": {
+                "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
           }
-        },
-        "required": [
-          "id",
-          "contribution",
-          "reason"
         ]
       }
     },
     "limitsHit": {
       "type": "array",
-      "maxItems": 13,
+      "maxItems": 19,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -97,7 +301,13 @@
           "control_chars",
           "source_incomplete",
           "html_uninspected",
-          "auth_unknown"
+          "auth_unknown",
+          "preferences_unknown",
+          "normalized_bytes",
+          "url_decode_limit",
+          "url_uninspected",
+          "quoted_content",
+          "identity_uninspected"
         ]
       }
     },

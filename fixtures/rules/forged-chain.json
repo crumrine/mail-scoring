@@ -1,0 +1,36 @@
+{
+  "name": "forged-chain",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Re: synthetic trusted thread",
+    "headers": [
+      {
+        "name": "Message-ID",
+        "value": "<trusted@example.test>"
+      },
+      {
+        "name": "References",
+        "value": "<trusted@example.test>"
+      }
+    ],
+    "text": "Security team: verify your password.",
+    "sourceComplete": true,
+    "anchors": [
+      {
+        "text": "https://accounts.example.test/",
+        "href": "https://other.invalid/"
+      }
+    ]
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 70,
+  "expectedSignals": {
+    "spam": "present",
+    "phishing": "present",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

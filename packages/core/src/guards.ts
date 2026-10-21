@@ -60,7 +60,7 @@ export type GuardedInput = {input: ScoreInputV1; limitsHit: LimitId[]};
 export function guardInput(value: unknown): GuardedInput | null {
   try {
     if (!value || typeof value !== 'object' || !parsedRoots.has(value)) return null;
-    const r = record(value, ['schemaVersion','policyVersion','subject','headers','text','html','extractedText','addresses','urls','attachments','transport','preferences','sourceComplete']);
+    const r = record(value, ['schemaVersion','policyVersion','subject','headers','text','html','extractedText','addresses','urls','anchors','attachments','transport','preferences','sourceComplete']);
     if (r.schemaVersion !== '1') return invalid();
     const limits = new Set<LimitId>();
     const read = (v: unknown, cap: number, id: LimitId, multiline = false): string => {
@@ -103,13 +103,26 @@ export function guardInput(value: unknown): GuardedInput | null {
       input.headers.push({name:n,value:read(v.text,LIMITS.headerFieldBytes,'header_field_bytes')});
     }
     if (r.addresses !== undefined) {
-      const a=record(r.addresses,['from','replyTo','envelopeFrom']); input.addresses={};
-      for (const key of ['from','replyTo','envelopeFrom'] as const) if (a[key] !== undefined) input.addresses[key]=read(a[key],LIMITS.addressBytes,'field_bytes');
+      const a=record(r.addresses,['from','replyTo','envelopeFrom','displayName']); input.addresses={};
+      for (const key of ['from','replyTo','envelopeFrom','displayName'] as const) if (a[key] !== undefined) input.addresses[key]=read(a[key],LIMITS.addressBytes,'field_bytes');
+    }
+    // Anchors and standalone URLs share a single inspection budget; anchors first.
+    if (r.anchors !== undefined) {
+      const anchors=array(r.anchors); input.anchors=[];
+      if (anchors.length>LIMITS.urls) limits.add('url_count');
+      for (let i=0;i<Math.min(anchors.length,LIMITS.urls);i++) {
+        const a=record(item(anchors,i),['text','href','quoted']);
+        const anchor: NonNullable<ScoreInputV1['anchors']>[number]={
+          text:read(a.text,LIMITS.urlBytes,'field_bytes'),href:read(a.href,LIMITS.urlBytes,'field_bytes')};
+        if(a.quoted!==undefined) anchor.quoted=bool(a.quoted);
+        input.anchors.push(anchor);
+      }
     }
     if (r.urls !== undefined) {
       const urls=array(r.urls); input.urls=[];
-      if (urls.length>LIMITS.urls) limits.add('url_count');
-      for (let i=0;i<Math.min(urls.length,LIMITS.urls);i++) input.urls.push(read(item(urls,i),LIMITS.urlBytes,'field_bytes'));
+      const remaining=LIMITS.urls-(input.anchors?.length??0);
+      if (urls.length>remaining) limits.add('url_count');
+      for (let i=0;i<Math.min(urls.length,remaining);i++) input.urls.push(read(item(urls,i),LIMITS.urlBytes,'field_bytes'));
     }
     if (r.attachments !== undefined) {
       const attachments=array(r.attachments); input.attachments=[];

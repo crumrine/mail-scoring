@@ -1,6 +1,6 @@
 {
   "format": "mail-scoring-provenance-1",
-  "lockSha256": "9d2f0ddb8e80b8679c7ce722ceaddbad30988067d2df7a64d6e87dd501b27b5f",
+  "lockSha256": "88121c5551c02d5e91d3ed27e169b8d7825d69a67ef727cbe30bdd7fa9656569",
   "runtimeDependencies": [],
   "vendored": [
     {
@@ -14,6 +14,58 @@
       "data": "none",
       "modifications": "Narrow type; non-null argument enforced by wrapper; retained predicate logic",
       "sha256": "f8c1ae0a72032869df51d011bb4368f7347d616aa1460638fd15a455dc19b25e"
+    },
+    {
+      "name": "Mailguard normalizeForMatching, containsPhrase",
+      "repository": "https://github.com/Sarv/mailguard",
+      "revision": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+      "version": "0.4.3",
+      "source": "src/text.ts",
+      "sourceSha256": "ca2b674c198fbe2c2c325f08e5a026cedb0045fca8d5385d324ff055354f46da",
+      "local": "packages/core/src/vendor/text.ts",
+      "license": "MIT",
+      "data": "none",
+      "modifications": "Scalar-by-scalar bounded normalization, quote skipping, code-point-aware boundaries; fixed original phrase groups; no corpus.",
+      "sha256": "d9feca4becf2cb92e3228edb412602c3aa9c072d46f4d094cb6c7f4f65a0a1e8"
+    },
+    {
+      "name": "Mailguard matchSpamVocabulary",
+      "repository": "https://github.com/Sarv/mailguard",
+      "revision": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+      "version": "0.4.3",
+      "source": "src/content/vocabulary.ts",
+      "sourceSha256": "01fbfe248e0a49b00b9a0b2469b977f77f85c2bab871a01e52f49ab1572c52b8",
+      "local": "packages/core/src/vendor/text.ts",
+      "license": "MIT",
+      "data": "none",
+      "modifications": "Once-per-group matching structure with fixed original supporting phrases; no exported dynamic groups, weights or labels.",
+      "sha256": "d9feca4becf2cb92e3228edb412602c3aa9c072d46f4d094cb6c7f4f65a0a1e8"
+    },
+    {
+      "name": "Mailguard linkTarget, anchorMismatches",
+      "repository": "https://github.com/Sarv/mailguard",
+      "revision": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+      "version": "0.4.3",
+      "source": "src/urls.ts",
+      "sourceSha256": "3e45826704df9491e0caa4fead125b7af482bccf13846d8bd8b1bdb0d601524c",
+      "local": "packages/core/src/vendor/links.ts",
+      "license": "MIT",
+      "data": "none",
+      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; no wrapper exemptions/corpus/prose extraction; bounded decoding.",
+      "sha256": "ffdabe4e580624af09ec2cf080bb9c468cecf88cde40d05225c512798b8bc796"
+    },
+    {
+      "name": "Mailguard bulkHeaderSignals",
+      "repository": "https://github.com/Sarv/mailguard",
+      "revision": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+      "version": "0.4.3",
+      "source": "src/headers/bulk.ts",
+      "sourceSha256": "31addaf3036aaaf35944f866b2d858225004e6a88f69d9982c6d0510fd4fb2e0",
+      "local": "packages/core/src/vendor/bulk.ts",
+      "license": "MIT",
+      "data": "none",
+      "modifications": "Only list-id, list-unsubscribe and precedence predicates; auto-submitted/ESP tables omitted.",
+      "sha256": "3cd6adcf319a18acd35f44e0bbe8b23033cddc522e4932ddcb5abd4cf605e09f"
     }
   ],
   "packages": [
@@ -338,6 +390,16 @@
       "hasInstallScript": false
     },
     {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-8.20.0.tgz",
+      "integrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==",
+      "scope": "development-only",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
       "name": "esbuild",
       "version": "0.28.2",
       "license": "MIT",
@@ -346,6 +408,46 @@
       "scope": "development-only",
       "optional": false,
       "hasInstallScript": true
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz",
+      "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==",
+      "scope": "development-only",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.9",
+      "license": "BSD-3-Clause",
+      "resolved": "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.9.tgz",
+      "integrity": "sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==",
+      "scope": "development-only",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz",
+      "integrity": "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==",
+      "scope": "development-only",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/require-from-string/-/require-from-string-2.0.2.tgz",
+      "integrity": "sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==",
+      "scope": "development-only",
+      "optional": false,
+      "hasInstallScript": false
     },
     {
       "name": "typescript",

@@ -7,127 +7,127 @@
     {
       "kind": "root",
       "size": 1000,
-      "elapsedMs": 2.078326000000061,
-      "heapDeltaBytes": 34176,
+      "elapsedMs": 1.2314230000000066,
+      "heapDeltaBytes": 17976,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000,
-      "elapsedMs": 0.07401199999992514,
-      "heapDeltaBytes": 6768,
+      "elapsedMs": 0.02492899999998599,
+      "heapDeltaBytes": 6832,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 1000,
-      "elapsedMs": 0.05321500000002288,
-      "heapDeltaBytes": 6752,
+      "elapsedMs": 0.04927199999997356,
+      "heapDeltaBytes": 6816,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000,
-      "elapsedMs": 0.0756299999999328,
-      "heapDeltaBytes": 6768,
+      "elapsedMs": 0.04127200000004905,
+      "heapDeltaBytes": 6832,
       "rssDeltaBytes": 0
     },
     {
       "kind": "root",
       "size": 100000,
-      "elapsedMs": 0.07725500000015018,
-      "heapDeltaBytes": 7144,
+      "elapsedMs": 0.055087000000071384,
+      "heapDeltaBytes": 7208,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 100000,
-      "elapsedMs": 0.09165800000027957,
-      "heapDeltaBytes": 6896,
+      "elapsedMs": 0.03358800000000883,
+      "heapDeltaBytes": 6960,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 100000,
-      "elapsedMs": 0.12201200000072276,
-      "heapDeltaBytes": 3648,
+      "elapsedMs": 0.053130000000010114,
+      "heapDeltaBytes": 3712,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 100000,
-      "elapsedMs": 0.07711599999947794,
-      "heapDeltaBytes": 3664,
+      "elapsedMs": 0.09789600000021892,
+      "heapDeltaBytes": 3728,
       "rssDeltaBytes": 0
     },
     {
       "kind": "root",
       "size": 1000000,
-      "elapsedMs": 0.1197730000003503,
-      "heapDeltaBytes": 3800,
+      "elapsedMs": 0.08519499999965774,
+      "heapDeltaBytes": 3864,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000000,
-      "elapsedMs": 0.08000300000094285,
-      "heapDeltaBytes": 5592,
+      "elapsedMs": 0.1063190000004397,
+      "heapDeltaBytes": 5656,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 1000000,
-      "elapsedMs": 0.028374999999869033,
-      "heapDeltaBytes": 800,
+      "elapsedMs": 0.028633999998419313,
+      "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000000,
-      "elapsedMs": 0.019499999998515705,
-      "heapDeltaBytes": 800,
+      "elapsedMs": 0.024880000000848668,
+      "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 1048576,
-      "elapsedMs": 6.344973000002938,
-      "heapDeltaBytes": 25152,
-      "rssDeltaBytes": 0
+      "elapsedMs": 6.40701799999988,
+      "heapDeltaBytes": 23696,
+      "rssDeltaBytes": 270336
     },
     {
       "kind": "concatenation",
       "size": 1048576,
-      "elapsedMs": 0.06212800000139396,
-      "heapDeltaBytes": 1368,
+      "elapsedMs": 0.053057999999509775,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 16777216,
-      "elapsedMs": 0.048160999998799525,
-      "heapDeltaBytes": 1368,
+      "elapsedMs": 0.07394699999895238,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 16777216,
-      "elapsedMs": 0.05118800000127521,
-      "heapDeltaBytes": 1368,
+      "elapsedMs": 0.06156399999963469,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 67108864,
-      "elapsedMs": 0.04550100000051316,
-      "heapDeltaBytes": 1368,
+      "elapsedMs": 0.05386900000121386,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 67108864,
-      "elapsedMs": 0.04309400000056485,
-      "heapDeltaBytes": 1368,
+      "elapsedMs": 0.04624900000089838,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     }
   ],

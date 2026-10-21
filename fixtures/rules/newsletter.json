@@ -1,0 +1,30 @@
+{
+  "name": "newsletter",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [
+      {
+        "name": "List-Unsubscribe",
+        "value": "<mailto:leave@news.test>"
+      },
+      {
+        "name": "List-Id",
+        "value": "Synthetic <news.test>"
+      }
+    ],
+    "text": "Our newsletter. Unsubscribe at any time.",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "present"
+  },
+  "expectedLimits": []
+}
