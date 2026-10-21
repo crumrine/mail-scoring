@@ -5,6 +5,16 @@
     "exitCode": 1
   },
   {
+    "mutation": "parsed-root",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "lazy-string",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
     "mutation": "network-deny",
     "caught": true,
     "exitCode": 1

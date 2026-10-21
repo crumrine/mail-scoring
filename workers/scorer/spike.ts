@@ -1,20 +1,23 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // LOCAL TEST ENTRY ONLY. No listener, routes, deployment config, or service credentials.
-import {score, scoreRequest, LIMITS} from '../../packages/core/src/index.js';
+import {score, scoreRequest, parseRequest, boundedText, LIMITS} from '../../packages/core/src/index.js';
 const ordinary={schemaVersion:'1',policyVersion:'synthetic-1',subject:'test',headers:[],text:'test',sourceComplete:true};
 // Execute the selected path at module initialization, as well as inside the test event.
-const initial=score(ordinary);
+const prepared=(value:unknown)=>parseRequest(new TextEncoder().encode(JSON.stringify(value))).value;
+const initial=score(prepared(ordinary));
 const check=(condition:unknown, id='spike_assertion'):void=>{if(!condition) throw new Error(id);};
 export default {
   async test() {
     check(initial.status==='partial');
+    check(score(ordinary).error==='invalid_input');
+    check(boundedText('x'.repeat(1048576),32).text==='');
     const trusted={...ordinary,transport:{provenance:'upstream',complete:true,spf:'fail',dkim:'fail',dmarc:'fail'}};
-    const result=score(trusted,{transportVerified:true});
+    const result=score(prepared(trusted),{transportVerified:true});
     check(result.heuristicScore===20 && result.reasons[0]?.id==='auth_failed');
-    check(score(trusted).heuristicScore===0);
-    check(score({...ordinary,text:'x'.repeat(LIMITS.sourceBytes+1)}).limitsHit.includes('source_bytes'));
-    check(score({...ordinary,attachments:[{filename:'test',mediaType:'text/plain',bytes:[1]}]}).status==='unavailable');
+    check(score(prepared(trusted)).heuristicScore===0);
+    check(score(prepared({...ordinary,text:'x'.repeat(LIMITS.sourceBytes+1)})).limitsHit.includes('source_bytes'));
+    check(score(prepared({...ordinary,attachments:[{filename:'test',mediaType:'text/plain',bytes:[1]}]})).status==='unavailable');
     check(scoreRequest(new Uint8Array(LIMITS.requestBytes+1)).error==='request_limit');
     if ('process' in globalThis) throw new Error('process_present');
     if ('require' in globalThis) throw new Error('require_present');

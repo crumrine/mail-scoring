@@ -4,9 +4,23 @@ import { LIMITS, type LimitId, type ScoreInputV1 } from './contract.js';
 
 class InvalidInput extends Error { constructor() { super('invalid_input'); } }
 const invalid = (): never => { throw new InvalidInput(); };
+// Only parser-created, deeply frozen roots can reach structural enumeration.
+// Identity checks do not inspect caller keys, prototypes, accessors or Proxy traps.
+const parsedRoots = new WeakSet<object>();
+function freezeParsed(value: unknown): void {
+  // Called ONLY on JSON.parse output after byte/depth/token preflight. Enumeration
+  // and recursion here therefore have hard bounds; never call on direct input.
+  if (value !== null && typeof value === 'object') {
+    for (const child of Object.values(value)) freezeParsed(child);
+    Object.freeze(value);
+  }
+}
 /** Bounded work even if a direct caller supplies a giant string. No giant encode allocation. */
 export function boundedText(value: unknown, maxBytes: number): {text: string; bytes: number; truncated: boolean} {
   if (typeof value !== 'string' || !Number.isSafeInteger(maxBytes) || maxBytes < 0 || maxBytes > LIMITS.requestBytes) return invalid();
+  // V8 may flatten an entire rope on the first codePointAt/slice. Read length
+  // before either operation; larger sources are omitted, not prefix-materialized.
+  if (value.length > LIMITS.requestBytes) return {text:'', bytes:0, truncated:true};
   let end = 0, bytes = 0;
   while (end < value.length && bytes < maxBytes) {
     const point = value.codePointAt(end)!;
@@ -45,6 +59,7 @@ function auth(value: unknown): 'pass' | 'fail' | 'unknown' {
 export type GuardedInput = {input: ScoreInputV1; limitsHit: LimitId[]};
 export function guardInput(value: unknown): GuardedInput | null {
   try {
+    if (!value || typeof value !== 'object' || !parsedRoots.has(value)) return null;
     const r = record(value, ['schemaVersion','policyVersion','subject','headers','text','html','extractedText','addresses','urls','attachments','transport','preferences','sourceComplete']);
     if (r.schemaVersion !== '1') return invalid();
     const limits = new Set<LimitId>();
@@ -131,7 +146,10 @@ export function parseRequest(bytes: Uint8Array): {value?: unknown; error?: 'requ
       if(c==='}' || c===']') depth--;
       if(c==='{' || c==='[' || c===',' || c===':') { if (++tokens>LIMITS.jsonTokens) return {error:'request_limit'}; }
     }
-    return {value:JSON.parse(text) as unknown};
+    const value: unknown = JSON.parse(text);
+    freezeParsed(value);
+    if (value !== null && typeof value === 'object') parsedRoots.add(value);
+    return {value};
   } catch { return {error:'invalid_json'}; }
 }
 /** Bounded request stream accumulation, independent of a spoofable Content-Length. */

@@ -19,9 +19,10 @@
     "workerd-spike": "node scripts/workerd-spike.mjs",
     "mutation-test": "node scripts/mutations.mjs",
     "sbom": "node scripts/sbom.mjs",
-    "check": "npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test",
+    "check": "npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test && npm run direct-growth",
     "audit:mailguard": "node scripts/audit-mailguard.mjs",
-    "benchmark": "npm run build && node scripts/benchmark.mjs"
+    "benchmark": "npm run build && node scripts/benchmark.mjs",
+    "direct-growth": "npm run build && node --expose-gc scripts/direct-growth.mjs"
   },
   "devDependencies": {
     "@types/node": "24.19.2",

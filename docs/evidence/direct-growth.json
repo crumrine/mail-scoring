@@ -1,0 +1,135 @@
+{
+  "runtime": "v24.15.0",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
+  "samples": [
+    {
+      "kind": "root",
+      "size": 1000,
+      "elapsedMs": 2.078326000000061,
+      "heapDeltaBytes": 34176,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "header",
+      "size": 1000,
+      "elapsedMs": 0.07401199999992514,
+      "heapDeltaBytes": 6768,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "transport",
+      "size": 1000,
+      "elapsedMs": 0.05321500000002288,
+      "heapDeltaBytes": 6752,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "attachment",
+      "size": 1000,
+      "elapsedMs": 0.0756299999999328,
+      "heapDeltaBytes": 6768,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "root",
+      "size": 100000,
+      "elapsedMs": 0.07725500000015018,
+      "heapDeltaBytes": 7144,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "header",
+      "size": 100000,
+      "elapsedMs": 0.09165800000027957,
+      "heapDeltaBytes": 6896,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "transport",
+      "size": 100000,
+      "elapsedMs": 0.12201200000072276,
+      "heapDeltaBytes": 3648,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "attachment",
+      "size": 100000,
+      "elapsedMs": 0.07711599999947794,
+      "heapDeltaBytes": 3664,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "root",
+      "size": 1000000,
+      "elapsedMs": 0.1197730000003503,
+      "heapDeltaBytes": 3800,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "header",
+      "size": 1000000,
+      "elapsedMs": 0.08000300000094285,
+      "heapDeltaBytes": 5592,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "transport",
+      "size": 1000000,
+      "elapsedMs": 0.028374999999869033,
+      "heapDeltaBytes": 800,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "attachment",
+      "size": 1000000,
+      "elapsedMs": 0.019499999998515705,
+      "heapDeltaBytes": 800,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "repeat",
+      "size": 1048576,
+      "elapsedMs": 6.344973000002938,
+      "heapDeltaBytes": 25152,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "concatenation",
+      "size": 1048576,
+      "elapsedMs": 0.06212800000139396,
+      "heapDeltaBytes": 1368,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "repeat",
+      "size": 16777216,
+      "elapsedMs": 0.048160999998799525,
+      "heapDeltaBytes": 1368,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "concatenation",
+      "size": 16777216,
+      "elapsedMs": 0.05118800000127521,
+      "heapDeltaBytes": 1368,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "repeat",
+      "size": 67108864,
+      "elapsedMs": 0.04550100000051316,
+      "heapDeltaBytes": 1368,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "concatenation",
+      "size": 67108864,
+      "elapsedMs": 0.04309400000056485,
+      "heapDeltaBytes": 1368,
+      "rssDeltaBytes": 0
+    }
+  ],
+  "caveat": "Synthetic local Node observations, one cold call per constructed fixture. Fixture allocation and GC precede timing. Heap deltas are not peak-memory guarantees; no hosted CPU, accuracy or billing claim. Membership gate and O(1) length preflight enforce work bounds; 4MiB allocation regression threshold leaves runtime noise headroom."
+}

@@ -6,7 +6,8 @@ The stable exports are `@mail-scoring/core` (`score`, `scoreRequest`, `guardInpu
 Run `npm run build` before consuming these ESM exports. The packages are private;
 publication is not part of this change. JSON schemas describe the canonical bounded
 shape; `x-*` annotations record byte/aggregate limits that ordinary JSON Schema
-validators cannot enforce. `guardInput` is the executable byte-aware authority.
+validators cannot enforce. `parseRequest` establishes the bounded structural boundary;
+`guardInput` is the executable byte-aware field authority.
 Oversized otherwise-valid input can normalize to the canonical shape with partial
 inspection; a schema-only validator must not convert that into mail rejection.
 
@@ -32,10 +33,35 @@ and `sourceComplete` (boolean). Optional fields:
 No arbitrary rules, nested caller metadata, raw MIME, correlation IDs, timestamps,
 model responses, attachments, or actions. No receive-time-dependent rule exists yet.
 Unknown fields at inspected levels, wrong types, invalid header names and malformed
-policies yield `unavailable` with static `invalid_input`. Plain JSON-compatible data
-is the direct-call contract: executable JS Proxies/accessors are not email fields;
-use the byte parser for a hostile serialized boundary. Record accessors are refused,
-and guards do not walk arbitrary nested objects. Discarded array tails are not read.
+policies yield `unavailable` with static `invalid_input`.
+
+**Structured API boundary:** `score` and `guardInput` accept only the exact deeply
+frozen root returned by this module instance's `parseRequest(bytes)`. A private
+WeakSet identity check precedes all object enumeration and property access. The
+parser enforces byte/token/depth ceilings before JSON.parse, recursively freezes
+that bounded result, and registers its root. This prevents both arbitrarily wide
+objects and mutations of nested records after parsing. Ordinary direct objects,
+clones/spreads, objects parsed by another module instance, proxies and `guardInput`
+normalized output are refused (`invalid_input`/null). No unsafe branding or
+arbitrary-object preparation export exists. `parseRequest` establishes resource
+bounds, not semantic validity; unknown fields and attachment bytes are still
+refused during field validation. Discarded array tails are not inspected for
+features, though the parser bounds and freezes the entire request.
+
+```ts
+const parsed = parseRequest(requestBytes); // bounded native Uint8Array
+const result = parsed.error
+  ? unavailable(parsed.error)
+  : score(parsed.value, {transportVerified: true}); // only with established provenance
+```
+
+Without verified transport evidence, use `scoreRequest(requestBytes)`. When adapting
+locally held mail fields, construct a bounded request at the adapter boundary;
+do not JSON.stringify an arbitrary hostile object or encode an unbounded string
+as a supposed protective preflight. Encoding/serialization of upstream data is the
+adapter's responsibility and must itself be bounded. Returned parsed objects are
+immutable and local to the module instance; they are not portable across RPC or
+structuredClone. Pass bounded bytes across that boundary and parse at the receiver.
 
 | Inspection resource | Ceiling and accounting |
 | --- | --- |
@@ -51,8 +77,14 @@ and guards do not walk arbitrary nested objects. Discarded array tails are not r
 | Subject / each address | 2048 / 512 bytes |
 | Result | at most 4096 UTF-8 bytes; max 1 reason and 13 distinct limit IDs |
 
-Strings are clipped at Unicode code-point boundaries using bounded scanning (never
-encode an unbounded string first). Byte charging happens before control removal;
+The exported `boundedText` first reads string length in O(1). Above 262144 UTF-16
+code units it returns `{text:"", bytes:0, truncated:true}` without indexing, slicing
+or encoding. This tighter representation limit prevents V8 rope flattening of a
+giant source. At/below that ceiling, flattening has a bounded representation cost
+and strings are clipped at Unicode code-point boundaries. Parser-created strings
+already satisfy this length preflight because the entire UTF-8 request is bounded.
+Omission is incomplete inspection, never a safe verdict or delivery rejection.
+Byte charging happens before control removal;
 controls cannot reclaim budget. Lone surrogates normalize to U+FFFD. C0/C1 controls
 and DEL are removed; body-like fields retain TAB/LF/CR. Controls produce partial
 inspection. Headers must be caller-unfolded; CR/LF are removed with `control_chars`.
@@ -67,9 +99,9 @@ records upstream truncation even when local input is small.
 **no trusted context**. `readRequest` is a portable streaming helper: fixed 256 KiB
 buffer, max 4096 chunks, cancel on overflow, independent of Content-Length. A future
 service must additionally impose transport timeouts/concurrency limits; this local
-spike is not an exposed HTTP service. A direct structured call cannot reconstruct
-the original serialized request size; use the byte/stream helpers at serialization
-boundaries. The direct core still caps every inspected string and array.
+spike is not an exposed HTTP service. Structured calls require parser-created
+immutable roots as above, so they inherit the serialized resource bounds. The
+core additionally caps every inspected string and array.
 
 ## Authentication and completeness
 

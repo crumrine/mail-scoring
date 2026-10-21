@@ -7,7 +7,9 @@ import {guardInput,boundedText,score,scoreRequest,parseRequest,readRequest,LIMIT
 const base=()=>({schemaVersion:'1',policyVersion:'test-1',subject:'synthetic',headers:[] as Array<{name:string;value:string}>,text:'',sourceComplete:true});
 const encoded=(x:unknown)=>new TextEncoder().encode(JSON.stringify(x));
 const bytes=(x:string)=>new TextEncoder().encode(x).length;
-const guarded=(x:unknown)=>{const r=guardInput(x);assert.ok(r);return r;};
+const prepared=(x:unknown)=>parseRequest(encoded(x)).value;
+const scored=(x:unknown,context={})=>score(prepared(x),context);
+const guarded=(x:unknown)=>{const r=guardInput(prepared(x));assert.ok(r);return r;};
 test('UTF-8 clipping is exact and never splits a code point',()=>{
   for(const s of ['a','é','€','😀','\ud800']) for(const max of [0,1,2,3,4,5,8]) {
     const r=boundedText(s.repeat(10),max);assert.ok(bytes(r.text)<=max);assert.equal(r.bytes,bytes(r.text));assert.equal(r.truncated,true);
@@ -25,7 +27,7 @@ test('source and extracted byte limits below/at/above; combined budget includes 
   }
   const r=guarded({...base(),text:'😀'.repeat(32768),html:'x'});
   assert.equal(r.input.html,'');assert.ok(r.limitsHit.includes('source_bytes'));
-  assert.equal(guarded({...base(),text:'\x00'.repeat(LIMITS.sourceBytes),html:'x'}).input.html,'');
+  assert.equal(guarded({...base(),text:'\x00'.repeat(20000),html:'x'.repeat(LIMITS.sourceBytes-20000+1)}).input.html!.length,LIMITS.sourceBytes-20000);
 });
 test('header byte accounting includes delimiters and never exceeds field/block caps',()=>{
   for(const delta of [-1,0,1]) {
@@ -61,7 +63,7 @@ test('secondary fields and multibyte truncation are bounded',()=>{
 test('malformed fields, controls, duplicate names and attachment bytes cannot become trusted data',()=>{
   for(const value of [null,[],{}, {...base(),headers:[{name:'Bad\r\nName',value:'x'}]}, {...base(),text:2},
     {...base(),attachments:[{filename:'a',mediaType:'b',bytes:[1]}]}, {...base(),rawMime:'secret'},
-    {...base(),transport:{provenance:'forged'}}, {...base(),subject:{deep:{data:1}}}]) assert.equal(score(value).status,'unavailable');
+    {...base(),transport:{provenance:'forged'}}, {...base(),subject:{deep:{data:1}}}]) assert.equal(scored(value).status,'unavailable');
   const r=guarded({...base(),headers:[{name:'FROM',value:'a\r\nb'},{name:'from',value:'c'}]});
   assert.ok(r.limitsHit.includes('duplicate_header'));assert.ok(r.limitsHit.includes('control_chars'));assert.equal(r.input.headers[0]!.value,'ab');
   let called=false;const evil={...base()};Object.defineProperty(evil,'text',{get(){called=true;return 'bad';},enumerable:true});
@@ -70,13 +72,13 @@ test('malformed fields, controls, duplicate names and attachment bytes cannot be
 test('transport claims and authserv-id never grant trust; ambiguity invalidates context',()=>{
   const t={provenance:'upstream',complete:true,spf:'fail',dkim:'fail',dmarc:'fail'};
   const input={...base(),transport:t};
-  assert.equal(score(input).heuristicScore,0);assert.ok(score(input).limitsHit.includes('auth_unknown'));
-  const result=score(input,{transportVerified:true});assert.equal(result.heuristicScore,20);assert.equal(result.status,'complete');
+  assert.equal(scored(input).heuristicScore,0);assert.ok(scored(input).limitsHit.includes('auth_unknown'));
+  const result=scored(input,{transportVerified:true});assert.equal(result.heuristicScore,20);assert.equal(result.status,'complete');
   for(const patch of [{sourceComplete:false},{html:'<p>x'},{headers:[{name:'Authentication-Results',value:'mx.example.test; dmarc=pass'},{name:'authentication-results',value:'mx.example.test; dmarc=pass'}]}]) {
-    assert.equal(score({...input,...patch},{transportVerified:true}).heuristicScore,0);
+    assert.equal(scored({...input,...patch},{transportVerified:true}).heuristicScore,0);
   }
-  assert.equal(score({...input,transport:{...t,provenance:'unknown'}},{transportVerified:true}).status,'partial');
-  assert.equal(score({...input,transport:{...t,spf:'unknown'}},{transportVerified:true}).status,'partial');
+  assert.equal(scored({...input,transport:{...t,provenance:'unknown'}},{transportVerified:true}).status,'partial');
+  assert.equal(scored({...input,transport:{...t,spf:'unknown'}},{transportVerified:true}).status,'partial');
 });
 test('raw request caps and structural preflight precede parsing; errors never echo content',()=>{
   for(const delta of [-1,0,1]) {
@@ -87,7 +89,7 @@ test('raw request caps and structural preflight precede parsing; errors never ec
   assert.equal(scoreRequest(new TextEncoder().encode('['+'0,'.repeat(4097)+'0]')).error,'request_limit');
   assert.equal(scoreRequest(new Uint8Array([0xff])).error,'invalid_json');
   assert.equal(scoreRequest(new TextEncoder().encode('{SECRET_SENTINEL')).error,'invalid_json');
-  assert.ok(!JSON.stringify(score({subject:'SECRET_SENTINEL'})).includes('SECRET_SENTINEL'));
+  assert.ok(!JSON.stringify(scored({subject:'SECRET_SENTINEL'})).includes('SECRET_SENTINEL'));
 });
 test('stream accumulation enforces limit without Content-Length and cancels oversize source',async()=>{
   for(const delta of [-1,0,1]) {
@@ -101,7 +103,7 @@ test('synthetic hostile fixtures produce only bounded static outputs and no cons
   const old=console.log;let calls=0;console.log=()=>{calls++;};
   try {
     for(const file of ['ordinary','hostile']) {
-      const result=score(JSON.parse(readFileSync(`fixtures/${file}.json`,'utf8')));
+      const result=scored(JSON.parse(readFileSync(`fixtures/${file}.json`,'utf8')));
       assert.ok(bytes(JSON.stringify(result))<LIMITS.outputBytes);assert.ok(Number.isFinite(result.heuristicScore));
       assert.ok(result.heuristicScore>=0 && result.heuristicScore<=100);
       assert.ok(result.limitsHit.every(x=>LIMIT_IDS.includes(x)));assert.ok(result.reasons.every(x=>x.reason===REASONS[x.id]));
@@ -122,4 +124,28 @@ test('header multibyte and bidi control handling is partial and bounded',()=>{
   const r=guarded({...base(),headers:[{name:'X',value:'é'.repeat(8192)}],subject:'A\u202eB'});
   assert.ok(bytes(r.input.headers[0]!.value)+5<=8192);assert.ok(r.limitsHit.includes('header_field_bytes'));
   assert.ok(r.limitsHit.includes('control_chars'));assert.equal(r.input.subject,'AB');
+});
+
+test('unprepared roots are refused before any structural operation',()=>{
+  assert.equal(score(base()).error,'invalid_input');
+  assert.equal(guardInput(base()),null);
+  let calls=0;
+  const proxy=new Proxy(base(),{ownKeys(){calls++;throw new Error('synthetic');},getPrototypeOf(){calls++;throw new Error('synthetic');}});
+  assert.equal(score(proxy).error,'invalid_input');assert.equal(calls,0);
+  const parsed=prepared({...base(),headers:[{name:'X',value:'synthetic'}]}) as ReturnType<typeof base>;
+  assert.ok(Object.isFrozen(parsed));assert.ok(Object.isFrozen(parsed.headers));assert.ok(Object.isFrozen(parsed.headers[0]));
+  assert.throws(()=>{parsed.text='changed';},TypeError);
+  assert.throws(()=>{parsed.headers[0]!.value='changed';},TypeError);
+  assert.equal(score(parsed).status,'partial');
+  assert.equal(score({...parsed}).error,'invalid_input');
+  assert.equal(score(structuredClone(parsed)).error,'invalid_input');
+  assert.equal(score(guarded(base()).input).error,'invalid_input');
+});
+test('lazy strings are omitted before flattening beyond representation ceiling',()=>{
+  for(const n of [LIMITS.requestBytes+1,1048576,16777216,67108864]) {
+    for(const value of ['x'.repeat(n),'prefix'+'x'.repeat(n)]) {
+      assert.deepEqual(boundedText(value,32),{text:'',bytes:0,truncated:true});
+    }
+  }
+  assert.deepEqual(boundedText('x'.repeat(LIMITS.requestBytes),32),{text:'x'.repeat(32),bytes:32,truncated:true});
 });

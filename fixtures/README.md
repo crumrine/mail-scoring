@@ -7,6 +7,9 @@ for DEV-875. Domains use `.test`/`.invalid`; no inbox samples, account identifie
 models, wordlists, corpora or third-party test mail are included. Tests generate
 below/at/above-limit repetitions, multibyte strings, control characters, malformed
 shapes, duplicate authentication headers and metadata containing forbidden bytes.
+`scripts/direct-growth.mjs` generates wide objects (up to 1,000,000 keys) and
+repeated/concatenated lazy strings (up to 64 MiB); only aggregate measurements
+are persisted. Fixtures are constructed before measured calls and GC.
 The loopback and file URLs in capability probes are synthetic denied destinations;
 workerd routes them to a local denying service with no network/disk service.
 

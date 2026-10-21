@@ -25,67 +25,81 @@
   "samples": [
     {
       "sourceBytes": 0,
-      "firstMs": 1.8416780000000017,
-      "medianMs": 0.040168999999991684,
-      "p95Ms": 0.11764300000000105,
-      "maxMs": 0.279246999999998,
-      "heapDeltaBytes": 514864,
-      "rssDeltaBytes": 716800
+      "requestBytes": 170,
+      "status": "partial",
+      "firstMs": 1.8331429999999926,
+      "medianMs": 0.03726300000001004,
+      "p95Ms": 0.16103199999999163,
+      "maxMs": 1.1451349999999962,
+      "heapDeltaBytes": 613344,
+      "rssDeltaBytes": 3153920
     },
     {
       "sourceBytes": 8192,
-      "firstMs": 0.2624840000000006,
-      "medianMs": 0.6556089999999983,
-      "p95Ms": 1.5601020000000005,
-      "maxMs": 17.77112199999999,
-      "heapDeltaBytes": -521712,
-      "rssDeltaBytes": 7680000
+      "requestBytes": 8362,
+      "status": "partial",
+      "firstMs": 0.23213400000000206,
+      "medianMs": 0.5134350000000154,
+      "p95Ms": 0.7006559999999808,
+      "maxMs": 24.541318999999987,
+      "heapDeltaBytes": 521136,
+      "rssDeltaBytes": 8224768
     },
     {
       "sourceBytes": 32768,
-      "firstMs": 2.71967699999999,
-      "medianMs": 2.163353000000029,
-      "p95Ms": 2.272024999999985,
-      "maxMs": 11.269251999999994,
-      "heapDeltaBytes": -286864,
-      "rssDeltaBytes": 872448
+      "requestBytes": 32938,
+      "status": "partial",
+      "firstMs": 2.4806289999999933,
+      "medianMs": 1.827024999999992,
+      "p95Ms": 2.285439999999994,
+      "maxMs": 34.41668799999999,
+      "heapDeltaBytes": 378432,
+      "rssDeltaBytes": 0
     },
     {
       "sourceBytes": 65536,
-      "firstMs": 4.321519999999964,
-      "medianMs": 4.2840739999999755,
-      "p95Ms": 4.370381000000066,
-      "maxMs": 4.451994000000013,
-      "heapDeltaBytes": 502112,
+      "requestBytes": 65706,
+      "status": "partial",
+      "firstMs": 3.684587000000022,
+      "medianMs": 3.5789009999999735,
+      "p95Ms": 3.941267000000039,
+      "maxMs": 6.314896999999974,
+      "heapDeltaBytes": 86584,
       "rssDeltaBytes": 0
     },
     {
       "sourceBytes": 131072,
-      "firstMs": 8.811844999999948,
-      "medianMs": 8.54741799999988,
-      "p95Ms": 12.391890999999987,
-      "maxMs": 36.61269499999992,
-      "heapDeltaBytes": -457624,
-      "rssDeltaBytes": 929792
+      "requestBytes": 131242,
+      "status": "partial",
+      "firstMs": 7.3988919999999325,
+      "medianMs": 7.345111000000088,
+      "p95Ms": 8.215540000000146,
+      "maxMs": 28.222211000000016,
+      "heapDeltaBytes": 943776,
+      "rssDeltaBytes": 1277952
     },
     {
       "sourceBytes": 262144,
-      "firstMs": 9.818849,
-      "medianMs": 8.55019799999991,
-      "p95Ms": 24.70916999999963,
-      "maxMs": 63.35532899999998,
-      "heapDeltaBytes": 699816,
-      "rssDeltaBytes": 315392
+      "requestBytes": 262314,
+      "status": "unavailable",
+      "firstMs": 0.017373000000134198,
+      "medianMs": 0.0006949999999505962,
+      "p95Ms": 0.0009419999998954154,
+      "maxMs": 0.050776999999925465,
+      "heapDeltaBytes": 65488,
+      "rssDeltaBytes": 0
     },
     {
       "sourceBytes": 1048576,
-      "firstMs": 10.137113000000227,
-      "medianMs": 8.552984999999808,
-      "p95Ms": 9.69043799999963,
-      "maxMs": 16.48566899999969,
-      "heapDeltaBytes": 781176,
-      "rssDeltaBytes": 700416
+      "requestBytes": 1048746,
+      "status": "unavailable",
+      "firstMs": 0.002496999999948457,
+      "medianMs": 0.0005550000000766886,
+      "p95Ms": 0.0005939999998645362,
+      "maxMs": 0.000849000000016531,
+      "heapDeltaBytes": 58288,
+      "rssDeltaBytes": 0
     }
   ],
-  "caveat": "Local Node synthetic wall time; first invocation per case is not isolated process startup. GC and shared host noise affect memory deltas. No hosted CPU, efficacy, accuracy or billing conclusions. Adversarial growth stops at inspection ceilings; fixture allocation is outside measurement."
+  "caveat": "Local Node synthetic wall time; first invocation per case is not isolated process startup. GC and shared host noise affect memory deltas. No hosted CPU, efficacy, accuracy or billing conclusions. Includes preflight/decode/parse/freeze/scoring; oversized requests are unavailable before decode. Fixture encoding is outside measurement."
 }

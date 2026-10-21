@@ -9,7 +9,7 @@ export function unavailable(error: Exclude<ScoreResultV1['error'],null>): ScoreR
   return {schemaVersion:'1',engineVersion:'0.1.0',ruleSetVersion:'foundation-1',status:'unavailable',heuristicScore:0,
     signals:{spam:'unknown',phishing:'unknown',marketing:'unknown'},reasons:[],limitsHit:[],error};
 }
-/** Pure, bounded foundation. No verdict/routing label, negative points, or trust from header text. */
+/** Input must be an immutable parseRequest result. Pure, bounded foundation. No verdict/routing label, negative points, or trust from header text. */
 export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const guarded=guardInput(value);
   if(!guarded) return unavailable('invalid_input');

@@ -37,10 +37,13 @@ npm test
 npm run workerd-spike
 npm run mutation-test
 npm run benchmark
+npm run direct-growth
 ```
 
-`npm run check` runs typecheck/build/tests/workerd/mutations. Tests build and consume
-actual package exports. `.npmrc` disables lifecycle scripts; do not override it.
+`npm run check` runs typecheck/build/tests/workerd/mutations/growth checks. Tests build and consume
+actual package exports. `score`/`guardInput` require immutable roots returned by
+`parseRequest`; use `scoreRequest` for bounded serialized input (see protocol).
+`.npmrc` disables lifecycle scripts; do not override it.
 The workerd spike has no listening sockets or production configuration. It runs
 local test events and checks initialization, denied outbound calls and absent
 native imports. `.artifacts/` contains generated bundles, logs and measurements.

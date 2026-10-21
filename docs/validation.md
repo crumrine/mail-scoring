@@ -46,7 +46,9 @@ implementation report and PR record the final submitted SHA. Local scope:
   must fail; runtime probes require process/require/Buffer absence. An initialization
   fetch probe must fail, as must hostname, loopback and file fetches inside an event.
 - Mutation test enlarges the source text allowance and requires the source-bound
-  test to fail. It then replaces the deny service's throw with a response and
+  test to fail. It also removes the parser-root identity check and string-length
+  preflight separately, requiring their specific regression tests to fail. It then
+  replaces the deny service's throw with a response and
   requires the workerd network assertion to fail. Finally it restores source and
   reruns the positive baselines. No mutation or broken build is submitted.
 
@@ -57,9 +59,10 @@ SHA-512, archive/file SHA-256 values, exact audit lock, source-map comparisons,
 export graph, license-file hashes and selected narrow workerd result are committed.
 
 `benchmark.json` describes 100 samples per source size, median/p95/max, first call,
-heap/RSS deltas and hardware. Strings above the source cap are clipped before
-inspection. Direct-call fixture creation is outside timing; serialized requests
-have a separate pre-parse ceiling. Memory deltas are GC-sensitive measurements,
+heap/RSS deltas and hardware. It now measures the entire scoreRequest path, including
+preflight/parse/deep freeze/field guards. Source strings within a valid request are
+clipped at inspection caps; oversized requests return unavailable before decoding.
+Synthetic fixture encoding is outside timing. Memory deltas are GC-sensitive measurements,
 not peak-memory guarantees. The enforceable allocation/work bounds come from the
 fixed parser byte/token/depth budgets and bounded loops; asynchronous deadlines
 are not used as synchronous CPU protection. Ordinary-fixture p95 is compared with
@@ -67,6 +70,22 @@ the proposed 25 ms **local wall** target; slower tail observations remain visibl
 No result is hosted billed CPU, cold deployment latency, real-mail efficacy,
 classification accuracy or billing savings. Additional classifier rules will need
 fresh adversarial/performance evidence; no real mailbox or mailbox provider call occurred.
+
+`npm run direct-growth` (also in `check`/CI) measures cold calls after fixture
+construction and GC: 1,000/100,000/1,000,000 properties at root, header, transport
+and attachment levels, plus 1/16/64 MiB repeated and concatenated lazy strings.
+Unprepared objects must return unavailable without enumeration, and oversized
+strings must return empty/truncated without flattening. Each call has a 4 MiB
+heap-delta regression ceiling; timings and RSS deltas remain visible without a
+flaky absolute time assertion. This is regression evidence, not a peak-memory
+proof. The implementation's private identity check and O(1) length gate establish
+the bounds. Deep freezing is separately tested to prevent post-parse changes.
+`docs/evidence/direct-growth.json` contains the local snapshot.
+
+The previous direct-object API and its performance claims were superseded after
+review found eager key enumeration and rope flattening. The protocol now requires
+parser-created immutable roots; downstream adapters must use bounded bytes and
+cannot pass ordinary objects directly. Export names and wire schemas remain stable.
 
 The initial workerd diagnostic and Jev advisory JSON are retained. The first failure
 was a missing explicit native-compatibility opt-out, corrected against the pinned
