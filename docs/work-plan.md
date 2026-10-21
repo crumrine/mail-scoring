@@ -1,15 +1,15 @@
 # v0.1 implementation plan
 
-Six dependency-ordered implementation tickets. Trellis IDs and full briefs will be added before the work is made ready. All are assigned to Codex after body, repository, prerequisites and acceptance are verified.
+Tracking epic: DEV-874. Six dependency-ordered implementation tickets with full briefs in [tickets.json](tickets.json). Each ticket is assigned to Codex and queued ready only after its body and prerequisite graph are verified. Service tickets use this epic and the mail-scoring label because the current connector cannot register a new Trellis project slug; integration tickets use agentic-inbox. Explicit repository URLs prevent fallback routing.
 
-| Step | Deliverable | Depends on | Source repository |
+| Trellis | Deliverable | Depends on | Source repository |
 | --- | --- | --- | --- |
-| 1 | Reuse audit, workerd feasibility, bounded versioned contract and tooling | — | mail-scoring |
-| 2 | Deterministic explainable scoring core using the selected reuse strategy | 1 | mail-scoring |
-| 3 | Private Cloudflare Worker RPC, strict input/output bounds and privacy checks | 2 | mail-scoring |
-| 4 | Agentic Inbox shadow scoring, assessment storage, explicit preferences/feedback | 3 | agentic-inbox-imap |
-| 5 | Spam UI, rescue and isolation across normal threads/search/agent/IMAP | 4 | agentic-inbox-imap |
-| 6 | Independent adversarial, performance and integrated release-readiness evidence | 3, 4, 5 | mail-scoring (with pinned inbox PR fixtures) |
+| DEV-875 | Reuse audit, workerd feasibility, bounded versioned contract and tooling | — | mail-scoring |
+| DEV-876 | Deterministic explainable scoring core using the selected reuse strategy | 1 | mail-scoring |
+| DEV-877 | Private Cloudflare Worker RPC, strict input/output bounds and privacy checks | 2 | mail-scoring |
+| DEV-878 | Agentic Inbox shadow scoring, assessment storage, explicit preferences/feedback | 3 | agentic-inbox-imap |
+| DEV-879 | Spam UI, rescue and isolation across normal threads/search/agent/IMAP | 4 | agentic-inbox-imap |
+| DEV-880 | Independent adversarial, performance and integrated release-readiness evidence | 3, 4, 5 | mail-scoring (with pinned inbox PR fixtures) |
 
 The scorer returns evidence; the application owns policy and recovery. Zero URL/DNS requests, zero attachment-byte inspection and zero paid AI calls in v0.1. AI remains a future separate decision.
 
