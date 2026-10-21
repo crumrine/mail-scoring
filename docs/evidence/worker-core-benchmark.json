@@ -1,0 +1,290 @@
+{
+  "runtime": "v24.15.0",
+  "workerdVersion": "workerd 2026-10-21",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
+  "sampleCount": 100,
+  "warmupCount": 10,
+  "limits": {
+    "requestBytes": 262144,
+    "sourceBytes": 131072,
+    "extractedBytes": 65536,
+    "headerBytes": 32768,
+    "headers": 100,
+    "headerFieldBytes": 8192,
+    "urls": 100,
+    "attachments": 32,
+    "subjectBytes": 2048,
+    "addressBytes": 512,
+    "urlBytes": 2048,
+    "filenameBytes": 255,
+    "typeBytes": 127,
+    "normalizedBytes": 65536,
+    "urlDecodePasses": 2,
+    "jsonDepth": 6,
+    "jsonTokens": 4096,
+    "outputBytes": 4096
+  },
+  "samples": [
+    {
+      "name": "ordinary",
+      "requestBytes": 196,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 3.695869000000016,
+      "medianMs": 0.16493699999998057,
+      "p95Ms": 0.2746460000000184,
+      "maxMs": 16.32477800000001,
+      "heapDeltaBytes": 191104,
+      "rssDeltaBytes": 3248128
+    },
+    {
+      "name": "source-8192",
+      "requestBytes": 8362,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 7.290479000000005,
+      "medianMs": 2.3276630000000296,
+      "p95Ms": 6.7700210000000425,
+      "maxMs": 42.67091399999998,
+      "heapDeltaBytes": 924848,
+      "rssDeltaBytes": 7958528
+    },
+    {
+      "name": "source-32768",
+      "requestBytes": 32938,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 9.526624999999967,
+      "medianMs": 9.606917000000067,
+      "p95Ms": 11.311595000000011,
+      "maxMs": 36.41083000000003,
+      "heapDeltaBytes": 6898712,
+      "rssDeltaBytes": 8327168
+    },
+    {
+      "name": "source-65536",
+      "requestBytes": 65706,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 24.62811099999999,
+      "medianMs": 20.06977599999982,
+      "p95Ms": 45.66583300000002,
+      "maxMs": 194.0080399999997,
+      "heapDeltaBytes": 15328536,
+      "rssDeltaBytes": 28012544
+    },
+    {
+      "name": "source-131072",
+      "requestBytes": 131242,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 23.0333499999997,
+      "medianMs": 23.677903999999216,
+      "p95Ms": 171.2426290000003,
+      "maxMs": 209.24982499999987,
+      "heapDeltaBytes": -5401200,
+      "rssDeltaBytes": -479232
+    },
+    {
+      "name": "source-262144",
+      "requestBytes": 262314,
+      "status": "unavailable",
+      "limitsHit": [],
+      "firstInProcessMs": 0.058375999999043415,
+      "medianMs": 0.0005430000001069857,
+      "p95Ms": 0.0006900000007590279,
+      "maxMs": 0.0007929999992484227,
+      "heapDeltaBytes": 63568,
+      "rssDeltaBytes": 0
+    },
+    {
+      "name": "source-1048576",
+      "requestBytes": 1048746,
+      "status": "unavailable",
+      "limitsHit": [],
+      "firstInProcessMs": 0.0024539999994885875,
+      "medianMs": 0.0005480000017996645,
+      "p95Ms": 0.0006880000000819564,
+      "maxMs": 0.000879999999597203,
+      "heapDeltaBytes": 62584,
+      "rssDeltaBytes": 0
+    },
+    {
+      "name": "whitespace-65536",
+      "requestBytes": 98474,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 19.687764999998763,
+      "medianMs": 15.793642000000546,
+      "p95Ms": 17.760745999999926,
+      "maxMs": 40.02628100000038,
+      "heapDeltaBytes": 2803280,
+      "rssDeltaBytes": 86016
+    },
+    {
+      "name": "unicode-expansion",
+      "requestBytes": 30170,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 25.26407300000028,
+      "medianMs": 12.089751999999862,
+      "p95Ms": 36.145361999999295,
+      "maxMs": 69.18001900000127,
+      "heapDeltaBytes": 5919344,
+      "rssDeltaBytes": 17731584
+    },
+    {
+      "name": "repeated-phrases",
+      "requestBytes": 126170,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 30.400972999999794,
+      "medianMs": 29.567101999999068,
+      "p95Ms": 57.70463700000073,
+      "maxMs": 110.58298999999897,
+      "heapDeltaBytes": -4741144,
+      "rssDeltaBytes": 3510272
+    },
+    {
+      "name": "100-anchors",
+      "requestBytes": 6208,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 2.9467010000007576,
+      "medianMs": 1.1582799999996496,
+      "p95Ms": 1.873477000001003,
+      "maxMs": 61.67034799999965,
+      "heapDeltaBytes": 25421016,
+      "rssDeltaBytes": 13246464
+    },
+    {
+      "name": "encoded-urls",
+      "requestBytes": 74305,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 41.91750700000193,
+      "medianMs": 4.097675000000891,
+      "p95Ms": 4.811240999999427,
+      "maxMs": 32.5793620000004,
+      "heapDeltaBytes": -39901464,
+      "rssDeltaBytes": 2043904
+    },
+    {
+      "name": "deep-html-skipped",
+      "requestBytes": 82126,
+      "status": "partial",
+      "limitsHit": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 3.433318000003055,
+      "medianMs": 3.2519240000001446,
+      "p95Ms": 3.7127330000002985,
+      "maxMs": 27.513957999999548,
+      "heapDeltaBytes": 19469856,
+      "rssDeltaBytes": 0
+    },
+    {
+      "name": "huge-attribute-skipped",
+      "requestBytes": 130220,
+      "status": "partial",
+      "limitsHit": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 5.170751999998174,
+      "medianMs": 5.1539430000011635,
+      "p95Ms": 5.217604000001302,
+      "maxMs": 10.41791000000012,
+      "heapDeltaBytes": -23311808,
+      "rssDeltaBytes": 0
+    }
+  ],
+  "cold": [
+    {
+      "processWallMs": 149.23408299999937,
+      "importMs": 6.812390000000008,
+      "firstScoreMs": 7.749516,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 92.35519199999908,
+      "importMs": 7.450536999999997,
+      "firstScoreMs": 8.732588000000007,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 194.0220470000022,
+      "importMs": 9.472341999999998,
+      "firstScoreMs": 25.360117000000002,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 134.47066699999777,
+      "importMs": 8.520845000000008,
+      "firstScoreMs": 10.399049999999988,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 98.46022699999958,
+      "importMs": 7.129666,
+      "firstScoreMs": 8.23572,
+      "status": "partial"
+    }
+  ],
+  "workerdSamples": [
+    {
+      "eventScoringCalls": 1,
+      "warmupCalls": 10,
+      "initializationCalls": 1,
+      "freshProcessWallMs": [
+        283.34287100000074,
+        279.4385799999982,
+        241.80452100000184,
+        239.34844900000098,
+        238.60629699999845
+      ]
+    },
+    {
+      "eventScoringCalls": 100,
+      "warmupCalls": 10,
+      "initializationCalls": 1,
+      "freshProcessWallMs": [
+        265.63473499999964,
+        286.49198599999727,
+        240.17569300000105,
+        278.6107230000016,
+        294.67345600000044
+      ]
+    }
+  ],
+  "ordinaryP95TargetMs": 25,
+  "ordinaryTargetPassed": true,
+  "caveat": "Synthetic local wall time only. Node cold children separate import and first-score timing from process launch; warm distributions include full scoreRequest. Workerd reports fresh process wall durations including startup, initialization, warmup and test batch; event clocks cannot measure synchronous CPU, so no workerd per-call latency is claimed. Fixture construction/encoding is outside scoring measurement. Memory deltas are not peak allocation. No hosted CPU, billing, efficacy or accuracy conclusions."
+}
