@@ -1,0 +1,153 @@
+[
+  {
+    "name": "scorer-install",
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 31298.65859,
+    "passed": true
+  },
+  {
+    "name": "inbox-install",
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/inbox",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 94411.397019,
+    "passed": true
+  },
+  {
+    "name": "scorer-check",
+    "command": [
+      "npm",
+      "run",
+      "check"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 272061.826554,
+    "passed": true
+  },
+  {
+    "name": "scorer-sbom",
+    "command": [
+      "npm",
+      "run",
+      "sbom"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 1478.273549000034,
+    "passed": true
+  },
+  {
+    "name": "scorer-schemas",
+    "command": [
+      "node",
+      "scripts/schemas.mjs"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 144.61183299997356,
+    "passed": true
+  },
+  {
+    "name": "worker-benchmark",
+    "command": [
+      "npm",
+      "run",
+      "worker:benchmark"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 18293.19239500002,
+    "passed": true
+  },
+  {
+    "name": "core-benchmark",
+    "command": [
+      "npm",
+      "run",
+      "benchmark"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 32980.15664100001,
+    "passed": true
+  },
+  {
+    "name": "scorer-identity",
+    "command": [
+      "node",
+      "scripts/receipt.mjs"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 679.8154919999652,
+    "passed": true
+  },
+  {
+    "name": "joined",
+    "command": [
+      "node",
+      "harness/dev-880/run.mjs",
+      "verified"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 30064.112989999994,
+    "passed": true
+  },
+  {
+    "name": "browser",
+    "command": [
+      "node",
+      "harness/dev-880/browser.mjs"
+    ],
+    "cwd": "/home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring",
+    "exitCode": 1,
+    "expectedExitCode": 0,
+    "signal": null,
+    "error": null,
+    "elapsedMs": 69372.61981700006,
+    "passed": false
+  }
+]

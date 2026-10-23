@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // Local actual-SPA -> production JWT/API -> SQLite -> private scorer bridge.
+import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
@@ -10,7 +11,7 @@ import assert from 'node:assert/strict';
 import workerd from 'workerd';
 import {spawnSync} from 'node:child_process';
 const root=process.cwd(),inbox=resolve(process.env.DEV880_INBOX??'../inbox');
-const pin='43889e5c0ba7fd43090e830fbeac048a9551ffc8';
+const pin='df4e70e65e91117ad8050b13a3a78e912d51c920';
 assert.equal(spawnSync('git',['rev-parse','HEAD'],{cwd:inbox,encoding:'utf8'}).stdout.trim(),pin);
 const req=createRequire(join(inbox,'package.json'));
 const load=name=>import(pathToFileURL(req.resolve(name)).href);
@@ -57,7 +58,7 @@ const mf=new Miniflare({host:'127.0.0.1',port:0,workers:[
   bindings:{DOMAINS:'example.test',EMAIL_ADDRESSES:[],MAIL_SCORING_MODE:'shadow',POLICY_AUD:'synthetic',TEAM_DOMAIN:'https://access.test'},
   r2Buckets:['BUCKET'],durableObjects:{MAILBOX:{className:'MailboxDO',useSQLite:true},IMAP_AUTH_RATE_LIMIT:{className:'ImapAuthRateLimitDO',useSQLite:true}},
   serviceBindings:{MAIL_SCORER:'scorer'},outboundService:r=>{if(r.url==='https://access.test/cdn-cgi/access/certs')return new Response(jwks,{headers:{'content-type':'application/json'}});blockedOutbound++;throw new Error('forbidden_outbound');}},
- {name:'scorer',modules:true,script:await readFile(join(root,'.artifacts/worker/private.js'),'utf8'),compatibilityDate:'2026-10-21',outboundService:()=>{blockedOutbound++;throw new Error('forbidden_scorer_outbound');}},
+ {name:'scorer',modules:true,script:await readFile(join(root,'.artifacts/dev-880/verified/inbox/dev880-scorer.js'),'utf8'),compatibilityDate:'2026-10-21',outboundService:()=>{blockedOutbound++;throw new Error('forbidden_scorer_outbound');}},
 ]});
 let vite,browser;
 const serverErrors=[];
@@ -84,7 +85,11 @@ try{
   page.setDefaultTimeout(45000);
   page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/*',route=>{if(new URL(route.request().url()).origin!=='http://127.0.0.1:5189'){network.push('external_request');return route.abort();}return route.continue();});
-  await page.goto('http://127.0.0.1:5189',{waitUntil:'domcontentloaded'});
+  const navigationStarted=performance.now();
+  // A fresh install has no Vite dependency cache. Bound startup separately
+  // from the unchanged 45-second product action assertions.
+  await page.goto('http://127.0.0.1:5189',{waitUntil:'domcontentloaded',timeout:120000});
+  const navigationMs=performance.now()-navigationStarted;
   await page.getByText('Joined suspicious message',{exact:true}).click();
   await page.getByRole('region',{name:'Safe Spam preview'}).waitFor();
   assert.equal(await page.locator('section[aria-label="Safe Spam preview"] img,section[aria-label="Safe Spam preview"] script,iframe').count(),0);
@@ -103,10 +108,10 @@ try{
   const state=await mf.dispatchFetch('http://127.0.0.1:5189/api/v1/mailboxes/ui@example.test/emails/'+seeded.id+'/spam',{headers});
   assert.equal((await state.json()).disposition,'not_spam');
   assert.deepEqual(network,[]);assert.deepEqual(errors,[]);
-  results.push({width,inertPreview:true,realFeedback:true,realRescue:true,readRescoreCalls:after.calls-before.calls,forbiddenCalls:after.forbidden,externalRequests:network.length,pageErrors:errors});
+  results.push({width,navigationMs,inertPreview:true,realFeedback:true,realRescue:true,readRescoreCalls:after.calls-before.calls,forbiddenCalls:after.forbidden,externalRequests:network.length,pageErrors:errors});
   await page.close();
  }
  assert.deepEqual(serverErrors,[]);assert.equal(blockedOutbound,0);
- await writeFile(join(out,'result.json'),JSON.stringify({inbox:pin,scorer:'bb02819e4662e1d680805435dd886e3dc4728906',browser:browser.version(),results,blockedOutbound,serverErrors},null,2)+'\n');
+ await writeFile(join(out,'result.json'),JSON.stringify({harnessSha256:createHash('sha256').update(await readFile(new URL(import.meta.url))).digest('hex'),inbox:pin,scorer:'bb02819e4662e1d680805435dd886e3dc4728906',browser:browser.version(),results,blockedOutbound,serverErrors},null,2)+'\n');
  console.log(JSON.stringify({browserJoined:'passed',viewports:results.length}));
 }finally{await browser?.close();await vite?.close();await mf.dispose();}

@@ -1,0 +1,96 @@
+
+> mail-scoring-workspace@0.1.0 check
+> npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test && npm run direct-growth && npm run worker:build && npm run worker:test && npm run worker:mutations
+
+
+> mail-scoring-workspace@0.1.0 typecheck
+> npm run build && tsc --noEmit
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (3.638335ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (139.205221ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (29.427617ms)
+✔ header, URL, metadata cardinalities below/at/above (6.95156ms)
+✔ secondary fields and multibyte truncation are bounded (1.183166ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (1.521827ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.675592ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (10.13065ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (8.948624ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (1.287213ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.440435ms)
+✔ header multibyte and bidi control handling is partial and bounded (1.228196ms)
+✔ unprepared roots are refused before any structural operation (1.306358ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (1.882164ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (38.489088ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.689939ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (4.069369ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (2.685009ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.089204ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (12.101214ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (44.896552ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (229.914564ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (18.639878ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (2.151594ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (3.2162ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (75.360251ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (89.765291ms)
+✔ hostile policy code, auth context and preference assertions are refused (1.173332ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (397.77465ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1973.432777
+
+> mail-scoring-workspace@0.1.0 workerd-spike
+> node scripts/workerd-spike.mjs
+
+{"workerd":"passed","coreBundleBytes":12962,"coreGzipBytes":5019,"runtimeImports":0,"nativeInitializationProbes":3,"hostProcessAndProbesMs":1144.5212649999999}
+
+> mail-scoring-workspace@0.1.0 mutation-test
+> node scripts/mutations.mjs
+
+[{"mutation":"url-length","caught":true,"exitCode":1},{"mutation":"normalized-output","caught":true,"exitCode":1},{"mutation":"anchor-count","caught":true,"exitCode":1},{"mutation":"url-decode","caught":true,"exitCode":1},{"mutation":"family-cap","caught":true,"exitCode":1},{"mutation":"total-cap","caught":true,"exitCode":1},{"mutation":"quote-skip","caught":true,"exitCode":1},{"mutation":"preference-provenance","caught":true,"exitCode":1},{"mutation":"source-bound","caught":true,"exitCode":1},{"mutation":"parsed-root","caught":true,"exitCode":1},{"mutation":"lazy-string","caught":true,"exitCode":1},{"mutation":"network-deny","caught":true,"exitCode":1}]
+
+> mail-scoring-workspace@0.1.0 direct-growth
+> npm run build && node --expose-gc scripts/direct-growth.mjs
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+{"runtime":"v24.15.0","platform":"linux","arch":"x64","cpu":"Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz","samples":[{"kind":"root","size":1000,"elapsedMs":2.015392999999989,"heapDeltaBytes":17976,"rssDeltaBytes":0},{"kind":"header","size":1000,"elapsedMs":0.04960600000001136,"heapDeltaBytes":6832,"rssDeltaBytes":0},{"kind":"transport","size":1000,"elapsedMs":0.048169999999998936,"heapDeltaBytes":6816,"rssDeltaBytes":0},{"kind":"attachment","size":1000,"elapsedMs":0.04090400000001182,"heapDeltaBytes":6832,"rssDeltaBytes":0},{"kind":"root","size":100000,"elapsedMs":0.02560199999999213,"heapDeltaBytes":7208,"rssDeltaBytes":0},{"kind":"header","size":100000,"elapsedMs":0.026080000000092696,"heapDeltaBytes":6960,"rssDeltaBytes":0},{"kind":"transport","size":100000,"elapsedMs":0.057227000000011685,"heapDeltaBytes":3712,"rssDeltaBytes":0},{"kind":"attachment","size":100000,"elapsedMs":0.05834500000003118,"heapDeltaBytes":3728,"rssDeltaBytes":0},{"kind":"root","size":1000000,"elapsedMs":0.06207399999993868,"heapDeltaBytes":3864,"rssDeltaBytes":0},{"kind":"header","size":1000000,"elapsedMs":0.07093499999973574,"heapDeltaBytes":5656,"rssDeltaBytes":0},{"kind":"transport","size":1000000,"elapsedMs":0.017587999999705062,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"attachment","size":1000000,"elapsedMs":0.02038900000115973,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"repeat","size":1048576,"elapsedMs":3.085297999999966,"heapDeltaBytes":2136,"rssDeltaBytes":0},{"kind":"concatenation","size":1048576,"elapsedMs":0.02347400000144262,"heapDeltaBytes":1384,"rssDeltaBytes":0},{"kind":"repeat","size":16777216,"elapsedMs":0.02095499999995809,"heapDeltaBytes":1384,"rssDeltaBytes":0},{"kind":"concatenation","size":16777216,"elapsedMs":0.019702999999935855,"heapDeltaBytes":1384,"rssDeltaBytes":0},{"kind":"repeat","size":67108864,"elapsedMs":0.01967999999942549,"heapDeltaBytes":1384,"rssDeltaBytes":0},{"kind":"concatenation","size":67108864,"elapsedMs":0.019374000001334934,"heapDeltaBytes":1384,"rssDeltaBytes":0}],"caveat":"Synthetic local Node observations, one cold call per constructed fixture. Fixture allocation and GC precede timing. Heap deltas are not peak-memory guarantees; no hosted CPU, accuracy or billing claim. Membership gate and O(1) length preflight enforce work bounds; 4MiB allocation regression threshold leaves runtime noise headroom."}
+
+> mail-scoring-workspace@0.1.0 worker:build
+> node scripts/worker-build.mjs
+
+{"private":{"bytes":16099,"gzipBytes":5821,"modules":["packages/core/src/contract.ts","packages/core/src/guards.ts","packages/core/src/vendor/authentication-failed.ts","packages/core/src/vendor/text.ts","packages/core/src/vendor/links.ts","packages/core/src/vendor/bulk.ts","packages/core/src/inspection.ts","packages/core/src/index.ts","workers/private/protocol.ts","workers/private/adapter.ts","workers/private/index.ts"],"dryRunBytes":16775,"dryRunGzipBytes":6169},"consumer":{"bytes":4780,"gzipBytes":1981,"modules":["packages/core/src/contract.ts","workers/private/protocol.ts","workers/consumer/integration.ts","workers/consumer/index.ts"],"dryRunBytes":4984,"dryRunGzipBytes":2100}}
+
+> mail-scoring-workspace@0.1.0 worker:test
+> node scripts/worker-local.mjs
+
+actual consumer -> scorer workerd RPC tests passed
+
+> mail-scoring-workspace@0.1.0 worker:mutations
+> node scripts/worker-mutations.mjs
+
+[{"name":"outbound_fetch","caught":true,"restored":true,"failure":"forbidden capability: fetch"},{"name":"content_log","caught":true,"restored":true,"failure":"forbidden capability: console"},{"name":"retained_content","caught":true,"restored":true,"failure":"forbidden capability: globalThis"},{"name":"resource_binding","caught":true,"restored":true,"failure":"unexpected configuration/binding\n+ actual - expected\n\n  [\n    'compatibility_date',\n+   'kv_namespaces',\n    'main',\n    'minify',\n    'name',\n    'observability',\n    'preview_urls',\n"},{"name":"response_size","caught":true,"restored":true,"failure":"response_size targeted check failed"},{"name":"exception_sanitizer","caught":true,"restored":true,"failure":"exception_sanitizer targeted check failed"},{"name":"request_bytes","caught":true,"restored":true,"failure":"local targeted check failed"},{"name":"json_depth","caught":true,"restored":true,"failure":"local targeted check failed"}]
+npm notice
+npm notice New major version of npm available! 11.12.1 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

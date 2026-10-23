@@ -1,0 +1,32 @@
+{
+  "harnessSha256": "46a85862daea16803c9c2c8c4043e358b187b816ffe1945e2d6f47374e543b4b",
+  "inbox": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+  "scorer": "bb02819e4662e1d680805435dd886e3dc4728906",
+  "browser": "148.0.7778.96",
+  "results": [
+    {
+      "width": 1440,
+      "navigationMs": 62246.359592,
+      "inertPreview": true,
+      "realFeedback": true,
+      "realRescue": true,
+      "readRescoreCalls": 0,
+      "forbiddenCalls": 0,
+      "externalRequests": 0,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "navigationMs": 11529.418842999992,
+      "inertPreview": true,
+      "realFeedback": true,
+      "realRescue": true,
+      "readRescoreCalls": 0,
+      "forbiddenCalls": 0,
+      "externalRequests": 0,
+      "pageErrors": []
+    }
+  ],
+  "blockedOutbound": 0,
+  "serverErrors": []
+}

@@ -1,0 +1,7 @@
+{
+  "source": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+  "restoredCatchesFrom": "b87650673815a9a7236303457435bb33a0e1d4ac",
+  "exit": 1,
+  "failedCases": 8,
+  "assertionFailures": true
+}

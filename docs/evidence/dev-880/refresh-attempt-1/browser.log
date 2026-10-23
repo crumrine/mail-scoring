@@ -1,0 +1,18 @@
+✘ [ERROR] The build was canceled
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:5189/", waiting until "domcontentloaded"
+
+    at /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/harness/dev-880/browser.mjs:87:14 {
+  log: [
+    '  - navigating to "http://127.0.0.1:5189/", waiting until "domcontentloaded"'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.15.0

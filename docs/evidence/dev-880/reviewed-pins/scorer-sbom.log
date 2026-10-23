@@ -1,0 +1,5 @@
+
+> mail-scoring-workspace@0.1.0 sbom
+> node scripts/sbom.mjs
+
+{"packages":112,"runtimeDependencies":0,"vendored":5}

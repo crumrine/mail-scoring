@@ -1,0 +1,41 @@
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (8.965265ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (9.298411ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.176952ms)
+✖ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (17.781204ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1434.890958
+
+✖ failing tests:
+
+test at tests/rpc.test.ts:32:1
+✖ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (17.781204ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + {
+  +   error: 'invalid_input',
+  +   ok: false,
+  +   rpcVersion: '1'
+  + }
+  - null
+
+      at TestContext.<anonymous> (file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/tests/rpc.test.ts:34:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { rpcVersion: '1', ok: false, error: 'invalid_input' },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

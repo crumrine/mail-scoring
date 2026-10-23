@@ -6,6 +6,7 @@ coverage/
 .env*
 !.env.example
 *.log
+!docs/evidence/dev-880/**/*.log
 *.eml
 private-data/
 .DS_Store

@@ -13,7 +13,7 @@ import {checkConfig,checkWorkerBundle,scorerModules} from '../../scripts/worker-
 import assert from 'node:assert/strict';
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)));
 const inbox=resolve(process.env.DEV880_INBOX??join(root,'../inbox'));
-const pin='43889e5c0ba7fd43090e830fbeac048a9551ffc8';
+const pin='df4e70e65e91117ad8050b13a3a78e912d51c920';
 if(process.env.DEV880_INBOX_PIN)assert.equal(process.env.DEV880_INBOX_PIN,pin);
 assert.match(pin,/^[0-9a-f]{40}$/);
 const scorer='bb02819e4662e1d680805435dd886e3dc4728906';
@@ -51,8 +51,8 @@ await writeFile(join(out,'runner.log'),(result.stdout??'')+(result.stderr??''));
 let tests=null;try{const report=JSON.parse(await readFile(join(out,'vitest.json'),'utf8'));tests={total:report.numTotalTests,passed:report.numPassedTests,failed:report.numFailedTests,success:report.success,
   assertions:report.testResults.flatMap(t=>t.assertionResults.map(a=>({title:a.fullName,status:a.status,durationMs:a.duration,failure:a.failureMessages.map(m=>m.replace(/\u001b\[[0-9;]*m/g,''))})))};}catch{}
 const versions={};for(const f of ['package.json','node_modules/vitest/package.json','node_modules/@cloudflare/vitest-pool-workers/package.json','node_modules/@cloudflare/vitest-pool-workers/node_modules/workerd/package.json','node_modules/postal-mime/package.json']){try{const p=JSON.parse(await readFile(join(inbox,f),'utf8'));versions[p.name]=p.version??'private';}catch{}}
-const receipt={mode,workerdBinarySha256:hash(await readFile(workerdPath)),workerdVersion:command(workerdPath,['--version']),inbox:{repository:'https://github.com/crumrine/agentic-inbox-imap',pin,sourceHashes:hashes,overlay:null},scorer:{repository:'https://github.com/crumrine/mail-scoring',pin:scorer,bundleSha256:hash(await readFile(join(scratch,'dev880-scorer.js')))},
-  harnessHashes:Object.fromEntries(await Promise.all(['run.mjs','vitest.config.ts','joined.test.ts','corpus.mjs'].map(async f=>[f,hash(await readFile(join(root,'harness/dev-880',f)))]))),
+const receipt={mode,harnessHead:command('git',['rev-parse','HEAD']),harnessWorkingTreeModified:command('git',['status','--porcelain'])!=='',workerdBinarySha256:hash(await readFile(workerdPath)),workerdVersion:command(workerdPath,['--version']),inbox:{repository:'https://github.com/crumrine/agentic-inbox-imap',pin,sourceHashes:hashes,overlay:null},scorer:{repository:'https://github.com/crumrine/mail-scoring',pin:scorer,bundleSha256:hash(await readFile(join(scratch,'dev880-scorer.js')))},
+  harnessHashes:Object.fromEntries(await Promise.all(['run.mjs','vitest.config.ts','joined.test.ts','corpus.mjs','browser.mjs','audit.mjs','parser-growth.mjs','report.mjs','verify.mjs'].map(async f=>[f,hash(await readFile(join(root,'harness/dev-880',f)))]))),
   command:'node harness/dev-880/run.mjs '+mode,node:process.version,npm:command('npm',['--version']),os:os.platform()+' '+os.release()+' '+os.arch(),cpu:os.cpus()[0]?.model,versions,
   remoteBindings:false,fixtureProvenance:'Original authored synthetic .test identities and text, Apache-2.0; no attachments or private mail',elapsedMs:performance.now()-started,exitCode:result.status,signal:result.signal,error:result.error?.code??null,tests};
 await writeFile(join(out,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');
