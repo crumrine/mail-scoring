@@ -29,3 +29,47 @@ jobs:
           path: .artifacts/
           include-hidden-files: true
           retention-days: 30
+  inbox-integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      DEV880_INBOX: ${{ github.workspace }}/.integration/inbox
+      DEV880_INBOX_PIN: 43889e5c0ba7fd43090e830fbeac048a9551ffc8
+      INBOX_LOCAL_ONLY: "1"
+      WRANGLER_SEND_METRICS: "false"
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: crumrine/agentic-inbox-imap
+          ref: 43889e5c0ba7fd43090e830fbeac048a9551ffc8
+          path: .integration/inbox
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24.15.0
+          cache: npm
+      - run: npm install --global npm@11.12.1 --ignore-scripts
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix .integration/inbox --ignore-scripts --no-audit --no-fund
+      - run: npm run worker:build
+      - run: node harness/dev-880/run.mjs verified
+      - run: node harness/dev-880/browser.mjs
+      - run: node harness/dev-880/audit.mjs && node harness/dev-880/parser-growth.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: inbox-integration-${{ github.sha }}
+          path: |
+            .artifacts/dev-880/verified/receipt.json
+            .artifacts/dev-880/verified/vitest.json
+            .artifacts/dev-880/verified/runner.log
+            .artifacts/dev-880/verified/scorer-metafile.json
+            .artifacts/dev-880/browser/result.json
+            .artifacts/dev-880/browser/*.png
+            .artifacts/dev-880/audit/result.json
+            .artifacts/dev-880/parser/result.json
+          include-hidden-files: true
+          retention-days: 30

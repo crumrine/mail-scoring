@@ -1,61 +1,74 @@
-# DEV-880 joined-path diagnostic harness
+# DEV-880 reproducible source readiness checks
 
 Copyright (c) 2026 Brian Crumrine. SPDX-License-Identifier: Apache-2.0.
 
-This is the first, deliberately narrow part of the release-readiness assessment.
-It is **not a completed release-readiness suite**. Its mandatory confidentiality
-assertion must pass on the reviewed source; a red baseline is not success.
+The resumed source checks pass at Inbox 43889e5c0ba7fd43090e830fbeac048a9551ffc8
+and scorer bb02819e4662e1d680805435dd886e3dc4728906. Renewed independent review
+of corrected dependencies and this report remains pending. Production activation
+is not approved. See docs/release-readiness.md and evidence/dev-880/acceptance.json.
 
-Prerequisites: Node 24.15.0, npm 11.12.1, scripts-disabled `npm ci` in this
-repository and a sibling clone of https://github.com/crumrine/agentic-inbox-imap
-checked out at `b87650673815a9a7236303457435bb33a0e1d4ac`. Override its location
-with `DEV880_INBOX`. The script rejects a different head/origin. It exports
-immutable Git trees to `.artifacts/dev-880/<mode>/`, links installed dependencies,
-and overlays only the test/config plus the actual pinned scorer bundle. It never
-edits the dependency checkout or its branch. No credentials are required.
+Use Node 24 / npm 11.12.1 and scripts-disabled installs in this repository and the
+pinned sibling Inbox. Set DEV880_INBOX to its absolute path if it is not ../inbox.
+The runner checks the exact Inbox head and normalized repository origins; it
+exports immutable Git trees and never edits the dependency checkout. Its scorer
+bundle is exported from the pinned reviewed commit, not current working files.
 
 ```sh
 npm ci --ignore-scripts --no-audit --no-fund
-node harness/dev-880/run.mjs baseline
-node harness/dev-880/run.mjs diagnostic-repair
-node harness/dev-880/run.mjs restored
+npm run check
+npm run sbom
+node scripts/schemas.mjs
+npm run worker:benchmark
+npm run benchmark
+node scripts/receipt.mjs
+node harness/dev-880/run.mjs verified
+CHROME_PATH=/usr/bin/google-chrome node harness/dev-880/browser.mjs
+node harness/dev-880/audit.mjs
+node harness/dev-880/parser-growth.mjs
 ```
 
-Each command reports its actual exit status, writes a JSON receipt, raw Vitest
-JSON and a local runner log. A 180-second external process deadline contains a
-hung test runner; this is not a synchronous CPU limit inside the scorer. Do not
-run performance measurements concurrently with mutation suites.
+The joined harness tests actual production email/JWT/REST/shared storage code and
+a separate real private scoring Worker. Synthetic send/model bindings are inert,
+remote bindings are false, JWKs are local and other outbound fetches are denied.
+Unrelated SSR, Agent and MCP exports are inert. The public-route/config/bundle
+capability checks and core/private-Worker negative controls run through npm check.
+The bounded output and unknown/partial/error matrix never turns unavailable into
+safe mail or automatic quarantine. A 180-second external runner deadline is not a
+synchronous CPU bound.
 
-The baseline and restored commands export identical reviewed product source.
-The middle command makes one explicit scratch-only diagnostic repair; the
-receipt labels that overlay. It is not a reviewed successor or a production fix.
-The harness verifies the original production file digests before overlaying it.
+The browser bridge serves actual SPA components and API client from the pinned
+Inbox fixture, and forwards real requests to its JWT/API/R2/SQLite implementation
+under local Miniflare. It adds only a loopback synthetic identity, authored seed
+and counters. Desktop 1440 / mobile 390 exercise inert review, separate preferences
+and manual rescue; backend state and zero read-rescore calls are asserted. No HTTP
+fixture response replaces product business logic. Installed Chrome can be chosen
+with CHROME_PATH; the harness downloads no browser. Servers/browsers/runtime are
+closed in finally. This is not physical-device or live-provider acceptance.
 
-The joined success case uses the actual `workers/app.ts` email export,
-PostalMime, `receiveEmail`, R2, MailboxDO SQLite, a separate WorkerEntrypoint
-scorer through a service binding, production JWT verification with local keys,
-and REST list/thread/feedback/rescue/IMAP-read handlers. The wrapper counts and
-forwards RPC calls; it does not substitute scoring results. Separate tests cover
-off, missing binding and a local storage fault. The fault replaces only R2 put;
-registry reads, scoring, raw-persistence catch and SQLite insertion remain real.
+The corpus generator contains 32 original authored cases: ordinary receipts,
+newsletters/new contacts, multilingual and forwarded/replied mail, spoofed auth,
+encoded links, hostile HTML, controls/bidi and malformed/oversized structures.
+No harvested/private corpus, real contact data or attachment bytes are present.
+Original fixtures are Apache-2.0; existing third-party licenses remain intact.
+The recorded evaluation-only cutoff 30 yields 6 positives, 1 miss, 0 false positives
+and 12 true negatives among the 19 labeled examples. The Japanese-language miss is
+retained, not calibrated away or converted to a production claim.
 
-Only unrelated Agent/MCP exports and the SSR virtual module are inert. The
-sender and AI bindings throw/count, remoteBindings is false, JWKS is synthetic,
-and test fetch rejects every other address. The scorer's outbound service denies
-requests; its actual bundled graph/config is checked with the existing strict
-capability policy. These restrictions do not establish capability absence from
-the entire Inbox product or prove the React UI rendering path. No attachments,
-private messages, models, paid resources, live email, deployments or activation.
+Audit records exact locks, license expressions, enclosing-archive integrity for
+bundled optional packages, installed versions and available notice hashes. Parser
+measurements use eight safe text-only MIME cases with external child deadlines;
+they do not secure the inherited 25 MiB MIME parser or measure hosted CPU.
 
-Fixture provenance: four test cases reuse one original synthetic plain-text
-receipt authored for this repository. All identities are `.test`; no harvested
-or third-party corpus, attachment bytes or real personal data is present. The
-fixture, generator and test source are original Apache-2.0 work. This does not
-relicense the pinned Inbox, Mailguard adaptations or npm tooling; their existing
-licenses/notices continue to apply. The full dependency SBOM, adversarial
-corpus/classification/growth/performance/UI checks remain required later work.
+Run Inbox scoring/quarantine mutation scripts only inside a disposable Git export;
+they write their own evidence. scripts/check-scoring-contract.mjs also requires a
+separate clean Git worktree at the scorer pin. report.mjs collects those receipts,
+current joined/browser/audit/parser evidence and separated benchmark results.
+The new CI integration job independently checks the pinned joined/browser/audit
+and parser path; the existing job runs full core/private-RPC checks and benchmarks.
 
-Do not publish vulnerability reproduction details before following the affected
-repository's SECURITY.md private reporting policy. The current evidence and
-finding are recorded locally and on the existing Trellis dependency, not a new
-public fix ticket.
+Preserved baseline/diagnostic-repair/restored receipts describe the original
+source failure. To reproduce that historical experiment, use the original local
+commit 81c76099d891967db307f338286b07973f6532d9 and its README, rather than applying
+an overlay to corrected source. Current verified mode applies no product overlay.
+Do not publish private mail or exploitable live reports; the inherited finding was
+reported privately to the owner/existing DEV-878 before correcting source.
