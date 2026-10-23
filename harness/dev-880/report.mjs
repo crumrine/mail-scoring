@@ -80,7 +80,7 @@ Earlier mandatory source failure and initial workerd compatibility/prototype fai
 `;
 await writeFile('docs/release-readiness.md',text);
 await writeFile('docs/evidence/dev-880/assessment.md',text);
-const manifest={};for(const file of (await readdir(out)).sort())manifest[file]=createHash('sha256').update(await readFile(join(out,file))).digest('hex');
+const manifest={};for(const file of (await readdir(out)).filter(f=>f!=='manifest.json').sort())manifest[file]=createHash('sha256').update(await readFile(join(out,file))).digest('hex');
 await writeFile(out+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
 const master={};async function walk(dir,prefix=''){for(const ent of await readdir(dir,{withFileTypes:true})){const file=join(dir,ent.name),name=prefix+ent.name;if(name==='manifest.json')continue;if(ent.isDirectory())await walk(file,name+'/');else master[name]=createHash('sha256').update(await readFile(file)).digest('hex');}}
 await walk('docs/evidence/dev-880');await writeFile('docs/evidence/dev-880/manifest.json',JSON.stringify(master,null,2)+'\n');
