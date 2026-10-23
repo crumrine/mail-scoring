@@ -71,3 +71,23 @@ locked but not claimed tested.
 The Mailguard audit's separate dependency/data inventory is not runtime adoption;
 see `docs/adoption-decision.md`. Unresolved corpus/list provenance is excluded,
 not relicensed by this project's Apache license.
+
+## Private Worker development tooling
+
+Wrangler 4.151.3 (MIT OR Apache-2.0), @cloudflare/workers-types 5.20261021.1
+(MIT) and their exact transitive/platform packages are development tooling only.
+The lock/SBOM contains 112 package records; all declare licenses. Miniflare's
+Sharp/libvips development dependencies include LGPL-3.0-or-later components;
+their package licenses are preserved in the SBOM, not represented as Apache-only.
+These image/native tooling modules are **not** imported by the scorer or consumer:
+the checked bundle graphs contain only project modules and cloudflare:workers.
+No image/attachment processing is enabled. No installed binary is committed here.
+
+`npm run sbom` also emits `.artifacts/licenses/sbom.json` and
+`installed-notices.json` (installed host packages' top-level license/notice texts
+and hashes). CI uploads these inventory artifacts without node_modules or native
+binaries. Other platform packages are inventoried from the lock, not claimed
+executed or audited as runtime scorer dependencies. Preserve full component
+notices/source obligations if separately distributing developer tooling binaries.
+Exact upstream tooling sources: https://github.com/cloudflare/workers-sdk/tree/wrangler@4.151.3
+and https://github.com/cloudflare/workerd/tree/v1.20261021.1.

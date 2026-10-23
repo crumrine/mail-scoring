@@ -150,3 +150,11 @@ with initialization + ten warmups + one call range **200.967–275.865ms**; thos
 100 calls range **226.510–302.398ms**. These are process/batch durations, not Worker
 CPU or per-request latency. An initial timing attempt overlapped mutation testing
 and was discarded; only the later sequential run is committed here.
+
+## DEV-877 private service evidence
+
+The sections above retain the historical foundation/core evidence. The private
+service is now implemented in DEV-877; its [contract, configuration, local checks,
+release boundary and rollback procedure](private-worker.md) supersede the earlier
+"private service pending" note. Inbox/live integration remains pending. Current
+worker snapshots are `docs/evidence/worker-*.json`; CI emits exact-head receipts.
