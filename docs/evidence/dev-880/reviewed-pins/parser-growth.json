@@ -1,0 +1,103 @@
+{
+  "node": "v24.15.0",
+  "postalMime": "2.7.3",
+  "results": [
+    {
+      "kind": "plain",
+      "size": 1024,
+      "bytes": 1128,
+      "samples": 20,
+      "firstMs": 6.532506999999981,
+      "medianMs": 0.3987669999999923,
+      "p95Ms": 6.532506999999981,
+      "maxMs": 25.192646999999994,
+      "heapDelta": 1150576,
+      "processWallMs": 215.87029600000002
+    },
+    {
+      "kind": "plain",
+      "size": 16384,
+      "bytes": 16488,
+      "samples": 20,
+      "firstMs": 10.020825000000002,
+      "medianMs": 1.0061290000000156,
+      "p95Ms": 5.9713640000000225,
+      "maxMs": 10.020825000000002,
+      "heapDelta": 1464376,
+      "processWallMs": 239.46830100000005
+    },
+    {
+      "kind": "plain",
+      "size": 65536,
+      "bytes": 65640,
+      "samples": 20,
+      "firstMs": 31.570650999999998,
+      "medianMs": 1.4331160000000125,
+      "p95Ms": 9.607413000000008,
+      "maxMs": 31.570650999999998,
+      "heapDelta": 140696,
+      "processWallMs": 309.6242030000001
+    },
+    {
+      "kind": "plain",
+      "size": 131072,
+      "bytes": 131176,
+      "samples": 20,
+      "firstMs": 20.65370200000001,
+      "medianMs": 3.1822349999999915,
+      "p95Ms": 20.65370200000001,
+      "maxMs": 46.790842999999995,
+      "heapDelta": 1123304,
+      "processWallMs": 316.0062609999999
+    },
+    {
+      "kind": "nested",
+      "size": 8,
+      "bytes": 631,
+      "samples": 20,
+      "firstMs": 9.920170999999982,
+      "medianMs": 1.329917000000023,
+      "p95Ms": 9.920170999999982,
+      "maxMs": 25.831485999999984,
+      "heapDelta": 540712,
+      "processWallMs": 231.44338500000003
+    },
+    {
+      "kind": "nested",
+      "size": 32,
+      "bytes": 2233,
+      "samples": 20,
+      "firstMs": 11.488743,
+      "medianMs": 2.8757699999999886,
+      "p95Ms": 11.488743,
+      "maxMs": 29.686542000000003,
+      "heapDelta": 714336,
+      "processWallMs": 290.78666
+    },
+    {
+      "kind": "headers",
+      "size": 100,
+      "bytes": 11909,
+      "samples": 20,
+      "firstMs": 7.4082679999999925,
+      "medianMs": 1.3970199999999977,
+      "p95Ms": 7.4082679999999925,
+      "maxMs": 25.353422999999992,
+      "heapDelta": 2054000,
+      "processWallMs": 214.49484300000017
+    },
+    {
+      "kind": "headers",
+      "size": 256,
+      "bytes": 30473,
+      "samples": 20,
+      "firstMs": 12.876385999999997,
+      "medianMs": 2.31773400000003,
+      "p95Ms": 12.876385999999997,
+      "maxMs": 41.928619999999995,
+      "heapDelta": 471632,
+      "processWallMs": 312.07161599999995
+    }
+  ],
+  "scope": "Safe generated text-only MIME, Node local wall time and non-peak heap deltas; not hosted CPU or proof of safety for the inherited 25MiB parser input. 15s external process deadline per child."
+}

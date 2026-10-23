@@ -1,0 +1,78 @@
+{
+  "mode": "diagnostic-repair",
+  "workerdBinarySha256": "2f225cb5a086cb2cf35e4860b224239f3307c795ed139fc12fd4238100aade42",
+  "workerdVersion": "workerd 2026-10-21",
+  "inbox": {
+    "repository": "https://github.com/crumrine/agentic-inbox-imap",
+    "pin": "b87650673815a9a7236303457435bb33a0e1d4ac",
+    "sourceHashes": {
+      "workers/app.ts": "fe2cb8609050ddf0a104917294e8d2fb8ccaea1283ed42180987aa1ede80513c",
+      "workers/index.ts": "ba763e46ef07d1cf71afa93e186f94b22ac4a733dd24445ade7ee98cf9a72e75",
+      "workers/lib/raw-mime.ts": "f7a853286b634a956fea16defdf638f050e9f2c8049e0e566c46edcaf2ac60bd",
+      "workers/lib/mail-scoring/intake.ts": "72882a70748cc829da9ac71584653aa939b2d85a1ee7ad69d17697bd7bcdba19",
+      "workers/durableObject/index.ts": "b5a21812d1f55d80a3bb9d2d53370975291786e02856ff60af1805e37d7820a0",
+      "package-lock.json": "646713613e7638def429c471121d5df51ce48c845f31079a904ad92f09c57d19"
+    },
+    "overlay": "static storage diagnostic only"
+  },
+  "scorer": {
+    "repository": "https://github.com/crumrine/mail-scoring",
+    "pin": "bb02819e4662e1d680805435dd886e3dc4728906",
+    "bundleSha256": "4ab0162568ebb3f3b8591c586d922dcb83d8747bf6194d2fcbe68569e0eb8ea3"
+  },
+  "harnessHashes": {
+    "run.mjs": "b59bddd0e6f807839d3e43f2d0385809a98d43d07fb84a6be34b3796d3b135ec",
+    "vitest.config.ts": "a4358a96bf94caa6f7bb46dc85e748f8b6b6d3bfd69023c48bc7a9cd6f8499ce",
+    "joined.test.ts": "6cd292adba06c63925d013bf3add20aba6f5eac00a0b2f5a0a24399695f96a8e"
+  },
+  "command": "node harness/dev-880/run.mjs diagnostic-repair",
+  "node": "v24.15.0",
+  "npm": "11.12.1",
+  "os": "linux 6.1.0-52-amd64 x64",
+  "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
+  "versions": {
+    "agentic-inbox": "private",
+    "vitest": "4.1.11",
+    "@cloudflare/vitest-pool-workers": "0.22.0",
+    "workerd": "1.20260815.1",
+    "postal-mime": "2.7.3"
+  },
+  "remoteBindings": false,
+  "fixtureProvenance": "Original authored synthetic .test identities and text, Apache-2.0; no attachments or private mail",
+  "elapsedMs": 23509.802233000002,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "success": true,
+    "assertions": [
+      {
+        "title": "joined email -> private scorer -> SQLite -> authenticated pages/thread/feedback/rescue; reads never rescore",
+        "status": "passed",
+        "durationMs": 706,
+        "failure": []
+      },
+      {
+        "title": "off makes zero RPC calls and preserves mail",
+        "status": "passed",
+        "durationMs": 236,
+        "failure": []
+      },
+      {
+        "title": "missing private binding preserves delivery and unknown status",
+        "status": "passed",
+        "durationMs": 243,
+        "failure": []
+      },
+      {
+        "title": "actual raw persistence failure preserves delivery without logging mailbox identifiers",
+        "status": "passed",
+        "durationMs": 180,
+        "failure": []
+      }
+    ]
+  }
+}

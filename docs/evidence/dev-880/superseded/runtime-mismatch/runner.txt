@@ -1,0 +1,8 @@
+JSON report written to /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/.artifacts/dev-880/baseline/vitest.json
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+service core:user:dev880-scorer: This Worker requires compatibility date "2026-10-21", but the newest date supported by this server binary is "2026-08-22".
+close timed out after 10000ms
+Tests closed successfully but something prevents Vite server from exiting
+You can try to identify the cause by enabling "hanging-process" reporter. See https://vitest.dev/guide/reporters.html#hanging-process-reporter

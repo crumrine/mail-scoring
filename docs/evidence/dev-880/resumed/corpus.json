@@ -1,0 +1,397 @@
+{
+  "rows": [
+    {
+      "name": "receipt",
+      "label": "ordinary",
+      "requestBytes": 177,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "new-contact",
+      "label": "ordinary",
+      "requestBytes": 241,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "newsletter",
+      "label": "ordinary",
+      "requestBytes": 275,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "japanese",
+      "label": "ordinary",
+      "requestBytes": 190,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "arabic",
+      "label": "ordinary",
+      "requestBytes": 215,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "spanish",
+      "label": "ordinary",
+      "requestBytes": 177,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "forwarded",
+      "label": "ordinary",
+      "requestBytes": 188,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown",
+        "quoted_content"
+      ],
+      "error": null
+    },
+    {
+      "name": "reply",
+      "label": "ordinary",
+      "requestBytes": 182,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown",
+        "quoted_content"
+      ],
+      "error": null
+    },
+    {
+      "name": "auth-spoof",
+      "label": "ordinary",
+      "requestBytes": 263,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "auth-duplicates",
+      "label": "ordinary",
+      "requestBytes": 307,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "duplicate_header",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "embedded-instructions",
+      "label": "ordinary",
+      "requestBytes": 233,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "sensitive-phrase-alone",
+      "label": "ordinary",
+      "requestBytes": 169,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "mismatched-link",
+      "label": "suspicious",
+      "requestBytes": 256,
+      "ok": true,
+      "status": "partial",
+      "score": 30,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "userinfo-and-sensitive",
+      "label": "suspicious",
+      "requestBytes": 206,
+      "ok": true,
+      "status": "partial",
+      "score": 40,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "identity-and-sensitive",
+      "label": "suspicious",
+      "requestBytes": 235,
+      "ok": true,
+      "status": "partial",
+      "score": 45,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "display-and-sensitive",
+      "label": "suspicious",
+      "requestBytes": 237,
+      "ok": true,
+      "status": "partial",
+      "score": 45,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "repeated-links",
+      "label": "suspicious",
+      "requestBytes": 6586,
+      "ok": true,
+      "status": "partial",
+      "score": 30,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "encoded-userinfo",
+      "label": "suspicious",
+      "requestBytes": 208,
+      "ok": true,
+      "status": "partial",
+      "score": 40,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "japanese-social-engineering",
+      "label": "suspicious",
+      "requestBytes": 190,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "html-active-content",
+      "label": "adversarial",
+      "requestBytes": 384,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "deep-tags",
+      "label": "adversarial",
+      "requestBytes": 41145,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "huge-attribute",
+      "label": "adversarial",
+      "requestBytes": 140198,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "source_bytes",
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "bidi-controls",
+      "label": "adversarial",
+      "requestBytes": 156,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "control_chars",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "unicode-expansion",
+      "label": "adversarial",
+      "requestBytes": 30133,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "error": null
+    },
+    {
+      "name": "huge-token",
+      "label": "adversarial",
+      "requestBytes": 200133,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "source_bytes",
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "error": null
+    },
+    {
+      "name": "encoded-url-growth",
+      "label": "adversarial",
+      "requestBytes": 264513,
+      "ok": false,
+      "status": "unavailable",
+      "score": 0,
+      "limits": [],
+      "error": "request_limit"
+    },
+    {
+      "name": "header-growth",
+      "label": "adversarial",
+      "requestBytes": 57813,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "header_count",
+        "header_bytes",
+        "auth_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "unknown-preferences",
+      "label": "adversarial",
+      "requestBytes": 232,
+      "ok": true,
+      "status": "partial",
+      "score": 0,
+      "limits": [
+        "auth_unknown",
+        "preferences_unknown"
+      ],
+      "error": null
+    },
+    {
+      "name": "invalid-json",
+      "label": "malformed",
+      "requestBytes": 11,
+      "ok": false,
+      "status": "unavailable",
+      "error": "invalid_json"
+    },
+    {
+      "name": "deep-json",
+      "label": "malformed",
+      "requestBytes": 65,
+      "ok": false,
+      "status": "unavailable",
+      "error": "request_limit"
+    },
+    {
+      "name": "wire-growth",
+      "label": "malformed",
+      "requestBytes": 262145,
+      "ok": false,
+      "status": "unavailable",
+      "error": "request_limit"
+    },
+    {
+      "name": "wrong-schema",
+      "label": "malformed",
+      "requestBytes": 21,
+      "ok": false,
+      "status": "unavailable",
+      "error": "unsupported_version"
+    }
+  ],
+  "confusion": {
+    "evaluationOnlyCutoff": 30,
+    "ordinary": 12,
+    "suspicious": 7,
+    "truePositive": 6,
+    "falseNegative": 1,
+    "falsePositive": 0,
+    "trueNegative": 12,
+    "missedNames": [
+      "japanese-social-engineering"
+    ],
+    "scope": "Authored synthetic examples only; no production accuracy or threshold calibration claim. Unknown/partial never means safe."
+  }
+}

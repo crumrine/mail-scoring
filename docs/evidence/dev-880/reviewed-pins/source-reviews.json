@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-10-23T08:23:08.577Z",
+  "sources": [
+    {
+      "issue": "DEV-877",
+      "status": "done",
+      "headSha": "bb02819e4662e1d680805435dd886e3dc4728906",
+      "pr": {
+        "url": "https://github.com/crumrine/mail-scoring/pull/3",
+        "state": "open",
+        "merged": false,
+        "head": "codex/dev-877-private-rpc",
+        "headSha": "bb02819e4662e1d680805435dd886e3dc4728906",
+        "base": "codex/dev-876-deterministic-core",
+        "baseSha": "8456996596af6446f533cacb90ff9ce2ecd1a4ab"
+      },
+      "stages": [
+        {
+          "id": "6577b085-a39e-4746-ba77-3a8775ba2307",
+          "stage": "review",
+          "result": "approved",
+          "headSha": "bb02819e4662e1d680805435dd886e3dc4728906",
+          "artifacts": [
+            "https://github.com/crumrine/mail-scoring/pull/3",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682736137",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682842868",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682736137/artifacts/12384053298",
+            "https://github.com/crumrine/mail-scoring/blob/bb02819e4662e1d680805435dd886e3dc4728906/docs/private-worker.md"
+          ]
+        },
+        {
+          "id": "348a9510-d765-474f-9607-4b473e97bd13",
+          "stage": "delivery",
+          "result": "succeeded",
+          "headSha": "bb02819e4662e1d680805435dd886e3dc4728906",
+          "artifacts": [
+            "https://github.com/crumrine/mail-scoring/pull/3",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682736137",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682842868",
+            "https://github.com/crumrine/mail-scoring/actions/runs/39682736137/artifacts/12384053298",
+            "https://github.com/crumrine/mail-scoring/blob/bb02819e4662e1d680805435dd886e3dc4728906/docs/private-worker.md"
+          ]
+        }
+      ]
+    },
+    {
+      "issue": "DEV-878",
+      "status": "done",
+      "headSha": "2838cfb45b870054297fd09e7b88a0c1545801f1",
+      "pr": {
+        "url": "https://github.com/crumrine/agentic-inbox-imap/pull/7",
+        "state": "open",
+        "merged": false,
+        "head": "codex/dev-878-shadow-scoring",
+        "headSha": "2838cfb45b870054297fd09e7b88a0c1545801f1",
+        "base": "main",
+        "baseSha": "d01da09e26adf76ef8fe60e2a5f76226426a167b"
+      },
+      "stages": [
+        {
+          "id": "ad38acaf-9fec-4247-88e5-14a3971906c7",
+          "stage": "review",
+          "result": "approved",
+          "headSha": "2838cfb45b870054297fd09e7b88a0c1545801f1",
+          "artifacts": [
+            "https://github.com/crumrine/agentic-inbox-imap/pull/7",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/2838cfb45b870054297fd09e7b88a0c1545801f1",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39910797122",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39910801862",
+            "https://github.com/crumrine/agentic-inbox-imap/blob/2838cfb45b870054297fd09e7b88a0c1545801f1/docs/diagnostics-validation.md",
+            "https://github.com/crumrine/mail-scoring/pull/3",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906"
+          ]
+        },
+        {
+          "id": "43440936-1f8e-4157-9f9a-df5d798140ab",
+          "stage": "delivery",
+          "result": "succeeded",
+          "headSha": "2838cfb45b870054297fd09e7b88a0c1545801f1",
+          "artifacts": [
+            "https://github.com/crumrine/agentic-inbox-imap/pull/7",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/2838cfb45b870054297fd09e7b88a0c1545801f1",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39910797122",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39910801862",
+            "https://github.com/crumrine/agentic-inbox-imap/blob/2838cfb45b870054297fd09e7b88a0c1545801f1/docs/shadow-scoring.md",
+            "https://github.com/crumrine/agentic-inbox-imap/blob/2838cfb45b870054297fd09e7b88a0c1545801f1/docs/diagnostics-validation.md",
+            "https://github.com/crumrine/mail-scoring/pull/3",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906"
+          ]
+        }
+      ]
+    },
+    {
+      "issue": "DEV-879",
+      "status": "done",
+      "headSha": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+      "pr": {
+        "url": "https://github.com/crumrine/agentic-inbox-imap/pull/8",
+        "state": "open",
+        "merged": false,
+        "head": "codex/dev-879-spam-isolation",
+        "headSha": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+        "base": "codex/dev-878-shadow-scoring",
+        "baseSha": "2838cfb45b870054297fd09e7b88a0c1545801f1"
+      },
+      "stages": [
+        {
+          "id": "64db78c2-c64f-486c-8227-ccb5d3ac9865",
+          "stage": "review",
+          "result": "approved",
+          "headSha": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+          "artifacts": [
+            "https://github.com/crumrine/agentic-inbox-imap/pull/8",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/df4e70e65e91117ad8050b13a3a78e912d51c920",
+            "https://github.com/crumrine/agentic-inbox-imap/tree/df4e70e65e91117ad8050b13a3a78e912d51c920/docs/evidence/dev-879-dependency-refresh",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39920660449",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39920665754",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/2838cfb45b870054297fd09e7b88a0c1545801f1",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906"
+          ]
+        },
+        {
+          "id": "68b99aae-d6b5-4c21-bbae-b88746b572e6",
+          "stage": "delivery",
+          "result": "succeeded",
+          "headSha": "df4e70e65e91117ad8050b13a3a78e912d51c920",
+          "artifacts": [
+            "https://github.com/crumrine/agentic-inbox-imap/pull/8",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/df4e70e65e91117ad8050b13a3a78e912d51c920",
+            "https://github.com/crumrine/agentic-inbox-imap/tree/df4e70e65e91117ad8050b13a3a78e912d51c920/docs/evidence/dev-879-dependency-refresh",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39920660449",
+            "https://github.com/crumrine/agentic-inbox-imap/actions/runs/39920665754",
+            "https://github.com/crumrine/agentic-inbox-imap/commit/2838cfb45b870054297fd09e7b88a0c1545801f1",
+            "https://github.com/crumrine/mail-scoring/commit/bb02819e4662e1d680805435dd886e3dc4728906"
+          ]
+        }
+      ]
+    }
+  ]
+}

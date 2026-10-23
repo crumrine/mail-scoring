@@ -1,0 +1,62 @@
+[
+  {
+    "mutation": "url-length",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "normalized-output",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "anchor-count",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "url-decode",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "family-cap",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "total-cap",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "quote-skip",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "preference-provenance",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "source-bound",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "parsed-root",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "lazy-string",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "network-deny",
+    "caught": true,
+    "exitCode": 1
+  }
+]

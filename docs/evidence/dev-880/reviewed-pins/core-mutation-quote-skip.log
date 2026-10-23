@@ -1,0 +1,68 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (3.151546ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (307.770712ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (87.742263ms)
+✔ header, URL, metadata cardinalities below/at/above (18.748895ms)
+✔ secondary fields and multibyte truncation are bounded (3.763206ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (2.857702ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (5.15134ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (65.722089ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (20.483311ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (2.207071ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.7062ms)
+✔ header multibyte and bidi control handling is partial and bounded (3.767182ms)
+✔ unprepared roots are refused before any structural operation (1.729041ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (3.019476ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (34.448664ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.618264ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (3.810577ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (2.402483ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.233318ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (12.098873ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (84.352017ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (587.196508ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (23.119049ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (2.906515ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (4.734915ms)
+✖ linear quote skipping and inert HTML adversarial shapes remain partial (55.794085ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (104.185724ms)
+✔ hostile policy code, auth context and preference assertions are refused (1.160368ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (849.93953ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4998.915795
+
+✖ failing tests:
+
+test at tests/rules.test.ts:106:1
+✖ linear quote skipping and inert HTML adversarial shapes remain partial (55.794085ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  45 !== 10
+
+      at TestContext.<anonymous> (file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/tests/rules.test.ts:112:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 45,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

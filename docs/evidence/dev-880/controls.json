@@ -1,0 +1,125 @@
+{
+  "baseline": {
+    "comparedTrackedFiles": 336,
+    "sourceChanges": [],
+    "exitCode": 1,
+    "tests": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1,
+      "success": false,
+      "assertions": [
+        {
+          "title": "joined email -> private scorer -> SQLite -> authenticated pages/thread/feedback/rescue; reads never rescore",
+          "status": "passed",
+          "durationMs": 771,
+          "failure": []
+        },
+        {
+          "title": "off makes zero RPC calls and preserves mail",
+          "status": "passed",
+          "durationMs": 259,
+          "failure": []
+        },
+        {
+          "title": "missing private binding preserves delivery and unknown status",
+          "status": "passed",
+          "durationMs": 262,
+          "failure": []
+        },
+        {
+          "title": "actual raw persistence failure preserves delivery without logging mailbox identifiers",
+          "status": "failed",
+          "durationMs": 325,
+          "failure": [
+            "AssertionError: mailbox identifier must not enter content-free diagnostics: expected true to be false // Object.is equality\n    at /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/.artifacts/dev-880/baseline/inbox/test/dev880.test.ts:106:81\n    at home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/inbox/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    "scorerBundleSha256": "4ab0162568ebb3f3b8591c586d922dcb83d8747bf6194d2fcbe68569e0eb8ea3"
+  },
+  "diagnostic-repair": {
+    "comparedTrackedFiles": 336,
+    "sourceChanges": [
+      {
+        "path": "workers/lib/raw-mime.ts",
+        "sha256": "f97095e6ad713bab72a4b65b87284ffdbe07ec7ad81a8dfbcd967fc28475101a"
+      }
+    ],
+    "exitCode": 0,
+    "tests": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "success": true,
+      "assertions": [
+        {
+          "title": "joined email -> private scorer -> SQLite -> authenticated pages/thread/feedback/rescue; reads never rescore",
+          "status": "passed",
+          "durationMs": 706,
+          "failure": []
+        },
+        {
+          "title": "off makes zero RPC calls and preserves mail",
+          "status": "passed",
+          "durationMs": 236,
+          "failure": []
+        },
+        {
+          "title": "missing private binding preserves delivery and unknown status",
+          "status": "passed",
+          "durationMs": 243,
+          "failure": []
+        },
+        {
+          "title": "actual raw persistence failure preserves delivery without logging mailbox identifiers",
+          "status": "passed",
+          "durationMs": 180,
+          "failure": []
+        }
+      ]
+    },
+    "scorerBundleSha256": "4ab0162568ebb3f3b8591c586d922dcb83d8747bf6194d2fcbe68569e0eb8ea3"
+  },
+  "restored": {
+    "comparedTrackedFiles": 336,
+    "sourceChanges": [],
+    "exitCode": 1,
+    "tests": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1,
+      "success": false,
+      "assertions": [
+        {
+          "title": "joined email -> private scorer -> SQLite -> authenticated pages/thread/feedback/rescue; reads never rescore",
+          "status": "passed",
+          "durationMs": 706,
+          "failure": []
+        },
+        {
+          "title": "off makes zero RPC calls and preserves mail",
+          "status": "passed",
+          "durationMs": 235,
+          "failure": []
+        },
+        {
+          "title": "missing private binding preserves delivery and unknown status",
+          "status": "passed",
+          "durationMs": 271,
+          "failure": []
+        },
+        {
+          "title": "actual raw persistence failure preserves delivery without logging mailbox identifiers",
+          "status": "failed",
+          "durationMs": 261,
+          "failure": [
+            "AssertionError: mailbox identifier must not enter content-free diagnostics: expected true to be false // Object.is equality\n    at /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/.artifacts/dev-880/restored/inbox/test/dev880.test.ts:106:81\n    at home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/inbox/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    "scorerBundleSha256": "4ab0162568ebb3f3b8591c586d922dcb83d8747bf6194d2fcbe68569e0eb8ea3"
+  }
+}

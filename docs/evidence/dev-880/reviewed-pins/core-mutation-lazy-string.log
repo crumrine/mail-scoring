@@ -1,0 +1,75 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (3.316866ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (198.190512ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (27.311404ms)
+✔ header, URL, metadata cardinalities below/at/above (51.583202ms)
+✔ secondary fields and multibyte truncation are bounded (2.927216ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (1.983257ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (3.501457ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (14.988024ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (11.65619ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (1.528922ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.461787ms)
+✔ header multibyte and bidi control handling is partial and bounded (1.651881ms)
+✔ unprepared roots are refused before any structural operation (1.480109ms)
+✖ lazy strings are omitted before flattening beyond representation ceiling (4.126023ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (34.02387ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.643379ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (4.978152ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (2.851843ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.751718ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (5.777438ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (146.066276ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (604.58866ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (105.18151ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (5.242644ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (8.907014ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (378.616429ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (107.740187ms)
+✔ hostile policy code, auth context and preference assertions are refused (1.218844ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (679.138636ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5115.712716
+
+✖ failing tests:
+
+test at tests/core.test.ts:144:1
+✖ lazy strings are omitted before flattening beyond representation ceiling (4.126023ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    {
+  +   bytes: 32,
+  +   text: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  -   bytes: 0,
+  -   text: '',
+      truncated: true
+    }
+
+      at TestContext.<anonymous> (file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/tests/core.test.ts:147:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { text: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', bytes: 32, truncated: true },
+    expected: { text: '', bytes: 0, truncated: true },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,29 @@
+{
+  "inbox": "43889e5c0ba7fd43090e830fbeac048a9551ffc8",
+  "scorer": "bb02819e4662e1d680805435dd886e3dc4728906",
+  "browser": "151.0.7922.71",
+  "results": [
+    {
+      "width": 1440,
+      "inertPreview": true,
+      "realFeedback": true,
+      "realRescue": true,
+      "readRescoreCalls": 0,
+      "forbiddenCalls": 0,
+      "externalRequests": 0,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "inertPreview": true,
+      "realFeedback": true,
+      "realRescue": true,
+      "readRescoreCalls": 0,
+      "forbiddenCalls": 0,
+      "externalRequests": 0,
+      "pageErrors": []
+    }
+  ],
+  "blockedOutbound": 0,
+  "serverErrors": []
+}

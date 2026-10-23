@@ -1,0 +1,8 @@
+file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/scripts/worker-local.mjs:24
+ if(run.status!==0)throw new Error('worker_rpc_test_failed');
+                         ^
+
+Error: worker_rpc_test_failed
+    at file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/scripts/worker-local.mjs:24:26
+
+Node.js v24.15.0

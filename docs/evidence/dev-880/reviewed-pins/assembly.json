@@ -1,0 +1,14 @@
+{
+  "currentHarnessHashes": {
+    "run.mjs": "ae2385ed138504273a2f5328d8f6ae5707b2b0e310934b63ea91a4c1fb35409c",
+    "vitest.config.ts": "a4358a96bf94caa6f7bb46dc85e748f8b6b6d3bfd69023c48bc7a9cd6f8499ce",
+    "joined.test.ts": "12a475c11cb3385663bf34f508e87c57027280da173e355e05d2ae76094bbf26",
+    "corpus.mjs": "b231569957cffff8f16d93d919710aa40b727a70b271790d5b3e3163502b7f22",
+    "browser.mjs": "46a85862daea16803c9c2c8c4043e358b187b816ffe1945e2d6f47374e543b4b",
+    "audit.mjs": "ce775ab42affb379ba414f1337deeffe98042eff40286981e00bf8574c7e19f5",
+    "parser-growth.mjs": "9acf551550cc68e70d0297c01883704775777afd858af98a1e51e9a468a946aa",
+    "report.mjs": "78616830a4c9cae00c7f4b44d5d88eac039bcee5a1391beaab07e825d6b632da",
+    "verify.mjs": "ad3c9938c6b620b89b7f1bec02eabe6f219d3dfffb96199433e2afe313db71d2"
+  },
+  "scope": "Published fresh text logs normalize trailing horizontal whitespace only. Joined receipt hashes identify the files at that execution. Browser and report/driver startup repairs followed; browser has its own executed hash. Joined runtime/config/corpus are unchanged. The command ledger retains earlier successful commands and replaces only the separately preserved failed browser attempt."
+}

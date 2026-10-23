@@ -1,0 +1,69 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (3.332424ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (255.091139ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (38.625592ms)
+✔ header, URL, metadata cardinalities below/at/above (7.558568ms)
+✔ secondary fields and multibyte truncation are bounded (2.467877ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (1.854279ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.65448ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (62.278862ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (12.591736ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (1.59839ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.472918ms)
+✔ header multibyte and bidi control handling is partial and bounded (1.758364ms)
+✔ unprepared roots are refused before any structural operation (1.289698ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (2.130284ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (38.945296ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.663918ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (9.089967ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (6.11284ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.599585ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (5.062666ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (91.705977ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (583.559867ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (22.516638ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (2.165356ms)
+✖ correlated contribution caps survive repeated evidence and global saturation (1.942879ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (77.253508ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (116.696099ms)
+✔ hostile policy code, auth context and preference assertions are refused (1.222803ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (862.992268ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5150.251315
+
+✖ failing tests:
+
+test at tests/rules.test.ts:93:1
+✖ correlated contribution caps survive repeated evidence and global saturation (1.942879ms)
+  AssertionError [ERR_ASSERTION]: [{"instancePath":"/heuristicScore","schemaPath":"#/properties/heuristicScore/maximum","keyword":"maximum","params":{"comparison":"<=","limit":100},"message":"must be <= 100"}]
+
+  false !== true
+
+      at valid (file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/tests/rules.test.ts:18:10)
+      at TestContext.<anonymous> (file:///home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/tests/rules.test.ts:99:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
