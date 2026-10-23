@@ -1,0 +1,3 @@
+PWD environment variable doesn't match current directory; pwd = /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring
+JSON report written to /home/brian/r9-jobs/home/symphony-workspaces/siteforge/DEV-880/mail-scoring/.artifacts/dev-880/baseline/vitest.json
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m

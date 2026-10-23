@@ -1,0 +1,208 @@
+{
+  "inputs": {
+    "packages/core/src/contract.ts": {
+      "bytes": 3682,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/core/src/guards.ts": {
+      "bytes": 10492,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "./contract.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/core/src/vendor/authentication-failed.ts": {
+      "bytes": 558,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/core/src/vendor/text.ts": {
+      "bytes": 4169,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "../contract.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/core/src/vendor/links.ts": {
+      "bytes": 1902,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "../contract.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/core/src/vendor/bulk.ts": {
+      "bytes": 651,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/core/src/inspection.ts": {
+      "bytes": 2521,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "./contract.js"
+        },
+        {
+          "path": "packages/core/src/vendor/text.ts",
+          "kind": "import-statement",
+          "original": "./vendor/text.js"
+        },
+        {
+          "path": "packages/core/src/vendor/links.ts",
+          "kind": "import-statement",
+          "original": "./vendor/links.js"
+        },
+        {
+          "path": "packages/core/src/vendor/bulk.ts",
+          "kind": "import-statement",
+          "original": "./vendor/bulk.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/core/src/index.ts": {
+      "bytes": 3857,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "./contract.js"
+        },
+        {
+          "path": "packages/core/src/guards.ts",
+          "kind": "import-statement",
+          "original": "./guards.js"
+        },
+        {
+          "path": "packages/core/src/vendor/authentication-failed.ts",
+          "kind": "import-statement",
+          "original": "./vendor/authentication-failed.js"
+        },
+        {
+          "path": "packages/core/src/inspection.ts",
+          "kind": "import-statement",
+          "original": "./inspection.js"
+        },
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "./contract.js"
+        },
+        {
+          "path": "packages/core/src/guards.ts",
+          "kind": "import-statement",
+          "original": "./guards.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "workers/private/protocol.ts": {
+      "bytes": 4279,
+      "imports": [
+        {
+          "path": "packages/core/src/contract.ts",
+          "kind": "import-statement",
+          "original": "../../packages/core/src/contract.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "workers/private/adapter.ts": {
+      "bytes": 2448,
+      "imports": [
+        {
+          "path": "packages/core/src/index.ts",
+          "kind": "import-statement",
+          "original": "../../packages/core/src/index.js"
+        },
+        {
+          "path": "workers/private/protocol.ts",
+          "kind": "import-statement",
+          "original": "./protocol.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "workers/private/index.ts": {
+      "bytes": 548,
+      "imports": [
+        {
+          "path": "cloudflare:workers",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "workers/private/adapter.ts",
+          "kind": "import-statement",
+          "original": "./adapter.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "index.js": {
+      "imports": [
+        {
+          "path": "cloudflare:workers",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "exports": [
+        "default"
+      ],
+      "entryPoint": "workers/private/index.ts",
+      "inputs": {
+        "workers/private/index.ts": {
+          "bytesInOutput": 164
+        },
+        "packages/core/src/contract.ts": {
+          "bytesInOutput": 1840
+        },
+        "packages/core/src/guards.ts": {
+          "bytesInOutput": 4965
+        },
+        "packages/core/src/vendor/authentication-failed.ts": {
+          "bytesInOutput": 116
+        },
+        "packages/core/src/vendor/text.ts": {
+          "bytesInOutput": 1723
+        },
+        "packages/core/src/vendor/links.ts": {
+          "bytesInOutput": 636
+        },
+        "packages/core/src/vendor/bulk.ts": {
+          "bytesInOutput": 190
+        },
+        "packages/core/src/inspection.ts": {
+          "bytesInOutput": 1154
+        },
+        "packages/core/src/index.ts": {
+          "bytesInOutput": 1753
+        },
+        "workers/private/protocol.ts": {
+          "bytesInOutput": 2165
+        },
+        "workers/private/adapter.ts": {
+          "bytesInOutput": 1371
+        }
+      },
+      "bytes": 16099
+    }
+  }
+}

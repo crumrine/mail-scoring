@@ -1,0 +1,33 @@
+{
+  "private": {
+    "bytes": 16099,
+    "gzipBytes": 5821,
+    "modules": [
+      "packages/core/src/contract.ts",
+      "packages/core/src/guards.ts",
+      "packages/core/src/vendor/authentication-failed.ts",
+      "packages/core/src/vendor/text.ts",
+      "packages/core/src/vendor/links.ts",
+      "packages/core/src/vendor/bulk.ts",
+      "packages/core/src/inspection.ts",
+      "packages/core/src/index.ts",
+      "workers/private/protocol.ts",
+      "workers/private/adapter.ts",
+      "workers/private/index.ts"
+    ],
+    "dryRunBytes": 16775,
+    "dryRunGzipBytes": 6169
+  },
+  "consumer": {
+    "bytes": 4780,
+    "gzipBytes": 1981,
+    "modules": [
+      "packages/core/src/contract.ts",
+      "workers/private/protocol.ts",
+      "workers/consumer/integration.ts",
+      "workers/consumer/index.ts"
+    ],
+    "dryRunBytes": 4984,
+    "dryRunGzipBytes": 2100
+  }
+}

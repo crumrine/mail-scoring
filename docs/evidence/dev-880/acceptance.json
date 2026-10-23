@@ -1,0 +1,36 @@
+{
+  "status": "blocked_not_ready",
+  "completeDeliverable": false,
+  "prCreated": false,
+  "liveWorkAuthorized": false,
+  "sources": {
+    "scorer": "bb02819e4662e1d680805435dd886e3dc4728906",
+    "inbox": "b87650673815a9a7236303457435bb33a0e1d4ac"
+  },
+  "passed": [
+    "scorer_check",
+    "20_scorer_mutations",
+    "inbox_typecheck",
+    "joined_backend_flow",
+    "off_zero_calls",
+    "missing_binding_preserves_delivery",
+    "scratch_repair_control"
+  ],
+  "failed": [
+    "reviewed_source_storage_error_log_confidentiality"
+  ],
+  "notCompleted": [
+    "full_adversarial_corpus",
+    "full_ui_backend_connection",
+    "classification_confusion_counts",
+    "isolated_cold_warm_growth_performance",
+    "full_dependency_license_sbom_audit",
+    "complete_partial_error_matrix"
+  ],
+  "handoff": {
+    "target": "DEV-878",
+    "recorded": false,
+    "rejection": "Writes must target the current ticket.",
+    "fallbackRecord": "DEV-880 event 5460"
+  }
+}

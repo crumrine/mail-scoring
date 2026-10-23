@@ -1,0 +1,8 @@
+{
+  "workerd": "passed",
+  "coreBundleBytes": 12962,
+  "coreGzipBytes": 5019,
+  "runtimeImports": 0,
+  "nativeInitializationProbes": 3,
+  "hostProcessAndProbesMs": 1601.537933
+}
