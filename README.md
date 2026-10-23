@@ -2,7 +2,7 @@
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Status: project and implementation plan created; no scanner has been implemented, deployed or evaluated yet.** No detection accuracy, latency or savings are claimed.
+**Status: bounded v1 foundation and local workerd feasibility spike.** Only a minimal authentication-evidence primitive is implemented. No hosted deployment, real-mail evaluation, detection accuracy or savings are claimed.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 
@@ -21,7 +21,41 @@ The scoring core accepts bounded structured features. It is independent of Cloud
 - [Agent instructions](AGENTS.md)
 - [Contributing](CONTRIBUTING.md)
 
-The first implementation task must evaluate the MIT-licensed `@sarv-in/mailguard` narrow modules in real workerd before deciding between a pinned dependency, attributed adaptation or original rules. Its top-level and whole-message scanner are not automatically approved.
+The [adoption decision](docs/adoption-decision.md) selects one attributed MIT
+Mailguard predicate behind original bounded guards. The [v1 protocol](docs/protocol-v1.md)
+freezes exports, schemas, completeness and limits. This is the executable prerequisite
+for later rules and a private service, not a full scanner or deployed endpoint.
+
+## Local verification
+
+Use Node 24.15.0 and npm 11.12.1 (`nvm use`; `npm install -g npm@11.12.1 --ignore-scripts`).
+
+```sh
+npm ci
+npm run typecheck
+npm test
+npm run workerd-spike
+npm run mutation-test
+npm run benchmark
+npm run direct-growth
+```
+
+`npm run check` runs typecheck/build/tests/workerd/mutations/growth checks. Tests build and consume
+actual package exports. `score`/`guardInput` require immutable roots returned by
+`parseRequest`; use `scoreRequest` for bounded serialized input (see protocol).
+`.npmrc` disables lifecycle scripts; do not override it.
+The workerd spike has no listening sockets or production configuration. It runs
+local test events and checks initialization, denied outbound calls and absent
+native imports. `.artifacts/` contains generated bundles, logs and measurements.
+
+`npm run audit:mailguard` is a separate explicit public-source research command:
+it downloads pinned GitHub/npm artifacts, installs the separate audit lock with
+scripts disabled, and regenerates `docs/evidence/mailguard/audit.json`. It does not
+run upstream tests or lifecycle scripts. `npm run sbom` and `node scripts/schemas.mjs`
+(after build) reproduce the committed inventory and schema artifacts.
+
+CI uses fresh `npm ci` and the same checks, publishing synthetic evidence under the
+exact source SHA. See [validation scope and evidence](docs/validation.md).
 
 ## License
 

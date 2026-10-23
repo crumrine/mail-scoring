@@ -1,0 +1,33 @@
+{
+  "name": "mail-scoring-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": "24.x",
+    "npm": "11.12.1"
+  },
+  "packageManager": "npm@11.12.1",
+  "workspaces": [
+    "packages/core"
+  ],
+  "scripts": {
+    "build": "tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs",
+    "typecheck": "npm run build && tsc --noEmit",
+    "test": "npm run build && node --test --test-reporter=spec tests/*.test.ts",
+    "workerd-spike": "node scripts/workerd-spike.mjs",
+    "mutation-test": "node scripts/mutations.mjs",
+    "sbom": "node scripts/sbom.mjs",
+    "check": "npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test && npm run direct-growth",
+    "audit:mailguard": "node scripts/audit-mailguard.mjs",
+    "benchmark": "npm run build && node scripts/benchmark.mjs",
+    "direct-growth": "npm run build && node --expose-gc scripts/direct-growth.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3",
+    "workerd": "1.20261021.1"
+  }
+}

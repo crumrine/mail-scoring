@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mail-scoring:ScoreInputV1",
+  "title": "ScoreInputV1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "policyVersion": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._-]{1,64}$"
+    },
+    "subject": {
+      "type": "string",
+      "maxLength": 2048,
+      "x-maxUtf8Bytes": 2048
+    },
+    "headers": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "x-maxUtf8Bytes": 128,
+            "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$"
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 8192,
+            "x-maxUtf8Bytes": 8192
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      },
+      "x-totalWireBytes": 32768,
+      "x-fieldWireBytes": 8192
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 131072,
+      "x-maxUtf8Bytes": 131072
+    },
+    "html": {
+      "type": "string",
+      "maxLength": 131072,
+      "x-maxUtf8Bytes": 131072
+    },
+    "extractedText": {
+      "type": "string",
+      "maxLength": 65536,
+      "x-maxUtf8Bytes": 65536
+    },
+    "addresses": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string",
+          "maxLength": 512,
+          "x-maxUtf8Bytes": 512
+        },
+        "replyTo": {
+          "type": "string",
+          "maxLength": 512,
+          "x-maxUtf8Bytes": 512
+        },
+        "envelopeFrom": {
+          "type": "string",
+          "maxLength": 512,
+          "x-maxUtf8Bytes": 512
+        }
+      },
+      "required": []
+    },
+    "urls": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 2048,
+        "x-maxUtf8Bytes": 2048
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "filename": {
+            "type": "string",
+            "maxLength": 255,
+            "x-maxUtf8Bytes": 255
+          },
+          "mediaType": {
+            "type": "string",
+            "maxLength": 127,
+            "x-maxUtf8Bytes": 127
+          }
+        },
+        "required": [
+          "filename",
+          "mediaType"
+        ]
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provenance": {
+          "enum": [
+            "unknown",
+            "upstream"
+          ]
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "spf": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown"
+          ]
+        },
+        "dkim": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown"
+          ]
+        },
+        "dmarc": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "provenance",
+        "complete",
+        "spf",
+        "dkim",
+        "dmarc"
+      ]
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "senderAllowed": {
+          "type": "boolean"
+        },
+        "senderBlocked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "senderAllowed",
+        "senderBlocked"
+      ]
+    },
+    "sourceComplete": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "policyVersion",
+    "subject",
+    "headers",
+    "text",
+    "sourceComplete"
+  ],
+  "x-combinedSourceBytes": 131072,
+  "x-requestBytes": 262144,
+  "x-jsonDepth": 6,
+  "x-jsonTokens": 4096
+}

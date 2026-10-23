@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mail-scoring:ScoreResultV1",
+  "title": "ScoreResultV1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "engineVersion": {
+      "const": "0.1.0"
+    },
+    "ruleSetVersion": {
+      "const": "foundation-1"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "unavailable"
+      ]
+    },
+    "heuristicScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "signals": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spam": {
+          "enum": [
+            "present",
+            "unknown"
+          ]
+        },
+        "phishing": {
+          "enum": [
+            "present",
+            "unknown"
+          ]
+        },
+        "marketing": {
+          "enum": [
+            "present",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "spam",
+        "phishing",
+        "marketing"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "auth_failed"
+          },
+          "contribution": {
+            "const": 20
+          },
+          "reason": {
+            "const": "Verified transport evidence reports authentication failure."
+          }
+        },
+        "required": [
+          "id",
+          "contribution",
+          "reason"
+        ]
+      }
+    },
+    "limitsHit": {
+      "type": "array",
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "source_bytes",
+          "extracted_bytes",
+          "header_bytes",
+          "header_count",
+          "header_field_bytes",
+          "url_count",
+          "attachment_count",
+          "field_bytes",
+          "duplicate_header",
+          "control_chars",
+          "source_incomplete",
+          "html_uninspected",
+          "auth_unknown"
+        ]
+      }
+    },
+    "error": {
+      "enum": [
+        null,
+        "invalid_input",
+        "request_limit",
+        "invalid_json"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "engineVersion",
+    "ruleSetVersion",
+    "status",
+    "heuristicScore",
+    "signals",
+    "reasons",
+    "limitsHit",
+    "error"
+  ],
+  "x-maxUtf8Bytes": 4096
+}
