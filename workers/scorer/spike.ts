@@ -6,10 +6,24 @@ const ordinary={schemaVersion:'1',policyVersion:'synthetic-1',subject:'test',hea
 // Execute the selected path at module initialization, as well as inside the test event.
 const prepared=(value:unknown)=>parseRequest(new TextEncoder().encode(JSON.stringify(value))).value;
 const initial=score(prepared(ordinary));
+const dangerous={...ordinary,text:'Security team: verify your password.',
+  anchors:[{text:'https://accounts.example.test/',href:'https://other.invalid/'}]};
+const initialRules=score(prepared(dangerous));
 const check=(condition:unknown, id='spike_assertion'):void=>{if(!condition) throw new Error(id);};
 export default {
   async test() {
     check(initial.status==='partial');
+    check(initialRules.heuristicScore===70 && initialRules.signals.phishing==='present');
+    check(JSON.stringify(score(prepared(dangerous),{receivedAt:123}))===JSON.stringify(initialRules));
+    const marketing=score(prepared({...ordinary,headers:[{name:'List-Id',value:'synthetic.test'}]}));
+    check(marketing.heuristicScore===0 && marketing.signals.marketing==='present');
+    const expanded=score(prepared({...ordinary,text:'\ufdfa'.repeat(10000)}));
+    check(expanded.status==='partial' && expanded.limitsHit.includes('normalized_bytes'));
+    const encoded=score(prepared({...ordinary,urls:['https%25253A%25252F%25252Fother.invalid']}));
+    check(encoded.limitsHit.includes('url_decode_limit'));
+    let dynamicDenied=false;
+    try {new Function('return 1')();} catch {dynamicDenied=true;}
+    check(dynamicDenied,'dynamic_code_guard');
     check(score(ordinary).error==='invalid_input');
     check(boundedText('x'.repeat(1048576),32).text==='');
     const trusted={...ordinary,transport:{provenance:'upstream',complete:true,spf:'fail',dkim:'fail',dmarc:'fail'}};

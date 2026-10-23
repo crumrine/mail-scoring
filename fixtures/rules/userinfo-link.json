@@ -1,0 +1,24 @@
+{
+  "name": "userinfo-link",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "Hello, here is the requested information.",
+    "sourceComplete": true,
+    "urls": [
+      "https://accounts.example.test@other.invalid/"
+    ]
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 15,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "present",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

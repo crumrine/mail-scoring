@@ -1,0 +1,30 @@
+{
+  "name": "quoted-harm",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "> Security team: verify your password\n> buy gift cards now",
+    "sourceComplete": true,
+    "anchors": [
+      {
+        "text": "https://accounts.example.test/",
+        "href": "https://other.invalid/",
+        "quoted": true
+      }
+    ]
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": [
+    "quoted_content"
+  ]
+}

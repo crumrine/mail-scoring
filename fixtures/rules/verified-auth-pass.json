@@ -1,0 +1,29 @@
+{
+  "name": "verified-auth-pass",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "Hello, here is the requested information.",
+    "sourceComplete": true,
+    "transport": {
+      "provenance": "upstream",
+      "complete": true,
+      "spf": "pass",
+      "dkim": "pass",
+      "dmarc": "pass"
+    }
+  },
+  "context": {
+    "receivedAt": 1792540800000,
+    "transportVerified": true
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

@@ -3,13 +3,15 @@
 import {build} from 'esbuild';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
+import {gzipSync} from 'node:zlib';
 import {performance} from 'node:perf_hooks';
 import {inspectBundle} from './bundle-policy.mjs';
 await mkdir('.artifacts',{recursive:true});
 const result=await build({entryPoints:['packages/core/src/index.ts'],bundle:true,format:'esm',platform:'browser',target:'es2024',metafile:true,write:false,minify:true});
 const code=result.outputFiles[0].text;
 inspectBundle(code,result.metafile,[
-  'packages/core/src/index.ts','packages/core/src/contract.ts','packages/core/src/guards.ts','packages/core/src/vendor/authentication-failed.ts'
+  'packages/core/src/index.ts','packages/core/src/contract.ts','packages/core/src/guards.ts','packages/core/src/vendor/authentication-failed.ts',
+  'packages/core/src/inspection.ts','packages/core/src/vendor/text.ts','packages/core/src/vendor/links.ts','packages/core/src/vendor/bulk.ts'
 ]);
 await writeFile('.artifacts/core.js',code);
 await writeFile('.artifacts/core-meta.json',JSON.stringify(result.metafile,null,2)+'\n');
@@ -38,6 +40,6 @@ try {
   const probe=spawnSync('node_modules/.bin/workerd',['test','workers/scorer/.probe.capnp','scorer'],{encoding:'utf8',timeout:30000});
   if(probe.status===0 || !/outside.*(?:handler|context)|global scope|network_disabled/is.test(probe.stderr+probe.stdout)) throw new Error('initialization_io_probe_failed');
 } finally {const {unlink}=await import('node:fs/promises');await unlink('workers/scorer/.probe.capnp');}
-const evidence={workerd:'passed',coreBundleBytes:Buffer.byteLength(code),runtimeImports:0,nativeInitializationProbes:3,hostProcessAndProbesMs:performance.now()-started};
+const evidence={workerd:'passed',coreBundleBytes:Buffer.byteLength(code),coreGzipBytes:gzipSync(code).byteLength,runtimeImports:0,nativeInitializationProbes:3,hostProcessAndProbesMs:performance.now()-started};
 await writeFile('.artifacts/workerd-result.json',JSON.stringify(evidence,null,2)+'\n');
 console.log(JSON.stringify(evidence));

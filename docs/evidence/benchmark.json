@@ -1,9 +1,11 @@
 {
   "runtime": "v24.15.0",
+  "workerdVersion": "workerd 2026-10-21",
   "platform": "linux",
   "arch": "x64",
   "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
   "sampleCount": 100,
+  "warmupCount": 10,
   "limits": {
     "requestBytes": 262144,
     "sourceBytes": 131072,
@@ -18,88 +20,271 @@
     "urlBytes": 2048,
     "filenameBytes": 255,
     "typeBytes": 127,
+    "normalizedBytes": 65536,
+    "urlDecodePasses": 2,
     "jsonDepth": 6,
     "jsonTokens": 4096,
     "outputBytes": 4096
   },
   "samples": [
     {
-      "sourceBytes": 0,
-      "requestBytes": 170,
+      "name": "ordinary",
+      "requestBytes": 196,
       "status": "partial",
-      "firstMs": 1.8331429999999926,
-      "medianMs": 0.03726300000001004,
-      "p95Ms": 0.16103199999999163,
-      "maxMs": 1.1451349999999962,
-      "heapDeltaBytes": 613344,
-      "rssDeltaBytes": 3153920
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 3.231161,
+      "medianMs": 0.09653800000000956,
+      "p95Ms": 0.17111099999999624,
+      "maxMs": 1.3994519999999966,
+      "heapDeltaBytes": 208432,
+      "rssDeltaBytes": 4308992
     },
     {
-      "sourceBytes": 8192,
+      "name": "source-8192",
       "requestBytes": 8362,
       "status": "partial",
-      "firstMs": 0.23213400000000206,
-      "medianMs": 0.5134350000000154,
-      "p95Ms": 0.7006559999999808,
-      "maxMs": 24.541318999999987,
-      "heapDeltaBytes": 521136,
-      "rssDeltaBytes": 8224768
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 6.962623000000008,
+      "medianMs": 2.8866970000000265,
+      "p95Ms": 5.8758379999999875,
+      "maxMs": 67.84092099999998,
+      "heapDeltaBytes": 864832,
+      "rssDeltaBytes": 8056832
     },
     {
-      "sourceBytes": 32768,
+      "name": "source-32768",
       "requestBytes": 32938,
       "status": "partial",
-      "firstMs": 2.4806289999999933,
-      "medianMs": 1.827024999999992,
-      "p95Ms": 2.285439999999994,
-      "maxMs": 34.41668799999999,
-      "heapDeltaBytes": 378432,
-      "rssDeltaBytes": 0
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 10.827350000000024,
+      "medianMs": 11.667218000000048,
+      "p95Ms": 17.07453099999998,
+      "maxMs": 62.32703300000003,
+      "heapDeltaBytes": 6898640,
+      "rssDeltaBytes": 8724480
     },
     {
-      "sourceBytes": 65536,
+      "name": "source-65536",
       "requestBytes": 65706,
       "status": "partial",
-      "firstMs": 3.684587000000022,
-      "medianMs": 3.5789009999999735,
-      "p95Ms": 3.941267000000039,
-      "maxMs": 6.314896999999974,
-      "heapDeltaBytes": 86584,
-      "rssDeltaBytes": 0
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 24.336209000000053,
+      "medianMs": 24.14223099999981,
+      "p95Ms": 184.25732699999935,
+      "maxMs": 257.10786400000006,
+      "heapDeltaBytes": 5407872,
+      "rssDeltaBytes": 22122496
     },
     {
-      "sourceBytes": 131072,
+      "name": "source-131072",
       "requestBytes": 131242,
       "status": "partial",
-      "firstMs": 7.3988919999999325,
-      "medianMs": 7.345111000000088,
-      "p95Ms": 8.215540000000146,
-      "maxMs": 28.222211000000016,
-      "heapDeltaBytes": 943776,
-      "rssDeltaBytes": 1277952
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 198.87173100000018,
+      "medianMs": 28.360310000000027,
+      "p95Ms": 33.050138999999945,
+      "maxMs": 49.66791600000033,
+      "heapDeltaBytes": 7480640,
+      "rssDeltaBytes": 19058688
     },
     {
-      "sourceBytes": 262144,
+      "name": "source-262144",
       "requestBytes": 262314,
       "status": "unavailable",
-      "firstMs": 0.017373000000134198,
-      "medianMs": 0.0006949999999505962,
-      "p95Ms": 0.0009419999998954154,
-      "maxMs": 0.050776999999925465,
-      "heapDeltaBytes": 65488,
+      "limitsHit": [],
+      "firstInProcessMs": 0.07103499999902851,
+      "medianMs": 0.0006230000017239945,
+      "p95Ms": 0.0007939999995869584,
+      "maxMs": 0.000976999999693362,
+      "heapDeltaBytes": 63296,
       "rssDeltaBytes": 0
     },
     {
-      "sourceBytes": 1048576,
+      "name": "source-1048576",
       "requestBytes": 1048746,
       "status": "unavailable",
-      "firstMs": 0.002496999999948457,
-      "medianMs": 0.0005550000000766886,
-      "p95Ms": 0.0005939999998645362,
-      "maxMs": 0.000849000000016531,
-      "heapDeltaBytes": 58288,
+      "limitsHit": [],
+      "firstInProcessMs": 0.005401999998866813,
+      "medianMs": 0.0006499999999505235,
+      "p95Ms": 0.0007760000007692724,
+      "maxMs": 0.0008679999991727527,
+      "heapDeltaBytes": 62656,
       "rssDeltaBytes": 0
+    },
+    {
+      "name": "whitespace-65536",
+      "requestBytes": 98474,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 17.950286000001142,
+      "medianMs": 17.497771000000284,
+      "p95Ms": 21.31645799999933,
+      "maxMs": 41.30225000000064,
+      "heapDeltaBytes": 1563456,
+      "rssDeltaBytes": -10629120
+    },
+    {
+      "name": "unicode-expansion",
+      "requestBytes": 30170,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 64.18659600000137,
+      "medianMs": 14.909292000000278,
+      "p95Ms": 27.382267999999385,
+      "maxMs": 45.54240099999879,
+      "heapDeltaBytes": 15728336,
+      "rssDeltaBytes": 23879680
+    },
+    {
+      "name": "repeated-phrases",
+      "requestBytes": 126170,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown",
+        "normalized_bytes"
+      ],
+      "firstInProcessMs": 33.27951600000051,
+      "medianMs": 33.42855100000088,
+      "p95Ms": 50.80870100000175,
+      "maxMs": 103.55502400000114,
+      "heapDeltaBytes": 24562920,
+      "rssDeltaBytes": 18976768
+    },
+    {
+      "name": "100-anchors",
+      "requestBytes": 6208,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 3.3894149999978254,
+      "medianMs": 1.192724000000453,
+      "p95Ms": 1.5949350000009872,
+      "maxMs": 69.25000400000135,
+      "heapDeltaBytes": 25473656,
+      "rssDeltaBytes": 15679488
+    },
+    {
+      "name": "encoded-urls",
+      "requestBytes": 74305,
+      "status": "partial",
+      "limitsHit": [
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 6.786686999999802,
+      "medianMs": 3.958314999999857,
+      "p95Ms": 7.987630999999965,
+      "maxMs": 68.10633899999812,
+      "heapDeltaBytes": -48551960,
+      "rssDeltaBytes": -9465856
+    },
+    {
+      "name": "deep-html-skipped",
+      "requestBytes": 82126,
+      "status": "partial",
+      "limitsHit": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 3.4452390000005835,
+      "medianMs": 3.2527740000004997,
+      "p95Ms": 3.3700370000005933,
+      "maxMs": 11.368642999997974,
+      "heapDeltaBytes": 19469848,
+      "rssDeltaBytes": 0
+    },
+    {
+      "name": "huge-attribute-skipped",
+      "requestBytes": 130220,
+      "status": "partial",
+      "limitsHit": [
+        "html_uninspected",
+        "auth_unknown"
+      ],
+      "firstInProcessMs": 5.004342000000179,
+      "medianMs": 5.202879000000394,
+      "p95Ms": 5.641243999998551,
+      "maxMs": 25.31137899999885,
+      "heapDeltaBytes": -23443696,
+      "rssDeltaBytes": 1081344
     }
   ],
-  "caveat": "Local Node synthetic wall time; first invocation per case is not isolated process startup. GC and shared host noise affect memory deltas. No hosted CPU, efficacy, accuracy or billing conclusions. Includes preflight/decode/parse/freeze/scoring; oversized requests are unavailable before decode. Fixture encoding is outside measurement."
+  "cold": [
+    {
+      "processWallMs": 138.9341020000029,
+      "importMs": 9.558881,
+      "firstScoreMs": 11.245275000000007,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 161.94770499999868,
+      "importMs": 9.786186999999998,
+      "firstScoreMs": 24.136865000000014,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 136.016050000002,
+      "importMs": 23.066125999999997,
+      "firstScoreMs": 19.96591500000001,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 170.51343199999974,
+      "importMs": 10.02855000000001,
+      "firstScoreMs": 25.49543,
+      "status": "partial"
+    },
+    {
+      "processWallMs": 186.69832800000222,
+      "importMs": 11.704838999999993,
+      "firstScoreMs": 12.851379000000009,
+      "status": "partial"
+    }
+  ],
+  "workerdSamples": [
+    {
+      "eventScoringCalls": 1,
+      "warmupCalls": 10,
+      "initializationCalls": 1,
+      "freshProcessWallMs": [
+        217.46997499999998,
+        200.96726500000295,
+        224.44621099999858,
+        275.8647000000019,
+        235.0266499999998
+      ]
+    },
+    {
+      "eventScoringCalls": 100,
+      "warmupCalls": 10,
+      "initializationCalls": 1,
+      "freshProcessWallMs": [
+        300.68890699999974,
+        240.63554899999872,
+        302.39753700000074,
+        226.5096900000026,
+        259.99814700000206
+      ]
+    }
+  ],
+  "ordinaryP95TargetMs": 25,
+  "ordinaryTargetPassed": true,
+  "caveat": "Synthetic local wall time only. Node cold children separate import and first-score timing from process launch; warm distributions include full scoreRequest. Workerd reports fresh process wall durations including startup, initialization, warmup and test batch; event clocks cannot measure synchronous CPU, so no workerd per-call latency is claimed. Fixture construction/encoding is outside scoring measurement. Memory deltas are not peak allocation. No hosted CPU, billing, efficacy or accuracy conclusions."
 }

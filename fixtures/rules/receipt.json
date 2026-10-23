@@ -1,0 +1,26 @@
+{
+  "name": "receipt",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [
+      {
+        "name": "Auto-Submitted",
+        "value": "auto-generated"
+      }
+    ],
+    "text": "Receipt for your purchase. Thank you.",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

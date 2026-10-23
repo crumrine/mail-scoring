@@ -77,9 +77,41 @@
           "type": "string",
           "maxLength": 512,
           "x-maxUtf8Bytes": 512
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 512,
+          "x-maxUtf8Bytes": 512
         }
       },
       "required": []
+    },
+    "anchors": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 2048,
+            "x-maxUtf8Bytes": 2048
+          },
+          "href": {
+            "type": "string",
+            "maxLength": 2048,
+            "x-maxUtf8Bytes": 2048
+          },
+          "quoted": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "text",
+          "href"
+        ]
+      }
     },
     "urls": {
       "type": "array",
@@ -185,6 +217,8 @@
     "text",
     "sourceComplete"
   ],
+  "x-totalAnchorsAndUrls": 100,
+  "x-normalizedOutputBytes": 65536,
   "x-combinedSourceBytes": 131072,
   "x-requestBytes": 262144,
   "x-jsonDepth": 6,

@@ -1,0 +1,25 @@
+{
+  "name": "new-contact",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "Hello, here is the requested information.",
+    "sourceComplete": true,
+    "addresses": {
+      "from": "new@freemail.test",
+      "replyTo": "new@freemail.test"
+    }
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

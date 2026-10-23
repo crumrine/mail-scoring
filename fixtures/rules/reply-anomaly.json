@@ -1,0 +1,25 @@
+{
+  "name": "reply-anomaly",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "Please send your password.",
+    "sourceComplete": true,
+    "addresses": {
+      "from": "sender@example.test",
+      "replyTo": "sender@other.invalid"
+    }
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 35,
+  "expectedSignals": {
+    "spam": "present",
+    "phishing": "present",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

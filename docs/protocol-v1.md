@@ -17,21 +17,35 @@ Required: `schemaVersion: "1"`, `policyVersion` (1–64 ASCII letters/digits/dot
 underscore/hyphen), `subject`, `headers` (ordered `{name,value}` records), `text`,
 and `sourceComplete` (boolean). Optional fields:
 
-- `html` is bounded inert source, **not parsed in foundation-1**. Nonempty supplied
-  HTML always adds `html_uninspected`, even if truncation discards it. The later
-  rules ticket owns safe tag/depth/output-limited extraction.
+- `html` is bounded inert source, **not parsed in rules-1**. Nonempty supplied
+  HTML always adds `html_uninspected`, even if truncation discards it. No HTML extraction is enabled; this is the explicit minimal path
+  authorized by DEV-876 note 5391. Future extraction needs separate measured guards.
 - `extractedText` is already-decoded caller text, separately capped. Supplying it
   does not assert that our core parsed or validated the original HTML/MIME.
-- `addresses`: optional `from`, `replyTo`, `envelopeFrom` strings; no parsing or trust
-  inference yet. `urls`: lexical strings only, with no dereferencing/decoding here.
+- `addresses`: optional `from`, `replyTo`, `envelopeFrom`, `displayName` strings.
+  From/replyTo must be single parsed mailbox addresses for host comparisons.
+  EnvelopeFrom is context only. A displayName which itself is an email address
+  can be compared; other names only support the fixed authority phrase group.
+  Ambiguous addresses produce `identity_uninspected`, not a guessed identity.
+- `anchors`: bounded `{text,href,quoted?}` pairs supplied by the adapter. Only an
+  entire explicit visible HTTP(S) URL is compared to the target. `quoted:true`
+  skips the pair and adds `quoted_content`. The adapter must preserve omissions
+  via `sourceComplete:false`; supplying anchors does not claim HTML inspection.
+  `urls`: standalone lexical targets sharing the anchor count budget; no fetches.
 - `attachments`: filename and mediaType strings only. No bytes or extension fields.
 - `transport`: provenance `unknown|upstream`, complete boolean, spf/dkim/dmarc
   `pass|fail|unknown`. These are claims until verified by application context.
-- `preferences`: explicit `senderAllowed`/`senderBlocked` booleans. Reserved facts;
-  foundation-1 does not apply preference-based bypasses or routing.
+- `preferences`: explicit `senderAllowed`/`senderBlocked` booleans. They apply
+  only with separate `preferencesVerified:true` application context; otherwise
+  `preferences_unknown` keeps them neutral. Never derive these facts from email,
+  prompt instructions, or automatic interpretation of folder moves.
 
 No arbitrary rules, nested caller metadata, raw MIME, correlation IDs, timestamps,
-model responses, attachments, or actions. No receive-time-dependent rule exists yet.
+model responses, attachment bytes, or actions. `receivedAt` is an optional trusted
+code-context argument (safe integer Unix milliseconds, 0..8640000000000000; default
+0). No age rule exists in rules-1; the core never reads a clock. The same bounded
+input/time/context/policy produces the same result. No context fields are accepted
+in serialized requests.
 Unknown fields at inspected levels, wrong types, invalid header names and malformed
 policies yield `unavailable` with static `invalid_input`.
 
@@ -72,10 +86,12 @@ structuredClone. Pass bounded bytes across that boundary and parse at the receiv
 | Header block | 32768 bytes; sum of UTF-8 name + `: ` + value + CRLF |
 | Each header | 8192 bytes including name and those four delimiter bytes |
 | Header count | 100; name max 128 bytes, ASCII RFC token characters only |
-| URLs | 100; each 2048 bytes |
+| Normalized text output | 65536 UTF-8 bytes shared by subject, text, extractedText and displayName, in that order |
+| Anchors + URLs | 100 combined; anchors first; each visible text and href/URL max 2048 bytes |
+| URL decoding | At most 2 whole encoded-scheme passes per URL, max 200 parses/400 decode passes across 100 pairs; no wrapper traversal |
 | Attachment metadata | 32; filename 255 bytes and mediaType 127 bytes |
-| Subject / each address | 2048 / 512 bytes |
-| Result | at most 4096 UTF-8 bytes; max 1 reason and 13 distinct limit IDs |
+| Subject / each address | 2048 / 512 bytes; at most three separate mailbox-host parses |
+| Result | at most 4096 UTF-8 bytes; max 10 distinct reasons and 19 distinct limit IDs |
 
 The exported `boundedText` first reads string length in O(1). Above 262144 UTF-16
 code units it returns `{text:"", bytes:0, truncated:true}` without indexing, slicing
@@ -119,36 +135,89 @@ no negative points and grants no allow-list status. This conservative foundation
 requires all three component verdicts to be known; Mailguard's unknown-DMARC
 fallback is retained in the predicate but not enabled by this wrapper.
 
-`foundation-1` executes only the selected authentication-failure predicate after
-guards. A verified failure contributes 20 to spam evidence. Phishing and marketing
-remain unknown. There are no vocabulary, link, MIME, malware, reputation or HTML
-classification claims. `complete` means this **named rule set** finished against
-complete input, not that the email is safe or that every possible signal ran.
-Missing/partial evidence remains unknown, and a score of zero is not a safe verdict.
+## Named rules and caps
+
+`rules-1` applies each rule once in this fixed order. All positive contributions
+are clipped to the remaining family cap and then the remaining total [0,100].
+A rule can retain a zero contribution with a present signal after a cap is reached;
+reason contributions always sum exactly to the score. No negative contribution
+or bypass is possible. Policy version identifies the caller policy; it does not
+supply rule weights or change execution.
+
+| Rule ID | Maximum points | Family / cap | Evidence |
+| --- | ---: | --- | --- |
+| auth_failed | 20 | authentication / 20 | spam |
+| link_mismatch | 30 | links / 35 | phishing |
+| link_userinfo | 15 | links / 35 | phishing |
+| reply_to_mismatch | 10 | identity / 20 | spam |
+| display_identity_mismatch | 15 | identity / 20 | phishing |
+| impersonation_combined | 15 | identity / 20 | phishing |
+| sensitive_request_combined | 25 | content / 25 | spam + phishing |
+| sender_blocked | 40 | preference / 40 | spam |
+| sender_allowed | 0 | preference / 40 | context only; never erases evidence |
+| marketing_headers | 0 | marketing / 0 | marketing only |
+
+A sensitive request (password/code/wire/gift-card phrase) or authority claim
+(security team/account administrator/technical support/chief executive) only fires
+its combined rule with an authentication failure, deceptive link/userinfo or
+identity anomaly. These ten original fixed phrases support evidence; they are
+not a general multilingual classifier or adopted spam corpus. Urgency, new sender,
+freemail, Unicode, newsletter/unsubscribe and auth pass alone contribute no points.
+Replies, subjects and Message-ID/References never grant trust. Marketing headers
+are self-declarations and can coexist with phishing; they neither raise spam score
+nor exempt links. Exact hostname inequality can include legitimate tracking or
+reply services: it is low/capped evidence, not proof of malicious intent. No
+production routing threshold or high-spam label is emitted.
+
+Normalization scans bounded sources once, normalizing one Unicode scalar at a time
+with NFKC/lowercase, dropping selected invisibles and collapsing whitespace. Charge
+UTF-8 output before appending; stop with `normalized_bytes` on overflow. This avoids
+the U+FDFA full-string expansion. It deliberately does not compose combining
+sequences across scalar boundaries or fold cross-script homoglyphs. Phrase matching
+uses indexOf and Unicode letter/digit boundaries over at most 64KiB with ten fixed
+phrases; no caller regex or phrase list. Quote handling is linear: skip lines whose
+first nonspace character is `>`, and the remainder after the fixed original/forwarded
+message markers; report `quoted_content`. Unrecognized quotation formats remain a
+limitation; skipped quotations are not an assertion of safe content.
+
+URL parsing is platform lexical `URL`, with bounded inputs. Normal HTTP(S) URLs
+retain encoded path/query semantics. Only an entirely percent-encoded HTTP scheme
+is decoded (max two passes); malformed/unsupported targets produce
+`url_uninspected`, further encoding produces `url_decode_limit`. No HTML entities,
+base URLs, redirects, nested query targets or URL navigation. Compare exact lowercase
+URL hostnames, including platform IDNA conversion. No suffix collapsing/private-
+suffix trust, reputation, brand corpus, wrapper exemptions or tldts/PSL dependency.
+
+`complete` means this named set finished against complete input, not that mail is
+safe or every possible signal ran. Nonempty HTML, skipped quotes, bounds and unknown
+evidence remain partial. A zero score is never a safe verdict. Authentication
+support is established before feature extraction using the foundation guards;
+subsequent normalization/URL limits cannot erase an established authentication
+failure. Unknown/ambiguous authentication remains neutral.
 
 ## Output and versioning
 
 The output always has schemaVersion `1`, engineVersion `0.1.0`, ruleSetVersion
-`foundation-1`; status `complete|partial|unavailable`; finite heuristicScore in
+`rules-1`; status `complete|partial|unavailable`; finite heuristicScore in
 [0,100]; independent spam/phishing/marketing `present|unknown` signals; reasons;
 limitsHit; and error. This is a heuristic number, **not a calibrated probability**.
 
-Current static reason: `auth_failed`, contribution 20, text
-“Verified transport evidence reports authentication failure.” There is no arbitrary
-reason string, echoed subject/address/URL, routing command or raw error. Current
-limits are exported by `LIMIT_IDS`: source_bytes, extracted_bytes, header_bytes,
-header_count, header_field_bytes, url_count, attachment_count, field_bytes,
-duplicate_header, control_chars, source_incomplete, html_uninspected, auth_unknown.
-Errors are null, invalid_input, request_limit or invalid_json. An unavailable result
-has score 0, unknown signals, empty reasons/limits; its error carries the outcome.
+`REASONS`, `RULE_CAPS`, `FAMILY_CAPS` and `LIMIT_IDS` are frozen finite registries.
+The generated result schema pins each reason ID/text and integer contribution range;
+tests validate every fixture and adversarial result using development-only Ajv.
+There is no arbitrary reason, echoed subject/address/URL, routing command or raw
+error. New limits include preferences_unknown, normalized_bytes, url_decode_limit,
+url_uninspected, quoted_content and identity_uninspected. Errors remain null,
+invalid_input, request_limit or invalid_json. Unavailable has score 0, unknown
+signals, empty reasons/limits and a static error; it is not complete/safe.
 
-Any limit or unknown authentication makes the assessment partial. Later rules must
-use new ruleSetVersion/engineVersion, deduplicate/cap contributions, and extend the
-finite reason registry and output bounds deliberately. Schema 1 consumers must
-handle new reason IDs as unknown without evaluating their text; incompatible schema
-versions fail to unavailable. The foundation JSON schema intentionally pins the
-current engine/rule set and reason registry for reproducibility; later versions
-must publish corresponding schema revisions.
+Any limit or unknown authentication makes the assessment partial. Later changes
+must version the rule set and regenerate the schema. Schema 1 consumers must handle
+new reason IDs as unknown without evaluating their text; incompatible schemas
+fail to unavailable. The JSON schema intentionally pins this engine/rule set for
+reproducibility. The output closure has no attacker-derived text fields or dynamic
+weights and can emit at most ten reasons; range/cap/output-byte properties are
+verified independently by tests.
 
 These are inspection limits. Callers preserve original delivery/storage, recovery
 and explicit re-evaluation on partial/unavailable. No reject, bounce, delete,

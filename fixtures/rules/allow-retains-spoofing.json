@@ -1,0 +1,32 @@
+{
+  "name": "allow-retains-spoofing",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Synthetic update",
+    "headers": [],
+    "text": "Hello, here is the requested information.",
+    "sourceComplete": true,
+    "anchors": [
+      {
+        "text": "https://accounts.example.test/",
+        "href": "https://other.invalid/"
+      }
+    ],
+    "preferences": {
+      "senderAllowed": true,
+      "senderBlocked": false
+    }
+  },
+  "context": {
+    "receivedAt": 1792540800000,
+    "preferencesVerified": true
+  },
+  "expectedScore": 30,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "present",
+    "marketing": "unknown"
+  },
+  "expectedLimits": []
+}

@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/Sarv/mailguard",
+  "revision": "ae51a1ddee18649ef729a4195313cbf57db22e87",
+  "version": "0.4.3",
+  "license": "MIT",
+  "licenseSha256": "3eb606fc51931b6f429afb3ac6b1fabd2e95e1ea68040daede9c8bae62c74c53",
+  "data": "No external corpora or generated data adopted",
+  "adaptations": [
+    {
+      "source": "src/text.ts",
+      "sourceSha256": "ca2b674c198fbe2c2c325f08e5a026cedb0045fca8d5385d324ff055354f46da",
+      "local": "packages/core/src/vendor/text.ts",
+      "functions": "normalizeForMatching, containsPhrase",
+      "modifications": "Scalar-by-scalar bounded normalization, quote skipping, code-point-aware boundaries; fixed original phrase groups; no corpus."
+    },
+    {
+      "source": "src/content/vocabulary.ts",
+      "sourceSha256": "01fbfe248e0a49b00b9a0b2469b977f77f85c2bab871a01e52f49ab1572c52b8",
+      "local": "packages/core/src/vendor/text.ts",
+      "functions": "matchSpamVocabulary",
+      "modifications": "Once-per-group matching structure with fixed original supporting phrases; no exported dynamic groups, weights or labels."
+    },
+    {
+      "source": "src/urls.ts",
+      "sourceSha256": "3e45826704df9491e0caa4fead125b7af482bccf13846d8bd8b1bdb0d601524c",
+      "local": "packages/core/src/vendor/links.ts",
+      "functions": "linkTarget, anchorMismatches",
+      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; no wrapper exemptions/corpus/prose extraction; bounded decoding."
+    },
+    {
+      "source": "src/headers/bulk.ts",
+      "sourceSha256": "31addaf3036aaaf35944f866b2d858225004e6a88f69d9982c6d0510fd4fb2e0",
+      "local": "packages/core/src/vendor/bulk.ts",
+      "functions": "bulkHeaderSignals",
+      "modifications": "Only list-id, list-unsubscribe and precedence predicates; auto-submitted/ESP tables omitted."
+    }
+  ]
+}
