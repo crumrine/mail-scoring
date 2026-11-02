@@ -17,6 +17,11 @@ test('legacy pinned consumer retains rules-1 response and no new reason during r
   const r=score({...base,policyVersion:'inbox-shadow-1'});
   assert.equal(r.ruleSetVersion,'rules-1');assert.equal(r.heuristicScore,0);assert.deepEqual(r.reasons,[]);
 });
+test('empty optional addresses from the actual Inbox projection are absent, not malformed',()=>{
+  const r=score({...base,addresses:{...base.addresses,replyTo:'',envelopeFrom:''}});
+  assert.equal(r.heuristicScore,45);assert.ok(!r.limitsHit.includes('identity_uninspected'));
+  assert.ok(score({...base,addresses:{...base.addresses,replyTo:'not an address'}}).limitsHit.includes('identity_uninspected'));
+});
 test('brand mention, sender mismatch, tracker and marketing alone are insufficient',()=>{
   const controls=[
     {...base,addresses:{...base.addresses,displayName:'Person discussing QuickBooks'}},
