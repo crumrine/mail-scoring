@@ -2,7 +2,7 @@
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Status: bounded v0.1 deterministic core (`rules-1`), private RPC adapter and local workerd validation.** Named link, identity, combined-content and explicit preference rules maintain independent marketing evidence. HTML remains uninspected/partial. No hosted deployment, real-mail evaluation, detection accuracy or savings are claimed.
+**Status: bounded v0.1 deterministic core (`rules-2`), private RPC adapter and local workerd validation.** Named link, identity, combined-content and explicit preference rules maintain independent marketing evidence. [Rules-2](docs/rules-2.md) adds combined brand impersonation evidence from caller-extracted text/anchors. Raw HTML remains uninspected/partial in this portable core. Detection accuracy or savings are not claimed.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

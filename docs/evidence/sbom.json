@@ -51,8 +51,8 @@
       "local": "packages/core/src/vendor/links.ts",
       "license": "MIT",
       "data": "none",
-      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; no wrapper exemptions/corpus/prose extraction; bounded decoding.",
-      "sha256": "ffdabe4e580624af09ec2cf080bb9c468cecf88cde40d05225c512798b8bc796"
+      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; bounded decoding and one lexical HTTP redirect parameter hint; no fetching, wrapper exemptions, external corpus or prose extraction.",
+      "sha256": "0cf6f0db9cd5650f66617dcc12225bdea32f2d07f1e49ab71303f6747d728f70"
     },
     {
       "name": "Mailguard bulkHeaderSignals",

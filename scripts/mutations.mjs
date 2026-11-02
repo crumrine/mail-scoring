@@ -5,6 +5,8 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'brand-rule',file:'packages/core/src/index.ts',before:"if(result.ruleSetVersion==='rules-2' && brandImpersonation(input,limits,features.work))",after:'if(false)',command:['test'],failure:/✖ HTML feature review lure/},
+  {id:'brand-negative-control',file:'packages/core/src/brand.ts',before:'if(aligned(sender,brand.domains))return false;',after:'// Deliberately ignore legitimate sender alignment.',command:['test'],failure:/✖ brand mention, sender mismatch/},
   {id:'url-length',file:'packages/core/src/guards.ts',before:"read(item(urls,i),LIMITS.urlBytes,'field_bytes')",after:"read(item(urls,i),LIMITS.requestBytes,'field_bytes')",command:['test'],failure:/✖ URL decoding has a finite/},
   {id:'normalized-output',file:'packages/core/src/vendor/text.ts',before:'if(bytes+cost>LIMITS.normalizedBytes)',after:'if(bytes+cost>LIMITS.requestBytes)',command:['test'],failure:/✖ normalized output guard/},
   {id:'anchor-count',file:'packages/core/src/guards.ts',before:'Math.min(anchors.length,LIMITS.urls)',after:'anchors.length',command:['test'],failure:/✖ anchor work is bounded/},
