@@ -6,7 +6,7 @@ import {linkTarget,visibleTarget,type LinkWork} from './vendor/links.js';
 import {marketingHeaders} from './vendor/bulk.js';
 /** Conservative parsed mailbox host. No raw RFC address-list parsing or suffix trust. */
 function mailboxHost(address:string|undefined,limits:Set<LimitId>):string|null {
-  if(address===undefined)return null;
+  if(address===undefined || address==='')return null;
   const at=address.lastIndexOf('@');
   if(at<=0 || at!==address.indexOf('@') || /[\s<>"(),;\\]/u.test(address)) {limits.add('identity_uninspected');return null;}
   const domain=address.slice(at+1);

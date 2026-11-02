@@ -11,7 +11,7 @@ const result=await build({entryPoints:['packages/core/src/index.ts'],bundle:true
 const code=result.outputFiles[0].text;
 inspectBundle(code,result.metafile,[
   'packages/core/src/index.ts','packages/core/src/contract.ts','packages/core/src/guards.ts','packages/core/src/vendor/authentication-failed.ts',
-  'packages/core/src/inspection.ts','packages/core/src/vendor/text.ts','packages/core/src/vendor/links.ts','packages/core/src/vendor/bulk.ts'
+  'packages/core/src/inspection.ts','packages/core/src/brand.ts','packages/core/src/vendor/text.ts','packages/core/src/vendor/links.ts','packages/core/src/vendor/bulk.ts'
 ]);
 await writeFile('.artifacts/core.js',code);
 await writeFile('.artifacts/core-meta.json',JSON.stringify(result.metafile,null,2)+'\n');

@@ -19,7 +19,7 @@ const input=obj({
 },['schemaVersion','policyVersion','subject','headers','text','sourceComplete']);
 input['x-totalAnchorsAndUrls']=100;input['x-normalizedOutputBytes']=65536;
 input['x-combinedSourceBytes']=131072;input['x-requestBytes']=262144;input['x-jsonDepth']=6;input['x-jsonTokens']=4096;
-const output=obj({schemaVersion:{const:'1'},engineVersion:{const:'0.1.0'},ruleSetVersion:{const:'rules-1'},
+const output=obj({schemaVersion:{const:'1'},engineVersion:{const:'0.1.0'},ruleSetVersion:{enum:['rules-1','rules-2']},
   status:{enum:['complete','partial','unavailable']},heuristicScore:{type:'number',minimum:0,maximum:100},
   signals:obj({spam:{enum:['present','unknown']},phishing:{enum:['present','unknown']},marketing:{enum:['present','unknown']}}),
   reasons:{type:'array',maxItems:Object.keys(REASONS).length,items:{oneOf:Object.entries(REASONS).map(([id,reason])=>obj({id:{const:id},contribution:{type:'integer',minimum:0,maximum:RULE_CAPS[id]},reason:{const:reason}}))}},

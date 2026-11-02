@@ -12,7 +12,10 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-1"
+      "enum": [
+        "rules-1",
+        "rules-2"
+      ]
     },
     "status": {
       "enum": [
@@ -57,7 +60,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 10,
+      "maxItems": 11,
       "items": {
         "oneOf": [
           {
@@ -206,6 +209,28 @@
               },
               "reason": {
                 "const": "A sensitive request accompanies suspicious link or identity evidence."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "brand_impersonation_combined"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 45
+              },
+              "reason": {
+                "const": "A recognized brand claim, unrelated sender and unrelated action link accompany an account or review lure."
               }
             },
             "required": [

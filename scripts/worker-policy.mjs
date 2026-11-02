@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict';
 import ts from 'typescript';
-export const coreModules=['index','contract','guards','inspection','vendor/authentication-failed','vendor/text','vendor/links','vendor/bulk'].map(n=>`packages/core/src/${n}.ts`);
+export const coreModules=['index','contract','guards','inspection','brand','vendor/authentication-failed','vendor/text','vendor/links','vendor/bulk'].map(n=>`packages/core/src/${n}.ts`);
 export const scorerModules=[...coreModules,...['index','adapter','protocol'].map(n=>`workers/private/${n}.ts`)];
 export const consumerModules=['workers/consumer/index.ts','workers/consumer/integration.ts','workers/private/protocol.ts','packages/core/src/contract.ts'];
 export function checkConfig(c,consumer=false) {
