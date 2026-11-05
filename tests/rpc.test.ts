@@ -30,12 +30,23 @@ test('consumer wait limit preserves delivery without claiming CPU cancellation',
  assert.deepEqual(result,{delivery:'preserve',inspection:'unknown'});
 });
 test('response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits',()=>{
- const wire=scoreRpc('1',input);assert.ok(decodeResponse(wire)?.ok);
+ const wire=scoreRpc('1',input);const decoded=decodeResponse(wire);assert.ok(decoded?.ok);
+ assert.equal(decoded.result.ruleSetVersion,'rules-2');
+ const gtubeInput=new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'test',subject:'Test spam mail (GTUBE)',text:'XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X',headers:[],sourceComplete:true}));
+ const gtubeWire=scoreRpc('1',gtubeInput);const gtubeDecoded=decodeResponse(gtubeWire);
+ assert.ok(gtubeDecoded?.ok);assert.equal(gtubeDecoded.result.ruleSetVersion,'rules-2');
+ assert.equal(gtubeDecoded.result.heuristicScore,100);assert.equal(gtubeDecoded.result.reasons[0]?.id,'gtube');
+ // Caller-first rollout compatibility: rules-1 remains accepted for legacy reasons, but rejects gtube.
+ const rules1Legacy=JSON.parse(wire);rules1Legacy.result.ruleSetVersion='rules-1';
+ assert.ok(decodeResponse(JSON.stringify(rules1Legacy))?.ok);
+ const rules1WithGtube=JSON.parse(gtubeWire);rules1WithGtube.result.ruleSetVersion='rules-1';
+ assert.equal(decodeResponse(JSON.stringify(rules1WithGtube)),null);
  assert.equal(decodeResponse('{"rpcVersion":"1","ok":false,"error":"invalid_input"}'.padEnd(4097,' ')),null);
  assert.equal(decodeResponse('['.repeat(7)+'0'+']'.repeat(7)),null);
  for(const mutate of [
-  (r:any)=>{r.rpcVersion='2';},(r:any)=>{r.result.extra='PRIVATE_CANARY_877';},
+  (r:any)=>{r.rpcVersion='2';},(r:any)=>{r.result.ruleSetVersion='rules-3';},(r:any)=>{r.result.extra='PRIVATE_CANARY_877';},
   (r:any)=>{r.result.reasons=[{id:'link_mismatch',contribution:30,reason:'PRIVATE_CANARY_877'}];},
+  (r:any)=>{r.result.reasons=[{id:'unknown_reason',contribution:10,reason:'Unknown'}];},
   (r:any)=>{r.result.heuristicScore=101;},(r:any)=>{r.result.limitsHit=['PRIVATE_CANARY_877'];},
   (r:any)=>{r.result.status='complete';},(r:any)=>{r.result.signals.spam='safe';}
  ]){const r=JSON.parse(wire);mutate(r);assert.equal(decodeResponse(JSON.stringify(r)),null);}

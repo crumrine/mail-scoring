@@ -7,6 +7,8 @@ const invalid = (): never => { throw new InvalidInput(); };
 // Only parser-created, deeply frozen roots can reach structural enumeration.
 // Identity checks do not inspect caller keys, prototypes, accessors or Proxy traps.
 const parsedRoots = new WeakSet<object>();
+const rawTexts = new WeakMap<ScoreInputV1, string>();
+export const rawSourceText = (input: ScoreInputV1): string => rawTexts.get(input) ?? input.text;
 function freezeParsed(value: unknown): void {
   // Called ONLY on JSON.parse output after byte/depth/token preflight. Enumeration
   // and recursion here therefore have hard bounds; never call on direct input.
@@ -77,7 +79,9 @@ export function guardInput(value: unknown): GuardedInput | null {
       subject:read(r.subject,LIMITS.subjectBytes,'field_bytes'), headers:[],
       text:read(r.text,LIMITS.sourceBytes,'source_bytes',true), sourceComplete:bool(r.sourceComplete)};
     // Charge source bytes BEFORE control removal; never reclaim input budget.
-    const sourceUsed = boundedText(r.text,LIMITS.sourceBytes).bytes;
+    const rawSource = boundedText(r.text,LIMITS.sourceBytes);
+    if (rawSource.text !== input.text) rawTexts.set(input,rawSource.text);
+    const sourceUsed = rawSource.bytes;
     if (r.html !== undefined) {
       input.html = read(r.html,LIMITS.sourceBytes-sourceUsed,'source_bytes',true);
       if (r.html !== '') limits.add('html_uninspected');

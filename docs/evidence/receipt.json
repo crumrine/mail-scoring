@@ -1,0 +1,19 @@
+{
+  "headSha": "2fab406320ae3b3596345d2c76e0ef8a08593211",
+  "baseSha": "2fab406320ae3b3596345d2c76e0ef8a08593211",
+  "prerequisitePr": "https://github.com/crumrine/mail-scoring/pull/4",
+  "sourceTreeDigest": "59f88b7aa1bba7f73aae4b983af75d38ad67084ba9438b61ff02769f7745931a",
+  "node": "v24.15.0",
+  "npm": "11.12.1",
+  "workerd": "workerd 2026-10-21",
+  "commands": [
+    "npm ci",
+    "npm run check",
+    "npm run sbom",
+    "node scripts/schemas.mjs",
+    "npm run worker:benchmark",
+    "npm run benchmark"
+  ],
+  "workflowSha": null,
+  "scope": "source-only; synthetic local/workerd evidence; no production or real-mail acceptance"
+}

@@ -16,6 +16,7 @@ const checks=[
   {id:'source-bound',file:'packages/core/src/guards.ts',before:"text:read(r.text,LIMITS.sourceBytes,'source_bytes',true)",after:"text:read(r.text,LIMITS.requestBytes,'source_bytes',true)",command:['test'],failure:/✖ source and extracted byte limits/},
   {id:'parsed-root',file:'packages/core/src/guards.ts',before:"    if (!value || typeof value !== 'object' || !parsedRoots.has(value)) return null;",after:"    // Deliberately removed parser identity guard.",command:['test'],failure:/✖ unprepared roots/},
   {id:'lazy-string',file:'packages/core/src/guards.ts',before:"  if (value.length > LIMITS.requestBytes) return {text:'', bytes:0, truncated:true};",after:"  // Deliberately removed representation length preflight.",command:['test'],failure:/✖ lazy strings/},
+  {id:'gtube-detection',file:'packages/core/src/inspection.ts',before:'if(!text.includes(GTUBE_MARKER))return false;',after:'return false;',command:['test'],failure:/✖ standard GTUBE marker recognition/},
   {id:'network-deny',file:'workers/scorer/deny.js',before:"throw new Error('network_disabled')",after:"return new Response('synthetic mutation')",command:['run','workerd-spike'],failure:/workerd spike failed/},
 ];
 const evidence=[];

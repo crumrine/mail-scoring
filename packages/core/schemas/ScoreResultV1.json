@@ -12,7 +12,11 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-1"
+      "const": "rules-2",
+      "x-compatibleRuleSetVersions": [
+        "rules-1",
+        "rules-2"
+      ]
     },
     "status": {
       "enum": [
@@ -57,7 +61,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 10,
+      "maxItems": 11,
       "items": {
         "oneOf": [
           {
@@ -272,6 +276,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "gtube"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "reason": {
+                "const": "The plain-text body contains the standard GTUBE test marker (intentional test trigger, not a calibrated spam probability)."
               }
             },
             "required": [

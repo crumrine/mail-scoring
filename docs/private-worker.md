@@ -35,6 +35,15 @@ completeness before a consumer uses the result. Incompatible future engine/rule
 versions fail to unknown; coordinate version rollout with the caller. A new rule
 contract must not silently bypass that validation.
 
+For `rules-2` (adding the bounded `gtube` test-marker reason), `workers/private/protocol.ts`
+exports `RuleSetVersion` (`'rules-1' | 'rules-2'`) and `decodeResponse` accepts both
+`'rules-1'` and `'rules-2'` while rejecting `gtube` when `ruleSetVersion === 'rules-1'`
+and rejecting any other version or unknown reason. Because the currently deployed
+Agentic Inbox (`08b92457015b3615e325cf4b57954daa12a628c2`) strictly pins
+`ruleSetVersion === 'rules-1'` and only the initial 10 reasons, **do not deploy a
+`rules-2` scorer ahead of an updated caller**: deploy the updated caller (`DEV-989`)
+that accepts `'rules-1' | 'rules-2'` first, then deploy the `rules-2` scorer (`OPS-599`).
+
 ### Bounds and trust
 
 The core is unchanged. Its private WeakSet and deeply frozen parser-root contract

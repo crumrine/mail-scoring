@@ -1,0 +1,24 @@
+{
+  "name": "gtube-quoted",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Re: Test spam mail (GTUBE)",
+    "headers": [],
+    "text": "The standard test string is quoted below and must not trigger:\n> XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X\n",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": [
+    "auth_unknown",
+    "quoted_content"
+  ]
+}

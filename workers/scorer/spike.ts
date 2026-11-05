@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // LOCAL TEST ENTRY ONLY. No listener, routes, deployment config, or service credentials.
-import {score, scoreRequest, parseRequest, boundedText, LIMITS} from '../../packages/core/src/index.js';
+import {score, scoreRequest, parseRequest, boundedText, GTUBE_MARKER, LIMITS} from '../../packages/core/src/index.js';
 const ordinary={schemaVersion:'1',policyVersion:'synthetic-1',subject:'test',headers:[],text:'test',sourceComplete:true};
 // Execute the selected path at module initialization, as well as inside the test event.
 const prepared=(value:unknown)=>parseRequest(new TextEncoder().encode(JSON.stringify(value))).value;
@@ -17,6 +17,10 @@ export default {
     check(JSON.stringify(score(prepared(dangerous),{receivedAt:123}))===JSON.stringify(initialRules));
     const marketing=score(prepared({...ordinary,headers:[{name:'List-Id',value:'synthetic.test'}]}));
     check(marketing.heuristicScore===0 && marketing.signals.marketing==='present');
+    const gtube=score(prepared({...ordinary,text:GTUBE_MARKER}));
+    check(gtube.ruleSetVersion==='rules-2' && gtube.heuristicScore===100 && gtube.reasons[0]?.id==='gtube');
+    const gtubeQuoted=score(prepared({...ordinary,text:`> ${GTUBE_MARKER}`}));
+    check(gtubeQuoted.heuristicScore===0 && gtubeQuoted.limitsHit.includes('quoted_content'));
     const expanded=score(prepared({...ordinary,text:'\ufdfa'.repeat(10000)}));
     check(expanded.status==='partial' && expanded.limitsHit.includes('normalized_bytes'));
     const encoded=score(prepared({...ordinary,urls:['https%25253A%25252F%25252Fother.invalid']}));
