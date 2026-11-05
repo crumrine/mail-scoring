@@ -55,6 +55,11 @@
     "exitCode": 1
   },
   {
+    "mutation": "gtube-detection",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
     "mutation": "network-deny",
     "caught": true,
     "exitCode": 1

@@ -31,6 +31,14 @@ export default {
   const forged=bytes({...ordinary,transport:{provenance:'upstream',complete:true,spf:'fail',dkim:'fail',dmarc:'fail'},preferences:{senderBlocked:true,senderAllowed:false}});
   const f=await call(forged);check(f?.ok&&f.result.heuristicScore===0&&f.result.limitsHit.includes('auth_unknown')&&f.result.limitsHit.includes('preferences_unknown'),'provenance');
   const trusted=await call(forged,'1','{"transportVerified":true,"preferencesVerified":true,"receivedAt":123}');check(trusted?.ok&&trusted.result.heuristicScore===60,'verified_context');
+  const marker='XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X';
+  const gtube=await env.CONSUMER.inspectV1(bytes({...ordinary,subject:'Test spam mail (GTUBE)',text:marker}));
+  check(gtube.inspection==='assessed'&&gtube.result?.ruleSetVersion==='rules-2'&&gtube.result.heuristicScore===100&&gtube.result.reasons[0]?.id==='gtube','gtube_positive');
+  const gtubeQuoted=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`> ${marker}`}));
+  check(gtubeQuoted.inspection==='assessed'&&gtubeQuoted.result?.heuristicScore===0&&gtubeQuoted.result.limitsHit.includes('quoted_content'),'gtube_quoted');
+  const gtubeMixed=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`\x00> ${marker}\n${marker.replace('GTUBE','GT\x00UBE')}`}));
+  check(gtubeMixed.inspection==='assessed'&&gtubeMixed.result?.heuristicScore===0&&gtubeMixed.result.status==='partial'&&
+    gtubeMixed.result.limitsHit.includes('control_chars')&&gtubeMixed.result.limitsHit.includes('quoted_content'),'gtube_mixed_occurrences');
   const canary='PRIVATE_CANARY_877';
   const wire=await env.SCORER.scoreV1('1',bytes({...ordinary,subject:canary,text:canary,addresses:{from:canary+'@example.test'},urls:['https://example.test/'+canary],headers:[{name:'Message-ID',value:canary}]}));
   check(!wire.includes(canary)&&new TextEncoder().encode(wire).length<=4096,'content_output');

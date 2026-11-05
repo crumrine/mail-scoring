@@ -1,0 +1,34 @@
+{
+  "name": "gtube-positive",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Test spam mail (GTUBE)",
+    "headers": [
+      {
+        "name": "message-id",
+        "value": "<gtube.1010101@example.test>"
+      }
+    ],
+    "addresses": {
+      "from": "sender@example.test",
+      "replyTo": "sender@example.test",
+      "envelopeFrom": "sender@example.test",
+      "displayName": "Test Sender"
+    },
+    "text": "This is the GTUBE, the\n\tGeneric\n\tTest for\n\tUnsolicited\n\tBulk\n\tEmail\n\nIf your spam filter supports it, the GTUBE provides a test by which you\ncan verify that the filter is installed correctly and is detecting incoming\nspam. You can send yourself a test mail containing the following string of\ncharacters (in upper case and with no white spaces and line breaks):\n\nXJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X\n\nYou should send this test mail from an account outside of your network.\n",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 100,
+  "expectedSignals": {
+    "spam": "present",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": [
+    "auth_unknown"
+  ]
+}

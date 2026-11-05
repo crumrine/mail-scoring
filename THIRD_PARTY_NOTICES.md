@@ -91,3 +91,18 @@ executed or audited as runtime scorer dependencies. Preserve full component
 notices/source obligations if separately distributing developer tooling binaries.
 Exact upstream tooling sources: https://github.com/cloudflare/workers-sdk/tree/wrangler@4.151.3
 and https://github.com/cloudflare/workerd/tree/v1.20261021.1.
+
+## Standard GTUBE test marker and synthetic fixtures (DEV-988)
+
+The 68-byte ASCII GTUBE test string
+(`XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X`) and
+reference explanatory paragraph in `fixtures/rules/gtube-positive.json` follow the
+standard Generic Test for Unsolicited Bulk Email documented by the Apache
+SpamAssassin project (`https://spamassassin.apache.org/gtube/` and
+`https://github.com/apache/spamassassin/blob/773455eeebf40d4d265790365c2d893f7b340066/t/gtube.t`,
+Apache-2.0 repository; the GTUBE documentation explicitly places the GTUBE string
+and test text in the public domain for spam-filter testing). All envelope, header
+and Message-ID fields in `fixtures/rules/gtube-*.json` are original synthetic
+`.test` values authored for this repository. Using the standard GTUBE test marker
+does not adopt any SpamAssassin rule corpus, weights or third-party email dataset,
+and does not grant redistribution rights to unrelated corpora.
