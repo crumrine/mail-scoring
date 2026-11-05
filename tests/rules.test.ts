@@ -43,6 +43,27 @@ test('synthetic rule fixtures validate schema, exact contributions and determini
     assert.equal(JSON.stringify(p),before);
   }
 });
+test('GTUBE requires a literal marker outside quotes and forwards on the original line',()=>{
+  for(const control of ['\x00','\x85','\u202e']) {
+    const quoted=` \t${control}> ${GTUBE_MARKER}`;
+    const split=GTUBE_MARKER.replace('GTUBE',`GT${control}UBE`);
+    const forwarded=`-----Original${control} Message-----\r\n${GTUBE_MARKER}`;
+    const gmailForward=`---------- Forwarded${control} message ---------\n${GTUBE_MARKER}`;
+    for(const text of [quoted,split,`${quoted}\n${split}`,`${split}\r\n${quoted}`,
+      forwarded,gmailForward,`${split}\r\n${forwarded}`,`${split}\n${gmailForward}`]) {
+      const result=scored({...base(),text});valid(result);
+      assert.equal(result.heuristicScore,0,JSON.stringify(text));
+      assert.equal(result.status,'partial');
+      assert.ok(result.limitsHit.includes('control_chars'));
+      assert.equal(result.limitsHit.includes('quoted_content'),text!==split);
+    }
+    const literal=scored({...base(),text:`${quoted}\n${control}${GTUBE_MARKER}\n${forwarded}`});
+    valid(literal);
+    assert.deepEqual(literal.reasons,[{id:'gtube',contribution:100,reason:REASONS.gtube}]);
+    assert.equal(literal.status,'partial');
+    assert.ok(literal.limitsHit.includes('control_chars') && literal.limitsHit.includes('quoted_content'));
+  }
+});
 test('normalized output guard bounds expansion before materializing full NFKC output',()=>{
   for(const n of [1985,1986,10000]) {
     const x=inspected({...base(),text:'\ufdfa'.repeat(n)});

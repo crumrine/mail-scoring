@@ -161,9 +161,10 @@ supply rule weights or change execution.
 `gtube` matches only the exact 68-byte uppercase ASCII standard test marker
 `XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X` on an
 unquoted line of the bounded plain-text body (`input.text`, capped at 131072 UTF-8
-bytes before scanning). Both the control-stripped `input.text` and the raw bounded
-source prefix must contain the contiguous marker on an unquoted line, so stripped
-C0/C1/bidi controls cannot fuse split marker fragments. A marker in `subject`,
+bytes before scanning). The same original line must contain the contiguous
+marker and pass the quote check. Quote and forward prefixes are checked after
+stripping C0/C1/bidi controls; the marker itself is matched before stripping.
+A marker in `subject`,
 `headers`, `extractedText`, `html`, `addresses`, `urls` or `anchors` never triggers
 `gtube`. Case changes, altered or truncated bytes, internal whitespace or line
 breaks, invisible characters and fullwidth forms do not match.

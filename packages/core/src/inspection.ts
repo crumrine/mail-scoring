@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import {GTUBE_MARKER,type ScoreInputV1,type LimitId} from './contract.js';
-import {rawSourceText} from './guards.js';
+import {MULTILINE_CONTROLS,rawSourceText} from './guards.js';
 import {normalizeText,phraseSignals} from './vendor/text.js';
 import {linkTarget,visibleTarget,type LinkWork} from './vendor/links.js';
 import {marketingHeaders} from './vendor/bulk.js';
@@ -12,17 +12,15 @@ function hasUnquotedGtube(text:string,limits:Set<LimitId>):boolean {
   for(let lineStart=0;lineStart<text.length;) {
     let lineEnd=lineStart;
     while(lineEnd<text.length && text[lineEnd]!=='\n' && text[lineEnd]!=='\r')lineEnd++;
-    let first=lineStart;
-    while(first<lineEnd && (text[first]===' ' || text[first]==='\t'))first++;
-    if(first<lineEnd) {
-      if(text[first]==='>')limits.add('quoted_content');
-      else {
-        const prefix=text.slice(first,Math.min(lineEnd,first+29)).toLowerCase();
-        if(prefix.startsWith('-----original message-----') || prefix.startsWith('---------- forwarded message')) {
-          limits.add('quoted_content');break;
-        }
-        if(lineEnd-first>=GTUBE_MARKER.length && text.slice(first,lineEnd).includes(GTUBE_MARKER))found=true;
+    const line=text.slice(lineStart,lineEnd);
+    // Controls cannot hide a quote prefix or turn a broken marker into a match.
+    const prefix=line.replace(MULTILINE_CONTROLS,'').replace(/^[ \t]+/,'').slice(0,29).toLowerCase();
+    if(prefix.startsWith('>'))limits.add('quoted_content');
+    else {
+      if(prefix.startsWith('-----original message-----') || prefix.startsWith('---------- forwarded message')) {
+        limits.add('quoted_content');break;
       }
+      if(line.includes(GTUBE_MARKER))found=true;
     }
     lineStart=lineEnd+1;
   }
@@ -47,7 +45,7 @@ export function inspect(input:ScoreInputV1,limits:Set<LimitId>) {
   const normalized=normalizeText([input.subject,input.text,input.extractedText??'',input.addresses?.displayName??'']);
   if(normalized.truncated)limits.add('normalized_bytes');
   if(normalized.quoted)limits.add('quoted_content');
-  const gtube=hasUnquotedGtube(input.text,limits) && hasUnquotedGtube(rawSourceText(input),limits);
+  const gtube=hasUnquotedGtube(rawSourceText(input),limits);
   const content=phraseSignals(normalized.text);
   const work:LinkWork={parses:0,decodePasses:0};
   let mismatch=false,userinfo=false;

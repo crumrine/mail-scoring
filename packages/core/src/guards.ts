@@ -7,6 +7,7 @@ const invalid = (): never => { throw new InvalidInput(); };
 // Only parser-created, deeply frozen roots can reach structural enumeration.
 // Identity checks do not inspect caller keys, prototypes, accessors or Proxy traps.
 const parsedRoots = new WeakSet<object>();
+export const MULTILINE_CONTROLS = /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]/g;
 const rawTexts = new WeakMap<ScoreInputV1, string>();
 export const rawSourceText = (input: ScoreInputV1): string => rawTexts.get(input) ?? input.text;
 function freezeParsed(value: unknown): void {
@@ -69,7 +70,7 @@ export function guardInput(value: unknown): GuardedInput | null {
       const b = boundedText(v, cap);
       if (b.truncated) limits.add(id);
       // Controls are removed, never interpreted; UTF-16 lone surrogates become U+FFFD.
-      const re = multiline ? /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]/g : /[\x00-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]/g;
+      const re = multiline ? MULTILINE_CONTROLS : /[\x00-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]/g;
       if (re.test(b.text)) limits.add('control_chars');
       return b.text.replace(re, '').toWellFormed();
     };
