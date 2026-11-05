@@ -1,133 +1,133 @@
 {
-  "runtime": "v24.15.0",
-  "platform": "linux",
-  "arch": "x64",
-  "cpu": "Intel(R) Xeon(R) Gold 6152 CPU @ 2.10GHz",
+  "runtime": "v24.13.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M5 Pro",
   "samples": [
     {
       "kind": "root",
       "size": 1000,
-      "elapsedMs": 2.136347999999998,
-      "heapDeltaBytes": 18224,
+      "elapsedMs": 0.1735420000000012,
+      "heapDeltaBytes": 18136,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000,
-      "elapsedMs": 0.05820500000004358,
-      "heapDeltaBytes": 6816,
+      "elapsedMs": 0.0055419999999983816,
+      "heapDeltaBytes": 6784,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 1000,
-      "elapsedMs": 0.19700799999998253,
-      "heapDeltaBytes": 6800,
+      "elapsedMs": 0.005333000000000254,
+      "heapDeltaBytes": 6768,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000,
-      "elapsedMs": 0.06003499999997075,
-      "heapDeltaBytes": 6816,
+      "elapsedMs": 0.004750000000001364,
+      "heapDeltaBytes": 6784,
       "rssDeltaBytes": 0
     },
     {
       "kind": "root",
       "size": 100000,
-      "elapsedMs": 0.03323199999999815,
-      "heapDeltaBytes": 7192,
+      "elapsedMs": 0.010207999999998663,
+      "heapDeltaBytes": 7160,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 100000,
-      "elapsedMs": 0.03364099999998871,
-      "heapDeltaBytes": 6944,
+      "elapsedMs": 0.006041000000010399,
+      "heapDeltaBytes": 6912,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 100000,
-      "elapsedMs": 0.05329299999993964,
+      "elapsedMs": 0.013917000000006396,
+      "heapDeltaBytes": 3712,
+      "rssDeltaBytes": 0
+    },
+    {
+      "kind": "attachment",
+      "size": 100000,
+      "elapsedMs": 0.017250000000018417,
       "heapDeltaBytes": 3728,
       "rssDeltaBytes": 0
     },
     {
-      "kind": "attachment",
-      "size": 100000,
-      "elapsedMs": 0.10846200000014505,
-      "heapDeltaBytes": 3760,
-      "rssDeltaBytes": 0
-    },
-    {
       "kind": "root",
       "size": 1000000,
-      "elapsedMs": 0.12150600000131817,
-      "heapDeltaBytes": 3928,
+      "elapsedMs": 0.02533400000004349,
+      "heapDeltaBytes": 3896,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000000,
-      "elapsedMs": 0.09895099999994272,
-      "heapDeltaBytes": 5688,
+      "elapsedMs": 0.0182079999999587,
+      "heapDeltaBytes": 5656,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 1000000,
-      "elapsedMs": 0.02757500000006985,
+      "elapsedMs": 0.008084000000053493,
       "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000000,
-      "elapsedMs": 0.02892299999803072,
+      "elapsedMs": 0.007333000000016909,
       "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 1048576,
-      "elapsedMs": 6.307198000002245,
-      "heapDeltaBytes": 25152,
-      "rssDeltaBytes": 0
+      "elapsedMs": 0.9755839999997988,
+      "heapDeltaBytes": 22544,
+      "rssDeltaBytes": 16384
     },
     {
       "kind": "concatenation",
       "size": 1048576,
-      "elapsedMs": 0.06007599999429658,
-      "heapDeltaBytes": 1400,
+      "elapsedMs": 0.007083999999849766,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 16777216,
-      "elapsedMs": 0.12278099999821279,
-      "heapDeltaBytes": 1400,
+      "elapsedMs": 0.004209000000173546,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 16777216,
-      "elapsedMs": 0.05827500000305008,
-      "heapDeltaBytes": 1400,
+      "elapsedMs": 0.003125000000181899,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 67108864,
-      "elapsedMs": 0.04798000000300817,
-      "heapDeltaBytes": 1400,
+      "elapsedMs": 0.0029169999997975538,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 67108864,
-      "elapsedMs": 0.048001000002841465,
-      "heapDeltaBytes": 1400,
+      "elapsedMs": 0.0026250000000800355,
+      "heapDeltaBytes": 1384,
       "rssDeltaBytes": 0
     }
   ],

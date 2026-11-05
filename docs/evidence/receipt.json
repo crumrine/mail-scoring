@@ -1,9 +1,9 @@
 {
-  "headSha": "2fab406320ae3b3596345d2c76e0ef8a08593211",
+  "headSha": "27bec1a62a755c2229a20c742c705f953a2bbcf8",
   "baseSha": "2fab406320ae3b3596345d2c76e0ef8a08593211",
   "prerequisitePr": "https://github.com/crumrine/mail-scoring/pull/4",
-  "sourceTreeDigest": "59f88b7aa1bba7f73aae4b983af75d38ad67084ba9438b61ff02769f7745931a",
-  "node": "v24.15.0",
+  "sourceTreeDigest": "82e544f5580a2c44836260ebfbfc233caa7b639899413d0445cf73faa654742a",
+  "node": "v24.13.0",
   "npm": "11.12.1",
   "workerd": "workerd 2026-10-21",
   "commands": [
