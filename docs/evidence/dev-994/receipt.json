@@ -1,0 +1,17 @@
+{
+  "ticket": "DEV-994",
+  "scorerRuntimePin": "faa15bea06db52f2dc240257d5335a66a933f909",
+  "consumerPin": "e3f6c3494eafd13e08d9038f6d22c613948fae57",
+  "consumerSource": "cd6dcb76aff5b687a7bec5ebe9c5289aa9b055f5",
+  "consumerEvidence": "https://github.com/crumrine/agentic-inbox-imap/tree/e3f6c3494eafd13e08d9038f6d22c613948fae57/docs/evidence/dev-994",
+  "consumerReceiptSha256": "be5698c36c054b5b486834b6d84406a0abf95630632cd214bf90a41f42875bae",
+  "matrixSha256": "bc2e99d9a3ad2b46ead90470eaff0edbbbb070ed2fc2e0f0e238b0eaafbfdc0b",
+  "checks": {
+    "full": "628/628 in35files, including strengthened registered-other-mailbox preference isolation",
+    "focused": "Initial5/5 conformance groups passed before strengthening other-mailbox fixture; final full suite includes that stronger fixture",
+    "typecheck": "passed",
+    "build": "client/SSR passed",
+    "browser": "Chrome157 at1440/390; actual components with syntheticHTTP bridge; zero externalrequests/pageerrors; screenshots visually inspected"
+  },
+  "scope": "Coverage map and source-pinned commands reuse existing executable consumer workerd/browser suites and historical dev-880 preservation patterns. No scorer runtime change or deployment."
+}
