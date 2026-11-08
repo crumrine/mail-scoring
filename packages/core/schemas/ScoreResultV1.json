@@ -12,10 +12,11 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-2",
+      "const": "rules-3",
       "x-compatibleRuleSetVersions": [
         "rules-1",
-        "rules-2"
+        "rules-2",
+        "rules-3"
       ]
     },
     "status": {
@@ -61,7 +62,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 11,
+      "maxItems": 12,
       "items": {
         "oneOf": [
           {
@@ -289,6 +290,28 @@
             "additionalProperties": false,
             "properties": {
               "id": {
+                "const": "statistical_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded content classifier found strong spam evidence (public-corpus model general-1; a heuristic, not a calibrated confidence probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
                 "const": "gtube"
               },
               "contribution": {
@@ -311,7 +334,7 @@
     },
     "limitsHit": {
       "type": "array",
-      "maxItems": 19,
+      "maxItems": 21,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -333,7 +356,9 @@
           "url_decode_limit",
           "url_uninspected",
           "quoted_content",
-          "identity_uninspected"
+          "identity_uninspected",
+          "html_limit",
+          "statistical_limit"
         ]
       }
     },

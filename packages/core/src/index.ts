@@ -3,6 +3,7 @@
 import { ENGINE_VERSION, RULE_SET_VERSION, REASONS, RULE_CAPS, FAMILY_CAPS, type ReasonId, type ScoreResultV1, type ScoreContext } from './contract.js';
 import { guardInput, parseRequest } from './guards.js';
 import { authenticationFailed } from './vendor/authentication-failed.js';
+import { generalSpam } from './statistical.js';
 import { inspect } from './inspection.js';
 export * from './contract.js';
 export { guardInput, boundedText, parseRequest, readRequest } from './guards.js';
@@ -11,7 +12,7 @@ export function unavailable(error: Exclude<ScoreResultV1['error'],null>): ScoreR
     signals:{spam:'unknown',phishing:'unknown',marketing:'unknown'},reasons:[],limitsHit:[],error};
 }
 /** Immutable parser roots only. Context is trusted application code, never request data.
- * receivedAt is injected Unix milliseconds (default 0); rules-2 has no age rule. */
+ * receivedAt is injected Unix milliseconds (default 0); rules-3 has no age rule. */
 export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const guarded=guardInput(value);
   if(!guarded) return unavailable('invalid_input');
@@ -28,7 +29,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const authFailed=!!(trusted && authenticationFailed(t));
   if(!trusted)limits.add('auth_unknown');
   const features=inspect(input,limits);
-  const totals={authentication:0,links:0,identity:0,content:0,preference:0,marketing:0,test:0};
+  const totals={authentication:0,links:0,identity:0,content:0,preference:0,marketing:0,test:0,statistics:0};
   const add=(id:ReasonId,family:keyof typeof FAMILY_CAPS,signals:Array<keyof ScoreResultV1['signals']>)=>{
     // Rules fire at most once; correlated families and total have independent caps.
     const contribution=Math.min(RULE_CAPS[id],FAMILY_CAPS[family]-totals[family],100-result.heuristicScore);
@@ -52,6 +53,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
     }
   }
   if(features.gtube)add('gtube','test',['spam']);
+  if(!features.gtube&&generalSpam(input,limits))add('statistical_spam','statistics',['spam']);
   if(features.marketing)add('marketing_headers','marketing',['marketing']);
   result.limitsHit=[...limits];result.status=limits.size?'partial':'complete';
   return result;

@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // Local-only harness. All bodies are synthetic; this file is excluded from deployment bundles.
+import {STATISTICAL_SPAM} from '../../fixtures/statistical.ts';
 import {bytes, cases, ordinary} from './fixtures.js';
 import {decodeResponse, type ScorerBinding} from '../../workers/private/protocol.js';
 import type {Assessment} from '../../workers/consumer/integration.js';
@@ -33,12 +34,18 @@ export default {
   const trusted=await call(forged,'1','{"transportVerified":true,"preferencesVerified":true,"receivedAt":123}');check(trusted?.ok&&trusted.result.heuristicScore===60,'verified_context');
   const marker='XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X';
   const gtube=await env.CONSUMER.inspectV1(bytes({...ordinary,subject:'Test spam mail (GTUBE)',text:marker}));
-  check(gtube.inspection==='assessed'&&gtube.result?.ruleSetVersion==='rules-2'&&gtube.result.heuristicScore===100&&gtube.result.reasons[0]?.id==='gtube','gtube_positive');
+  check(gtube.inspection==='assessed'&&gtube.result?.ruleSetVersion==='rules-3'&&gtube.result.heuristicScore===100&&gtube.result.reasons[0]?.id==='gtube','gtube_positive');
   const gtubeQuoted=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`> ${marker}`}));
   check(gtubeQuoted.inspection==='assessed'&&gtubeQuoted.result?.heuristicScore===0&&gtubeQuoted.result.limitsHit.includes('quoted_content'),'gtube_quoted');
   const gtubeMixed=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`\x00> ${marker}\n${marker.replace('GTUBE','GT\x00UBE')}`}));
   check(gtubeMixed.inspection==='assessed'&&gtubeMixed.result?.heuristicScore===0&&gtubeMixed.result.status==='partial'&&
     gtubeMixed.result.limitsHit.includes('control_chars')&&gtubeMixed.result.limitsHit.includes('quoted_content'),'gtube_mixed_occurrences');
+  for(const content of [{text:STATISTICAL_SPAM},{text:'',html:'<p>'+STATISTICAL_SPAM+'</p>'}]){
+   const assessed=await env.CONSUMER.inspectV1(bytes({...ordinary,...content}));
+   check(assessed.inspection==='assessed'&&assessed.result?.ruleSetVersion==='rules-3'&&assessed.result.heuristicScore===60&&assessed.result.reasons.some(r=>r.id==='statistical_spam'),'statistical_positive');
+  }
+  const hidden=await env.CONSUMER.inspectV1(bytes({...ordinary,text:'',html:'<script>'+STATISTICAL_SPAM+'</script><p>Meeting confirmed.</p>'}));
+  check(hidden.inspection==='assessed'&&hidden.result?.heuristicScore===0,'statistical_hidden');
   const canary='PRIVATE_CANARY_877';
   const wire=await env.SCORER.scoreV1('1',bytes({...ordinary,subject:canary,text:canary,addresses:{from:canary+'@example.test'},urls:['https://example.test/'+canary],headers:[{name:'Message-ID',value:canary}]}));
   check(!wire.includes(canary)&&new TextEncoder().encode(wire).length<=4096,'content_output');
