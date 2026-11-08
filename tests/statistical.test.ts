@@ -4,7 +4,7 @@ import {test} from 'node:test';
 import {createHash} from 'node:crypto';
 import {LEGITIMATE_NOTICES} from '../fixtures/legitimate-notices.ts';
 import assert from 'node:assert/strict';
-import {STATISTICAL_SPAM,PHARMACY_SPAM,FRAGILE_SPAM,REFIT_FRAGILE_SPAM} from '../fixtures/statistical.ts';
+import {STATISTICAL_SPAM,PHARMACY_SPAM,FRAGILE_SPAM,REFIT_FRAGILE_SPAM,CONTEXT_FRAGILE_SPAM} from '../fixtures/statistical.ts';
 import {scoreRequest,REASONS} from '@mail-scoring/core';
 import {htmlText} from '../packages/core/dist/html-text.js';
 import {statisticalTokens,statisticalText} from '../packages/core/dist/statistical-text.js';
@@ -13,22 +13,22 @@ import {contextProbabilities} from '../packages/core/dist/context-probabilities.
 import {tiledClues} from '../packages/core/dist/vendor/tiling.js';
 import {combineClues,chiTail} from '../packages/core/dist/vendor/chi.js';
 import {MODEL_COUNTS,MODEL_DOCUMENTS,MODEL_PARTITION_SHA256} from '../packages/core/dist/context-model.js';
-import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION,MODEL_MIN_KNOWN_BODY_PERCENT,MODEL_BIAS,MODEL_REFERENCE_BIAS,MODEL_LOGIT_CUTOFF} from '../packages/core/dist/linear-model.js';
+import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION,MODEL_MIN_KNOWN_BODY_PERCENT,MODEL_BIAS,MODEL_LOGIT_CUTOFF} from '../packages/core/dist/linear-model.js';
 import {linearSpam} from '../packages/core/dist/linear.js';
 const spam=STATISTICAL_SPAM;
 const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'general-test',subject:'',text,headers:[],sourceComplete:true,...extra})));
-const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_refit_spam');
+const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_word_pair_spam');
 test('general spam detects original promotional plain text and inert HTML once, with static evidence',()=>{
  for(const input of [{text:spam},{text:'',html:'<html><body><p>'+spam+'</p></body></html>'},{text:spam+'\n'+spam}]){
-  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-8');assert.equal(r.heuristicScore,60);
-  assert.deepEqual(r.reasons,[{id:'statistical_refit_spam',contribution:60,reason:REASONS.statistical_refit_spam}]);
+  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-9');assert.equal(r.heuristicScore,60);
+  assert.deepEqual(r.reasons,[{id:'statistical_word_pair_spam',contribution:60,reason:REASONS.statistical_word_pair_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
  }
 });
 test('additional public TRAIN vocabulary detects an authored pharmacy advertisement',()=>{
  for(const input of [{text:PHARMACY_SPAM},{text:'',html:'<p>'+PHARMACY_SPAM+'</p>'}]){
   const r=score(input.text,input);assert.equal(r.heuristicScore,60);assert.equal(hasSpam(r),true);
-  assert.deepEqual(r.reasons,[{id:'statistical_refit_spam',contribution:60,reason:REASONS.statistical_refit_spam}]);
+  assert.deepEqual(r.reasons,[{id:'statistical_word_pair_spam',contribution:60,reason:REASONS.statistical_word_pair_spam}]);
  }
 });
 test('legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain',()=>{
@@ -59,6 +59,14 @@ test('single repeated words, empty body, forged headers, raw addresses and URLs 
  assert.deepEqual(statisticalTokens('https://example.test/money/free/offer somebody@example.test www.example.test'),[]);
 });
 
+const modelWords=MODEL_FEATURES.filter(row=>row[1]===-1);
+const numericFeatures=(rows:readonly (readonly number[])[])=>rows.map((row,start)=>({first:row[0]!,second:row[1]!,start,end:start}));
+const wordRows=(ids:number[])=>ids.map(id=>[id,-1]);
+const numericMargin=(rows:typeof MODEL_FEATURES,remove=0)=>{
+ const incident=new Map<number,number>();let dot=0,norm=0;
+ for(const [first,second,idf,weight]of rows){dot+=idf*weight;norm+=idf*idf;if(weight>0){incident.set(first,(incident.get(first)??0)+idf*weight);if(second!==-1&&second!==first)incident.set(second,(incident.get(second)??0)+idf*weight);}}
+ return MODEL_BIAS+(dot-[...incident.values()].sort((a,b)=>b-a).slice(0,remove).reduce((a,b)=>a+b,0))/Math.sqrt(norm);
+};
 test('linear evidence requires supported body words, ignores repetition, and enforces feature ceilings',()=>{
  const positive=contextFeatures([spam]).features,body=statisticalTokens(spam);
  assert.equal(linearSpam(positive,body),true);
@@ -66,108 +74,106 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  assert.equal(linearSpam(positive,statisticalTokens('qzxva qzxvb qzxvc qzxvd qzxve')),undefined);
  assert.equal(linearSpam(Array.from({length:2000},(_,i)=>positive[i%positive.length]!),body),false);
  assert.equal(linearSpam(positive,Array.from({length:1001},(_,i)=>body[i%body.length]!)),false);
- const ordered=[...MODEL_FEATURES].sort((a,b)=>a[2]-b[2]);
- const negative=ordered.filter(row=>row[2]<0&&row[3]<0).slice(0,5).map(row=>row[0]);
- const support=ordered.filter(row=>row[2]>0&&row[3]>0).slice(0,5).map(row=>row[0]);
- const ham=[...negative,...support],keyword=ordered.filter(row=>row[2]>0&&row[3]>0).at(-1)![0];
- const features=(ids:number[])=>ids.map((first,start)=>({first,second:-1,start,end:start}));
- assert.equal(linearSpam(features([...ham,keyword]),ham),false);
- assert.equal(linearSpam(features([...ham,...Array(100).fill(keyword)]),ham),false);
+ const ordered=[...modelWords].sort((a,b)=>a[3]-b[3]);
+ const negative=ordered.filter(row=>row[3]<0).slice(0,5).map(row=>row[0]);
+ const support=ordered.filter(row=>row[3]>0).slice(0,5).map(row=>row[0]);
+ const ham=[...negative,...support],keyword=ordered.at(-1)![0];
+ assert.equal(linearSpam(numericFeatures(wordRows([...ham,keyword])),ham),false);
+ assert.equal(linearSpam(numericFeatures(wordRows([...ham,...Array(100).fill(keyword)])),ham),false);
  const fourPositive=ordered.slice(-4).map(row=>row[0]);
- const weakNegative=ordered.filter(row=>row[2]<0).slice(-5).map(row=>row[0]);
+ const weakNegative=ordered.filter(row=>row[3]<0).slice(-5).map(row=>row[0]);
  const mixed=[...fourPositive,...weakNegative];
- assert.equal(linearSpam(features(mixed),mixed),false);
- assert.equal(linearSpam(features(fourPositive),Array.from({length:100},(_,i)=>fourPositive[i%4]!)),false);
+ assert.equal(linearSpam(numericFeatures(wordRows(mixed)),mixed),false);
+ assert.equal(linearSpam(numericFeatures(wordRows(fourPositive)),Array.from({length:100},(_,i)=>fourPositive[i%4]!)),false);
  const fiveKnown=ordered.slice(-5).map(row=>row[0]);
- assert.equal(linearSpam(features([...fiveKnown,0,1,2,3,4]),[...fiveKnown,0,1,2,3,4]),true);
+ assert.equal(linearSpam(numericFeatures(wordRows([...fiveKnown,0,1,2,3,4])),[...fiveKnown,0,1,2,3,4]),true);
  const mostlyKnown=[...fiveKnown,0,1,2,3,4,5];
- assert.equal(linearSpam(features(mostlyKnown),mostlyKnown),undefined);
+ assert.equal(linearSpam(numericFeatures(wordRows(mostlyKnown)),mostlyKnown),undefined);
  assert.equal(linearSpam([...positive].reverse(),[...body].reverse()),true);
 });
 
-test('two-word stability rejects numerical evidence carried by one influential clue',()=>{
- const ordered=[...MODEL_FEATURES].filter(row=>row[2]>0).sort((a,b)=>a[2]-b[2]);
- const weak=ordered.slice(0,5);
- const margin=(rows:typeof ordered)=>MODEL_BIAS+rows.reduce((n,row)=>n+row[1]*row[2],0)/Math.sqrt(rows.reduce((n,row)=>n+row[1]*row[1],0));
- let rows:typeof ordered=[];
- for(let count=1;count<=32;count++){
-  const candidate=[...weak,...ordered.slice(-count)];
-  if(margin(candidate)>=MODEL_LOGIT_CUTOFF && candidate.some((_,i)=>margin(candidate.filter((_,j)=>j!==i))<MODEL_LOGIT_CUTOFF)){rows=candidate;break;}
+test('two-word stability rejects evidence that survives losing one word',()=>{
+ const ordered=modelWords.filter(row=>row[3]>0).sort((a,b)=>a[3]-b[3]),weak=ordered.slice(0,5);
+ let found:typeof MODEL_FEATURES=[];
+ for(let n=1;n<=128;n++){
+  const rows=[...weak,...ordered.slice(-n)];
+  if(numericMargin(rows,1)>=MODEL_LOGIT_CUTOFF&&numericMargin(rows,2)<MODEL_LOGIT_CUTOFF){found=rows;break;}
  }
- assert.ok(rows.length>0,'construct a genuinely positive but fragile unfixed vector');
- const ids=rows.map(row=>row[0]);
- const features=ids.map((first,start)=>({first,second:-1,start,end:start}));
+ assert.ok(found.length>=5,'construct positive evidence surviving one but not two word losses');
+ const features=numericFeatures(found),ids=found.map(row=>row[0]);
  assert.equal(linearSpam(features,ids),false);
  assert.equal(linearSpam([...features].reverse(),[...ids].reverse()),false);
  assert.equal(linearSpam([...features,...Array(50).fill(features.at(-1)!)],ids),false);
 });
 
-test('two-word stability rejects evidence that survives losing one word',()=>{
- const normalized=statisticalText('',FRAGILE_SPAM),ids=statisticalTokens(normalized.bodyText);
- const table=new Map(MODEL_FEATURES.map(row=>[row[0],row]));
- const rows=ids.map(id=>table.get(id)).filter((row):row is typeof MODEL_FEATURES[number]=>Boolean(row));
- const contributions=rows.map(row=>row[1]*row[2]).sort((a,b)=>b-a);
- const norm=Math.sqrt(rows.reduce((n,row)=>n+row[1]*row[1],0)),dot=contributions.reduce((a,b)=>a+b,0);
- assert.ok(MODEL_REFERENCE_BIAS+rows.reduce((n,row)=>n+row[1]*row[3],0)/norm>=MODEL_LOGIT_CUTOFF);
- assert.ok(MODEL_BIAS+(dot-contributions[0]!)/norm>=MODEL_LOGIT_CUTOFF);
- assert.ok(MODEL_BIAS+(dot-contributions[0]!-contributions[1]!)/norm<MODEL_LOGIT_CUTOFF);
- const features=contextFeatures([normalized.bodyText]).features;
- assert.equal(linearSpam(features,ids),false);
- assert.equal(linearSpam([...features].reverse(),[...ids].reverse()),false);
+test('two-word stability rejects the original contextual spam prefix in actual plain and HTML scoring',()=>{
+ const content=statisticalText('',CONTEXT_FRAGILE_SPAM),features=contextFeatures([content.bodyText]).features;
+ const table=new Map(MODEL_FEATURES.map(row=>[contextKey(row[0],row[1]),row]));
+ const rows=[...new Set(features.map(f=>contextKey(f.first,f.second)))].map(k=>table.get(k)).filter((r):r is typeof MODEL_FEATURES[number]=>Boolean(r));
+ assert.ok(numericMargin(rows,1)>=MODEL_LOGIT_CUTOFF);assert.ok(numericMargin(rows,2)<MODEL_LOGIT_CUTOFF);
+ for(const input of [{text:CONTEXT_FRAGILE_SPAM},{text:'',html:`<p>${CONTEXT_FRAGILE_SPAM}</p>`}]){const result=score(input.text,input);assert.equal(result.heuristicScore,0);assert.equal(hasSpam(result),false);}
 });
 
-test('each fixed model requires its own five positive body words',()=>{
- const subject=MODEL_FEATURES.filter(row=>row[2]>0&&row[3]>0).sort((a,b)=>Math.min(b[2],b[3])-Math.min(a[2],a[3])).slice(0,40);
- for(const primary of [true,false]){
-  const body=MODEL_FEATURES.filter(row=>primary?row[2]<=0&&row[3]>0:row[2]>0&&row[3]<=0).sort((a,b)=>primary?b[2]-a[2]:b[3]-a[3]).slice(0,5);
-  assert.equal(body.length,5);
-  const rows=[...subject,...body],contributions=rows.map(row=>row[1]*row[2]).sort((a,b)=>b-a);
-  const norm=Math.sqrt(rows.reduce((n,row)=>n+row[1]*row[1],0)),dot=contributions.reduce((a,b)=>a+b,0);
-  assert.ok(MODEL_BIAS+(dot-contributions[0]!-contributions[1]!)/norm>=MODEL_LOGIT_CUTOFF);
-  assert.ok(MODEL_REFERENCE_BIAS+rows.reduce((n,row)=>n+row[1]*row[3],0)/norm>=MODEL_LOGIT_CUTOFF);
-  const ids=body.map(row=>row[0]),features=rows.map((row,start)=>({first:row[0],second:-1,start,end:start}));
-  assert.equal(linearSpam(features,ids),false);
+test('adjacent-pair negative evidence changes the decision rather than being discarded',()=>{
+ const strong=modelWords.filter(row=>row[3]>0).sort((a,b)=>b[3]-a[3]).slice(0,40);
+ assert.ok(numericMargin(strong,2)>=MODEL_LOGIT_CUTOFF);
+ assert.equal(linearSpam(numericFeatures(strong),strong.map(row=>row[0])),true);
+ const negative=MODEL_FEATURES.filter(row=>row[1]!==-1&&row[3]<0).sort((a,b)=>a[2]*a[3]-b[2]*b[3]);
+ let found:typeof MODEL_FEATURES=[];
+ for(let n=1;n<=256;n++){const rows=[...strong,...negative.slice(0,n)];if(numericMargin(rows,2)<MODEL_LOGIT_CUTOFF){found=rows;break;}}
+ assert.ok(found.length>40);
+ assert.equal(linearSpam(numericFeatures(found),strong.map(row=>row[0])),false);
+});
+
+test('word-loss bound includes every positive pair incident to either word',()=>{
+ const weak=modelWords.filter(row=>row[3]>0).sort((a,b)=>a[3]-b[3]).slice(0,5);
+ const groups=new Map<number,(typeof MODEL_FEATURES)[number][]>();
+ for(const row of MODEL_FEATURES)if(row[1]!==-1&&row[3]>0){const group=groups.get(row[1])??[];group.push(row);groups.set(row[1],group);}
+ let found:typeof MODEL_FEATURES=[];
+ for(const group of groups.values()){
+  group.sort((a,b)=>b[2]*b[3]-a[2]*a[3]);
+  for(let n=3;n<=Math.min(group.length,64);n++){
+   const rows=[...weak,...group.slice(0,n)],contributions=rows.map(row=>row[2]*row[3]).sort((a,b)=>b-a);
+   const norm=Math.sqrt(rows.reduce((sum,row)=>sum+row[2]*row[2],0));
+   const featureOnly=MODEL_BIAS+(contributions.reduce((a,b)=>a+b,0)-contributions[0]!-contributions[1]!)/norm;
+   if(featureOnly>=MODEL_LOGIT_CUTOFF&&numericMargin(rows,2)<MODEL_LOGIT_CUTOFF){found=rows;break;}
+  }
+  if(found.length)break;
  }
+ assert.ok(found.length>5,'feature losses differ from word losses when pairs share words');
+ const body=found.filter(row=>row[1]===-1).map(row=>row[0]);
+ assert.equal(linearSpam(numericFeatures(found),body),false);
+ assert.equal(linearSpam(numericFeatures(found).reverse(),body.reverse()),false);
 });
 
-test('reference margin rejects strong refit evidence outside the frozen original margin',()=>{
- const candidates=MODEL_FEATURES.filter(row=>row[2]>0&&row[3]>0).sort((a,b)=>(b[2]/b[3])-(a[2]/a[3]));
- let found:typeof candidates=[];
- for(let count=5;count<=128;count++){
-  const rows=candidates.slice(0,count),values=rows.map(row=>row[1]*row[2]).sort((a,b)=>b-a);
-  const norm=Math.sqrt(rows.reduce((n,row)=>n+row[1]*row[1],0)),dot=values.reduce((a,b)=>a+b,0);
-  if(MODEL_BIAS+(dot-values[0]!-values[1]!)/norm>=MODEL_LOGIT_CUTOFF&&MODEL_REFERENCE_BIAS+rows.reduce((n,row)=>n+row[1]*row[3],0)/norm<MODEL_LOGIT_CUTOFF){found=rows;break;}
- }
- assert.ok(found.length>=5,'construct two-word-stable evidence rejected only by the original margin');
- const ids=found.map(row=>row[0]),features=ids.map((first,start)=>({first,second:-1,start,end:start}));
- assert.equal(linearSpam(features,ids),false);
-});
-
-test('two-word stability preserves abstention on the original authored spam prefix',()=>{
- for(const input of [{text:FRAGILE_SPAM},{text:'',html:`<p>${FRAGILE_SPAM}</p>`}]){
+test('historical authored spam prefixes still abstain in plain text and HTML',()=>{
+ for(const text of [FRAGILE_SPAM,REFIT_FRAGILE_SPAM])for(const input of [{text},{text:'',html:`<p>${text}</p>`}]){
   const result=score(input.text,input);assert.equal(result.heuristicScore,0);assert.equal(hasSpam(result),false);
  }
 });
 
-test('two-word stability abstains on the shorter original synthetic prefix in plain text and HTML',()=>{
- for(const input of [{text:REFIT_FRAGILE_SPAM},{text:'',html:`<p>${REFIT_FRAGILE_SPAM}</p>`}]){
-  const result=score(input.text,input);assert.equal(result.heuristicScore,0);assert.equal(hasSpam(result),false);
+test('all frozen authored legitimate controls remain assessed, partial, zero-score in plain text and HTML',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const raw=await readFile('harness/evaluation/refit-legitimate-controls.json');
+ assert.equal(createHash('sha256').update(raw).digest('hex'),'667dc0c9052480d0e63a83b7097550c1f8d9550a575ed9a15bf5d7d515e84975');
+ const controls=JSON.parse(raw.toString()).records;assert.equal(controls.length,119);
+ const escape=(text:string)=>text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ for(const sample of controls)for(const extra of [{text:sample.text},{text:'',html:`<p>${escape(sample.text)}</p>`}]){
+  assert.equal(sample.label,'ham');const result=score(extra.text,{subject:sample.subject,...extra});
+  assert.equal(result.ruleSetVersion,'rules-9');assert.equal(result.status,'partial');assert.equal(result.heuristicScore,0,sample.id);assert.equal(hasSpam(result),false,sample.id);
  }
 });
 
 test('current linear model contains bounded numeric aggregates from the frozen TRAIN matrix',()=>{
- assert.equal(MODEL_VERSION,'general-6');
- assert.equal(MODEL_MIN_KNOWN_BODY_PERCENT,50);
+ assert.equal(MODEL_VERSION,'general-7');assert.equal(MODEL_MIN_KNOWN_BODY_PERCENT,50);
  assert.equal(MODEL_TRAIN_MATRIX_SHA256,'1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49');
- assert.equal(MODEL_FEATURES.length,25439);
- assert.equal(new Set(MODEL_FEATURES.map(row=>row[0])).size,MODEL_FEATURES.length);
- const reference=MODEL_FEATURES.map(([hash,idf,,weight])=>[hash,idf,weight]);
- assert.equal(createHash('sha256').update(JSON.stringify({bias:MODEL_REFERENCE_BIAS,features:reference})).digest('hex'),'30fef75adb90c29833dd45772bc9f8211183407eeaf5294c0030dfa4b6101cee');
- for(const [hash,idf,weight,referenceWeight]of MODEL_FEATURES){
-  assert.ok(Number.isFinite(referenceWeight)&&Math.abs(referenceWeight)<10000);
-  assert.ok(Number.isInteger(hash)&&hash>=0&&hash<=0xffffffff);
-  assert.ok(Number.isFinite(idf)&&idf>=1&&idf<12);
-  assert.ok(Number.isFinite(weight)&&Math.abs(weight)<10000);
+ assert.equal(MODEL_FEATURES.length,50000);assert.equal(modelWords.length,25439);
+ assert.equal(new Set(MODEL_FEATURES.map(row=>contextKey(row[0],row[1]))).size,MODEL_FEATURES.length);
+ assert.equal(createHash('sha256').update(JSON.stringify({bias:MODEL_BIAS,features:MODEL_FEATURES})).digest('hex'),'55716233cf854b8ca2d4156d1f198b7d96fd22b0b9b8532a4b20c377b6db5be8');
+ for(const [first,second,idf,weight]of MODEL_FEATURES){
+  assert.ok(Number.isInteger(first)&&first>=0&&first<=0xffffffff);
+  assert.ok(Number.isInteger(second)&&second>=-1&&second<=0xffffffff);
+  assert.ok(Number.isFinite(idf)&&idf>=1&&idf<12);assert.ok(Number.isFinite(weight)&&Math.abs(weight)<10000);
  }
 });
 test('HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work',()=>{

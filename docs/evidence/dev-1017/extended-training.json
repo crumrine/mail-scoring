@@ -1,0 +1,53 @@
+{
+  "priorGridSha256": "d9c928d8eef07fec62a7ff86362729e132ca2dbf3cacd79db3ce404429ed0a0a",
+  "matrixSha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
+  "selected": {
+    "C": 2000,
+    "hardHamWeight": 10,
+    "metrics": {
+      "TP": 2058,
+      "FP": 0,
+      "TN": 5567,
+      "FN": 2279,
+      "hardHamFP": 0
+    },
+    "unguardedMetrics": {
+      "TP": 2698,
+      "FP": 5,
+      "TN": 5562,
+      "FN": 1639,
+      "hardHamFP": 3
+    }
+  },
+  "requiredTPImprovementOver": 1975,
+  "vocabularyCap": 50000,
+  "selection": "maximum robust quantized fivefold OOF TP among zero HAM/hardHAM FP; ties lower C then higher hardHAM weight",
+  "cutoff": 0.99,
+  "positiveBodyWords": 5,
+  "knownBodyPercent": 50,
+  "twoWordIncidentPositiveBound": true,
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "python": "3.12.13",
+  "scope": "TRAIN only; per-fold vocabulary/IDF; no heldout inputs or threshold selection",
+  "gridSha256": "78ba9299f8df0c999fdd3e24a18b5afcf8d70dec1ef2d75e116d204e4a7ab8cc",
+  "modelSha256": "ce506fc71c7b465ccf2fef1218c821739c381509c93abd7f8a98ec4da516d052",
+  "rows": 9904,
+  "fitRows": 9693,
+  "entries": 50000,
+  "wordEntries": 25439,
+  "pairEntries": 24561,
+  "sourcePartitions": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+    "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
+  ],
+  "model": "general-7",
+  "algorithm": "fixed binary word/adjacent-pair TF-IDF logistic margin with any-two-word incident positive lowerbound"
+}
