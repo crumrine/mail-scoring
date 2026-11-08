@@ -1,0 +1,60 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.8925ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (20.861833ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (3.475667ms)
+✔ header, URL, metadata cardinalities below/at/above (1.14575ms)
+✔ secondary fields and multibyte truncation are bounded (0.257792ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.618875ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (1.869291ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.804917ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (4.025458ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.755458ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.104292ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.198792ms)
+✔ unprepared roots are refused before any structural operation (0.807625ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.523ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (10.571125ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.292417ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.697958ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.503542ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1002.472041ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (1.369958ms)
+✔ new statistical evidence requires declared rules-5 (1.184166ms)
+✔ historical rules-3 and rules-4 statistical evidence remain strictly readable (0.813541ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (15.469333ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.074334ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (28.740708ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (2.881333ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.528042ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.580625ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (13.913ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (19.315ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.289958ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (61.12075ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (22.453542ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (7.726208ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.817833ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.646125ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.9885ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (2.482208ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (19.589208ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.141375ms)
+✔ numerical model is a bounded unique aggregate from the frozen training partition (15.623583ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.555042ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.326459ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.091584ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1229.152042
