@@ -5,10 +5,15 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'context-clue-cap',file:'packages/core/src/vendor/tiling.ts',before:'if(features.length>1999)return [];',after:'',command:['test'],failure:/✖ context tiling never/},
+  {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},
+  {id:'context-overlap',file:'packages/core/src/vendor/tiling.ts',before:'if(used.has(feature.start)||used.has(feature.end))continue;',after:'if(false)continue;',command:['test'],failure:/✖ context tiling never/},
+  {id:'context-position-cap',file:'packages/core/src/context-features.ts',before:'positions===1000',after:'positions===100000',command:['test'],failure:/✖ context features keep/},
+  {id:'context-ham-mixture',file:'packages/core/src/context-probabilities.ts',before:'Math.sqrt(documents[1])/(Math.sqrt(documents[0])+Math.sqrt(documents[1]))',after:'documents[1]/(documents[0]+documents[1])',command:['test'],failure:/✖ context probabilities preserve/},
   {id:'statistical-detection',file:'packages/core/src/index.ts',before:"if(!features.gtube&&generalSpam(input,limits))",after:"if(false)",command:['test'],failure:/✖ general spam detects/},
   {id:'html-depth',file:'packages/core/src/html-text.ts',before:'stack.length===32',after:'stack.length===32000',command:['test'],failure:/✖ HTML source, tag, depth/},
   {id:'html-active-skip',file:'packages/core/src/html-text.ts',before:'SKIP.has(name)',after:'false',command:['test'],failure:/✖ statistical evidence excludes/},
-  {id:'statistical-budget',file:'packages/core/src/statistical.ts',before:"if(tokens.length===1000)",after:"if(false)",command:['test'],failure:/✖ HTML source, tag, depth/},
+  {id:'statistical-budget',file:'packages/core/src/statistical.ts',before:"if(tokens.limited)",after:"if(false)",command:['test'],failure:/✖ HTML source, tag, depth/},
   {id:'url-length',file:'packages/core/src/guards.ts',before:"read(item(urls,i),LIMITS.urlBytes,'field_bytes')",after:"read(item(urls,i),LIMITS.requestBytes,'field_bytes')",command:['test'],failure:/✖ URL decoding has a finite/},
   {id:'normalized-output',file:'packages/core/src/vendor/text.ts',before:'if(bytes+cost>LIMITS.normalizedBytes)',after:'if(bytes+cost>LIMITS.requestBytes)',command:['test'],failure:/✖ normalized output guard/},
   {id:'anchor-count',file:'packages/core/src/guards.ts',before:'Math.min(anchors.length,LIMITS.urls)',after:'anchors.length',command:['test'],failure:/✖ anchor work is bounded/},

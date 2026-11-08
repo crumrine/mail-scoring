@@ -1,4 +1,75 @@
-# General spam evidence (DEV-997)
+# General spam evidence
+
+## Current contextual correction (DEV-1002, source only)
+
+The first DEV-999 paired measurement of rules-3/general-1 caught 629/1133 spam
+but wrongly flagged 3/1603 legitimate messages. On its original holdout, it caught
+453/813 spam and flagged2/1175 ham. The no-ham-regression gate failed; general-1
+was **not deployed**. Its complete first report/misses/false positives are
+preserved by DEV-999. That observed holdout is now regression evidence, not a
+pristine independent test for this correction. No threshold, truth label or
+sample exclusion was changed to erase the failure.
+
+Rules-4/general-2 adds adjacent-word context and non-overlapping clue selection,
+adapted from the same pinned PSF SpamBayes classifier.py `_getclues` implementation
+(lines377-444). A word position can contribute to only one selected unigram or
+bigram. Duplicate clues count once. Pair identities store two numeric word hashes,
+with -1 marking a unigram, avoiding a second pair-hash collision domain. There
+are no literal words, phrases, message text or per-message sequences in the model.
+
+Training reads **only** the original fixed TRAIN partition. Runtime never learns
+from mail, folders or preferences. The 1000-word-position cap excludes additional
+long training inputs and adds explicit statistical uncertainty at inference;
+there are at most1999 candidate features and64 selected clues. Subject/body and
+omitted URL/address chunks do not form artificial crossing pairs. HTML/quote,
+source, output and capability boundaries remain unchanged.
+
+General-2 contains22443 aggregate records from2353 easy-ham,66 difficult-ham and320
+spam training documents. Each feature counts once per document and needs at
+least3 documents. Ham frequency uses the fixed square-root-count mixture:
+`hardWeight = sqrt(nHard)/(sqrt(nEasy)+sqrt(nHard))`;
+`hamFrequency = (1-hardWeight)*easyCount/nEasy + hardWeight*hardCount/nHard`.
+The spam frequency, Robinson strength3/neutral0.5, clamp0.01..0.99, cutoff0.99,
+minimum20 clues and maximum64 are unchanged. No arbitrary fitted mixture or
+message/header/format exception is used.
+
+This original mixture estimator was selected using5-fold hash-split TRAIN-only
+cross-validation on the frozen numeric matrix, comparing three declared methods.
+Pooled ham produced TP223/FP2/TN2453/FN109; equal ham strata TP91/FP0/TN2455/FN241;
+square-root counts TP168/FP0/TN2455/FN164. These are development observations, not
+independent acceptance. The selected method's previous validation-only scorer
+check detects78/256 spam with0/300 ham flagged; it does not prove actual caller
+routing or fresh held-out performance. Prototype models, CV results and first
+failures remain preserved. No held-out word list or label entered training.
+
+Rules-4 emits `statistical_context_spam`, capped60. Strict decoding retains the
+old rules-3/general-1 reason and older assessments, but rejects a new contextual
+reason under any older declared version. DEV-1003 owns compatible caller-first
+integration and prevents automatic fallback to the failed general-1-only path.
+GTUBE/ordinary phishing/preferences/recoverable delivery remain separate.
+DEV-999 owns corrected actual-pipeline acceptance and its honest data-reuse
+limits; OPS-614 is gated on reviewed merged correction/integration and passing
+acceptance. This source change is not a deployment.
+
+Reproduce with exact Node24.15.0, pinned locked dependencies and external data:
+
+```
+node harness/evaluation/context-counts.mjs --self-check
+node harness/evaluation/train-context.mjs /external/frozen-data /installed/inbox --write-model
+node harness/evaluation/context-cross-validation.mjs .artifacts/context/training-features.json .artifacts/context/cross-validation.json
+npm run check
+npm run sbom
+```
+
+The context training receipt records exact TRAIN read/eligible ID hashes,
+model/partition/runtime identities, document totals and zero network attempts.
+The numerical model source is SHA256
+`c5cdbff4d63b98e9689013d6b9934635f445736657c65d854e867e6dd00a117c`;
+the prior/inference source is separately pinned by the reviewed commit. Original
+corpus rights, parser licenses and the full PSF license below remain applicable.
+
+## Historical general-1 development (DEV-997)
+
 
 The previous rules were a narrow phishing detector. On DEV-990's 192-message
 known diagnostic slice, 34/64 spam messages had only HTML, which was omitted.
@@ -69,7 +140,7 @@ Independent reproduction caught an author-tooling mismatch: Node24.13 on Mac
 decoded legacy Western MIME bytes differently from the repository's pinned
 Node24.15.0. Repeating extraction under the pinned runtime gives byte-identical
 Mac/VPS manifests and features. Every one of the 6046 original label/partition
-assignments and every exclusion is unchanged; no holdout prediction was made.
+assignments and every exclusion was unchanged; no holdout prediction had been made at that earlier runtime-repair stage.
 Five body-feature hashes and six numeric feature arrays changed, while the
 generated 9413 model count triples and document totals are identical. The old
 inputs and receipts remain historical evidence. `mime-runtime.mjs` now checks

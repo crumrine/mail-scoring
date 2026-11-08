@@ -34,7 +34,7 @@ export default {
   const trusted=await call(forged,'1','{"transportVerified":true,"preferencesVerified":true,"receivedAt":123}');check(trusted?.ok&&trusted.result.heuristicScore===60,'verified_context');
   const marker='XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X';
   const gtube=await env.CONSUMER.inspectV1(bytes({...ordinary,subject:'Test spam mail (GTUBE)',text:marker}));
-  check(gtube.inspection==='assessed'&&gtube.result?.ruleSetVersion==='rules-3'&&gtube.result.heuristicScore===100&&gtube.result.reasons[0]?.id==='gtube','gtube_positive');
+  check(gtube.inspection==='assessed'&&gtube.result?.ruleSetVersion==='rules-4'&&gtube.result.heuristicScore===100&&gtube.result.reasons[0]?.id==='gtube','gtube_positive');
   const gtubeQuoted=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`> ${marker}`}));
   check(gtubeQuoted.inspection==='assessed'&&gtubeQuoted.result?.heuristicScore===0&&gtubeQuoted.result.limitsHit.includes('quoted_content'),'gtube_quoted');
   const gtubeMixed=await env.CONSUMER.inspectV1(bytes({...ordinary,text:`\x00> ${marker}\n${marker.replace('GTUBE','GT\x00UBE')}`}));
@@ -42,7 +42,7 @@ export default {
     gtubeMixed.result.limitsHit.includes('control_chars')&&gtubeMixed.result.limitsHit.includes('quoted_content'),'gtube_mixed_occurrences');
   for(const content of [{text:STATISTICAL_SPAM},{text:'',html:'<p>'+STATISTICAL_SPAM+'</p>'}]){
    const assessed=await env.CONSUMER.inspectV1(bytes({...ordinary,...content}));
-   check(assessed.inspection==='assessed'&&assessed.result?.ruleSetVersion==='rules-3'&&assessed.result.heuristicScore===60&&assessed.result.reasons.some(r=>r.id==='statistical_spam'),'statistical_positive');
+   check(assessed.inspection==='assessed'&&assessed.result?.ruleSetVersion==='rules-4'&&assessed.result.heuristicScore===60&&assessed.result.reasons.some(r=>r.id==='statistical_context_spam'),'statistical_positive');
   }
   const hidden=await env.CONSUMER.inspectV1(bytes({...ordinary,text:'',html:'<script>'+STATISTICAL_SPAM+'</script><p>Meeting confirmed.</p>'}));
   check(hidden.inspection==='assessed'&&hidden.result?.heuristicScore===0,'statistical_hidden');

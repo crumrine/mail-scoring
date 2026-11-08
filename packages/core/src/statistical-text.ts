@@ -6,7 +6,7 @@ import { normalizeText } from './vendor/text.js';
 export function statisticalText(subject:string,text:string,html='') {
   const extracted=text.trim()?{text,complete:true,quoted:false}:htmlText(html);
   const normalized=normalizeText([subject,extracted.text]);
-  return {bodyText:normalizeText([extracted.text]).text,text:normalized.text,complete:extracted.complete&&!normalized.truncated,quoted:extracted.quoted||normalized.quoted};
+  return {subjectText:normalizeText([subject]).text,bodyText:normalizeText([extracted.text]).text,text:normalized.text,complete:extracted.complete&&!normalized.truncated,quoted:extracted.quoted||normalized.quoted};
 }
 export function wordHash(word:string):number {
   let value=2166136261;

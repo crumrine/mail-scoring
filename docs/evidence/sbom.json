@@ -137,6 +137,28 @@
       "data": "none",
       "modifications": "Only list-id, list-unsubscribe and precedence predicates; auto-submitted/ESP tables omitted.",
       "sha256": "3cd6adcf319a18acd35f44e0bbe8b23033cddc522e4932ddcb5abd4cf605e09f"
+    },
+    {
+      "name": "SpamBayes bounded adaptation",
+      "repository": "https://github.com/smontanaro/spambayes",
+      "revision": "8ae169fde78371780019db5b7b7acfb4950bab8f",
+      "source": "spambayes/spambayes/classifier.py and chi2.py",
+      "local": "packages/core/src/vendor/chi.ts",
+      "license": "PSF",
+      "data": "none",
+      "modifications": "Bounded pure numeric TypeScript only; no database, online learning, tokenizer, URL slurping or upstream model",
+      "sha256": "d63e96917c9b1b09af166d4f1992745c9b15553fda57127c5ae3e31d579cf841"
+    },
+    {
+      "name": "SpamBayes bounded adaptation",
+      "repository": "https://github.com/smontanaro/spambayes",
+      "revision": "8ae169fde78371780019db5b7b7acfb4950bab8f",
+      "source": "spambayes/spambayes/classifier.py _getclues",
+      "local": "packages/core/src/vendor/tiling.ts",
+      "license": "PSF",
+      "data": "none",
+      "modifications": "Bounded pure numeric TypeScript only; no database, online learning, tokenizer, URL slurping or upstream model",
+      "sha256": "0fe3498739192d685752e3f6d3b874f9e8afadf494d7daad64025cd82edec3ea"
     }
   ],
   "packages": [

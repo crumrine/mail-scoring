@@ -12,11 +12,12 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-3",
+      "const": "rules-4",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
-        "rules-3"
+        "rules-3",
+        "rules-4"
       ]
     },
     "status": {
@@ -62,7 +63,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 12,
+      "maxItems": 13,
       "items": {
         "oneOf": [
           {
@@ -277,6 +278,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_context_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded contextual classifier found strong spam evidence (public-corpus model general-2; a heuristic, not a calibrated confidence probability)."
               }
             },
             "required": [
