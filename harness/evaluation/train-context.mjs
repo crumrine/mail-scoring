@@ -13,8 +13,8 @@ import {contextCounts} from './context-counts.mjs';
 const [root,extraRoot,inbox]=process.argv.slice(2);
 const frozen=await readBounded(join(root,'partitions.json'),4*1024*1024);
 assert.equal(sha256(frozen),'111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803');
-const extraFrozen=await readBounded(join(extraRoot,'partitions.json'),32*1024*1024);
-assert.equal(sha256(extraFrozen),'5a709401c29401a5bdf821056fad86c1187048b506dad172f1f4d753a3e8f7e4');
+const extraFrozen=await readBounded(new URL('./enron-train-manifest.json',import.meta.url),2*1024*1024);
+assert.equal(sha256(extraFrozen),'773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131');
 const partitionHashes=[sha256(frozen),sha256(extraFrozen)];
 const partitionHash=sha256(JSON.stringify(partitionHashes));
 const sources=[[root,JSON.parse(frozen)],[extraRoot,JSON.parse(extraFrozen)]];
@@ -31,6 +31,7 @@ try{
  const {statisticalText,contextFeatures,contextKey}=await import(pathToFileURL(modulePath));
  const rows=[];
  for(const [sourceRoot,manifest]of sources)for(const row of manifest.records.filter(r=>r.partition==='train'&&r.rawInspectable&&r.textInspectable)){
+  assert.equal(row.partition,'train');
   assert.match(row.id,/^[a-f0-9]{64}$/);assert.equal(row.path,'messages/'+row.id+'.eml');
   assert.ok(Number.isSafeInteger(row.bytes)&&row.bytes>0&&row.bytes<=131072);
   const raw=await readBounded(join(sourceRoot,row.path),row.bytes);assert.equal(raw.length,row.bytes);assert.equal(sha256(raw),row.id);
@@ -53,6 +54,7 @@ try{
  await writeFile('.artifacts/context/context-model.ts',source);
  await writeFile('.artifacts/context/training-features.json',JSON.stringify(rows)+'\n');
  if(process.argv[5]==='--write-model')await writeFile('packages/core/src/context-model.ts',source);
+ else assert.equal(sha256(await readFile('packages/core/src/context-model.ts')),sha256(source),'model_reproduction_mismatch');
  const receipt={runtime:MIME_RUNTIME,partitionSha256:partitionHash,sourcePartitionsSha256:partitionHashes,modelVersion:'general-3',hamMixture:{estimator:'existing square-root legitimate-stratum safeguard',hardWeight:Math.sqrt(documents[1])/(Math.sqrt(documents[0])+Math.sqrt(documents[1]))},modelSourceSha256:sha256(source),documents,entries:counts.length,featurePositionsCap:1000,maxFeatures:1999,readPartitions:['train'],rawMessagesRead:rows.length,readIdsSha256:sha256(JSON.stringify(rows.map(r=>r.id).sort())),eligibleIdsSha256:sha256(JSON.stringify(rows.filter(r=>r.textInspectable).map(r=>r.id).sort())),fetches:attempts};
  await writeFile('.artifacts/context/training.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));
 }finally{globalThis.fetch=fetch;await rm(temp,{recursive:true,force:true});}

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {STATISTICAL_SPAM} from '../fixtures/statistical.ts';
+import {STATISTICAL_SPAM,PHARMACY_SPAM} from '../fixtures/statistical.ts';
 import {scoreRequest,REASONS} from '@mail-scoring/core';
 import {htmlText} from '../packages/core/dist/html-text.js';
 import {statisticalTokens} from '../packages/core/dist/statistical-text.js';
@@ -19,6 +19,12 @@ test('general spam detects original promotional plain text and inert HTML once, 
   const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-5');assert.equal(r.heuristicScore,60);
   assert.deepEqual(r.reasons,[{id:'statistical_generalized_spam',contribution:60,reason:REASONS.statistical_generalized_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
+ }
+});
+test('additional public TRAIN vocabulary detects an authored pharmacy advertisement',()=>{
+ for(const input of [{text:PHARMACY_SPAM},{text:'',html:'<p>'+PHARMACY_SPAM+'</p>'}]){
+  const r=score(input.text,input);assert.equal(r.heuristicScore,60);assert.equal(hasSpam(r),true);
+  assert.deepEqual(r.reasons,[{id:'statistical_generalized_spam',contribution:60,reason:REASONS.statistical_generalized_spam}]);
  }
 });
 test('legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain',()=>{
@@ -63,7 +69,7 @@ test('Fisher combination is symmetric, finite, bounded and preserves the unsure 
  assert.equal(chiTail(-1,1),Math.exp(-1));assert.equal(chiTail(-1,100000),1);
 });
 test('numerical model is a bounded unique aggregate from the frozen training partition',()=>{
- assert.equal(MODEL_PARTITION_SHA256,'3b43f095dd5a9a862855172822681788fcc6ad5ce24565be8d0bb62ba56681b6');
+ assert.equal(MODEL_PARTITION_SHA256,'906c4e85f58bd40991acb724f36ab37f38eb74217b6cf673dc268f12c1933fd6');
  assert.deepEqual(MODEL_DOCUMENTS,[3351,66,1274]);assert.equal(MODEL_COUNTS.length,37500);
  assert.equal(new Set(MODEL_COUNTS.map(c=>c[0]+':'+c[1])).size,MODEL_COUNTS.length);
  for(const [id,second,easy,hard,s]of MODEL_COUNTS){assert.ok(Number.isInteger(id)&&id>=0&&id<=0xffffffff);assert.ok(Number.isInteger(second)&&second>=-1&&second<=0xffffffff);assert.ok(easy>=0&&easy<=MODEL_DOCUMENTS[0]);assert.ok(hard>=0&&hard<=MODEL_DOCUMENTS[1]);assert.ok(s>=0&&s<=MODEL_DOCUMENTS[2]);assert.ok(easy+hard+s>=3);}

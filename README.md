@@ -2,7 +2,7 @@
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Source status: bounded deterministic/phishing/GTUBE rules plus `rules-4` contextual general-spam evidence.** The [general-spam implementation and provenance](docs/general-spam.md) adds inert HTML text and a fixed statistical public-data model. DEV-999 found three legitimate-mail false positives in the original rules-3/general-1 candidate; it was not deployed. DEV-1002 replaces it with contextual general-2, selected using training-only cross-validation. New source requires the compatible Inbox caller and frozen independent evaluation before the separately authorized OPS-614 manual rollout. GTUBE controls and dated-corpus measurements do not establish production accuracy.
+**Source status: bounded deterministic/phishing/GTUBE rules plus `rules-5` generalized public-TRAIN content evidence.** [DEV-1004 provenance and limits](docs/generalization.md) expands the disjoint training dictionary while retaining the difficult-ham safeguard and the existing bounded classifier. The first rules-3 candidate failed legitimate-mail acceptance. Subsequent model changes require new independent acceptance; source alone does not establish deployment. DEV-1005 supplies a compatible caller, DEV-999 owns exact-pair independent acceptance, and OPS-614 owns separately reviewed manual deployment. No source merge or dated-corpus result establishes modern mailbox accuracy.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

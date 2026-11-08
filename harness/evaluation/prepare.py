@@ -20,11 +20,11 @@ def timeout(_signum, _frame):
     raise TimeoutError("download_timeout")
 
 class ExpandedLimit:
-    def __init__(self, source):
-        self.source, self.total = source, 0
+    def __init__(self, source, max_bytes=64 * 1024 * 1024):
+        self.source, self.total, self.max_bytes = source, 0, max_bytes
 
     def read(self, size):
-        if size < 0 or self.total + size > 64 * 1024 * 1024:
+        if size < 0 or self.total + size > self.max_bytes:
             raise ValueError("expanded_limit")
         data = self.source.read(size)
         self.total += len(data)
