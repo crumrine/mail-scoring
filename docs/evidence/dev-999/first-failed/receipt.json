@@ -1,0 +1,19 @@
+{
+  "status": "failed_acceptance_do_not_deploy",
+  "runnerSource": "b12ca7f",
+  "firstPreflightSource": "7704d64",
+  "gateUnchanged": true,
+  "subsequentOldHoldoutUse": "regression only, no longer pristine independent evidence for new model design",
+  "correctiveTicket": "DEV-1002",
+  "sourceRuntimeChanged": false,
+  "rawCorpusIncluded": false,
+  "files": {
+    "false-positive-shapes.json": "380cfb3f6c876125c10e4ef2a1721237f7031af93c2983d10953c94bd6d7cc46",
+    "legacy-reproduction.log": "3d9b50321c7fa960930c0854d6724459ce6a817eb0b7c2ebfc4fa82c69fe3b39",
+    "report.json": "d2e79f93f380b2cfb775defdf7ba3ea91027ad95682fa9ad9f17a765d98e927f",
+    "core-checks.log": "8b48df088ecbef19bdc3331c6e8a92a1070c08ffb466ae87bab68e4062cc77c7",
+    "report.md": "0cf4ceb2d3c2da70c372cf3c5e367ff92ece63f559d7b2e7d4c3a94aaa716172",
+    "preflight-rejected.log": "eb1be94c9e6db21cd14ebec49a2f32628bea38755aa25627919adffce5c105f4",
+    "evaluation.log": "206c3efd73482248c6f806a7c6c7ade0c77d370c90c90311645f82642f3a1e58"
+  }
+}
