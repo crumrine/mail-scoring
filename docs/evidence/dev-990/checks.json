@@ -1,0 +1,20 @@
+{
+  "sourceCommit": "4028b57",
+  "checks": [
+    "prepare.py --self-check: 6 cases pass",
+    "run.mjs --self-check: 12 cases pass",
+    "cached prepare and independently fresh acquisition: identical pinned 192-message manifest",
+    "paired run: each source variant repeated with reversed order, exact per-sample equality",
+    "14 separate installation/authored controls per variant pass",
+    "zero evaluation fetch attempts",
+    "no runtime/product/dependency changes; prior DEV-988/989/993/994 non-Actions checks remain applicable"
+  ],
+  "files": {
+    "harness/evaluation/prepare.py": "1b7dafd25f9154353bd096c8e399a96110c21dc0aec7404f446dd3a5c16d2a84",
+    "harness/evaluation/run.mjs": "1a2ab7acc9c04f1e910158861fa1eb846bd529babf40c770797270cd479503cd",
+    "harness/evaluation/README.md": "cba4a63ea92e3b5d6804df8eb90311ec5343b9f4d347e33315e6a2c4a4f1f27b",
+    "docs/evidence/dev-990/report.json": "c6062fa47e16ee7c44700d3bf3659a91ab5fcf8efc4730ac66c14156c88f5c79",
+    "docs/evidence/dev-990/provenance.json": "9876a6c6c473dffce631bf77f54988159615af5b046d669ce6d6c9ff534333cc",
+    "docs/evidence/dev-990/report.md": "56b1698f14bc036ef5264178903e1cf8e5f89a9b3362bdb069b970860923f7f0"
+  }
+}
