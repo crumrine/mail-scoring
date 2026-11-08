@@ -20,7 +20,8 @@
     "newPositivesComparedToRules6": 0,
     "hamFalsePositives": 0,
     "warmOrdinaryP95ms": 0.49579200000000867,
-    "coldOrdinaryP95ms": 3.2937090000000353
+    "coldOrdinaryP95ms": 3.2937090000000353,
+    "portableObservedReproduction": "byte-identical6736-rowresult"
   },
   "observedTotals": {
     "sa:validation": {
@@ -111,7 +112,8 @@
     "mutation-url-length.log": "a8fe56c5be7c824da7029dfc8097afa8abce56c65e25a7e3ea5e830e5f91be6e",
     "mutations.json": "5d3db65d068ae5b73ba0d0844f80691756af1c813115c41cb2be297f8a9d27ef",
     "observed-core-regression.json": "7cc4b079d80db0a1afa5cef015f0bc16790e5d6fdbb30bbd74e3d51a43300e64",
-    "observed-regression-reproducer.mjs": "c477ed0a9986aa722748d2756dd9f71d241fea8f6ac858a5a76e384a575470ae",
+    "observed-portable-reproduction.log": "9db3ac173714a507438de9301fcbf9206612160e5f468b307a9eab6293f79612",
+    "observed-regression-reproducer.mjs": "045c685d03e0dd9462ee1c138b5330943a9ece1c5cda799257c2389be04db26b",
     "observed-regression.log": "9db3ac173714a507438de9301fcbf9206612160e5f468b307a9eab6293f79612",
     "sbom.json": "7f6fc277fe8cd1ba3569f50b0e799f1a9489dccf1b8b263dbfa4cb508a9c41e0",
     "training-features.json": "2efe8c47ae510a41d5e6b515857786d165e52f5cfbe3b3940eb421de12b82d61",
