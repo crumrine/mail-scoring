@@ -1,0 +1,78 @@
+{
+  "partitionSha256": "f3bb8ee9f757bc374ff27c10526a02f58509b5bbd399e1151235e261ebaed6e9",
+  "featuresSha256": "52015ffb261b3590d375b88e7a5d08882ec0d4d78a085ad6b9ea14cebbea0ff6",
+  "sourceManifestSha256": "6f3dd4aa0b659a972563d8c03d97de2982464d4374dcca9513e8ec1eb2fdc486",
+  "selection": "Fixed before classifier development: exclude prior diagnostic raw IDs and body-feature duplicates/conflicts; original easy_ham/spam for training; hard_ham first half train/next quarter validation/rest holdout; new cohorts first256 pergroup validation/rest holdout. SHA256 order, no predictions used.",
+  "summary": {
+    "diagnostic": {
+      "total": 192,
+      "ham": 128,
+      "spam": 64,
+      "hardHam": 64
+    },
+    "train": {
+      "total": 2804,
+      "ham": 2467,
+      "spam": 337,
+      "hardHam": 88
+    },
+    "validation": {
+      "total": 556,
+      "ham": 300,
+      "spam": 256,
+      "hardHam": 44
+    },
+    "holdout": {
+      "total": 1988,
+      "ham": 1175,
+      "spam": 813,
+      "hardHam": 45
+    },
+    "excluded": {
+      "total": 506,
+      "ham": 80,
+      "spam": 426,
+      "hardHam": 9
+    }
+  },
+  "archives": [
+    {
+      "file": "readme.html",
+      "sha256": "9f8cc0c8be6f32b25226d3ece26da775a6e008581b8fb061a679e3acee6b64be",
+      "bytes": 4566,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/readme.html"
+    },
+    {
+      "file": "20030228_easy_ham.tar.bz2",
+      "sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438",
+      "bytes": 1612216,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham.tar.bz2"
+    },
+    {
+      "file": "20030228_hard_ham.tar.bz2",
+      "sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9",
+      "bytes": 1029898,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_hard_ham.tar.bz2"
+    },
+    {
+      "file": "20030228_spam.tar.bz2",
+      "sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743",
+      "bytes": 1183768,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_spam.tar.bz2"
+    },
+    {
+      "file": "20030228_easy_ham_2.tar.bz2",
+      "sha256": "b4bd3dc5ae5b40f38e99a0e41ad7d16b428b56e818e3a6ffa07330d62004dd38",
+      "bytes": 1077892,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham_2.tar.bz2"
+    },
+    {
+      "file": "20050311_spam_2.tar.bz2",
+      "sha256": "44280a0e28bf7645b2279e8e42659271ad82c6f40bf8d364dbda7f1df344a765",
+      "bytes": 2059029,
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20050311_spam_2.tar.bz2"
+    }
+  ],
+  "holdoutNotScored": true,
+  "rawDataLocation": "external only; no raw mail, tokens or per-message feature vectors in repository"
+}

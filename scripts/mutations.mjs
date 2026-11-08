@@ -5,6 +5,10 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'statistical-detection',file:'packages/core/src/index.ts',before:"if(!features.gtube&&generalSpam(input,limits))",after:"if(false)",command:['test'],failure:/✖ general spam detects/},
+  {id:'html-depth',file:'packages/core/src/html-text.ts',before:'stack.length===32',after:'stack.length===32000',command:['test'],failure:/✖ HTML source, tag, depth/},
+  {id:'html-active-skip',file:'packages/core/src/html-text.ts',before:'SKIP.has(name)',after:'false',command:['test'],failure:/✖ statistical evidence excludes/},
+  {id:'statistical-budget',file:'packages/core/src/statistical.ts',before:"if(tokens.length===1000)",after:"if(false)",command:['test'],failure:/✖ HTML source, tag, depth/},
   {id:'url-length',file:'packages/core/src/guards.ts',before:"read(item(urls,i),LIMITS.urlBytes,'field_bytes')",after:"read(item(urls,i),LIMITS.requestBytes,'field_bytes')",command:['test'],failure:/✖ URL decoding has a finite/},
   {id:'normalized-output',file:'packages/core/src/vendor/text.ts',before:'if(bytes+cost>LIMITS.normalizedBytes)',after:'if(bytes+cost>LIMITS.requestBytes)',command:['test'],failure:/✖ normalized output guard/},
   {id:'anchor-count',file:'packages/core/src/guards.ts',before:'Math.min(anchors.length,LIMITS.urls)',after:'anchors.length',command:['test'],failure:/✖ anchor work is bounded/},

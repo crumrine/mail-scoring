@@ -6,13 +6,11 @@ import {spawnSync} from 'node:child_process';
 import {gzipSync} from 'node:zlib';
 import {performance} from 'node:perf_hooks';
 import {inspectBundle} from './bundle-policy.mjs';
+import {coreModules} from './worker-policy.mjs';
 await mkdir('.artifacts',{recursive:true});
 const result=await build({entryPoints:['packages/core/src/index.ts'],bundle:true,format:'esm',platform:'browser',target:'es2024',metafile:true,write:false,minify:true});
 const code=result.outputFiles[0].text;
-inspectBundle(code,result.metafile,[
-  'packages/core/src/index.ts','packages/core/src/contract.ts','packages/core/src/guards.ts','packages/core/src/vendor/authentication-failed.ts',
-  'packages/core/src/inspection.ts','packages/core/src/vendor/text.ts','packages/core/src/vendor/links.ts','packages/core/src/vendor/bulk.ts'
-]);
+inspectBundle(code,result.metafile,coreModules);
 await writeFile('.artifacts/core.js',code);
 await writeFile('.artifacts/core-meta.json',JSON.stringify(result.metafile,null,2)+'\n');
 await build({entryPoints:['workers/scorer/spike.ts'],bundle:true,format:'esm',platform:'browser',target:'es2024',outfile:'.artifacts/spike.js'});

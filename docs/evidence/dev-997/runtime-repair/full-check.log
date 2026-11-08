@@ -1,0 +1,102 @@
+
+> mail-scoring-workspace@0.1.0 check
+> node harness/evaluation/mime-runtime.mjs && npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test && npm run direct-growth && npm run worker:build && npm run worker:test && npm run worker:mutations
+
+{"node":"v24.15.0","icu":"78.2","unicode":"17.0","legacyDecoder":"WHATWG windows-1252 aliases"}
+
+> mail-scoring-workspace@0.1.0 typecheck
+> npm run build && tsc --noEmit
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.526042ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (16.415666ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (3.332334ms)
+✔ header, URL, metadata cardinalities below/at/above (1.34075ms)
+✔ secondary fields and multibyte truncation are bounded (0.460917ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.475875ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (1.479667ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.446584ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (2.822458ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.817666ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.0825ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.173875ms)
+✔ unprepared roots are refused before any structural operation (0.29175ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.442583ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (9.713792ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.40775ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.738083ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.467375ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.763666ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (4.450459ms)
+✔ statistical evidence and new inspection limits require declared rules-3 (1.527375ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (12.968416ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.304375ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (19.199667ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (1.916208ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.374625ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.507542ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (8.324959ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (20.392292ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.299875ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (72.764791ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (24.61275ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (4.772958ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.239542ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.698959ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (1.4155ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (18.270917ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.0865ms)
+✔ numerical model is a bounded unique aggregate from the frozen training partition (2.050625ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1131.148583
+
+> mail-scoring-workspace@0.1.0 workerd-spike
+> node scripts/workerd-spike.mjs
+
+{"workerd":"passed","coreBundleBytes":332358,"coreGzipBytes":127574,"runtimeImports":0,"nativeInitializationProbes":3,"hostProcessAndProbesMs":327.1480419999999}
+
+> mail-scoring-workspace@0.1.0 mutation-test
+> node scripts/mutations.mjs
+
+[{"mutation":"statistical-detection","caught":true,"exitCode":1},{"mutation":"html-depth","caught":true,"exitCode":1},{"mutation":"html-active-skip","caught":true,"exitCode":1},{"mutation":"statistical-budget","caught":true,"exitCode":1},{"mutation":"url-length","caught":true,"exitCode":1},{"mutation":"normalized-output","caught":true,"exitCode":1},{"mutation":"anchor-count","caught":true,"exitCode":1},{"mutation":"url-decode","caught":true,"exitCode":1},{"mutation":"family-cap","caught":true,"exitCode":1},{"mutation":"total-cap","caught":true,"exitCode":1},{"mutation":"quote-skip","caught":true,"exitCode":1},{"mutation":"preference-provenance","caught":true,"exitCode":1},{"mutation":"source-bound","caught":true,"exitCode":1},{"mutation":"parsed-root","caught":true,"exitCode":1},{"mutation":"lazy-string","caught":true,"exitCode":1},{"mutation":"gtube-detection","caught":true,"exitCode":1},{"mutation":"network-deny","caught":true,"exitCode":1}]
+
+> mail-scoring-workspace@0.1.0 direct-growth
+> npm run build && node --expose-gc scripts/direct-growth.mjs
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+{"runtime":"v24.15.0","platform":"darwin","arch":"arm64","cpu":"Apple M5 Pro","samples":[{"kind":"root","size":1000,"elapsedMs":0.2218340000000012,"heapDeltaBytes":22056,"rssDeltaBytes":16384},{"kind":"header","size":1000,"elapsedMs":0.005415999999996757,"heapDeltaBytes":6928,"rssDeltaBytes":0},{"kind":"transport","size":1000,"elapsedMs":0.006374999999998465,"heapDeltaBytes":6912,"rssDeltaBytes":0},{"kind":"attachment","size":1000,"elapsedMs":0.0045000000000001705,"heapDeltaBytes":6928,"rssDeltaBytes":0},{"kind":"root","size":100000,"elapsedMs":0.008875000000003297,"heapDeltaBytes":7304,"rssDeltaBytes":0},{"kind":"header","size":100000,"elapsedMs":0.011167000000000371,"heapDeltaBytes":7056,"rssDeltaBytes":0},{"kind":"transport","size":100000,"elapsedMs":0.020624999999995453,"heapDeltaBytes":3808,"rssDeltaBytes":0},{"kind":"attachment","size":100000,"elapsedMs":0.016041000000001304,"heapDeltaBytes":3840,"rssDeltaBytes":0},{"kind":"root","size":1000000,"elapsedMs":0.026041999999961263,"heapDeltaBytes":4008,"rssDeltaBytes":0},{"kind":"header","size":1000000,"elapsedMs":0.02433399999995345,"heapDeltaBytes":5768,"rssDeltaBytes":0},{"kind":"transport","size":1000000,"elapsedMs":0.007749999999987267,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"attachment","size":1000000,"elapsedMs":0.00829199999998309,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"repeat","size":1048576,"elapsedMs":0.960957999999664,"heapDeltaBytes":22368,"rssDeltaBytes":0},{"kind":"concatenation","size":1048576,"elapsedMs":0.00804100000004837,"heapDeltaBytes":1480,"rssDeltaBytes":0},{"kind":"repeat","size":16777216,"elapsedMs":0.007625000000189175,"heapDeltaBytes":1480,"rssDeltaBytes":0},{"kind":"concatenation","size":16777216,"elapsedMs":0.0039999999999054126,"heapDeltaBytes":1480,"rssDeltaBytes":0},{"kind":"repeat","size":67108864,"elapsedMs":0.0039590000001226144,"heapDeltaBytes":1480,"rssDeltaBytes":0},{"kind":"concatenation","size":67108864,"elapsedMs":0.00716599999987011,"heapDeltaBytes":1480,"rssDeltaBytes":0}],"caveat":"Synthetic local Node observations, one cold call per constructed fixture. Fixture allocation and GC precede timing. Heap deltas are not peak-memory guarantees; no hosted CPU, accuracy or billing claim. Membership gate and O(1) length preflight enforce work bounds; 4MiB allocation regression threshold leaves runtime noise headroom."}
+
+> mail-scoring-workspace@0.1.0 worker:build
+> node scripts/worker-build.mjs
+
+{"private":{"bytes":335597,"gzipBytes":128471,"modules":["packages/core/src/contract.ts","packages/core/src/guards.ts","packages/core/src/vendor/authentication-failed.ts","packages/core/src/general-model.ts","packages/core/src/vendor/chi.ts","node_modules/entities/dist/esm/generated/decode-data-html.js","node_modules/entities/dist/esm/generated/decode-data-xml.js","node_modules/entities/dist/esm/decode-codepoint.js","node_modules/entities/dist/esm/decode.js","node_modules/htmlparser2/dist/esm/Tokenizer.js","node_modules/htmlparser2/dist/esm/Parser.js","node_modules/domelementtype/lib/esm/index.js","node_modules/domhandler/lib/esm/node.js","node_modules/domhandler/lib/esm/index.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-html.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-xml.js","node_modules/dom-serializer/node_modules/entities/lib/esm/decode_codepoint.js","node_modules/dom-serializer/node_modules/entities/lib/esm/decode.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/encode-html.js","node_modules/dom-serializer/node_modules/entities/lib/esm/escape.js","node_modules/dom-serializer/node_modules/entities/lib/esm/encode.js","node_modules/dom-serializer/node_modules/entities/lib/esm/index.js","node_modules/dom-serializer/lib/esm/foreignNames.js","node_modules/dom-serializer/lib/esm/index.js","node_modules/domutils/lib/esm/stringify.js","node_modules/domutils/lib/esm/traversal.js","node_modules/domutils/lib/esm/manipulation.js","node_modules/domutils/lib/esm/querying.js","node_modules/domutils/lib/esm/legacy.js","node_modules/domutils/lib/esm/helpers.js","node_modules/domutils/lib/esm/feeds.js","node_modules/domutils/lib/esm/index.js","node_modules/htmlparser2/dist/esm/index.js","packages/core/src/html-text.ts","packages/core/src/vendor/text.ts","packages/core/src/statistical-text.ts","packages/core/src/statistical.ts","packages/core/src/vendor/links.ts","packages/core/src/vendor/bulk.ts","packages/core/src/inspection.ts","packages/core/src/index.ts","workers/private/protocol.ts","workers/private/adapter.ts","workers/private/index.ts"],"dryRunBytes":337086,"dryRunGzipBytes":129266},"consumer":{"bytes":5414,"gzipBytes":2226,"modules":["packages/core/src/contract.ts","workers/private/protocol.ts","workers/consumer/integration.ts","workers/consumer/index.ts"],"dryRunBytes":5618,"dryRunGzipBytes":2346}}
+
+> mail-scoring-workspace@0.1.0 worker:test
+> node scripts/worker-local.mjs
+
+actual consumer -> scorer workerd RPC tests passed
+
+> mail-scoring-workspace@0.1.0 worker:mutations
+> node scripts/worker-mutations.mjs
+
+[{"name":"outbound_fetch","caught":true,"restored":true,"failure":"forbidden capability: fetch"},{"name":"content_log","caught":true,"restored":true,"failure":"forbidden capability: console"},{"name":"retained_content","caught":true,"restored":true,"failure":"forbidden capability: globalThis"},{"name":"resource_binding","caught":true,"restored":true,"failure":"unexpected configuration/binding\n+ actual - expected\n\n  [\n    'compatibility_date',\n+   'kv_namespaces',\n    'main',\n    'minify',\n    'name',\n    'observability',\n    'preview_urls',\n"},{"name":"response_size","caught":true,"restored":true,"failure":"response_size targeted check failed"},{"name":"exception_sanitizer","caught":true,"restored":true,"failure":"exception_sanitizer targeted check failed"},{"name":"request_bytes","caught":true,"restored":true,"failure":"local targeted check failed"},{"name":"json_depth","caught":true,"restored":true,"failure":"local targeted check failed"}]

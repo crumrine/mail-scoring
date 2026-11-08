@@ -1,0 +1,366 @@
+{
+  "runtime": "v24.13.0",
+  "samples": [
+    {
+      "kind": "open",
+      "size": 1024,
+      "medianMs": 0.6267909999999972,
+      "maxMs": 2.020541999999992,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 1024,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 1024,
+      "medianMs": 0.13104199999999366,
+      "maxMs": 0.5407500000000027,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 1024,
+      "medianMs": 0.22449999999999193,
+      "maxMs": 0.6194580000000087,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 204,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 1024,
+      "medianMs": 0.11762500000000387,
+      "maxMs": 0.1247499999999917,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 1024,
+      "medianMs": 0.25020800000000065,
+      "maxMs": 0.6440840000000065,
+      "tags": 256,
+      "depth": 1,
+      "outputBytes": 512,
+      "complete": true
+    },
+    {
+      "kind": "unterminated",
+      "size": 1024,
+      "medianMs": 0.030165999999994142,
+      "maxMs": 0.038250000000005,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    },
+    {
+      "kind": "open",
+      "size": 2048,
+      "medianMs": 0.7010000000000076,
+      "maxMs": 0.997208999999998,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 2048,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 2048,
+      "medianMs": 0.038083999999997786,
+      "maxMs": 0.09979199999999366,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 2048,
+      "medianMs": 0.2767079999999993,
+      "maxMs": 0.32791699999999935,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 409,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 2048,
+      "medianMs": 0.038375000000002046,
+      "maxMs": 0.04349999999999454,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 2048,
+      "medianMs": 0.44404199999999605,
+      "maxMs": 0.7007499999999993,
+      "tags": 512,
+      "depth": 1,
+      "outputBytes": 1024,
+      "complete": true
+    },
+    {
+      "kind": "unterminated",
+      "size": 2048,
+      "medianMs": 0.03120900000000404,
+      "maxMs": 0.043250000000000455,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    },
+    {
+      "kind": "open",
+      "size": 4096,
+      "medianMs": 1.8813340000000096,
+      "maxMs": 2.038291000000001,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 4096,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 4096,
+      "medianMs": 0.07549999999999102,
+      "maxMs": 0.11133399999999938,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 4096,
+      "medianMs": 0.30212500000000375,
+      "maxMs": 0.30691699999999855,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 819,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 4096,
+      "medianMs": 0.059791000000004146,
+      "maxMs": 0.16387500000000443,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 4096,
+      "medianMs": 0.9410419999999959,
+      "maxMs": 1.335540999999992,
+      "tags": 1024,
+      "depth": 1,
+      "outputBytes": 2048,
+      "complete": true
+    },
+    {
+      "kind": "unterminated",
+      "size": 4096,
+      "medianMs": 0.05670900000001211,
+      "maxMs": 0.07237500000000807,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    },
+    {
+      "kind": "open",
+      "size": 8192,
+      "medianMs": 3.1182079999999956,
+      "maxMs": 3.410583000000017,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 8192,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 8192,
+      "medianMs": 0.11054100000001199,
+      "maxMs": 0.15741700000000947,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 8192,
+      "medianMs": 0.596291999999977,
+      "maxMs": 0.8835410000000081,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 1638,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 8192,
+      "medianMs": 0.08087500000002024,
+      "maxMs": 0.09350000000000591,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 8192,
+      "medianMs": 0.771458999999993,
+      "maxMs": 1.1635410000000093,
+      "tags": 1025,
+      "depth": 1,
+      "outputBytes": 2048,
+      "complete": false
+    },
+    {
+      "kind": "unterminated",
+      "size": 8192,
+      "medianMs": 0.10741600000000062,
+      "maxMs": 0.13033400000000483,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    },
+    {
+      "kind": "open",
+      "size": 16384,
+      "medianMs": 6.092957999999982,
+      "maxMs": 6.911915999999991,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 16384,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 16384,
+      "medianMs": 0.20975000000001387,
+      "maxMs": 0.24750000000000227,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 16384,
+      "medianMs": 1.1130420000000072,
+      "maxMs": 1.4566250000000025,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 3276,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 16384,
+      "medianMs": 0.09904099999999971,
+      "maxMs": 0.11466600000002813,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 16384,
+      "medianMs": 0.7712500000000091,
+      "maxMs": 1.1291249999999877,
+      "tags": 1025,
+      "depth": 1,
+      "outputBytes": 2048,
+      "complete": false
+    },
+    {
+      "kind": "unterminated",
+      "size": 16384,
+      "medianMs": 0.1996249999999975,
+      "maxMs": 0.22416599999999676,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    },
+    {
+      "kind": "open",
+      "size": 32768,
+      "medianMs": 12.902249999999981,
+      "maxMs": 14.302334000000002,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 32768,
+      "complete": true
+    },
+    {
+      "kind": "attribute",
+      "size": 32768,
+      "medianMs": 0.41391699999999787,
+      "maxMs": 0.45533399999999347,
+      "tags": 1,
+      "depth": 1,
+      "outputBytes": 4,
+      "complete": true
+    },
+    {
+      "kind": "entities",
+      "size": 32768,
+      "medianMs": 2.446583999999973,
+      "maxMs": 3.296750000000003,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 6553,
+      "complete": true
+    },
+    {
+      "kind": "depth",
+      "size": 32768,
+      "medianMs": 0.19929199999995717,
+      "maxMs": 0.22366699999997763,
+      "tags": 33,
+      "depth": 32,
+      "outputBytes": 32,
+      "complete": false
+    },
+    {
+      "kind": "tags",
+      "size": 32768,
+      "medianMs": 0.8915000000000077,
+      "maxMs": 1.1636670000000322,
+      "tags": 1025,
+      "depth": 1,
+      "outputBytes": 2048,
+      "complete": false
+    },
+    {
+      "kind": "unterminated",
+      "size": 32768,
+      "medianMs": 0.4097499999999741,
+      "maxMs": 0.41766699999999446,
+      "tags": 0,
+      "depth": 0,
+      "outputBytes": 0,
+      "complete": true
+    }
+  ],
+  "scope": "36 hostile HTML sizes/shapes; local Node wall observations, not peak memory or hosted CPU/billing. Structural limits are assertions."
+}

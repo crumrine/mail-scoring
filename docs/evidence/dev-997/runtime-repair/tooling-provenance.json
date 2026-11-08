@@ -1,0 +1,6 @@
+{
+  "source": "https://nodejs.org/dist/v24.15.0/node-v24.15.0-darwin-arm64.tar.xz",
+  "sha256": "af5cfaeafe603aaf7599f287fd9d100bb41f16794f49788fa59dd3f25546930f",
+  "archiveBytes": 26686068,
+  "scope": "Isolated exact repo-pinned runtime; no global replacement"
+}
