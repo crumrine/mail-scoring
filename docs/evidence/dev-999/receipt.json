@@ -1,0 +1,129 @@
+{
+  "ticket": "DEV-999",
+  "status": "acceptance_passed_source_only",
+  "runnerFrozenCommit": "7ea0b07",
+  "sourcePairs": {
+    "baseline": {
+      "pins": {
+        "inbox": "d49818571e969a537cd39ceaf9871bb7087576fa",
+        "scorer": "faa15bea06db52f2dc240257d5335a66a933f909"
+      },
+      "inboxArchiveSha256": "4149cbd911bd2a04258a027c646448d2f5f2b4e0d490bedfe8f967ffb200abd4",
+      "scorerArchiveSha256": "a6b220dba57c107140377f1c419570f15f9e17c7b4eea33a7cfa99629c709988"
+    },
+    "candidate": {
+      "pins": {
+        "inbox": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+        "scorer": "5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0"
+      },
+      "inboxArchiveSha256": "2816d0c716d4898b8eb166a620eab9a6cd08ff15633702b5e3de7cdb8424ccc3",
+      "scorerArchiveSha256": "da2ba29213cdbed84d4fd8a3fdb5e09f52df7ecdd090836f9b9ea243e7365185"
+    }
+  },
+  "generatedBundleHashScope": "Each report retains its own generated pipeline bundle hash. Esbuild embeds randomized scratch source-path comments; compare identical immutable source archive hashes/pins and runner/runtime across runs, not these incidental bundle hashes.",
+  "model": {
+    "modelVersion": "general-3",
+    "modelSourceSha256": "e20fe32bbe2688c9407a9b1e8a6e36cce9563800f1b2bdb5878270bdb73e5ab6",
+    "partitionSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380",
+    "cutoff": 0.99,
+    "minClues": 20,
+    "maxClues": 64,
+    "authoredFixtureSha256": "33359d73a7c0a466be12a28fe7d72286f65e7eafb48ea2252df36f256bf2e80a",
+    "scorerLockSha256": "04a9aa23345d13d0b2e16dadd1bfde39dadb825dd2f88b8435cddbb9837798de"
+  },
+  "runtime": {
+    "node": "v24.15.0",
+    "profile": {
+      "node": "v24.15.0",
+      "icu": "78.2",
+      "unicode": "17.0",
+      "legacyDecoder": "WHATWG windows-1252 aliases"
+    },
+    "parser": "2.7.3",
+    "parserEntrySha256": "ba36b7c3007549cadca514ffd90c21e07b82248a7ff50411edc5a4485513991d",
+    "consumerLockSha256": "78e660bfbd992d55aa9c798eb1b6adbfe6031a9e9a89a3f7e7bbabba1dd88a39",
+    "esbuild": "0.25.12"
+  },
+  "gate": "Unchanged >=20 percentage point heldout recall improvement versus production and zero additional ham/hardham FP per applicable partition; zero authored-ham FP. Both observed regression and independent gates required.",
+  "oldData": {
+    "scope": "Observed regression only",
+    "diagnostic": {
+      "TP": 20,
+      "spam": 64,
+      "FP": 0,
+      "ham": 128
+    },
+    "validation": {
+      "TP": 65,
+      "spam": 256,
+      "FP": 0,
+      "ham": 300
+    },
+    "holdout": {
+      "TP": 205,
+      "spam": 813,
+      "FP": 0,
+      "ham": 1175
+    }
+  },
+  "independent": {
+    "cohort": "Frozen public Enron raw selected1000ham/1000spam",
+    "candidate": {
+      "TP": 212,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 788
+    },
+    "baseline": {
+      "TP": 0,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 1000
+    },
+    "candidateUnavailable": 70,
+    "releaseEligible": true,
+    "sourceArchives": "Separate from extra TRAIN; raw/body-fingerprint disjoint from all original SA and extra TRAIN verified before prediction",
+    "snapshotSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380"
+  },
+  "firstFailure": "first-failed/report.json immutable d2e79f93f380b2cfb775defdf7ba3ea91027ad95682fa9ad9f17a765d98e927f; general1 629TP3FP never deployed; reproduced exactly",
+  "checks": {
+    "selfChecks": "22 evaluator +6 original archive +6 Enron bounded archive",
+    "core": "44passed; typecheck; exact Worker build SHA1cdf and actual RPC tests passed",
+    "consumer": "DEV1005 independently approved/merged606d0ed;641tests/34mutants/25growth/typebuild/5Workers/1440+390SPA",
+    "order": "Forward/reverse per-sample identical; no network, no samples dropped",
+    "legacy": "Original192 0TP0FP128TN64FN exactly reproduced"
+  },
+  "deployment": "Not deployed; independently reviewed merged acceptance and OPS614 exactplan/artifactreview and actual target receipt required",
+  "limits": [
+    "Dated English-focused public samples are not current private mailbox accuracy.",
+    "21.2% independent recall leaves788/1000 spam missed; unavailable remains in denominator.",
+    "Zero observed hamFP does not guarantee zero productionFP.",
+    "No live mail sent, private mailbox capture, deletion/rescan/SMTP rejection/paidAI/mail URL-DNS."
+  ],
+  "hashes": {
+    "README.md": "981da7321dbe721eb84bcb6c301878c46df43c03b2b10b8a8b382f8a6b9edb4c",
+    "core.log": "c5a26b6d09a20a1ed8bb09dd09dfed050c1bba900620416aa1ac8b5c69f1cafa",
+    "first-failed/core-checks.log": "8b48df088ecbef19bdc3331c6e8a92a1070c08ffb466ae87bab68e4062cc77c7",
+    "first-failed/evaluation.log": "206c3efd73482248c6f806a7c6c7ade0c77d370c90c90311645f82642f3a1e58",
+    "first-failed/false-positive-shapes.json": "380cfb3f6c876125c10e4ef2a1721237f7031af93c2983d10953c94bd6d7cc46",
+    "first-failed/legacy-reproduction.log": "3d9b50321c7fa960930c0854d6724459ce6a817eb0b7c2ebfc4fa82c69fe3b39",
+    "first-failed/preflight-rejected.log": "eb1be94c9e6db21cd14ebec49a2f32628bea38755aa25627919adffce5c105f4",
+    "first-failed/receipt.json": "f6900d27418dd256690d49930d5d11e86fede35cef811322e0700f0ca6dcafc0",
+    "first-failed/report.json": "d2e79f93f380b2cfb775defdf7ba3ea91027ad95682fa9ad9f17a765d98e927f",
+    "first-failed/report.md": "0cf4ceb2d3c2da70c372cf3c5e367ff92ece63f559d7b2e7d4c3a94aaa716172",
+    "general1-reproduction.log": "1c3cbdca5f21c968e4c28d91c51d9eb13380d22143bcfab8306ac499d95c89e7",
+    "independent/evaluation.log": "6640fe40826a404433b4c6a9701ae2d52bd94832fbc5d87d47256d831f7ec731",
+    "independent/receipt.json": "59c9c68967a34e7306f62c569a9c4606808389bfc5de4be902f68cbfd3fcaeb1",
+    "independent/report.json": "95fc07fb96674ad8c0efec959206631410d3d5eee006fa8974d0f6de940ffd44",
+    "independent/report.md": "20ed143d2745c73fcf836705a923f1244f8c6245be502d4e453dc58b38f8fa7f",
+    "legacy-reproduction.log": "7ebdccca1281e3541ffef9d121dc40f946192c9baf3303aa04bda486b16bcce2",
+    "regression/evaluation.log": "6564e089cdb23fbdb05b04ea7af9251b454eee100ac4cc6bec2b1e139f326394",
+    "regression/receipt.json": "ecbf26ae13a8eee728490a5bf9e52cb944a765782fd08f1236b35a17f6761abd",
+    "regression/report.json": "ba706dc5ccf38a7762942bff378d5b21cbadc7547f4058279f1a323317d46bd7",
+    "regression/report.md": "9958c50712af92e3460eecf7846b86d9fc5645462b3808055cc9a9ea9264ec69",
+    "typecheck.log": "8d7008300e1d93ebe3f1bd42cb9f844f5e0e8bc2bdbd76679dda140fd369271a",
+    "worker-build.log": "cab813780443e95882ec36c59456b678f91b0b187802bbdf73159cc119c5abf4",
+    "worker-test.log": "6dbff163d25ed0a32a158b6e3ec9593b274c52566570f3c19f3ee52621c65244"
+  },
+  "logPublication": "New published log copies trim trailing whitespace only; original external logs preserved."
+}

@@ -1,0 +1,1271 @@
+[
+  {
+    "id": "00bc48864310a3fe69617e61e8e47a2f6c702ff5932903e18751ffb163d78888",
+    "partition": "diagnostic",
+    "bytes": 5290,
+    "textBytes": 4293,
+    "htmlBytes": 0,
+    "attachments": 0,
+    "subjectReply": false,
+    "bodyLines": 131,
+    "quotedLineCount": 0,
+    "provenance": {
+      "normalizerQuoted": false,
+      "inlineHeader": false,
+      "fromHeaderLine": false,
+      "subjectHeaderLine": false,
+      "toHeaderLine": false,
+      "dateHeaderLine": false,
+      "forwardWord": false,
+      "longDivider": false,
+      "underscoreDivider": false,
+      "embeddedHtml": false
+    },
+    "headerFlags": {
+      "listId": false,
+      "listUnsubscribe": false,
+      "precedence": false,
+      "inReplyTo": false,
+      "references": false
+    },
+    "clues": {
+      "count": 64,
+      "hamLeaning": 19,
+      "spamLeaning": 45,
+      "hamMeanDocumentCount": 50.015625,
+      "spamMeanDocumentCount": 35.96875,
+      "hashesAndCounts": [
+        {
+          "id": 2752420076,
+          "hamDocuments": 74,
+          "spamDocuments": 0,
+          "p": 0.01948051948051948
+        },
+        {
+          "id": 337658899,
+          "hamDocuments": 43,
+          "spamDocuments": 0,
+          "p": 0.03260869565217391
+        },
+        {
+          "id": 173524790,
+          "hamDocuments": 37,
+          "spamDocuments": 107,
+          "p": 0.9461084432680616
+        },
+        {
+          "id": 3156543011,
+          "hamDocuments": 23,
+          "spamDocuments": 0,
+          "p": 0.057692307692307696
+        },
+        {
+          "id": 4258776482,
+          "hamDocuments": 46,
+          "spamDocuments": 117,
+          "p": 0.9414758168751269
+        },
+        {
+          "id": 1551804527,
+          "hamDocuments": 74,
+          "spamDocuments": 155,
+          "p": 0.9337717137799941
+        },
+        {
+          "id": 1062293841,
+          "hamDocuments": 113,
+          "spamDocuments": 1,
+          "p": 0.07276602041374342
+        },
+        {
+          "id": 1413179291,
+          "hamDocuments": 12,
+          "spamDocuments": 33,
+          "p": 0.9248833757421545
+        },
+        {
+          "id": 4242905251,
+          "hamDocuments": 11,
+          "spamDocuments": 31,
+          "p": 0.9240032808975597
+        },
+        {
+          "id": 2749304529,
+          "hamDocuments": 21,
+          "spamDocuments": 42,
+          "p": 0.916918468351133
+        },
+        {
+          "id": 2740501614,
+          "hamDocuments": 13,
+          "spamDocuments": 0,
+          "p": 0.09375
+        },
+        {
+          "id": 3753651740,
+          "hamDocuments": 12,
+          "spamDocuments": 0,
+          "p": 0.1
+        },
+        {
+          "id": 3683784189,
+          "hamDocuments": 58,
+          "spamDocuments": 77,
+          "p": 0.8988397059727268
+        },
+        {
+          "id": 4079720170,
+          "hamDocuments": 27,
+          "spamDocuments": 40,
+          "p": 0.898640336181568
+        },
+        {
+          "id": 1583257412,
+          "hamDocuments": 17,
+          "spamDocuments": 28,
+          "p": 0.8977335830539962
+        },
+        {
+          "id": 374965731,
+          "hamDocuments": 29,
+          "spamDocuments": 41,
+          "p": 0.8958741289793984
+        },
+        {
+          "id": 1305840995,
+          "hamDocuments": 160,
+          "spamDocuments": 186,
+          "p": 0.8925557272118401
+        },
+        {
+          "id": 373935342,
+          "hamDocuments": 1,
+          "spamDocuments": 11,
+          "p": 0.8903014320770612
+        },
+        {
+          "id": 431542716,
+          "hamDocuments": 29,
+          "spamDocuments": 37,
+          "p": 0.8867399603628108
+        },
+        {
+          "id": 728286360,
+          "hamDocuments": 6,
+          "spamDocuments": 13,
+          "p": 0.8811660697698145
+        },
+        {
+          "id": 2837066553,
+          "hamDocuments": 199,
+          "spamDocuments": 202,
+          "p": 0.8797813920463241
+        },
+        {
+          "id": 475000055,
+          "hamDocuments": 16,
+          "spamDocuments": 21,
+          "p": 0.8762352961893358
+        },
+        {
+          "id": 886062748,
+          "hamDocuments": 49,
+          "spamDocuments": 52,
+          "p": 0.8759831612519596
+        },
+        {
+          "id": 3644904752,
+          "hamDocuments": 53,
+          "spamDocuments": 54,
+          "p": 0.8725627644424451
+        },
+        {
+          "id": 593991948,
+          "hamDocuments": 2,
+          "spamDocuments": 9,
+          "p": 0.8699736031676198
+        },
+        {
+          "id": 3562589393,
+          "hamDocuments": 7,
+          "spamDocuments": 12,
+          "p": 0.8687752576965266
+        },
+        {
+          "id": 631369380,
+          "hamDocuments": 6,
+          "spamDocuments": 10,
+          "p": 0.8579566890515354
+        },
+        {
+          "id": 1383177847,
+          "hamDocuments": 62,
+          "spamDocuments": 54,
+          "p": 0.8565858384156646
+        },
+        {
+          "id": 1719429393,
+          "hamDocuments": 19,
+          "spamDocuments": 19,
+          "p": 0.8531808979606144
+        },
+        {
+          "id": 3982100393,
+          "hamDocuments": 94,
+          "spamDocuments": 2,
+          "p": 0.14717977711480962
+        },
+        {
+          "id": 804538780,
+          "hamDocuments": 7,
+          "spamDocuments": 0,
+          "p": 0.15
+        },
+        {
+          "id": 3154718630,
+          "hamDocuments": 7,
+          "spamDocuments": 0,
+          "p": 0.15
+        },
+        {
+          "id": 2834072502,
+          "hamDocuments": 6,
+          "spamDocuments": 9,
+          "p": 0.847863141265486
+        },
+        {
+          "id": 3598321157,
+          "hamDocuments": 59,
+          "spamDocuments": 47,
+          "p": 0.845323774798494
+        },
+        {
+          "id": 682673628,
+          "hamDocuments": 8,
+          "spamDocuments": 10,
+          "p": 0.8450277637556789
+        },
+        {
+          "id": 745154899,
+          "hamDocuments": 111,
+          "spamDocuments": 81,
+          "p": 0.8385992040107348
+        },
+        {
+          "id": 3878629347,
+          "hamDocuments": 6,
+          "spamDocuments": 8,
+          "p": 0.8360527619991615
+        },
+        {
+          "id": 711368699,
+          "hamDocuments": 56,
+          "spamDocuments": 41,
+          "p": 0.8339945241374678
+        },
+        {
+          "id": 1121524696,
+          "hamDocuments": 6,
+          "spamDocuments": 0,
+          "p": 0.16666666666666666
+        },
+        {
+          "id": 1431713430,
+          "hamDocuments": 90,
+          "spamDocuments": 62,
+          "p": 0.8296450786110016
+        },
+        {
+          "id": 2558723194,
+          "hamDocuments": 185,
+          "spamDocuments": 5,
+          "p": 0.1719931249068087
+        },
+        {
+          "id": 3291148330,
+          "hamDocuments": 17,
+          "spamDocuments": 14,
+          "p": 0.8274753951136206
+        },
+        {
+          "id": 716328523,
+          "hamDocuments": 124,
+          "spamDocuments": 82,
+          "p": 0.8257287289163452
+        },
+        {
+          "id": 1823159221,
+          "hamDocuments": 218,
+          "spamDocuments": 141,
+          "p": 0.824615104638417
+        },
+        {
+          "id": 3898356536,
+          "hamDocuments": 51,
+          "spamDocuments": 34,
+          "p": 0.8203044306041594
+        },
+        {
+          "id": 3113351040,
+          "hamDocuments": 1,
+          "spamDocuments": 5,
+          "p": 0.815807587430175
+        },
+        {
+          "id": 152360985,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 1581652236,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 1730137812,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 2833950515,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 3184967783,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 3392145323,
+          "hamDocuments": 36,
+          "spamDocuments": 23,
+          "p": 0.809811906659766
+        },
+        {
+          "id": 2767062895,
+          "hamDocuments": 129,
+          "spamDocuments": 4,
+          "p": 0.1937030944893622
+        },
+        {
+          "id": 4044128717,
+          "hamDocuments": 6,
+          "spamDocuments": 6,
+          "p": 0.8048508803449516
+        },
+        {
+          "id": 2406690954,
+          "hamDocuments": 86,
+          "spamDocuments": 50,
+          "p": 0.8048413638252544
+        },
+        {
+          "id": 1107522238,
+          "hamDocuments": 132,
+          "spamDocuments": 75,
+          "p": 0.8036245311158313
+        },
+        {
+          "id": 4256841462,
+          "hamDocuments": 4,
+          "spamDocuments": 5,
+          "p": 0.801899293286219
+        },
+        {
+          "id": 2535512472,
+          "hamDocuments": 74,
+          "spamDocuments": 41,
+          "p": 0.7963576796365339
+        },
+        {
+          "id": 2977070660,
+          "hamDocuments": 21,
+          "spamDocuments": 13,
+          "p": 0.7949500869762544
+        },
+        {
+          "id": 283285371,
+          "hamDocuments": 5,
+          "spamDocuments": 5,
+          "p": 0.7931258464855304
+        },
+        {
+          "id": 2578706139,
+          "hamDocuments": 301,
+          "spamDocuments": 157,
+          "p": 0.7924877157186898
+        },
+        {
+          "id": 2054159433,
+          "hamDocuments": 60,
+          "spamDocuments": 2,
+          "p": 0.21196650224270963
+        },
+        {
+          "id": 1113510858,
+          "hamDocuments": 53,
+          "spamDocuments": 28,
+          "p": 0.7858938950236414
+        },
+        {
+          "id": 2256804149,
+          "hamDocuments": 4,
+          "spamDocuments": 0,
+          "p": 0.21428571428571427
+        }
+      ]
+    }
+  },
+  {
+    "id": "dafe7e126b096bbb23b26d8c75c710316f86db0c0dd3468954366f6a97b30cac",
+    "partition": "holdout",
+    "bytes": 27179,
+    "textBytes": 3727,
+    "htmlBytes": 20039,
+    "attachments": 0,
+    "subjectReply": false,
+    "bodyLines": 93,
+    "quotedLineCount": 0,
+    "provenance": {
+      "normalizerQuoted": false,
+      "inlineHeader": false,
+      "fromHeaderLine": false,
+      "subjectHeaderLine": false,
+      "toHeaderLine": false,
+      "dateHeaderLine": false,
+      "forwardWord": false,
+      "longDivider": true,
+      "underscoreDivider": false,
+      "embeddedHtml": false
+    },
+    "headerFlags": {
+      "listId": false,
+      "listUnsubscribe": false,
+      "precedence": false,
+      "inReplyTo": false,
+      "references": false
+    },
+    "clues": {
+      "count": 64,
+      "hamLeaning": 16,
+      "spamLeaning": 48,
+      "hamMeanDocumentCount": 67.6875,
+      "spamMeanDocumentCount": 40.046875,
+      "hashesAndCounts": [
+        {
+          "id": 2278320577,
+          "hamDocuments": 38,
+          "spamDocuments": 0,
+          "p": 0.036585365853658534
+        },
+        {
+          "id": 4258776482,
+          "hamDocuments": 46,
+          "spamDocuments": 117,
+          "p": 0.9414758168751269
+        },
+        {
+          "id": 1551804527,
+          "hamDocuments": 74,
+          "spamDocuments": 155,
+          "p": 0.9337717137799941
+        },
+        {
+          "id": 3339240540,
+          "hamDocuments": 13,
+          "spamDocuments": 38,
+          "p": 0.9305317612568405
+        },
+        {
+          "id": 2749304529,
+          "hamDocuments": 21,
+          "spamDocuments": 42,
+          "p": 0.916918468351133
+        },
+        {
+          "id": 3621289194,
+          "hamDocuments": 24,
+          "spamDocuments": 45,
+          "p": 0.9148046227723108
+        },
+        {
+          "id": 3967719375,
+          "hamDocuments": 12,
+          "spamDocuments": 0,
+          "p": 0.1
+        },
+        {
+          "id": 3252275677,
+          "hamDocuments": 49,
+          "spamDocuments": 65,
+          "p": 0.8971839393396464
+        },
+        {
+          "id": 2513801058,
+          "hamDocuments": 13,
+          "spamDocuments": 23,
+          "p": 0.8961008101768246
+        },
+        {
+          "id": 2723900535,
+          "hamDocuments": 11,
+          "spamDocuments": 0,
+          "p": 0.10714285714285714
+        },
+        {
+          "id": 1305840995,
+          "hamDocuments": 160,
+          "spamDocuments": 186,
+          "p": 0.8925557272118401
+        },
+        {
+          "id": 59825223,
+          "hamDocuments": 10,
+          "spamDocuments": 0,
+          "p": 0.11538461538461539
+        },
+        {
+          "id": 2837066553,
+          "hamDocuments": 199,
+          "spamDocuments": 202,
+          "p": 0.8797813920463241
+        },
+        {
+          "id": 886062748,
+          "hamDocuments": 49,
+          "spamDocuments": 52,
+          "p": 0.8759831612519596
+        },
+        {
+          "id": 480244007,
+          "hamDocuments": 9,
+          "spamDocuments": 0,
+          "p": 0.125
+        },
+        {
+          "id": 3644904752,
+          "hamDocuments": 53,
+          "spamDocuments": 54,
+          "p": 0.8725627644424451
+        },
+        {
+          "id": 3780168015,
+          "hamDocuments": 92,
+          "spamDocuments": 84,
+          "p": 0.8649741795564091
+        },
+        {
+          "id": 360262427,
+          "hamDocuments": 20,
+          "spamDocuments": 20,
+          "p": 0.854477767842967
+        },
+        {
+          "id": 1089765596,
+          "hamDocuments": 95,
+          "spamDocuments": 2,
+          "p": 0.14586687391675152
+        },
+        {
+          "id": 678332803,
+          "hamDocuments": 7,
+          "spamDocuments": 0,
+          "p": 0.15
+        },
+        {
+          "id": 750634491,
+          "hamDocuments": 7,
+          "spamDocuments": 0,
+          "p": 0.15
+        },
+        {
+          "id": 4124564821,
+          "hamDocuments": 7,
+          "spamDocuments": 0,
+          "p": 0.15
+        },
+        {
+          "id": 189023530,
+          "hamDocuments": 59,
+          "spamDocuments": 48,
+          "p": 0.8479312012454662
+        },
+        {
+          "id": 1337911437,
+          "hamDocuments": 47,
+          "spamDocuments": 37,
+          "p": 0.8414299568255785
+        },
+        {
+          "id": 4243573962,
+          "hamDocuments": 33,
+          "spamDocuments": 26,
+          "p": 0.8366103653466095
+        },
+        {
+          "id": 2554787585,
+          "hamDocuments": 6,
+          "spamDocuments": 0,
+          "p": 0.16666666666666666
+        },
+        {
+          "id": 2823282857,
+          "hamDocuments": 15,
+          "spamDocuments": 13,
+          "p": 0.8298866707936722
+        },
+        {
+          "id": 3114108242,
+          "hamDocuments": 42,
+          "spamDocuments": 1,
+          "p": 0.1727632117657693
+        },
+        {
+          "id": 1533824880,
+          "hamDocuments": 25,
+          "spamDocuments": 19,
+          "p": 0.8268823192470528
+        },
+        {
+          "id": 2763893273,
+          "hamDocuments": 26,
+          "spamDocuments": 19,
+          "p": 0.8225724263506904
+        },
+        {
+          "id": 3898356536,
+          "hamDocuments": 51,
+          "spamDocuments": 34,
+          "p": 0.8203044306041594
+        },
+        {
+          "id": 954666857,
+          "hamDocuments": 20,
+          "spamDocuments": 15,
+          "p": 0.8200339558573854
+        },
+        {
+          "id": 3185987134,
+          "hamDocuments": 107,
+          "spamDocuments": 3,
+          "p": 0.18068620743091388
+        },
+        {
+          "id": 4136751754,
+          "hamDocuments": 69,
+          "spamDocuments": 44,
+          "p": 0.8168796686857028
+        },
+        {
+          "id": 2931049365,
+          "hamDocuments": 39,
+          "spamDocuments": 25,
+          "p": 0.8114463124821124
+        },
+        {
+          "id": 1352703673,
+          "hamDocuments": 13,
+          "spamDocuments": 10,
+          "p": 0.8102430217321104
+        },
+        {
+          "id": 3392145323,
+          "hamDocuments": 36,
+          "spamDocuments": 23,
+          "p": 0.809811906659766
+        },
+        {
+          "id": 3439296072,
+          "hamDocuments": 51,
+          "spamDocuments": 31,
+          "p": 0.8070415614169623
+        },
+        {
+          "id": 2406690954,
+          "hamDocuments": 86,
+          "spamDocuments": 50,
+          "p": 0.8048413638252544
+        },
+        {
+          "id": 3026167834,
+          "hamDocuments": 41,
+          "spamDocuments": 24,
+          "p": 0.7988130552349361
+        },
+        {
+          "id": 3416301453,
+          "hamDocuments": 38,
+          "spamDocuments": 22,
+          "p": 0.7961139959426241
+        },
+        {
+          "id": 1097876038,
+          "hamDocuments": 89,
+          "spamDocuments": 3,
+          "p": 0.20928954873942973
+        },
+        {
+          "id": 3738506984,
+          "hamDocuments": 20,
+          "spamDocuments": 12,
+          "p": 0.7892211107059625
+        },
+        {
+          "id": 1113510858,
+          "hamDocuments": 53,
+          "spamDocuments": 28,
+          "p": 0.7858938950236414
+        },
+        {
+          "id": 2017101774,
+          "hamDocuments": 4,
+          "spamDocuments": 0,
+          "p": 0.21428571428571427
+        },
+        {
+          "id": 1457512036,
+          "hamDocuments": 102,
+          "spamDocuments": 52,
+          "p": 0.7850903215567965
+        },
+        {
+          "id": 557540811,
+          "hamDocuments": 381,
+          "spamDocuments": 189,
+          "p": 0.7845875696165792
+        },
+        {
+          "id": 1727918744,
+          "hamDocuments": 102,
+          "spamDocuments": 51,
+          "p": 0.7818845412776049
+        },
+        {
+          "id": 1800113572,
+          "hamDocuments": 84,
+          "spamDocuments": 40,
+          "p": 0.7725363708170777
+        },
+        {
+          "id": 3848464964,
+          "hamDocuments": 54,
+          "spamDocuments": 26,
+          "p": 0.7708680998465232
+        },
+        {
+          "id": 3299722869,
+          "hamDocuments": 34,
+          "spamDocuments": 16,
+          "p": 0.7614025633110317
+        },
+        {
+          "id": 15787690,
+          "hamDocuments": 588,
+          "spamDocuments": 248,
+          "p": 0.756619690288299
+        },
+        {
+          "id": 1319594794,
+          "hamDocuments": 21,
+          "spamDocuments": 10,
+          "p": 0.754500875689477
+        },
+        {
+          "id": 608837968,
+          "hamDocuments": 9,
+          "spamDocuments": 5,
+          "p": 0.7507768380664164
+        },
+        {
+          "id": 3693463390,
+          "hamDocuments": 3,
+          "spamDocuments": 0,
+          "p": 0.25
+        },
+        {
+          "id": 4286165820,
+          "hamDocuments": 92,
+          "spamDocuments": 38,
+          "p": 0.747958281830697
+        },
+        {
+          "id": 1927306797,
+          "hamDocuments": 23,
+          "spamDocuments": 10,
+          "p": 0.7411552505731387
+        },
+        {
+          "id": 1121718346,
+          "hamDocuments": 106,
+          "spamDocuments": 41,
+          "p": 0.7364622690203365
+        },
+        {
+          "id": 2334921007,
+          "hamDocuments": 232,
+          "spamDocuments": 85,
+          "p": 0.7285913417037152
+        },
+        {
+          "id": 4048771743,
+          "hamDocuments": 23,
+          "spamDocuments": 1,
+          "p": 0.2721035491527295
+        },
+        {
+          "id": 122887567,
+          "hamDocuments": 28,
+          "spamDocuments": 11,
+          "p": 0.7268133081046988
+        },
+        {
+          "id": 269512077,
+          "hamDocuments": 443,
+          "spamDocuments": 157,
+          "p": 0.7230498607326986
+        },
+        {
+          "id": 1542649473,
+          "hamDocuments": 9,
+          "spamDocuments": 4,
+          "p": 0.716961073746774
+        },
+        {
+          "id": 1309284212,
+          "hamDocuments": 19,
+          "spamDocuments": 7,
+          "p": 0.7078625335777937
+        }
+      ]
+    }
+  },
+  {
+    "id": "deeaff68df34279cfd5c3d4ccd61fdaa3a014b7c9428a899f7615477cab71a74",
+    "partition": "holdout",
+    "bytes": 7070,
+    "textBytes": 5898,
+    "htmlBytes": 0,
+    "attachments": 0,
+    "subjectReply": false,
+    "bodyLines": 141,
+    "quotedLineCount": 0,
+    "provenance": {
+      "normalizerQuoted": false,
+      "inlineHeader": false,
+      "fromHeaderLine": false,
+      "subjectHeaderLine": false,
+      "toHeaderLine": false,
+      "dateHeaderLine": false,
+      "forwardWord": false,
+      "longDivider": false,
+      "underscoreDivider": false,
+      "embeddedHtml": false
+    },
+    "headerFlags": {
+      "listId": false,
+      "listUnsubscribe": false,
+      "precedence": true,
+      "inReplyTo": false,
+      "references": false
+    },
+    "clues": {
+      "count": 64,
+      "hamLeaning": 20,
+      "spamLeaning": 44,
+      "hamMeanDocumentCount": 62.109375,
+      "spamMeanDocumentCount": 38.890625,
+      "hashesAndCounts": [
+        {
+          "id": 3441496637,
+          "hamDocuments": 68,
+          "spamDocuments": 0,
+          "p": 0.02112676056338028
+        },
+        {
+          "id": 173524790,
+          "hamDocuments": 37,
+          "spamDocuments": 107,
+          "p": 0.9461084432680616
+        },
+        {
+          "id": 2858161729,
+          "hamDocuments": 3,
+          "spamDocuments": 29,
+          "p": 0.944550996915042
+        },
+        {
+          "id": 697505319,
+          "hamDocuments": 27,
+          "spamDocuments": 78,
+          "p": 0.9427092439129573
+        },
+        {
+          "id": 3173163386,
+          "hamDocuments": 10,
+          "spamDocuments": 39,
+          "p": 0.9396286641051039
+        },
+        {
+          "id": 2999179193,
+          "hamDocuments": 20,
+          "spamDocuments": 0,
+          "p": 0.06521739130434782
+        },
+        {
+          "id": 1551804527,
+          "hamDocuments": 74,
+          "spamDocuments": 155,
+          "p": 0.9337717137799941
+        },
+        {
+          "id": 430659318,
+          "hamDocuments": 2,
+          "spamDocuments": 19,
+          "p": 0.9252407407407408
+        },
+        {
+          "id": 2800173518,
+          "hamDocuments": 17,
+          "spamDocuments": 0,
+          "p": 0.075
+        },
+        {
+          "id": 885536276,
+          "hamDocuments": 15,
+          "spamDocuments": 0,
+          "p": 0.08333333333333333
+        },
+        {
+          "id": 2347964110,
+          "hamDocuments": 3,
+          "spamDocuments": 17,
+          "p": 0.9145497371051101
+        },
+        {
+          "id": 1124317475,
+          "hamDocuments": 36,
+          "spamDocuments": 59,
+          "p": 0.9109237318797135
+        },
+        {
+          "id": 1745255176,
+          "hamDocuments": 13,
+          "spamDocuments": 0,
+          "p": 0.09375
+        },
+        {
+          "id": 848251934,
+          "hamDocuments": 586,
+          "spamDocuments": 8,
+          "p": 0.09389398604111379
+        },
+        {
+          "id": 1051330994,
+          "hamDocuments": 18,
+          "spamDocuments": 31,
+          "p": 0.902662090258162
+        },
+        {
+          "id": 2223801888,
+          "hamDocuments": 31,
+          "spamDocuments": 45,
+          "p": 0.8991614151025681
+        },
+        {
+          "id": 1583257412,
+          "hamDocuments": 17,
+          "spamDocuments": 28,
+          "p": 0.8977335830539962
+        },
+        {
+          "id": 374965731,
+          "hamDocuments": 29,
+          "spamDocuments": 41,
+          "p": 0.8958741289793984
+        },
+        {
+          "id": 4179908061,
+          "hamDocuments": 11,
+          "spamDocuments": 0,
+          "p": 0.10714285714285714
+        },
+        {
+          "id": 1305840995,
+          "hamDocuments": 160,
+          "spamDocuments": 186,
+          "p": 0.8925557272118401
+        },
+        {
+          "id": 3368575193,
+          "hamDocuments": 5,
+          "spamDocuments": 14,
+          "p": 0.8920961413596825
+        },
+        {
+          "id": 2837066553,
+          "hamDocuments": 199,
+          "spamDocuments": 202,
+          "p": 0.8797813920463241
+        },
+        {
+          "id": 886062748,
+          "hamDocuments": 49,
+          "spamDocuments": 52,
+          "p": 0.8759831612519596
+        },
+        {
+          "id": 98858177,
+          "hamDocuments": 27,
+          "spamDocuments": 28,
+          "p": 0.8649174938905348
+        },
+        {
+          "id": 76894103,
+          "hamDocuments": 8,
+          "spamDocuments": 0,
+          "p": 0.13636363636363635
+        },
+        {
+          "id": 1241672786,
+          "hamDocuments": 8,
+          "spamDocuments": 0,
+          "p": 0.13636363636363635
+        },
+        {
+          "id": 1436707460,
+          "hamDocuments": 8,
+          "spamDocuments": 0,
+          "p": 0.13636363636363635
+        },
+        {
+          "id": 1650569087,
+          "hamDocuments": 85,
+          "spamDocuments": 72,
+          "p": 0.8557432155961285
+        },
+        {
+          "id": 3487247740,
+          "hamDocuments": 28,
+          "spamDocuments": 26,
+          "p": 0.8534402975392467
+        },
+        {
+          "id": 2753641482,
+          "hamDocuments": 48,
+          "spamDocuments": 41,
+          "p": 0.8516744097458226
+        },
+        {
+          "id": 693094236,
+          "hamDocuments": 43,
+          "spamDocuments": 37,
+          "p": 0.8512212861469028
+        },
+        {
+          "id": 2834072502,
+          "hamDocuments": 6,
+          "spamDocuments": 9,
+          "p": 0.847863141265486
+        },
+        {
+          "id": 2369371622,
+          "hamDocuments": 105,
+          "spamDocuments": 81,
+          "p": 0.8454989249510325
+        },
+        {
+          "id": 3598321157,
+          "hamDocuments": 59,
+          "spamDocuments": 47,
+          "p": 0.845323774798494
+        },
+        {
+          "id": 745154899,
+          "hamDocuments": 111,
+          "spamDocuments": 81,
+          "p": 0.8385992040107348
+        },
+        {
+          "id": 2888229385,
+          "hamDocuments": 9,
+          "spamDocuments": 10,
+          "p": 0.8382594077801175
+        },
+        {
+          "id": 3688883494,
+          "hamDocuments": 6,
+          "spamDocuments": 0,
+          "p": 0.16666666666666666
+        },
+        {
+          "id": 1533824880,
+          "hamDocuments": 25,
+          "spamDocuments": 19,
+          "p": 0.8268823192470528
+        },
+        {
+          "id": 1823159221,
+          "hamDocuments": 218,
+          "spamDocuments": 141,
+          "p": 0.824615104638417
+        },
+        {
+          "id": 1695364032,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 2145250425,
+          "hamDocuments": 5,
+          "spamDocuments": 0,
+          "p": 0.1875
+        },
+        {
+          "id": 2748018515,
+          "hamDocuments": 6,
+          "spamDocuments": 6,
+          "p": 0.8048508803449516
+        },
+        {
+          "id": 287754987,
+          "hamDocuments": 75,
+          "spamDocuments": 42,
+          "p": 0.7981207309344412
+        },
+        {
+          "id": 3323959974,
+          "hamDocuments": 63,
+          "spamDocuments": 35,
+          "p": 0.795469739900035
+        },
+        {
+          "id": 263456517,
+          "hamDocuments": 44,
+          "spamDocuments": 25,
+          "p": 0.7951905163626138
+        },
+        {
+          "id": 3305685800,
+          "hamDocuments": 94,
+          "spamDocuments": 51,
+          "p": 0.7946667371622227
+        },
+        {
+          "id": 1968798311,
+          "hamDocuments": 62,
+          "spamDocuments": 34,
+          "p": 0.7932985646240049
+        },
+        {
+          "id": 3996940856,
+          "hamDocuments": 61,
+          "spamDocuments": 2,
+          "p": 0.2092620768352986
+        },
+        {
+          "id": 3724402957,
+          "hamDocuments": 32,
+          "spamDocuments": 18,
+          "p": 0.7891141921764719
+        },
+        {
+          "id": 160119590,
+          "hamDocuments": 12,
+          "spamDocuments": 8,
+          "p": 0.7883559068354579
+        },
+        {
+          "id": 176974407,
+          "hamDocuments": 4,
+          "spamDocuments": 0,
+          "p": 0.21428571428571427
+        },
+        {
+          "id": 3112337151,
+          "hamDocuments": 4,
+          "spamDocuments": 0,
+          "p": 0.21428571428571427
+        },
+        {
+          "id": 557540811,
+          "hamDocuments": 381,
+          "spamDocuments": 189,
+          "p": 0.7845875696165792
+        },
+        {
+          "id": 4166503682,
+          "hamDocuments": 47,
+          "spamDocuments": 24,
+          "p": 0.7791207543811535
+        },
+        {
+          "id": 2524846501,
+          "hamDocuments": 87,
+          "spamDocuments": 42,
+          "p": 0.7750811263314962
+        },
+        {
+          "id": 1800113572,
+          "hamDocuments": 84,
+          "spamDocuments": 40,
+          "p": 0.7725363708170777
+        },
+        {
+          "id": 4022044413,
+          "hamDocuments": 10,
+          "spamDocuments": 6,
+          "p": 0.7663878651239129
+        },
+        {
+          "id": 15787690,
+          "hamDocuments": 588,
+          "spamDocuments": 248,
+          "p": 0.756619690288299
+        },
+        {
+          "id": 1319594794,
+          "hamDocuments": 21,
+          "spamDocuments": 10,
+          "p": 0.754500875689477
+        },
+        {
+          "id": 608837968,
+          "hamDocuments": 9,
+          "spamDocuments": 5,
+          "p": 0.7507768380664164
+        },
+        {
+          "id": 1341832056,
+          "hamDocuments": 3,
+          "spamDocuments": 0,
+          "p": 0.25
+        },
+        {
+          "id": 2249610413,
+          "hamDocuments": 3,
+          "spamDocuments": 0,
+          "p": 0.25
+        },
+        {
+          "id": 3726896370,
+          "hamDocuments": 3,
+          "spamDocuments": 0,
+          "p": 0.25
+        },
+        {
+          "id": 2043315497,
+          "hamDocuments": 48,
+          "spamDocuments": 2,
+          "p": 0.25081126993691333
+        }
+      ]
+    }
+  }
+]

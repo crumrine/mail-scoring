@@ -1,8 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict';
-import {constants} from 'node:fs';
-import {open, lstat, mkdir, mkdtemp, readFile, writeFile, rm} from 'node:fs/promises';
+import {lstat, mkdir, mkdtemp, readFile, writeFile, rm} from 'node:fs/promises';
 import {resolve, join, dirname} from 'node:path';
 import {tmpdir} from 'node:os';
 import {createHash} from 'node:crypto';
@@ -10,6 +9,15 @@ import {createRequire} from 'node:module';
 import {pathToFileURL, fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 
+import {readBounded} from './files.mjs';
+const GENERAL_MANIFEST_SHA = '111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803';
+const GENERAL_PINS = {
+ baseline:{inbox:'d49818571e969a537cd39ceaf9871bb7087576fa',scorer:'faa15bea06db52f2dc240257d5335a66a933f909'},
+ candidate:{inbox:'5e694c7108e25437b5cd85f2cf1df6818f18e0ef',scorer:'041e79c5f56880b8eff0e210968569461cb95fc0'},
+};
+const FRESH_MANIFEST_SHA='3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380';
+const CONTEXT_PINS={baseline:GENERAL_PINS.baseline,candidate:{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'}};
+const PARTITIONS = ['diagnostic','validation','holdout'];
 const MANIFEST_SHA = '4ff6356a2a674467d1d8ea6f97adf11d0cce04e12d03e6e22ea2f1b8e6ab7354';
 const PINS = {
   baseline: {inbox:'08b92457015b3615e325cf4b57954daa12a628c2', scorer:'2fab406320ae3b3596345d2c76e0ef8a08593211'},
@@ -23,42 +31,26 @@ const sortedCounts = values => {
   return Object.fromEntries(Object.keys(counts).sort().map(key => [key, counts[key]]));
 };
 
-async function readBounded(path, limit) {
-  const file = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW);
-  try {
-    const stat = await file.stat();
-    if (!stat.isFile() || stat.size > limit) throw new Error('file_limit');
-    const buffer = Buffer.alloc(limit + 1);
-    let used = 0;
-    for (let reads = 0; reads < 1024; reads++) {
-      const {bytesRead} = await file.read(buffer, used, buffer.length - used, used);
-      if (!bytesRead) return buffer.subarray(0, used);
-      used += bytesRead;
-      if (used > limit) throw new Error('file_limit');
-    }
-    throw new Error('read_limit');
-  } finally { await file.close(); }
-}
-
-function validateRecords(records) {
-  if (!Array.isArray(records) || records.length > 192) throw new Error('manifest_count');
+function validateRecords(records, general = false, fresh = false) {
+  if (!Array.isArray(records) || records.length > (fresh ? 2000 : general ? 6046 : 192)) throw new Error('manifest_count');
   const seen = new Set();
   for (const row of records) {
     if (!row || !/^[a-f0-9]{64}$/.test(row.id) || row.sha256 !== row.id ||
         !Number.isSafeInteger(row.bytes) || row.bytes < 1 || row.bytes > 2*1024*1024 ||
         !['ham','spam'].includes(row.label) ||
-        !['easy_ham','hard_ham','spam'].includes(row.group) ||
-        (row.label === 'spam') !== (row.group === 'spam') ||
-        row.path !== 'messages/' + row.id + '.eml' || !row.labelAuthority) throw new Error('manifest_record');
+        !(fresh ? ['enron_ham','enron_spam'] : general ? ['easy_ham','hard_ham','spam','easy_ham_2','spam_2'] : ['easy_ham','hard_ham','spam']).includes(row.group) ||
+        (row.label === 'spam') !== (fresh?row.group==='enron_spam':row.group.startsWith('spam')) ||
+        row.path !== 'messages/' + row.id + '.eml' || ((!general||fresh) && !row.labelAuthority)) throw new Error('manifest_record');
+    if (general && (!(fresh?['holdout','excluded']:['diagnostic','train','validation','holdout','excluded']).includes(row.partition) || typeof row.htmlOnly !== 'boolean')) throw new Error('manifest_partition');
     if (seen.has(row.id)) throw new Error('manifest_duplicate');
     seen.add(row.id);
   }
 }
 
-function parseManifest(bytes) {
-  if (hash(bytes) !== MANIFEST_SHA) throw new Error('manifest_hash');
+function parseManifest(bytes, general = false, fresh = false) {
+  if (hash(bytes) !== (fresh ? FRESH_MANIFEST_SHA : general ? GENERAL_MANIFEST_SHA : MANIFEST_SHA)) throw new Error('manifest_hash');
   const manifest = JSON.parse(bytes);
-  validateRecords(manifest.records);
+  validateRecords(manifest.records, general, fresh);
   return manifest;
 }
 
@@ -112,6 +104,41 @@ function selfCheck() {
   return {passed:true, cases:['zero_denominators','unavailable_spam_still_FN','all_confusion_cells','order_invariance','duplicate','label','path','hash_identity','byte_limit','raw_hash','raw_size','manifest_hash']};
 }
 
+function generalAcceptance(variants, controls, partitionsToCheck=PARTITIONS) {
+ const partitions=Object.fromEntries(partitionsToCheck.map(part=>{
+  const before=variants.baseline.byPartition[part],after=variants.candidate.byPartition[part];
+  return [part,{hamDidNotIncrease:after.metrics.FP<=before.metrics.FP,
+   hardHamDidNotIncrease:after.hardHam.FP<=before.hardHam.FP}];
+ }));
+ const recallGain=variants.candidate.byPartition.holdout.metrics.recall-variants.baseline.byPartition.holdout.metrics.recall;
+ const authoredHamFalsePositives=controls.candidate.filter(row=>row.kind==='authored_ham'&&row.quarantined).length;
+ return {partitions,heldoutRecallGain:recallGain,requiredAbsoluteRecallGain:0.20,authoredHamFalsePositives,
+  eligible:recallGain>=0.20&&authoredHamFalsePositives===0&&Object.values(partitions).every(p=>p.hamDidNotIncrease&&p.hardHamDidNotIncrease)};
+}
+function generalSelfCheck() {
+ const sample={id:'a'.repeat(64),sha256:'a'.repeat(64),bytes:10,label:'spam',group:'spam_2',path:'messages/'+'a'.repeat(64)+'.eml',partition:'holdout',htmlOnly:true};
+ validateRecords([sample],true);
+ assert.throws(()=>validateRecords([{...sample,partition:'other'}],true),/manifest_partition/);
+ assert.throws(()=>validateRecords([{...sample,htmlOnly:'yes'}],true),/manifest_partition/);
+ const variant=recall=>({byPartition:Object.fromEntries(PARTITIONS.map(part=>[part,{metrics:{FP:0,recall},hardHam:{FP:0}}]))});
+ const baseline=variant(0),candidate=variant(.20);
+ assert.equal(generalAcceptance({baseline,candidate},{candidate:[]}).eligible,true);
+ assert.equal(generalAcceptance({baseline,candidate:variant(.199)},{candidate:[]}).eligible,false);
+ candidate.byPartition.validation.metrics.FP=1;
+ assert.equal(generalAcceptance({baseline,candidate},{candidate:[]}).eligible,false);
+ candidate.byPartition.validation.metrics.FP=0;candidate.byPartition.diagnostic.hardHam.FP=1;
+ assert.equal(generalAcceptance({baseline,candidate},{candidate:[]}).eligible,false);
+ assert.equal(generalAcceptance({baseline,candidate:variant(.50)},{candidate:[{kind:'authored_ham',quarantined:true}]}).eligible,false);
+ const fresh={...sample,group:'enron_spam',labelAuthority:'original filename'};validateRecords([fresh],true,true);
+ assert.throws(()=>validateRecords([{...fresh,label:'ham'}],true,true),/manifest_record/);
+ assert.throws(()=>validateRecords([{...fresh,partition:'train'}],true,true),/manifest_partition/);
+ assert.throws(()=>validateRecords([{...fresh,labelAuthority:''}],true,true),/manifest_record/);
+ assert.equal(generalAcceptance({baseline,candidate:variant(.20)},{candidate:[]},['holdout']).eligible,true);
+ const freshCandidate=variant(.20);freshCandidate.byPartition.holdout.metrics.FP=1;
+ assert.equal(generalAcceptance({baseline,candidate:freshCandidate},{candidate:[]},['holdout']).eligible,false);
+ return {passed:true,cases:['fresh_label_partition_authority','fresh_holdout_gate','general_record','partition','html_stratum','recall_boundary','recall_below_gate','validation_ham_regression','diagnostic_hard_ham_regression','authored_ham_regression']};
+}
+
 async function exportSource(repo, pin, paths, target) {
   if (!/^[a-f0-9]{40}$/.test(pin)) throw new Error('source_pin');
   git(repo, 'cat-file', '-e', pin+'^{commit}');
@@ -121,14 +148,29 @@ async function exportSource(repo, pin, paths, target) {
   return hash(archive);
 }
 
-async function run(dataDir, inboxRepo, scorerRepo, outputDir) {
+async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
+  const general=mode!=='legacy',fresh=mode==='fresh',context=mode==='context'||fresh;
+  const partitionsToCheck=fresh?['holdout']:PARTITIONS;
+  const manifestSha=fresh?FRESH_MANIFEST_SHA:general?GENERAL_MANIFEST_SHA:MANIFEST_SHA;
+  const pinsByVariant=context?CONTEXT_PINS:general?GENERAL_PINS:PINS;
+  const runtimeProfile=general ? (await import('./mime-runtime.mjs')).MIME_RUNTIME : undefined;
+  // Validate BOTH immutable candidates before producing any held-out prediction.
+  for(const pins of Object.values(pinsByVariant)) for(const [repo,pin] of [[inboxRepo,pins.inbox],[scorerRepo,pins.scorer]]) {
+    if(!/^[a-f0-9]{40}$/.test(pin)) throw new Error('source_pin');
+    git(repo,'cat-file','-e',pin+'^{commit}');
+  }
+  selfCheck();if(general)generalSelfCheck();
   dataDir=resolve(dataDir); inboxRepo=resolve(inboxRepo); scorerRepo=resolve(scorerRepo); outputDir=resolve(outputDir);
   for (const [repo, expected] of [[inboxRepo,'https://github.com/crumrine/agentic-inbox-imap'],[scorerRepo,'https://github.com/crumrine/mail-scoring']]) {
     if (git(repo,'remote','get-url','origin').toString().trim().replace(/\.git$/,'') !== expected) throw new Error('repository_origin');
   }
-  const manifestBytes = await readBounded(join(dataDir,'manifest.json'),256*1024);
-  const manifest = parseManifest(manifestBytes);
-  if (manifest.records.length !== 192 || (await lstat(join(dataDir,'messages'))).isSymbolicLink()) throw new Error('manifest_count_or_path');
+  const manifestPath=fresh?new URL('./enron-holdout-manifest.json',import.meta.url):join(dataDir,general?'partitions.json':'manifest.json');
+  const manifestBytes = await readBounded(manifestPath,general?4*1024*1024:256*1024);
+  const manifest = parseManifest(manifestBytes,general,fresh);
+  if (manifest.records.length !== (fresh?2000:general?6046:192) || (await lstat(join(dataDir,'messages'))).isSymbolicLink()) throw new Error('manifest_count_or_path');
+  const selectedRecords=general?manifest.records.filter(r=>partitionsToCheck.includes(r.partition)):manifest.records;
+  assert.equal(selectedRecords.length,fresh?2000:general?2736:192);
+  if(general&&!fresh)assert.deepEqual(PARTITIONS.map(p=>selectedRecords.filter(r=>r.partition===p).length),[192,556,1988]);
   const require = createRequire(join(inboxRepo,'package.json'));
   const {build,version:esbuildVersion} = require('esbuild');
   const PostalMime = require('postal-mime');
@@ -137,23 +179,35 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir) {
   const parserPackage=JSON.parse(await readFile(join(dirname(parserEntry),'../package.json')));
   const lockedParser = JSON.parse(await readFile(join(inboxRepo,'package-lock.json'))).packages['node_modules/postal-mime'].version;
   if (parserPackage.version !== lockedParser) throw new Error('installed_parser_version');
-  for (const pins of Object.values(PINS)) {
+  for (const pins of Object.values(pinsByVariant)) {
     const locked = JSON.parse(git(inboxRepo,'show',pins.inbox+':package-lock.json')).packages['node_modules/postal-mime'].version;
     if (locked !== lockedParser) throw new Error('parser_version_drift');
   }
   const scratch = await mkdtemp(join(tmpdir(),'spam-evaluation-'));
+  const variants={}, controls={}, identities={};
+  let generalProvenance;
+  let authoredSpam,pharmacySpam;
+  if(general){
+    const model=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':packages/core/src/'+(context?'context-model.ts':'general-model.ts'));
+    assert.equal(hash(model),context?'e20fe32bbe2688c9407a9b1e8a6e36cce9563800f1b2bdb5878270bdb73e5ab6':'1689e31898347d42d74bb213284be00e92f70ba2161edfa7afd9eb85da2a16f0');
+    const fixture=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':fixtures/statistical.ts');
+    assert.equal(hash(fixture),context?'33359d73a7c0a466be12a28fe7d72286f65e7eafb48ea2252df36f256bf2e80a':'75ec84c3fd3f6fb48e6ede7a716b36a7a32def1dff222cef4bf18d098d817541');
+    const fixtureModule=join(scratch,'authored-fixture.mjs');
+    await build({stdin:{contents:fixture.toString(),loader:'ts',resolveDir:scorerRepo},outfile:fixtureModule,bundle:true,platform:'node',format:'esm'});
+    ({STATISTICAL_SPAM:authoredSpam,PHARMACY_SPAM:pharmacySpam}=await import(pathToFileURL(fixtureModule)));
+    generalProvenance={modelVersion:context?'general-3':'general-1',modelSourceSha256:hash(model),partitionSha256:manifestSha,cutoff:0.99,minClues:20,maxClues:64,authoredFixtureSha256:hash(fixture),scorerLockSha256:hash(git(scorerRepo,'show',pinsByVariant.candidate.scorer+':package-lock.json'))};
+  }
   let networkAttempts=0;
   const originalFetch=globalThis.fetch;
   globalThis.fetch=()=>{ networkAttempts++; throw new Error('evaluation_network_forbidden'); };
-  const variants={}, controls={}, identities={};
   try {
-    for (const [name,pins] of Object.entries(PINS)) {
+    for (const [name,pins] of Object.entries(pinsByVariant)) {
       const inbox=join(scratch,name,'inbox'), scorer=join(scratch,name,'scorer');
       identities[name] = {pins,
         inboxArchiveSha256:await exportSource(inboxRepo,pins.inbox,['workers/lib/mail-scoring'],inbox),
         scorerArchiveSha256:await exportSource(scorerRepo,pins.scorer,['packages/core/src','workers/private'],scorer)};
       const modulePath=join(scratch,name,'pipeline.mjs');
-      await build({stdin:{contents:'export {assessArrival,inspectableRaw,shouldQuarantine,unavailable} from '+JSON.stringify(join(inbox,'workers/lib/mail-scoring/intake.ts'))+';export {scoreRpc} from '+JSON.stringify(join(scorer,'workers/private/adapter.ts'))+';',loader:'ts',resolveDir:scratch},outfile:modulePath,bundle:true,platform:'node',format:'esm'});
+      await build({stdin:{contents:'export {assessArrival,inspectableRaw,shouldQuarantine,unavailable} from '+JSON.stringify(join(inbox,'workers/lib/mail-scoring/intake.ts'))+';export {scoreRpc} from '+JSON.stringify(join(scorer,'workers/private/adapter.ts'))+';',loader:'ts',resolveDir:scratch},outfile:modulePath,bundle:true,platform:'node',format:'esm',nodePaths:[join(scorerRepo,'node_modules')]});
       identities[name].bundleSha256=hash(await readFile(modulePath));
       const module=await import(pathToFileURL(modulePath));
       const classify=async raw=>{
@@ -176,16 +230,13 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir) {
         for (const record of records) {
           const raw=new Uint8Array(await readBounded(join(dataDir,record.path),record.bytes));
           verifySample(raw,record);
-          rows.push({id:record.id,label:record.label,group:record.group,...await classify(raw)});
+          rows.push({id:record.id,label:record.label,group:record.group,...(general?{partition:record.partition,htmlOnly:record.htmlOnly}:{}),...await classify(raw)});
         }
         return rows.sort((a,b)=>a.id.localeCompare(b.id));
       };
-      const forward=await evaluate(manifest.records);
-      assert.deepEqual(forward,await evaluate([...manifest.records].reverse()),'repeated/order-invariant classification');
-      variants[name]={metrics:metrics(forward),hardHam:metrics(forward.filter(r=>r.group==='hard_ham')),rows:forward};
       const marker='XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X';
-      const mime=(body,subject='Synthetic',headers=[])=>new TextEncoder().encode('From: sender@example.test\r\nTo: mailbox@example.test\r\nSubject: '+subject+'\r\n'+(headers.length?headers.join('\r\n')+'\r\n':'')+'MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n'+body);
-      const cases=[['gtube',mime(marker),name==='candidate'],['quoted',mime('> '+marker),false],
+      const mime=(body,subject='Synthetic',headers=[],type='text/plain; charset=utf-8')=>new TextEncoder().encode('From: sender@example.test\r\nTo: mailbox@example.test\r\nSubject: '+subject+'\r\n'+(headers.length?headers.join('\r\n')+'\r\n':'')+'MIME-Version: 1.0\r\nContent-Type: '+type+'\r\n\r\n'+body);
+      const cases=[['gtube',mime(marker),general||name==='candidate'],['quoted',mime('> '+marker),false],
         ['near',mime(marker.toLowerCase()),false],['subject_only',mime('Ordinary receipt.',marker),false],
         ['mixed',mime('\u202e> '+marker+'\n'+marker.replace('GTUBE','GT\u202eUBE')),false],
         ['security_notice',mime('Your sign-in verification code is 123456. Never share it.'),false],
@@ -197,15 +248,31 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir) {
         ['forwarded_scam',mime('For your records.\n-----Original Message-----\nSecurity team: verify your password https://user@example.test/'),false],
         ['unicode_ham',mime('こんにちは。明日の会議は午後三時です。'),false],
         ['userinfo_miss',mime('Account access: https://accounts.example.test@other.example.test/'),false]];
+      if(general){
+        cases.push(['general_plain',mime(authoredSpam),name==='candidate',name==='candidate'?60:0],
+          ['general_html',mime(`<p>${authoredSpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),name==='candidate',name==='candidate'?60:0],
+          ['hidden_html',mime(`<p hidden>${authoredSpam}</p><p>Ordinary meeting.</p>`,'Synthetic',[],'text/html; charset=utf-8'),false,0],
+          ['quoted_html',mime(`<blockquote>${authoredSpam}</blockquote>`,'Synthetic',[],'text/html; charset=utf-8'),false,0],
+          ['medical',mime('Your appointment is confirmed. Please bring your insurance card and medication list.'),false,0],
+          ['financial',mime('Your statement is ready. Use your usual bookmark to review your account balance.'),false,0]);
+        if(context)cases.push(['repeated_body',mime('qzxv '.repeat(5),authoredSpam.trim()),false,0],
+          ['general_pharmacy_plain',mime(pharmacySpam),name==='candidate',name==='candidate'?60:0],
+          ['general_pharmacy_html',mime(`<p>${pharmacySpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),name==='candidate',name==='candidate'?60:0]);
+        const inline=body=>new TextEncoder().encode(['From: Security Team <sender@example.test>','Reply-To: helpdesk@other.example.org','To: mailbox@example.test','Subject: Fwd: verify your password','MIME-Version: 1.0','Content-Type: multipart/mixed; boundary=report','','--report','Content-Type: text/plain','','Please investigate the reported phishing.','--report','Content-Type: message/rfc822','Content-Disposition: inline','','From: reported@example.test','Subject: Evidence','MIME-Version: 1.0','Content-Type: text/plain','','Security team: verify your password. '+body,'--report--',''].join('\r\n'));
+        cases.push(['inline_report',inline(''),name==='baseline',45],['oversized_inline_report',inline('x'.repeat(32768)),name==='baseline',name==='baseline'?45:null]);
+      }
       controls[name]=[];
-      for (const [id,raw,expected] of cases) {
+      for (const [id,raw,expected,scoreOverride] of cases) {
         const result=await classify(raw);
         assert.equal(result.quarantined,expected,name+' installation/hard-ham control '+id);
-        const expectedScore=name==='candidate'?(id==='gtube'?100:id==='userinfo_miss'?15:0):0;
+        const expectedScore=scoreOverride!==undefined?scoreOverride:(general||name==='candidate')?(id==='gtube'?100:id==='userinfo_miss'?15:0):0;
         assert.equal(result.score,expectedScore,name+' control score '+id);
-        const kind=id==='userinfo_miss'?'authored_known_miss':['gtube','quoted','near','subject_only','mixed'].includes(id)?'installation':'authored_ham';
-        controls[name].push({id,kind,truth:kind==='authored_ham'?'ham':kind==='authored_known_miss'?'spam':'installation_control',...result});
+        const kind=id.startsWith('general_')?'authored_spam':id==='userinfo_miss'?'authored_known_miss':['gtube','quoted','near','subject_only','mixed'].includes(id)?'installation':'authored_ham';
+        controls[name].push({id,kind,truth:kind==='authored_ham'?'ham':['authored_known_miss','authored_spam'].includes(kind)?'spam':'installation_control',...result});
       }
+      const forward=await evaluate(selectedRecords);
+      assert.deepEqual(forward,await evaluate([...selectedRecords].reverse()),'repeated/order-invariant classification');
+      variants[name]={metrics:metrics(forward),hardHam:metrics(forward.filter(r=>r.group==='hard_ham')),rows:forward,...(general?{byPartition:Object.fromEntries(partitionsToCheck.map(part=>{const rows=forward.filter(r=>r.partition===part);return [part,{metrics:metrics(rows),hardHam:metrics(rows.filter(r=>r.group==='hard_ham')),htmlOnly:metrics(rows.filter(r=>r.htmlOnly)),other:metrics(rows.filter(r=>!r.htmlOnly))}];}))}:{})};
     }
     assert.equal(networkAttempts,0);
   } finally {
@@ -222,33 +289,41 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir) {
         removedReasons:before.reasons.filter(reason=>!row.reasons.some(current=>current.id===reason.id&&current.contribution===reason.contribution))};
     });
   const regressions=Object.fromEntries(Object.entries(variants).map(([name,v])=>[name,v.rows.filter(r=>r.label==='spam'&&!r.quarantined||r.label==='ham'&&r.quarantined)]));
-  const releaseReady=variants.candidate.metrics.FP<=variants.baseline.metrics.FP && variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP;
-  const report={manifestSha256:MANIFEST_SHA,selection:manifest.selection,
-    sourceTerms:'https://spamassassin.apache.org/old/publiccorpus/readme.html',
-    runtime:{node:process.version,parser:lockedParser,parserEntrySha256:hash(await readFile(parserEntry)),consumerLockSha256:hash(await readFile(join(inboxRepo,'package-lock.json'))),esbuild:esbuildVersion},
+  const generalGate=general?generalAcceptance(variants,controls,partitionsToCheck):undefined;
+  const releaseReady=general?generalGate.eligible:variants.candidate.metrics.FP<=variants.baseline.metrics.FP && variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP;
+  const report={manifestSha256:manifestSha,evaluationMode:mode,independentHoldout:general&&(!context||fresh),selection:manifest.selection,...(general?{partitionSummary:manifest.summary,hardHamSubset:fresh?'not supplied by corpus; prior hard-ham regression separately required':'frozen hard_ham labels',generalProvenance,generalGate,selectedPartitions:partitionsToCheck}:{}),
+    sourceTerms:fresh?'https://www2.aueb.gr/users/ion/data/enron-spam/readme.txt':'https://spamassassin.apache.org/old/publiccorpus/readme.html',
+    runtime:{node:process.version,...(runtimeProfile?{profile:runtimeProfile}:{}),parser:lockedParser,parserEntrySha256:hash(await readFile(parserEntry)),consumerLockSha256:hash(await readFile(join(inboxRepo,'package-lock.json'))),esbuild:esbuildVersion},
     runnerSha256:hash(await readFile(fileURLToPath(import.meta.url))), sourceRepositoryHead:git(scorerRepo,'rev-parse','HEAD').toString().trim(),identities,
-    checks:{selfChecks:selfCheck(),repeatedOrderInvariant:true,networkAttempts,standardControlsExcludedFromMetrics:true},
-    policy:{mode:'filter',ordinaryThreshold:45,preference:'none',transport:'unknown',scope:'actual production MIME parser, intake/assessment, serialized scorer RPC adapter and routing policy; no mailbox mutation'},
+    checks:{selfChecks:selfCheck(),...(general?{generalSelfChecks:generalSelfCheck()}:{}),repeatedOrderInvariant:true,networkAttempts,standardControlsExcludedFromMetrics:true},
+    policy:{mode:'filter',ordinaryThreshold:45,...(general?{statisticalThreshold:60,cutoff:0.99,minClues:20,maxClues:64}:{}),preference:'none',transport:'unknown',scope:'actual production MIME parser, intake/assessment, serialized scorer RPC adapter and routing policy; no mailbox mutation'},
     variants,controls,changes,decisionChanges:changes.filter(row=>row.before.quarantined!==row.after.quarantined),regressions,
-    release:{scope:'Bounded source-regression evidence; OPS-599 owns remaining manual release gates',candidateRoutingFalsePositivesDidNotIncrease:variants.candidate.metrics.FP<=variants.baseline.metrics.FP,hardHamRoutingFalsePositivesDidNotIncrease:variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP,eligible:releaseReady,remainingMisses:variants.candidate.metrics.FN},
-    limits:['Corpus dates to 2003 and is not representative of a current mailbox.',
+    release:{scope:context?(fresh?'Fresh frozen independent Enron-Spam raw holdout; original unseen membership retained':'Observed diagnostic/validation/old holdout REGRESSION ONLY; independent acceptance still required'):general?'Paired frozen diagnostic/validation/holdout acceptance; OPS-614 owns manual release gates':'Bounded source-regression evidence; OPS-599 owns remaining manual release gates',candidateRoutingFalsePositivesDidNotIncrease:variants.candidate.metrics.FP<=variants.baseline.metrics.FP,hardHamRoutingFalsePositivesDidNotIncrease:variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP,eligible:releaseReady&&!(context&&!fresh),regressionGatePassed:releaseReady,remainingMisses:variants.candidate.metrics.FN},
+    limits:[...(fresh?['Enron-Spam raw source archives are dated research mail, not modern provider traffic. Balanced fixed sample; no separately labeled hard-ham subset.']:context?['Original holdout was observed before model redesign; it is regression evidence, not independent acceptance.']:[]),fresh?'Enron-Spam was published in 2006 and is not representative of a current mailbox.': 'SpamAssassin corpus dates to 2003 and is not representative of a current mailbox; frozen HTML-only strata describe bounded extraction, not rendered visibility.',
       'Inspection completeness and classification uncertainty are separate. Retained mail is not classified safe.',
       'Unavailable spam remains a routing miss; unavailable counts are also reported separately.',
       'No training, threshold tuning, mail sending, DNS/auth replay or production accuracy claim.']};
   await mkdir(outputDir,{recursive:true});
   await writeFile(join(outputDir,'report.json'),JSON.stringify(report,null,2)+'\n');
-  const lines=['# Paired offline routing evaluation','', 'Fixed public-corpus slice: 192 messages, 128 ham and 64 spam. Standard installation controls are excluded.','',
+  const lines=['# Paired offline routing evaluation','', fresh?'Fresh independent frozen Enron-Spam raw holdout2000 (1000ham/1000spam), before predictions; prior raw/body-feature matches excluded, membership explicit and fixed.':context?'Observed public diagnostic192/validation556/oldholdout1988 REGRESSION ONLY. Fresh independent acceptance required.':general?'Fixed disjoint public data: diagnostic192, validation556 and independent holdout1988. Training/exclusions and authored/installation controls are excluded from metrics.':'Fixed public-corpus slice: 192 messages, 128 ham and 64 spam. Standard installation controls are excluded.','',
     '| Variant | TP | FP | TN | FN | Precision | Recall | False-positive rate |','| --- | --- | --- | --- | --- | --- | --- | --- |'];
   for (const [name,v] of Object.entries(variants)) { const m=v.metrics; lines.push('| '+[name,m.TP,m.FP,m.TN,m.FN,m.precision??'undefined',m.recall??'undefined',m.falsePositiveRate??'undefined'].join(' | ')+' |'); }
+  if(general){
+    lines.push('','| Partition | Variant | TP | FP | TN | FN | Recall |','| --- | --- | --- | --- | --- | --- | --- |');
+    for(const part of partitionsToCheck)for(const [name,v]of Object.entries(variants)){const m=v.byPartition[part].metrics;lines.push('| '+[part,name,m.TP,m.FP,m.TN,m.FN,m.recall].join(' | ')+' |');}
+    lines.push('','Predeclared held-out recall gain >=20 percentage points, no ham/hard-ham FP increase in every partition and zero authored-ham false positives: '+(releaseReady?'PASSED':'FAILED')+'. Actual gain: '+(generalGate.heldoutRecallGain*100).toFixed(2)+' percentage points.');
+  }
   lines.push('', 'Candidate misses remain '+report.release.remainingMisses+'. All sample changes and misses/false positives are retained by opaque content hash in report.json.','',
-    'The 2003 corpus is dated. These figures measure routing on this frozen slice. Inspection status and insufficient-evidence outcomes are reported separately.','',
-    'Release regression gate: '+(releaseReady?'no observed increase in ham quarantined on this frozen slice.':'FAILED: ham quarantined increased; corrective source and fresh review required.'),'',
+    'These research corpora are dated. These figures measure routing on the frozen slice. Inspection status and insufficient-evidence outcomes are reported separately.','',
+    (context&&!fresh?'Observed-data regression gate (does not establish independent release acceptance): ':'Release regression gate: ')+(releaseReady?'PASSED on the declared frozen inputs.':'FAILED: one or more declared acceptance conditions failed; corrective source and fresh review required.'),'',
     'Source pins, runtime, ordinary threshold 45, coverage, score/rule/limit distributions, hard-ham subset and separate controls are in report.json.');
   await writeFile(join(outputDir,'report.md'),lines.join('\n')+'\n');
-  console.log(JSON.stringify({baseline:variants.baseline.metrics,candidate:variants.candidate.metrics,changes:changes.length,releaseReady}));
+  console.log(JSON.stringify({baseline:variants.baseline.metrics,candidate:variants.candidate.metrics,changes:changes.length,releaseReady:report.release.eligible,acceptanceConditionsPassed:releaseReady}));
   if (!releaseReady) process.exitCode=1;
 }
 
-if (process.argv[2]==='--self-check') console.log(JSON.stringify(selfCheck()));
+if(process.argv[2]==='--general'&&process.argv[3]==='--self-check') {await import('./mime-runtime.mjs');console.log(JSON.stringify({legacy:selfCheck(),general:generalSelfCheck()}));}
+else if(['--general','--context','--fresh'].includes(process.argv[2])&&process.argv.length===7) await run(...process.argv.slice(3),process.argv[2].slice(2));
+else if (process.argv[2]==='--self-check') console.log(JSON.stringify(selfCheck()));
 else if (process.argv.length===6) await run(...process.argv.slice(2));
-else throw new Error('usage: node run.mjs DATA_DIR INBOX_REPO SCORER_REPO OUTPUT_DIR');
+else throw new Error('usage: node run.mjs [--general|--context|--fresh] DATA_DIR INBOX_REPO SCORER_REPO OUTPUT_DIR');
