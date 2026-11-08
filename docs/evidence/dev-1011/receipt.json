@@ -1,0 +1,50 @@
+{
+  "ticket": "DEV-1011",
+  "firstAcceptance": "FAILED;547TP1FP999TN453FN vs64TP0FP1000TN936FN. Labels and allrecords preserved; nowregression only; no deployment.",
+  "newFreeze": {
+    "manifestSha256": "fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19",
+    "summary": {
+      "holdout": {
+        "total": 2000,
+        "ham": 1000,
+        "spam": 1000
+      }
+    },
+    "selectedBytes": 6852570,
+    "selection": "neutral raw/body disjoint SHA order, first1000 per label",
+    "rawAndBodyOverlapWithExclusions": 0,
+    "withinCohortRawOrBodyDuplicates": 0,
+    "predictions": 0
+  },
+  "checks": {
+    "typecheck": "passed",
+    "tests": "51passed",
+    "selectorSelfChecks": "passed",
+    "neutralReproduction": "exact fd22 manifest/hash/membership and6852570bytes including100syntheticclinicalTRAIN exclusions; no predictions",
+    "jointReleaseGate": "expectedexit1; oneactualHAMFP blocksrelease"
+  },
+  "modelChanges": false,
+  "predictionsOnSecondCohort": 0,
+  "productionChanges": false,
+  "hashes": {
+    "docs/evidence/dev-1009/README.md": "4ae6bad3d50ec53755e38b75b56750a733df4943bd61af15030d53c4a5673dec",
+    "docs/evidence/dev-1009/acceptance.json": "44b1612f039ef9da6382cd479c078452da221ea2ceca4888c17ec78452a8c9b5",
+    "docs/evidence/dev-1009/enron-observed/report.json": "9043cc5eb1ec9d37a703b27467d2200a00bb9a5fa8c71a3dec3b64473949c4cd",
+    "docs/evidence/dev-1009/enron-observed/report.md": "0cc359a40f449f61f49a445d53bf97da3ade91344a02fdbac74252bc910f6a93",
+    "docs/evidence/dev-1009/enron.log": "5c93d11af29a151a67475e605a85a0be984fe3dfefb5658cc914d9c50af23f74",
+    "docs/evidence/dev-1009/fresh/report.json": "b081584ad014b0800c38c96e4916c7e20a5856ebf0cf4a6e56ee0171e691cba0",
+    "docs/evidence/dev-1009/fresh/report.md": "8b41d9bec0651c478a7a1da9d174f864424d790b02fa23452d439af938f494d8",
+    "docs/evidence/dev-1009/fresh.log": "e95dc342861ce08804ed20df6f690c197278af65757749ee5f63781b50782f6e",
+    "docs/evidence/dev-1009/joint-gate.log": "6e51eb68d3cbb5bc318dc8502bfba5535b7991af8776f8af4588a2d62a985105",
+    "docs/evidence/dev-1009/sa/report.json": "c6e5dab155674250b1f27f8a3a108cf6e7a54c4afa9e7015ac4b8dc880a7f54b",
+    "docs/evidence/dev-1009/sa/report.md": "64e20b700629e7b0813f252208ada7eccff308a31a0532eaed1e186eb2d1870e",
+    "docs/evidence/dev-1009/sa.log": "e4244e490beff3c003d9b957f33f5a2c0b301b80e598687b6a307820f38d3929",
+    "docs/evidence/dev-1011/README.md": "bbfa631e925373d952b488cce7328d27208cd18921e0d31de11551044dc105a0",
+    "docs/evidence/dev-1011/freeze.json": "d19c430d040675a9c05820045240026ae7b501c26230de2463bbdff91a276bc5",
+    "docs/evidence/dev-1011/freeze.log": "dae406c4c90818f68fcdbc3eac7a5ebd8ea464125cc4aa062ec217aecfad619e",
+    "docs/evidence/dev-1011/reproduction.log": "dae406c4c90818f68fcdbc3eac7a5ebd8ea464125cc4aa062ec217aecfad619e",
+    "docs/evidence/dev-1011/self-check.log": "10ca5945ac99409f9a08c8b83eebaef8553d5ea867989a00b6fc0fbbddc68876",
+    "docs/evidence/dev-1011/tests.log": "647a44f0498e702e3f9574965c05b7d4ef5b73c9cdc9e3241a4785ba0b6b9487",
+    "docs/evidence/dev-1011/typecheck.log": "3a49b548bb2bc65abb5303c529457f984e3a99c6a53cc12411027574a98baed6"
+  }
+}

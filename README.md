@@ -1,5 +1,7 @@
 # Mail Scoring
 
+Release hold: the first independent rules-6/general-4 acceptance caught one legitimate message. Do not deploy that candidate. Its full failed result is retained in [the acceptance evidence](docs/evidence/dev-1009/README.md); [DEV-1011 evidence](docs/evidence/dev-1011/README.md) freezes a second disjoint cohort before correction. Source checks and older zero-FP regression results do not override this failure.
+
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
 **Source status: bounded deterministic/phishing/GTUBE rules plus `rules-6` public-TRAIN linear content evidence.** [DEV-1007 recall correction](docs/recall-correction.md) replaces the overly sparse clue combiner with one fixed numeric content model, preserving bounded extraction and five-positive-body-word support. Separate authored clinical TRAIN examples correct a legitimate-mail coverage gap; unsupported scripts or insufficient body vocabulary coverage remain partial and retain Inbox. Historical contracts remain readable. DEV-1008 owns compatible recoverable routing, DEV-1009 owns independent exact-pair acceptance, and OPS-615 owns separately reviewed manual deployment. Source and dated public-corpus results do not establish modern mailbox accuracy.
