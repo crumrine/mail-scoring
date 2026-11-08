@@ -1,0 +1,22 @@
+{
+  "source": "5ed110e",
+  "caller": "606d0ed",
+  "scope": "Observed regression diagnosis, not independent acceptance; no threshold changes",
+  "counters": {
+    "spam:retained:raw_preflight": 69,
+    "spam:retained:less_than20_clues": 322,
+    "spam:caught:positive": 212,
+    "spam:retained:body_less_than5": 46,
+    "spam:retained:classifier_below_cutoff": 325,
+    "ham:retained:less_than20_clues": 238,
+    "ham:retained:classifier_below_cutoff": 665,
+    "ham:retained:other_guard": 55,
+    "spam:retained:feature_budget": 15,
+    "spam:retained:quoted_content": 6,
+    "spam:retained:projection_or_rpc_unavailable": 1,
+    "ham:retained:quoted_content": 31,
+    "spam:retained:other_guard": 4,
+    "ham:retained:body_less_than5": 8,
+    "ham:retained:feature_budget": 3
+  }
+}

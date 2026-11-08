@@ -62,10 +62,12 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  assert.equal(linearSpam(positive,body),true);
  assert.equal(linearSpam(positive,[]),false);
  assert.equal(linearSpam(positive,statisticalTokens('qzxva qzxvb qzxvc qzxvd qzxve')),false);
- assert.equal(linearSpam(Array.from({length:2000},(_,i)=>positive[i%positive.length]),body),false);
- assert.equal(linearSpam(positive,Array.from({length:1001},(_,i)=>body[i%body.length])),false);
+ assert.equal(linearSpam(Array.from({length:2000},(_,i)=>positive[i%positive.length]!),body),false);
+ assert.equal(linearSpam(positive,Array.from({length:1001},(_,i)=>body[i%body.length]!)),false);
  const ordered=[...MODEL_FEATURES].sort((a,b)=>a[2]-b[2]);
- const ham=ordered.slice(0,5).map(row=>row[0]),keyword=ordered.at(-1)![0];
+ const negative=ordered.slice(0,5).map(row=>row[0]);
+ const support=ordered.filter(row=>row[2]>0).slice(0,5).map(row=>row[0]);
+ const ham=[...negative,...support],keyword=ordered.at(-1)![0];
  const features=(ids:number[])=>ids.map((first,start)=>({first,second:-1,start,end:start}));
  assert.equal(linearSpam(features([...ham,keyword]),ham),false);
  assert.equal(linearSpam(features([...ham,...Array(100).fill(keyword)]),ham),false);

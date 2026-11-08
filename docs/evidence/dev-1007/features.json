@@ -1,0 +1,21 @@
+{
+  "sha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
+  "rows": 9804,
+  "summary": {
+    "ham": {
+      "total": 5467,
+      "eligible": 3847
+    },
+    "spam": {
+      "total": 4337,
+      "eligible": 3717
+    }
+  },
+  "sources": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67"
+  ],
+  "fetches": 0,
+  "scope": "Only frozen TRAIN rows, existing projection/guards plus explicit complete-file byte provenance; NUL alone is not a stream-completeness signal. Core control/quote/resource guards preserved. No classifier imports; no heldout raw bytes."
+}

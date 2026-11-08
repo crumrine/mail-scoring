@@ -5,7 +5,10 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
-  {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'new Set(bodyWords.filter(hash=>weights.has(hash))).size<5',after:'bodyWords.length<5',command:['test'],failure:/✖ single repeated words/},
+  {id:'linear-feature-cap',file:'packages/core/src/linear.ts',before:'features.length>1999',after:'features.length>19990',command:['test'],failure:/✖ linear evidence requires/},
+  {id:'linear-positive-support',file:'packages/core/src/linear.ts',before:'(weights.get(hash)?.weight??0)>0',after:'weights.has(hash)',command:['test'],failure:/✖ synthetic rule fixtures|✖ standard GTUBE/},
+  {id:'linear-unique-evidence',file:'packages/core/src/linear.ts',before:'[...new Set(features.filter(feature=>feature.second===-1).map(feature=>feature.first))]',after:'[...features.filter(feature=>feature.second===-1).map(feature=>feature.first)]',command:['test'],failure:/✖ linear evidence requires/},
+  {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'new Set(bodyWords.filter(hash=>(weights.get(hash)?.weight??0)>0)).size<5',after:'bodyWords.length<5',command:['test'],failure:/✖ single repeated words/},
   {id:'context-clue-cap',file:'packages/core/src/vendor/tiling.ts',before:'if(features.length>1999)return [];',after:'',command:['test'],failure:/✖ context tiling never/},
   {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},
   {id:'context-overlap',file:'packages/core/src/vendor/tiling.ts',before:'if(used.has(feature.start)||used.has(feature.end))continue;',after:'if(false)continue;',command:['test'],failure:/✖ context tiling never/},

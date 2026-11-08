@@ -42,7 +42,7 @@ def fit(train):
     # Fixed decimal quantization makes the published artifact independent of insignificant solver tails.
     idf=np.round(transform.idf_,9);weights=np.round(model.coef_[0],9);bias=round(float(model.intercept_[0]),9)
     assert np.all(np.isfinite(weights)) and np.max(np.abs(weights))<10000 and np.all((idf>=1)&(idf<12)) and math.isfinite(bias)
-    known=np.array([sum(k in vocabulary for k in ks)>=5 for ks in body])
+    known=np.array([sum(k in vocabulary and weights[vocabulary[k]]>0 for k in ks)>=5 for ks in body])
     weighted=x.multiply(idf).tocsr();norm=np.sqrt(np.asarray(weighted.multiply(weighted).sum(axis=1)).ravel());norm[norm==0]=1
     margins=bias+np.asarray(weighted@weights).ravel()/norm
     return keys,idf,weights,bias,margins,known
@@ -53,7 +53,7 @@ for f in range(5):
     _,_,_,_,margins,known=fit((folds!=f)&fit_ok);test=folds==f
     hits[test]=(eligible&known&(margins>=threshold))[test]
 metrics={'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&hard))}
-assert metrics=={'TP':2307,'FP':0,'TN':5467,'FN':2030,'hardHamFP':0},'quantized_TRAIN_CV_regression'
+assert metrics=={'TP':2288,'FP':0,'TN':5467,'FN':2049,'hardHamFP':0},'quantized_TRAIN_CV_regression'
 keys,idf,weights,bias,_,_=fit(fit_ok)
 entries=sorted([[int(k.split(':')[0]),float(a),float(b)] for k,a,b in zip(keys,idf,weights)])
 partitions=['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131','e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67']
@@ -65,5 +65,5 @@ source+='export const MODEL_FEATURES:ReadonlyArray<readonly [number,number,numbe
 out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True);(out/'linear-model.ts').write_text(source)
 if '--write-model' in sys.argv[3:]:Path('packages/core/src/linear-model.ts').write_text(source)
 else:assert Path('packages/core/src/linear-model.ts').read_text()==source,'model_reproduction_mismatch'
-receipt={'model':'general-4','algorithm':'one L2 logistic unigram TFIDF head','C':100,'hardHamWeight':20,'cutoff':.99,'minimumKnownBodyWords':5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
+receipt={'model':'general-4','algorithm':'one L2 logistic unigram TFIDF head','C':100,'hardHamWeight':20,'cutoff':.99,'minimumPositiveBodyWords':5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
 (out/'training.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))
