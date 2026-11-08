@@ -1,3 +1,5 @@
+Current source candidate: see [contextual precision and release gates](contextual-precision.md). Rules6/7/8 remain rejected; fourth cohort is unscored throughout source work/review.
+
 # Validation and source evidence
 
 Run from a fresh checkout with Node **24.15.0**, npm **11.12.1**, Linux x64:

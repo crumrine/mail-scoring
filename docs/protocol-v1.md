@@ -1,4 +1,4 @@
-> Current additive contract: engine0.1.0/schema1/RPC1, rules-8 and strict historical versions1–7. `statistical_refit_spam` is valid only under8; robust7/linear6/older reasons keep their original exact versions. GTUBE2–8 remains supported; unknown9 is rejected. Generated schemas and [robust-refit.md](robust-refit.md) describe current source. The rules-2 deterministic foundation and rollout examples below are historical.
+> Current additive contract: engine0.1.0/schema1/RPC1, rules-9 and strict historical versions1–8. `statistical_word_pair_spam` is valid only under9; older reasons retain their exact historical versions/text. GTUBE2–9 remains supported; unknown10 is rejected. Generated schemas and [contextual-precision.md](contextual-precision.md) describe current source. The deterministic foundation and rollout examples below are historical.
 
 # Bounded scoring protocol v1
 

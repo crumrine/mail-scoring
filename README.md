@@ -4,7 +4,7 @@ Release hold: rules-6 and rules-8 each caught legitimate mail in independent acc
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Current source: bounded deterministic/phishing/GTUBE rules plus rules-8/general-6 content evidence; deployment rejected.** The [robust refit](docs/robust-refit.md) and [third failed study](docs/evidence/dev-1009-refit/README.md) remain recorded. [DEV-1016](docs/evidence/dev-1016/README.md) freezes a fourth untouched cohort before DEV-1017/1018 corrective source work. DEV-1009 owns unchanged independent acceptance and OPS-615 owns manual deployment. Source or TRAIN results do not override a failed independent gate or establish modern mailbox accuracy.
+**Current source candidate: bounded deterministic/phishing/GTUBE rules plus rules-9/general-7 word-pair evidence. Independent acceptance and deployment remain pending.** See the [contextual precision correction](docs/contextual-precision.md). The [robust refit](docs/robust-refit.md) and [third failed study](docs/evidence/dev-1009-refit/README.md) remain recorded. [DEV-1016](docs/evidence/dev-1016/README.md) freezes a fourth untouched cohort before DEV-1017/1018 corrective source work. DEV-1009 owns unchanged independent acceptance and OPS-615 owns manual deployment. Source or TRAIN results do not override a failed independent gate or establish modern mailbox accuracy.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

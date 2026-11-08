@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-8",
+      "const": "rules-9",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
@@ -21,7 +21,8 @@
         "rules-5",
         "rules-6",
         "rules-7",
-        "rules-8"
+        "rules-8",
+        "rules-9"
       ]
     },
     "status": {
@@ -67,7 +68,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 17,
+      "maxItems": 18,
       "items": {
         "oneOf": [
           {
@@ -282,6 +283,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_word_pair_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded word and adjacent-pair classifier retains spam evidence after discounting positive clues incident to its two strongest words (general-7; heuristic, not calibrated confidence)."
               }
             },
             "required": [

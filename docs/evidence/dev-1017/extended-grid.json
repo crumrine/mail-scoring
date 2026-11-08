@@ -1,0 +1,940 @@
+{
+  "priorGridSha256": "d9c928d8eef07fec62a7ff86362729e132ca2dbf3cacd79db3ce404429ed0a0a",
+  "matrixSha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
+  "candidates": [
+    {
+      "C": 0.001,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.001,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.001,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.001,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.001,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.01,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.01,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.01,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.01,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.01,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.1,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.1,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.1,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.1,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 0.1,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 10,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 110,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4227,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 567,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3770,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 10,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 101,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4236,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 551,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3786,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 10,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 97,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4240,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 546,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3791,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 10,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 98,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4239,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 536,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3801,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 10,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 96,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4241,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 530,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3807,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 100,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 1117,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3220,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2026,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2311,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "C": 100,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 1096,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3241,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2022,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2315,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 100,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 1087,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3250,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2013,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2324,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 100,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 1081,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3256,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2007,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2330,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 100,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 1076,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3261,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2002,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2335,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 1941,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2396,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2613,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1724,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 2070,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2267,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2706,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1631,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 2228,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2109,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2797,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1540,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 1,
+      "metrics": {
+        "TP": 2314,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2023,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2833,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1504,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "metrics": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "metrics": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "metrics": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "metrics": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    }
+  ],
+  "selected": {
+    "C": 2000,
+    "hardHamWeight": 10,
+    "metrics": {
+      "TP": 2058,
+      "FP": 0,
+      "TN": 5567,
+      "FN": 2279,
+      "hardHamFP": 0
+    },
+    "unguardedMetrics": {
+      "TP": 2698,
+      "FP": 5,
+      "TN": 5562,
+      "FN": 1639,
+      "hardHamFP": 3
+    }
+  },
+  "requiredTPImprovementOver": 1975,
+  "vocabularyCap": 50000,
+  "selection": "maximum robust quantized fivefold OOF TP among zero HAM/hardHAM FP; ties lower C then higher hardHAM weight",
+  "cutoff": 0.99,
+  "positiveBodyWords": 5,
+  "knownBodyPercent": 50,
+  "twoWordIncidentPositiveBound": true,
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "python": "3.12.13",
+  "scope": "TRAIN only; per-fold vocabulary/IDF; no heldout inputs or threshold selection"
+}
