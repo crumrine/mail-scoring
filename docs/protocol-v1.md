@@ -1,5 +1,11 @@
 # Bounded scoring protocol v1
 
+Current rules-6 adds the version-specific `statistical_linear_spam` reason,
+maximum60, with the static general-4 heuristic explanation. Earlier rules1–5
+remain readable under their original strict reason/version contracts. Only
+rules2–6 recognize GTUBE. Unknown7 is refused. See the [recall correction and
+TRAIN provenance](recall-correction.md) for bounded linear evidence and its limits.
+
 The stable exports are `@mail-scoring/core` (`score`, `scoreRequest`, `guardInput`,
 `boundedText`, `parseRequest`, `readRequest`, `unavailable`, constants and types),
 `@mail-scoring/core/contract`, and `@mail-scoring/core/schemas/Score{Input,Result}V1.json`.

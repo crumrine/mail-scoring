@@ -1,0 +1,288 @@
+{
+  "reviewId": "5fa085c6-8d70-443f-9588-d411b2b66362",
+  "ticket": "DEV-1007",
+  "repository": "crumrine/mail-scoring",
+  "pr": 13,
+  "base": "69b84a2f0d523992e7a135fc4d3fff98227a8fc3",
+  "head": "2705d0e41a992e30b626010115a681f027d61424",
+  "rejectedCheckpoints": [
+    "e95c01a5ca4ffcebc041a55aa089bbbc5b405abe",
+    "ade04922bd566edd7e16c1f0a0cfb61b8dade640"
+  ],
+  "frozenInboxHead": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+  "verdict": "changes_requested",
+  "immutableControls": {
+    "path": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/immutable-controls.json",
+    "hashFile": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/immutable-controls.sha256",
+    "sha256": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+    "preScoringSha256": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+    "postScoringSha256": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+    "unchangedAfterRun": true,
+    "controlsCount": 16,
+    "plainHtmlEvaluations": 32,
+    "failedControlsCount": 1,
+    "failedControlIds": [
+      "unicode-spanish-clinic-reminder"
+    ]
+  },
+  "findings": [
+    {
+      "id": "DEV-1007-FP-SPANISH-CLINIC-NOTICE",
+      "severity": "blocking",
+      "category": "legitimate_mail_false_positive",
+      "files": [
+        "packages/core/src/linear-model.ts",
+        "packages/core/src/linear.ts",
+        "packages/core/src/statistical-text.ts",
+        "packages/core/src/context-features.ts",
+        "harness/evaluation/clinical-train.json"
+      ],
+      "summary": "Legitimate Spanish clinical appointment reminder (frozen control `unicode-spanish-clinic-reminder`) is misclassified as `statistical_linear_spam` with `heuristicScore: 60` in both plain text and HTML (`margin = 5.567326115084976 >= 4.59511985`).",
+      "details": {
+        "controlId": "unicode-spanish-clinic-reminder",
+        "subject": "Recordatorio de consulta médica y revisión de tratamiento en la clínica",
+        "text": "Estimado paciente, le recordamos su próxima cita con el médico de cabecera el jueves a las 09:30 de la mañana. Por favor traiga su documento de identidad y la lista actualizada de sus medicamentos habituales.",
+        "plainScore": 60,
+        "plainReason": "statistical_linear_spam",
+        "htmlScore": 60,
+        "htmlReason": "statistical_linear_spam",
+        "margin": 5.567326115084976,
+        "cutoff": 4.59511985,
+        "positiveBodyWordsCount": 7,
+        "matchedFeatures": [
+          {
+            "word": "las",
+            "hash": 1398831959,
+            "inBody": true,
+            "idf": 5.930767174,
+            "weight": 3.316342988
+          },
+          {
+            "word": "favor",
+            "hash": 836216967,
+            "inBody": true,
+            "idf": 6.118819406,
+            "weight": 2.048591763
+          },
+          {
+            "word": "con",
+            "hash": 4035825995,
+            "inBody": true,
+            "idf": 6.568344504,
+            "weight": 1.731050467
+          },
+          {
+            "word": "por",
+            "hash": 1395876598,
+            "inBody": true,
+            "idf": 7.001208586,
+            "weight": 1.496304624
+          },
+          {
+            "word": "nica",
+            "hash": 238132144,
+            "inSubject": true,
+            "idf": 7.0437682,
+            "weight": 0.894648691
+          },
+          {
+            "word": "ana",
+            "hash": 338283141,
+            "inBody": true,
+            "idf": 8.233352267,
+            "weight": 0.475190973
+          },
+          {
+            "word": "sus",
+            "hash": 3410894418,
+            "inBody": true,
+            "idf": 7.876677323,
+            "weight": 0.439821178
+          },
+          {
+            "word": "lista",
+            "hash": 1336731808,
+            "inBody": true,
+            "idf": 8.792968055,
+            "weight": 0.322994134
+          },
+          {
+            "word": "consulta",
+            "hash": 4050168826,
+            "inSubject": true,
+            "idf": 8.792968055,
+            "weight": 0.102862239
+          }
+        ],
+        "rootCause": "Two interacting issues cause this false positive: (1) Ordinary Spanish function and polite words (`las` +3.32, `favor` +2.05, `con` +1.73, `por` +1.50, `sus` +0.44, `lista` +0.32) have strong positive weights in `MODEL_FEATURES` because Spanish tokens in the public Enron/SpamAssassin training corpora appear almost exclusively in spam while all 100 synthetic clinical TRAIN rows (`harness/evaluation/clinical-train.json`) are English-only; those 5 everyday Spanish words alone satisfy `>= 5` positive body words and exceed the `4.59511985` logit cutoff (`margin = 6.186`). (2) `normalizeText` uses `NFKC` (preserving precomposed Latin diacritics such as `ñ`, `í`, `é`, `ó`) while `statisticalTokens` and `contextFeatures` extract `/[a-z]+/g`, splitting accented Latin words mid-token (`mañana` -> `ana`, `clínica` -> `nica`, `médico` -> `dico`) into spurious positive-weight substrings."
+      }
+    }
+  ],
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "npm": "11.12.1",
+    "pythonFitter": "3.12.13",
+    "pythonPackages": {
+      "numpy": "2.5.3",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.9.0",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "postalMime": "2.7.3",
+    "workerd": "1.20261021.1",
+    "wrangler": "4.151.3"
+  },
+  "completedChecks": {
+    "npmRunCheck": {
+      "passed": true,
+      "coreTests": 47,
+      "fixedLegitimateNotices": 21,
+      "plainHtmlLegitimateChecks": 42,
+      "coreMutants": 27,
+      "workerMutants": 8,
+      "directGrowthCases": 18,
+      "workerdSpike": "passed",
+      "workerLocalRpcTests": "passed"
+    },
+    "schemasAndSbom": {
+      "passed": true,
+      "committedOutputsUnchanged": true,
+      "packages": 119,
+      "runtimeDependencies": 7,
+      "vendored": 7
+    },
+    "workerDryRunArtifact": {
+      "passed": true,
+      "sha256": "618e1f2f339891a2fdcacfd0f6b3de63788584373f1fa11a328165c3f75bbb1e",
+      "bytes": 1095006,
+      "gzipBytes": 378802,
+      "includesLinearModules": [
+        "packages/core/src/linear-model.ts",
+        "packages/core/src/linear.ts"
+      ],
+      "excludesHistoricalModules": [
+        "packages/core/src/context-model.ts",
+        "packages/core/src/context-probabilities.ts",
+        "packages/core/src/vendor/chi.ts",
+        "packages/core/src/vendor/tiling.ts"
+      ],
+      "configAndBindingsUnchanged": true
+    },
+    "benchmarks": {
+      "coreBenchmarkPassed": true,
+      "ordinaryP95Ms": 0.04504100000000477,
+      "ordinaryP95TargetMs": 25,
+      "workerBenchmarkPassed": true,
+      "ordinaryWarmTargetMet": true,
+      "ordinaryColdTargetMet": true
+    },
+    "trainFeatureReproduction": {
+      "passed": true,
+      "matrixSha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
+      "rows": 9904,
+      "ham": 5567,
+      "spam": 4337,
+      "fitRows": 9693,
+      "fetches": 0,
+      "sourcePartitions": [
+        "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+        "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+        "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+        "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
+      ]
+    },
+    "trainModelReproduction": {
+      "passed": true,
+      "modelVersion": "general-4",
+      "ruleSetVersion": "rules-6",
+      "modelSha256": "dac00ce3993a6f15479e0783d3eac4566a7b7ef515dada987e3f17542e504b98",
+      "entries": 25439,
+      "bias": 2.367301919,
+      "logitCutoff": 4.59511985,
+      "quantizedDigits": 9,
+      "minimumPositiveBodyWords": 5,
+      "quantizedFiveFoldTraining": {
+        "TP": 2270,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2067,
+        "hardHamFP": 0
+      }
+    },
+    "trainGridComparison": {
+      "passed": true,
+      "candidates": 150,
+      "comparisonSha256": "cd6cb69c2c64d7751f9973f320104b4b43068f8cb018ffdbe5ac5399f236b013",
+      "selected": {
+        "scope": "subject-body-unigram",
+        "C": 100,
+        "hardWeight": 20,
+        "cutoff": 0.99,
+        "metrics": {
+          "TP": 2270,
+          "FP": 0,
+          "TN": 5567,
+          "FN": 2067,
+          "hardHamFP": 0
+        }
+      }
+    },
+    "independentAdversarialSuite": {
+      "passed": false,
+      "immutableControlsSha256": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+      "immutableControlsUnchanged": true,
+      "checks": [
+        {
+          "name": "independent_immutable_legitimate_controls_abstain",
+          "passed": false
+        },
+        {
+          "name": "model_manifest_and_feature_matrix_integrity",
+          "passed": true
+        },
+        {
+          "name": "strong_subject_and_positive_body_support_guard",
+          "passed": true
+        },
+        {
+          "name": "quotes_hidden_html_controls_and_resource_limits",
+          "passed": true
+        },
+        {
+          "name": "protocol_version_reason_matrix_and_frozen_inbox_caller",
+          "passed": true
+        },
+        {
+          "name": "fitter_and_comparison_reject_tampered_inputs",
+          "passed": true
+        }
+      ]
+    },
+    "freshHoldoutPredictions": 0,
+    "worktreesClean": true
+  },
+  "artifacts": {
+    "immutableControls": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/immutable-controls.json",
+    "immutableControlsSha256": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/immutable-controls.sha256",
+    "checkLog": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/check.log",
+    "benchmark": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/benchmark.json",
+    "workerBenchmark": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/worker-benchmark.json",
+    "reproducedFeatures": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/features/complete-training-features.json",
+    "reproducedFeatureReceipt": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/features/complete-training-receipt.json",
+    "reproducedModel": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/model/linear-model.ts",
+    "reproducedTrainingReceipt": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/model/training.json",
+    "reproducedComparison": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/comparison.json",
+    "coreValidation": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/core-validation.json",
+    "independentAdversarialScript": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/independent-adversarial.mjs",
+    "independentAdversarialReport": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/independent-adversarial.json",
+    "independentAdversarialLog": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007-r1/evidence/independent-adversarial.log"
+  },
+  "limits": [
+    "TRAIN-only model fitting and dated public corpora (SpamAssassin and Enron-Spam) plus 100 synthetic clinical examples do not establish modern mailbox accuracy or zero future false positives.",
+    "Historical observed cohorts are regression only; independent paired evaluation on the unseen frozen kaminski-v/SH holdout cohort belongs to DEV-1009 (>=50% recall, +20 points over rules-5, and zero observed ham quarantines across all strata).",
+    "Caller-side rules-6 routing acceptance and actual stream byte completeness tracking (fixing NUL-based short-read inference) belong to DEV-1008; pre-1008 callers intentionally reject rules-6 responses as unavailable/preserve-Inbox.",
+    "Source review only: no live routing change, provider mail send, private mail capture, hosted Cloudflare Workers CPU measurement, or production deployment (OPS-615 owns manual release after DEV-1008 and DEV-1009 complete)."
+  ]
+}

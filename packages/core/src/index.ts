@@ -12,7 +12,7 @@ export function unavailable(error: Exclude<ScoreResultV1['error'],null>): ScoreR
     signals:{spam:'unknown',phishing:'unknown',marketing:'unknown'},reasons:[],limitsHit:[],error};
 }
 /** Immutable parser roots only. Context is trusted application code, never request data.
- * receivedAt is injected Unix milliseconds (default 0); rules-5 has no age rule. */
+ * receivedAt is injected Unix milliseconds (default 0); rules-6 has no age rule. */
 export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const guarded=guardInput(value);
   if(!guarded) return unavailable('invalid_input');
@@ -53,7 +53,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
     }
   }
   if(features.gtube)add('gtube','test',['spam']);
-  if(!features.gtube&&generalSpam(input,limits))add('statistical_generalized_spam','statistics',['spam']);
+  if(!features.gtube&&generalSpam(input,limits))add('statistical_linear_spam','statistics',['spam']);
   if(features.marketing)add('marketing_headers','marketing',['marketing']);
   result.limitsHit=[...limits];result.status=limits.size?'partial':'complete';
   return result;

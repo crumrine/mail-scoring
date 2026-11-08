@@ -2,7 +2,7 @@
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Source status: bounded deterministic/phishing/GTUBE rules plus `rules-5` generalized public-TRAIN content evidence.** [DEV-1004 provenance and limits](docs/generalization.md) expands the disjoint training dictionary while retaining the difficult-ham safeguard and the existing bounded classifier. The first rules-3 candidate failed legitimate-mail acceptance. Subsequent model changes require new independent acceptance; source alone does not establish deployment. DEV-1005 supplies a compatible caller, DEV-999 owns exact-pair independent acceptance, and OPS-614 owns separately reviewed manual deployment. No source merge or dated-corpus result establishes modern mailbox accuracy.
+**Source status: bounded deterministic/phishing/GTUBE rules plus `rules-6` public-TRAIN linear content evidence.** [DEV-1007 recall correction](docs/recall-correction.md) replaces the overly sparse clue combiner with one fixed numeric content model, preserving bounded extraction and five-positive-body-word support. Separate authored clinical TRAIN examples correct a legitimate-mail coverage gap; unsupported scripts or insufficient body vocabulary coverage remain partial and retain Inbox. Historical contracts remain readable. DEV-1008 owns compatible recoverable routing, DEV-1009 owns independent exact-pair acceptance, and OPS-615 owns separately reviewed manual deployment. Source and dated public-corpus results do not establish modern mailbox accuracy.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 
@@ -56,8 +56,8 @@ scripts disabled, and regenerates `docs/evidence/mailguard/audit.json`. It does 
 run upstream tests or lifecycle scripts. `npm run sbom` and `node scripts/schemas.mjs`
 (after build) reproduce the committed inventory and schema artifacts.
 
-CI uses fresh `npm ci` and the same checks, publishing synthetic evidence under the
-exact source SHA. See [validation scope and evidence](docs/validation.md).
+GitHub Actions and automatic Builds are paused. Run the locked checks and
+independent review locally, with exact-source evidence. See [validation scope and evidence](docs/validation.md).
 
 ## License
 

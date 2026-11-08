@@ -1,0 +1,352 @@
+{
+  "immutableControlsPreHash": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+  "immutableControlsPostHash": "a314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d",
+  "immutableControlsUnchanged": true,
+  "checks": [
+    {
+      "name": "independent_immutable_legitimate_controls_abstain",
+      "passed": false,
+      "error": "Independent legitimate control failure(s): [{\"id\":\"unicode-spanish-clinic-reminder\",\"category\":\"unicode\",\"label\":\"ham\",\"plainScore\":60,\"plainLinearSpam\":true,\"htmlScore\":60,\"htmlLinearSpam\":true,\"passed\":false}]\n\n1 !== 0\n"
+    },
+    {
+      "name": "model_manifest_and_feature_matrix_integrity",
+      "passed": true
+    },
+    {
+      "name": "strong_subject_and_positive_body_support_guard",
+      "passed": true
+    },
+    {
+      "name": "quotes_hidden_html_controls_and_resource_limits",
+      "passed": true
+    },
+    {
+      "name": "protocol_version_reason_matrix_and_frozen_inbox_caller",
+      "passed": true
+    },
+    {
+      "name": "fitter_and_comparison_reject_tampered_inputs",
+      "passed": true
+    }
+  ],
+  "controlEvaluations": [
+    {
+      "id": "clinical-outpatient-refill-pickup",
+      "category": "clinical",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "clinical-cardiology-monitoring-summary",
+      "category": "clinical",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "clinical-post-discharge-antibiotic-care",
+      "category": "clinical",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "clinical-formulary-benefit-notice",
+      "category": "clinical",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "clinical-lab-fasting-appointment",
+      "category": "clinical",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "transactional-cloud-invoice-receipt",
+      "category": "transactional",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "transactional-equipment-shipment-notice",
+      "category": "transactional",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "security-ssh-ca-maintenance",
+      "category": "security",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "security-hardware-key-enrollment",
+      "category": "security",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "financial-payroll-tax-statement",
+      "category": "financial",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "financial-quarterly-audit-variance",
+      "category": "financial",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "unicode-german-engineering-protocol",
+      "category": "unicode",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "unicode-japanese-project-schedule",
+      "category": "unicode",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "unicode-spanish-clinic-reminder",
+      "category": "unicode",
+      "label": "ham",
+      "plainScore": 60,
+      "plainLinearSpam": true,
+      "htmlScore": 60,
+      "htmlLinearSpam": true,
+      "passed": false
+    },
+    {
+      "id": "subject-context-engineering-agenda",
+      "category": "subject_context",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    },
+    {
+      "id": "subject-context-audit-committee",
+      "category": "subject_context",
+      "label": "ham",
+      "plainScore": 0,
+      "plainLinearSpam": false,
+      "htmlScore": 0,
+      "htmlLinearSpam": false,
+      "passed": true
+    }
+  ],
+  "authoredRegressionEvaluations": 42,
+  "failures": [
+    {
+      "id": "unicode-spanish-clinic-reminder",
+      "category": "unicode",
+      "label": "ham",
+      "plainScore": 60,
+      "plainLinearSpam": true,
+      "htmlScore": 60,
+      "htmlLinearSpam": true,
+      "passed": false
+    }
+  ],
+  "failureAttributions": [
+    {
+      "id": "unicode-spanish-clinic-reminder",
+      "category": "unicode",
+      "subject": "Recordatorio de consulta médica y revisión de tratamiento en la clínica",
+      "text": "Estimado paciente, le recordamos su próxima cita con el médico de cabecera el jueves a las 09:30 de la mañana. Por favor traiga su documento de identidad y la lista actualizada de sus medicamentos habituales.",
+      "attribution": {
+        "normalizedSubject": "recordatorio de consulta médica y revisión de tratamiento en la clínica",
+        "normalizedBody": "estimado paciente, le recordamos su próxima cita con el médico de cabecera el jueves a las 09:30 de la mañana. por favor traiga su documento de identidad y la lista actualizada de sus medicamentos habituales.",
+        "distinctBodyWords": 21,
+        "positiveBodyWordCount": 7,
+        "positiveBodyWords": [
+          {
+            "word": "con",
+            "hash": 4035825995,
+            "idf": 6.568344504,
+            "weight": 1.731050467
+          },
+          {
+            "word": "las",
+            "hash": 1398831959,
+            "idf": 5.930767174,
+            "weight": 3.316342988
+          },
+          {
+            "word": "ana",
+            "hash": 338283141,
+            "idf": 8.233352267,
+            "weight": 0.475190973
+          },
+          {
+            "word": "por",
+            "hash": 1395876598,
+            "idf": 7.001208586,
+            "weight": 1.496304624
+          },
+          {
+            "word": "favor",
+            "hash": 836216967,
+            "idf": 6.118819406,
+            "weight": 2.048591763
+          },
+          {
+            "word": "lista",
+            "hash": 1336731808,
+            "idf": 8.792968055,
+            "weight": 0.322994134
+          },
+          {
+            "word": "sus",
+            "hash": 3410894418,
+            "idf": 7.876677323,
+            "weight": 0.439821178
+          }
+        ],
+        "matchedFeatureCount": 9,
+        "matchedAllWords": [
+          {
+            "word": "nica",
+            "hash": 238132144,
+            "inBody": false,
+            "inSubject": true,
+            "idf": 7.0437682,
+            "weight": 0.894648691,
+            "idfWeightProduct": 6.301698
+          },
+          {
+            "word": "ana",
+            "hash": 338283141,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 8.233352267,
+            "weight": 0.475190973,
+            "idfWeightProduct": 3.912414675
+          },
+          {
+            "word": "favor",
+            "hash": 836216967,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 6.118819406,
+            "weight": 2.048591763,
+            "idfWeightProduct": 12.534963034
+          },
+          {
+            "word": "lista",
+            "hash": 1336731808,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 8.792968055,
+            "weight": 0.322994134,
+            "idfWeightProduct": 2.840077102
+          },
+          {
+            "word": "por",
+            "hash": 1395876598,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 7.001208586,
+            "weight": 1.496304624,
+            "idfWeightProduct": 10.475940781
+          },
+          {
+            "word": "las",
+            "hash": 1398831959,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 5.930767174,
+            "weight": 3.316342988,
+            "idfWeightProduct": 19.668458131
+          },
+          {
+            "word": "sus",
+            "hash": 3410894418,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 7.876677323,
+            "weight": 0.439821178,
+            "idfWeightProduct": 3.464329499
+          },
+          {
+            "word": "con",
+            "hash": 4035825995,
+            "inBody": true,
+            "inSubject": false,
+            "idf": 6.568344504,
+            "weight": 1.731050467,
+            "idfWeightProduct": 11.370135821
+          },
+          {
+            "word": "consulta",
+            "hash": 4050168826,
+            "inBody": false,
+            "inSubject": true,
+            "idf": 8.792968055,
+            "weight": 0.102862239,
+            "idfWeightProduct": 0.904464382
+          }
+        ],
+        "bias": 2.367301919,
+        "logitCutoff": 4.59511985,
+        "margin": 5.567326115084976
+      }
+    }
+  ]
+}

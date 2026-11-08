@@ -1,0 +1,23 @@
+{
+  "base": "69b84a2f0d523992e7a135fc4d3fff98227a8fc3",
+  "rejectedCheckpoint": "e95c01a5ca4ffcebc041a55aa089bbbc5b405abe",
+  "rules": "rules-6",
+  "model": "general-4",
+  "coreTests": 46,
+  "coreMutants": 26,
+  "workerMutants": 8,
+  "directGrowthCases": 18,
+  "privateArtifact": {
+    "sha256": "2c058941ae2a1bb67b1284a8058921ff8470dda5aaca5fb98041824b08a52b3f",
+    "bytes": 1089360
+  },
+  "freshHoldoutPredictions": 0,
+  "sourceOnly": true,
+  "noDeployment": true,
+  "limitations": [
+    "TRAIN-only selection and dated corpora do not establish current mailbox accuracy",
+    "No private-mail capture, provider mail send, hosted CPU or physical client proof",
+    "Historical observed cohorts are regression only; DEV1009 independent paired acceptance required",
+    "Short-read provenance correction and compatible recovery policy belong to DEV1008; sole manual release OPS615"
+  ]
+}
