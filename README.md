@@ -1,10 +1,10 @@
 # Mail Scoring
 
-Release hold: rules-6 failed legitimate-mail acceptance and rules-7 failed the unchanged50%recall gate. Do not deploy either. The rules-8 source correction requires reviewed caller integration and untouched third-cohort acceptance before OPS-615 manual release. All failed results remain archived; source/TRAIN/old-regression results do not override a failed independent gate.
+Release hold: rules-6 and rules-8 each caught legitimate mail in independent acceptance; rules-7 failed the fixed 50% recall gate. Do not deploy any of them or use them for rollback. All failures remain archived. DEV-1016 freezes a fourth untouched cohort before corrective classifier work; reviewed DEV-1017/1018 and unchanged DEV-1009 gates must precede OPS-615 manual release. Production remains the approved rules-5 pair.
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Source status: bounded deterministic/phishing/GTUBE rules plus `rules-8`/general-6 content evidence.** The [robust refit](docs/robust-refit.md) requires a fixed reference margin and a stronger two-word evidence bound. It preserves every [prior precision failure](docs/precision-guard.md) and [second failed study](docs/evidence/dev-1009-stable/README.md). DEV-1015 owns compatible recoverable routing, DEV-1009 owns independent third-cohort acceptance, and OPS-615 owns separately reviewed manual deployment. Source results do not establish modern mailbox accuracy.
+**Current source: bounded deterministic/phishing/GTUBE rules plus rules-8/general-6 content evidence; deployment rejected.** The [robust refit](docs/robust-refit.md) and [third failed study](docs/evidence/dev-1009-refit/README.md) remain recorded. [DEV-1016](docs/evidence/dev-1016/README.md) freezes a fourth untouched cohort before DEV-1017/1018 corrective source work. DEV-1009 owns unchanged independent acceptance and OPS-615 owns manual deployment. Source or TRAIN results do not override a failed independent gate or establish modern mailbox accuracy.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

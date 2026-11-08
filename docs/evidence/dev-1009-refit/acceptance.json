@@ -1,0 +1,655 @@
+{
+  "pins": {
+    "baseline": {
+      "inbox": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+      "scorer": "5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0"
+    },
+    "candidate": {
+      "inbox": "b5a89a074e362d8123ee3bf260b6208c78503479",
+      "scorer": "62919bc8f939bc94c0552fc6a3917c03a3373646"
+    }
+  },
+  "runnerSha256": "62bc563aee626e1ff2e7ba146ef8eac8a9fbe9365d481f15c1158cee5c9c57cf",
+  "controlsSha256": "667dc0c9052480d0e63a83b7097550c1f8d9550a575ed9a15bf5d7d515e84975",
+  "legitimateCases": 119,
+  "legitimatePlainHtmlEvaluationsPerVariantPerStudy": 238,
+  "inputs": [
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/refit-paired-acceptance/refit-sa/report.json",
+      "sha256": "dbfca662492e3097d5ff820602a6b14322f52c9f355f3ac21caa0d35e9da3317",
+      "mode": "refit-sa",
+      "manifestSha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+      "baseline": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 290,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 843,
+        "precision": 1,
+        "recall": 0.2559576345984113,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-5": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2428,
+          "rule_evidence": 290,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1978,
+          "10": 432,
+          "15": 14,
+          "20": 3,
+          "25": 1,
+          "60": 250,
+          "70": 37,
+          "75": 2,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_generalized_spam": 290
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 75,
+          "url_uninspected": 1
+        }
+      },
+      "candidate": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 507,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 626,
+        "precision": 1,
+        "recall": 0.4474845542806708,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-8": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2211,
+          "rule_evidence": 507,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1783,
+          "10": 417,
+          "15": 7,
+          "20": 3,
+          "25": 1,
+          "60": 445,
+          "70": 52,
+          "75": 9,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_refit_spam": 507
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 163,
+          "url_uninspected": 1
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/refit-paired-acceptance/refit-enron/report.json",
+      "sha256": "cf1e638c204b76022156c76f4f066c7bcd2159be6776ef329103907a9eeb49f8",
+      "mode": "refit-enron",
+      "manifestSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 212,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 788,
+        "precision": 1,
+        "recall": 0.212,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1930,
+          "unavailable": 70
+        },
+        "ruleSets": {
+          "rules-5": 1930,
+          "unavailable": 70
+        },
+        "engineVersions": {
+          "0.1.0": 1930,
+          "unavailable": 70
+        },
+        "unavailableCauses": {
+          "raw_preflight": 69,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1718,
+          "rule_evidence": 212,
+          "unavailable": 70
+        },
+        "scores": {
+          "0": 1697,
+          "10": 16,
+          "15": 2,
+          "20": 3,
+          "60": 192,
+          "70": 20,
+          "unavailable": 70
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_generalized_spam": 212
+        },
+        "limits": {
+          "auth_unknown": 1930,
+          "control_chars": 65,
+          "html_uninspected": 286,
+          "identity_uninspected": 1638,
+          "quoted_content": 37,
+          "source_incomplete": 1930,
+          "statistical_limit": 18
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 510,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 490,
+        "precision": 1,
+        "recall": 0.51,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1998,
+          "unavailable": 2
+        },
+        "ruleSets": {
+          "rules-8": 1998,
+          "unavailable": 2
+        },
+        "engineVersions": {
+          "0.1.0": 1998,
+          "unavailable": 2
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1488,
+          "rule_evidence": 510,
+          "unavailable": 2
+        },
+        "scores": {
+          "0": 1473,
+          "10": 13,
+          "15": 1,
+          "20": 1,
+          "60": 484,
+          "70": 23,
+          "75": 1,
+          "80": 2,
+          "unavailable": 2
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_refit_spam": 510
+        },
+        "limits": {
+          "auth_unknown": 1998,
+          "control_chars": 74,
+          "html_uninspected": 296,
+          "identity_uninspected": 1706,
+          "quoted_content": 37,
+          "source_incomplete": 1998,
+          "statistical_limit": 134
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/refit-paired-acceptance/refit-first/report.json",
+      "sha256": "34d4e26bddd22ceb53dff234c25eb83248f810a8c5b017ca8703071e7627a272",
+      "mode": "refit-first",
+      "manifestSha256": "2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 64,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 936,
+        "precision": 1,
+        "recall": 0.064,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1838,
+          "unavailable": 162
+        },
+        "ruleSets": {
+          "rules-5": 1838,
+          "unavailable": 162
+        },
+        "engineVersions": {
+          "0.1.0": 1838,
+          "unavailable": 162
+        },
+        "unavailableCauses": {
+          "raw_preflight": 153,
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1774,
+          "rule_evidence": 64,
+          "unavailable": 162
+        },
+        "scores": {
+          "0": 1742,
+          "10": 31,
+          "15": 1,
+          "60": 56,
+          "70": 7,
+          "95": 1,
+          "unavailable": 162
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_generalized_spam": 64
+        },
+        "limits": {
+          "auth_unknown": 1838,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1567,
+          "quoted_content": 158,
+          "source_incomplete": 1838,
+          "statistical_limit": 20
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 530,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 470,
+        "precision": 1,
+        "recall": 0.53,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1991,
+          "unavailable": 9
+        },
+        "ruleSets": {
+          "rules-8": 1991,
+          "unavailable": 9
+        },
+        "engineVersions": {
+          "0.1.0": 1991,
+          "unavailable": 9
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1461,
+          "rule_evidence": 530,
+          "unavailable": 9
+        },
+        "scores": {
+          "0": 1434,
+          "10": 26,
+          "15": 1,
+          "60": 517,
+          "70": 12,
+          "95": 1,
+          "unavailable": 9
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_refit_spam": 530
+        },
+        "limits": {
+          "auth_unknown": 1991,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1720,
+          "quoted_content": 158,
+          "source_incomplete": 1991,
+          "statistical_limit": 85
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/refit-paired-acceptance/refit-second/report.json",
+      "sha256": "9b9b92f99546389c1995be2723e7fbac633c383770a19d3f0005551ec697212c",
+      "mode": "refit-second",
+      "manifestSha256": "fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 67,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 933,
+        "precision": 1,
+        "recall": 0.067,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1823,
+          "unavailable": 177
+        },
+        "ruleSets": {
+          "rules-5": 1823,
+          "unavailable": 177
+        },
+        "engineVersions": {
+          "0.1.0": 1823,
+          "unavailable": 177
+        },
+        "unavailableCauses": {
+          "raw_preflight": 166,
+          "scorer_unavailable": 11
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1756,
+          "rule_evidence": 67,
+          "unavailable": 177
+        },
+        "scores": {
+          "0": 1719,
+          "10": 34,
+          "15": 2,
+          "35": 1,
+          "60": 58,
+          "70": 7,
+          "80": 1,
+          "95": 1,
+          "unavailable": 177
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 2,
+          "reply_to_mismatch": 44,
+          "sensitive_request_combined": 2,
+          "statistical_generalized_spam": 67
+        },
+        "limits": {
+          "auth_unknown": 1823,
+          "control_chars": 41,
+          "html_uninspected": 239,
+          "identity_uninspected": 1602,
+          "quoted_content": 143,
+          "source_incomplete": 1823,
+          "statistical_limit": 15
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 523,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 477,
+        "precision": 1,
+        "recall": 0.523,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1989,
+          "unavailable": 11
+        },
+        "ruleSets": {
+          "rules-8": 1989,
+          "unavailable": 11
+        },
+        "engineVersions": {
+          "0.1.0": 1989,
+          "unavailable": 11
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 11
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1466,
+          "rule_evidence": 523,
+          "unavailable": 11
+        },
+        "scores": {
+          "0": 1427,
+          "10": 35,
+          "15": 2,
+          "20": 1,
+          "35": 1,
+          "60": 516,
+          "70": 6,
+          "95": 1,
+          "unavailable": 11
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 2,
+          "reply_to_mismatch": 44,
+          "sensitive_request_combined": 2,
+          "statistical_refit_spam": 523
+        },
+        "limits": {
+          "auth_unknown": 1989,
+          "control_chars": 42,
+          "html_uninspected": 239,
+          "identity_uninspected": 1768,
+          "quoted_content": 143,
+          "source_incomplete": 1989,
+          "statistical_limit": 77
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/refit-paired-acceptance/refit-third/report.json",
+      "sha256": "90803c9fdce038c495dc86df07cd5a9b95c3d93175c7651589a3877590cb338d",
+      "mode": "refit-third",
+      "manifestSha256": "be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 62,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 938,
+        "precision": 1,
+        "recall": 0.062,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1793,
+          "unavailable": 207
+        },
+        "ruleSets": {
+          "rules-5": 1793,
+          "unavailable": 207
+        },
+        "engineVersions": {
+          "0.1.0": 1793,
+          "unavailable": 207
+        },
+        "unavailableCauses": {
+          "raw_preflight": 197,
+          "scorer_unavailable": 10
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1731,
+          "rule_evidence": 62,
+          "unavailable": 207
+        },
+        "scores": {
+          "0": 1697,
+          "10": 31,
+          "15": 2,
+          "35": 1,
+          "60": 51,
+          "70": 10,
+          "75": 1,
+          "unavailable": 207
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 42,
+          "sensitive_request_combined": 1,
+          "statistical_generalized_spam": 62
+        },
+        "limits": {
+          "auth_unknown": 1793,
+          "control_chars": 41,
+          "html_uninspected": 227,
+          "identity_uninspected": 1592,
+          "quoted_content": 161,
+          "source_incomplete": 1793,
+          "statistical_limit": 13
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 556,
+        "FP": 1,
+        "TN": 999,
+        "FN": 444,
+        "precision": 0.9982046678635548,
+        "recall": 0.556,
+        "falsePositiveRate": 0.001,
+        "inspection": {
+          "partial": 1990,
+          "unavailable": 10
+        },
+        "ruleSets": {
+          "rules-8": 1990,
+          "unavailable": 10
+        },
+        "engineVersions": {
+          "0.1.0": 1990,
+          "unavailable": 10
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 10
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1433,
+          "rule_evidence": 557,
+          "unavailable": 10
+        },
+        "scores": {
+          "0": 1400,
+          "10": 29,
+          "15": 3,
+          "35": 1,
+          "60": 545,
+          "70": 12,
+          "unavailable": 10
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 42,
+          "sensitive_request_combined": 1,
+          "statistical_refit_spam": 557
+        },
+        "limits": {
+          "auth_unknown": 1990,
+          "control_chars": 41,
+          "html_uninspected": 228,
+          "identity_uninspected": 1789,
+          "quoted_content": 161,
+          "source_incomplete": 1990,
+          "statistical_limit": 70
+        }
+      }
+    }
+  ],
+  "predeclared": {
+    "minimumFreshRecall": 0.5,
+    "minimumAbsoluteFreshGain": 0.2,
+    "zeroObservedHamFalsePositivesBothVariants": true
+  },
+  "failures": [
+    "refit-third:candidate:ham_false_positive",
+    "refit-third:candidate:stratum_ham_false_positive",
+    "refit-third:candidate:stratum_ham_false_positive",
+    "refit-third:declared_gate_failed"
+  ],
+  "eligible": false,
+  "scope": "Four earlier observed corpora are regression only. Third sample is disjoint from all prior selections but drawn from the same dated archives, not a new population or modern provider accuracy. Every earlier failed study remains failed. OPS-615 separately owns manual deployment."
+}

@@ -1,0 +1,7 @@
+
+> mail-scoring-workspace@0.1.0 typecheck
+> npm run build && tsc --noEmit
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs

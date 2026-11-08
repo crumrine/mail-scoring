@@ -1,0 +1,75 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.936042ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (23.341541ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (2.864625ms)
+✔ header, URL, metadata cardinalities below/at/above (0.71675ms)
+✔ secondary fields and multibyte truncation are bounded (0.245ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.471667ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.190291ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.713167ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (6.706292ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.9245ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.095208ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.361125ms)
+✔ unprepared roots are refused before any structural operation (0.655833ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.719708ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (11.366958ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.617167ms)
+✔ recall release gate rejects lower recall, hidden HAM catches and changed source/evidence (362.839708ms)
+✔ refit release gate requires five complete pinned studies, every frozen HAM control and exact recall boundaries (868.255208ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.7295ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.52375ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.255084ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (6.735833ms)
+✔ new statistical evidence requires declared rules-8 (2.834375ms)
+✔ historical rules-3 through rules-7 statistical evidence remain strictly readable (3.309916ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (28.2605ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.288542ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (25.737542ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (2.834875ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.695709ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.595458ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (10.353084ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (22.948375ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.49125ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (78.141958ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (24.423ms)
+✔ stable release gate requires all four complete pinned studies, zero HAM and exact recall boundaries (487.702709ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (5.526083ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.846292ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.746333ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.855959ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (3.284708ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (12.495792ms)
+✔ two-word stability rejects numerical evidence carried by one influential clue (5.752875ms)
+✔ two-word stability rejects evidence that survives losing one word (2.514542ms)
+✔ each fixed model requires its own five positive body words (7.086083ms)
+✔ reference margin rejects strong refit evidence outside the frozen original margin (5.718084ms)
+✔ two-word stability preserves abstention on the original authored spam prefix (0.310375ms)
+✔ two-word stability abstains on the shorter original synthetic prefix in plain text and HTML (0.168167ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (13.42475ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (18.587584ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (1.349042ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (13.44025ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.597458ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.322ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.079791ms)
+✔ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (8.58375ms)
+✔ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (0.783375ms)
+✔ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (1.1575ms)
+✔ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (8.525459ms)
+ℹ tests 59
+ℹ suites 0
+ℹ pass 59
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1554.803
