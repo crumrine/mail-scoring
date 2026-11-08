@@ -183,3 +183,13 @@ installation controls, original general-spam controls, authored pharmacy ad,
 legitimate security/medical/financial notices, quoted/hiddenHTML and repeated
 unknown-body-word controls stay separate from real-corpus metrics. Their labels
 and known baseline misses/false positives are not changed to make tests pass.
+
+Final frozen result: rules5/general3 with merged Inbox606d0ed catches20/64 diagnostic
+spam,65/256 validation spam and205/813 observed old-holdout spam, with0/1603 ham
+quarantined across these partitions. These cases are now regression evidence.
+The untouched Enron holdout catches212/1000 spam versus0/1000 baseline, with
+0/1000 ham quarantined. The fixed20-point improvement/no-added-ham-FP gates pass;
+788 spam misses and all70 unavailable cases remain in the final denominator and
+opaque ledger. Zero observed false positives is not a guarantee for current mail.
+Exact reports, source/runtime pins and prior failure are in docs/evidence/dev-999.
+No production deployment is asserted by this source acceptance report.
