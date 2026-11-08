@@ -1,3 +1,5 @@
+Current fixed refit study: [DEV-1009 refit evidence](../../docs/evidence/dev-1009-refit/README.md) pins reviewed merged Inboxb5a89/scorer629 versus deployed606/5ed. Four earlier studies are regression only; the thirdbe8 sample supplies the separately frozen independent gate. Every prior failed study remains archived and failed. New modes do not change historical pins, gates or results. Source/check completion is not deployment.
+
 # Paired offline routing evaluation
 
 DEV-990 compares the previously enabled filter source (Inbox `08b9245`, scorer
