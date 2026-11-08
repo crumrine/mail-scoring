@@ -1,0 +1,32 @@
+workerd/server/server/run.rs:470: debug: [ TEST ] harness
+workerd/io/worker.c++:2858: info: uncaught exception; source = Uncaught (in promise); stack = Error: rpc_request_limit
+    at check (index.js:160:18)
+    at err (index.js:167:7)
+    at async Object.test (index.js:198:5)
+workerd/io/io-context.c++:611: info: uncaught exception; exception = workerd/jsg/_virtual_includes/iterator/workerd/jsg/value.h:1494: failed: jsg.Error: rpc_request_limit
+workerd/server/server/run.rs:477: debug: [ FAIL ] harness (20.773875ms)
+Tests failed!
+node:child_process:964
+    throw err;
+    ^
+
+Error: Command failed: /Users/brian/projects/mail-scoring-dev-1010/node_modules/@cloudflare/workerd-darwin-arm64/bin/workerd test .artifacts/worker/local.capnp harness
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at Object.execFileSync (node:child_process:961:15)
+    at Object.<anonymous> (/Users/brian/projects/mail-scoring-dev-1010/node_modules/workerd/bin/workerd:140:26)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 12125,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v24.15.0

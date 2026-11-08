@@ -12,14 +12,15 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-6",
+      "const": "rules-7",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
         "rules-3",
         "rules-4",
         "rules-5",
-        "rules-6"
+        "rules-6",
+        "rules-7"
       ]
     },
     "status": {
@@ -65,7 +66,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 15,
+      "maxItems": 16,
       "items": {
         "oneOf": [
           {
@@ -280,6 +281,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_robust_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded classifier retained spam evidence with any one positive word removed (public-corpus model general-5; heuristic, not calibrated confidence)."
               }
             },
             "required": [

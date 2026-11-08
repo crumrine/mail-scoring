@@ -1,0 +1,5 @@
+
+> mail-scoring-workspace@0.1.0 workerd-spike
+> node scripts/workerd-spike.mjs
+
+workerd spike failed; see .artifacts/workerd.log

@@ -1,0 +1,94 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.576ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (20.857208ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (4.90825ms)
+✔ header, URL, metadata cardinalities below/at/above (0.811375ms)
+✔ secondary fields and multibyte truncation are bounded (0.243375ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.582292ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.258417ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.474375ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (2.599084ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.523458ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.158459ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.2185ms)
+✖ unprepared roots are refused before any structural operation (0.665209ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.522458ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (12.081208ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.256834ms)
+✔ recall release gate rejects lower recall, hidden HAM catches and changed source/evidence (347.202875ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.977708ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.799375ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.221542ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (3.77575ms)
+✔ new statistical evidence requires declared rules-7 (2.216ms)
+✔ historical rules-3 through rules-6 statistical evidence remain strictly readable (3.2575ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (16.4115ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.326916ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (24.795125ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (2.249833ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.572917ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.540667ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (10.038125ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (23.462167ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.348209ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (73.332583ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (24.43475ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (7.920542ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.783083ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.449625ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.76ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (3.205833ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (8.080875ms)
+✔ single-word stability rejects numerical evidence carried by one influential clue (5.143416ms)
+✔ single-word stability abstains on the original fragile synthetic prefix in plain text and HTML (0.274208ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (3.536375ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (16.842ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.168708ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (12.368708ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.526291ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.307125ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.073125ms)
+✔ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (8.015ms)
+✔ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (1.039708ms)
+✔ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (0.716917ms)
+✔ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (7.646833ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 52
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1162.825416
+
+✖ failing tests:
+
+test at tests/core.test.ts:129:1
+✖ unprepared roots are refused before any structural operation (0.665209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - 'invalid_input'
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/core.test.ts:130:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'invalid_input',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

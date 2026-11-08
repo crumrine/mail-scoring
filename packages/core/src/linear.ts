@@ -18,5 +18,12 @@ export function linearSpam(features:readonly ContextFeature[],bodyWords:readonly
     const clue=weights.get(hash);if(!clue)continue;
     dot+=clue.idf*clue.weight;norm+=clue.idf*clue.idf;
   }
-  return norm>0 && MODEL_BIAS+dot/Math.sqrt(norm)>=MODEL_LOGIT_CUTOFF;
+  if(norm<=0 || MODEL_BIAS+dot/Math.sqrt(norm)<MODEL_LOGIT_CUTOFF)return false;
+  // Require the fixed margin to survive losing any one positive word.
+  for(const hash of words){
+    const clue=weights.get(hash);if(!clue || clue.weight<=0)continue;
+    const remaining=norm-clue.idf*clue.idf;
+    if(remaining<=0 || MODEL_BIAS+(dot-clue.idf*clue.weight)/Math.sqrt(remaining)<MODEL_LOGIT_CUTOFF)return false;
+  }
+  return true;
 }

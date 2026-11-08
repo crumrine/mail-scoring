@@ -5,6 +5,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'linear-single-word-stability',file:'packages/core/src/linear.ts',before:"    if(remaining<=0 || MODEL_BIAS+(dot-clue.idf*clue.weight)/Math.sqrt(remaining)<MODEL_LOGIT_CUTOFF)return false;",after:'',command:['test'],failure:/✖ single-word stability/},
   {id:'linear-alphabet',file:'packages/core/src/statistical.ts',before:"if(!content.supported){limits.add('statistical_limit');return false;}",after:'',command:['test'],failure:/✖ unsupported alphabetic/},
   {id:'linear-coverage',file:'packages/core/src/linear.ts',before:'body.filter(hash=>weights.has(hash)).length*100<body.length*MODEL_MIN_KNOWN_BODY_PERCENT',after:'false',command:['test'],failure:/✖ legitimate clinical|✖ unsupported vocabulary|✖ linear evidence requires/},
   {id:'linear-coverage-status',file:'packages/core/src/statistical.ts',before:"if(result===undefined)limits.add('statistical_limit');",after:'',command:['test'],failure:/✖ unsupported vocabulary/},

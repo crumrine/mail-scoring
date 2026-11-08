@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // Own numeric TRAIN-only subject/body unigram IDF/coefficients. No literal words or per-message order.
-export const MODEL_VERSION = "general-4";
+export const MODEL_VERSION = "general-5";
 export const MODEL_TRAIN_MATRIX_SHA256 = "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49";
 export const MODEL_PARTITIONS = ["111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803", "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131", "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67", "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"] as const;
 export const MODEL_MIN_KNOWN_BODY_PERCENT = 50;
