@@ -1,0 +1,48 @@
+{
+  "ticket": "DEV-1002",
+  "source": "790d8e43b3ebcbffb39881c4249192d942939ed1",
+  "runtimeSource": "5d8474bfad2989bd0b694910f9d6f82d78b61269",
+  "base": "041e79c5f56880b8eff0e210968569461cb95fc0",
+  "rules": "rules-4",
+  "model": "general-2",
+  "modelSourceSha256": "c5cdbff4d63b98e9689013d6b9934635f445736657c65d854e867e6dd00a117c",
+  "privateBundle": {
+    "sha256": "76e73fd189d0c05c77ec9feed37f04d38db1931386a4a2439eed39b5a561fffa",
+    "bytes": 777498
+  },
+  "checks": {
+    "core": "43/43 plus typecheck/build/spike/actualprivateWorker boundary pass",
+    "mutations": "22core+8worker allcaught/restored",
+    "growth": "18allocation/workgrowth cases, originalHTMLparserlimits unchanged",
+    "benchmark": "localNodeordinaryp95<25ms targetpass; coldimport/firstscore andfreshworkerdwall reported separately; nohostedCPU/costclaim",
+    "reproduction": "TRAINonly2787rawreads/0fetches; model22443paircounts,docs[2353,66,320] hashchecked; TRAIN-CV3predeclaredestimators noheldouttraining/thresholdsearch",
+    "validation": "selectedsqrt78TP0FP300TN178FN, notactualcalleracceptance",
+    "firstFailureRegressions": "all3oldobservedFP nowcore0score/no contextreason/0fetches, strictnewdecoderpassed; notnewindependent or joinedcaller4 routing"
+  },
+  "limits": [
+    "Oldfirstmeasurementfailed andretainedbyDEV999; oldobservedholdoutisregressiondata fornewdesign, notpristine independent.",
+    "No freshcorpuspredictions inthisticket; publicdata processingprivacy/provenance retained.",
+    "DEV1003caller4/strictlegacyreadability andDEV999correctedacceptance+OPS614manualreview/targetverification outstanding.",
+    "No deployment, private-mailcapture/sends, rescan/deletion, learningfrommail, runtimeI/O/LLM/nativeinspection."
+  ],
+  "files": {
+    "benchmark.json": "e90b869d088b0c2913c878865ecaec3d899699ae6ab4f80052316227bf7684ed",
+    "benchmark.log": "bff93b59c1fe6f1a1ccb2edf7a199162216399135a0ba20f3b880b3f2de6c8e8",
+    "core-mutations.json": "056da2e74eb21d5f7e3d35b8cf3470fd4a7e6e5354fa1478c69d0ec4fde9b3d3",
+    "cross-validation.json": "d10a24cc0b364967aa648613a49b29a65cb0617d67bc1d945df6834878351bce",
+    "direct-growth.json": "cca139e0694e2a2124145be30bb139ccb9f643a5d1105e22e78ada193eab2bc8",
+    "equal-prototype-training.json": "5def90c4e623df93ae5e861b86fd186e32191c6ef4a9b0451ab47a49c40a800c",
+    "equal-prototype-validation.json": "4380486cae40da449170df3fd8e1df66b0a5db70ad2e293a693f2976bb018626",
+    "first-failure-regressions.json": "fb933712161a8102d870c4331fdfb7a7115cac5448e6827260098fbfe2c9f6f8",
+    "first-failure-regressions.log": "b98f09f10a0bc266cc8295c4512be42a81e0cc4b705c79054ecb6fcc8735277d",
+    "full-checks.log": "e44a0097e0c5ee9e18bb18664dcd20460030f58883cdfe73ad02f208fa1d8f9e",
+    "pooled-prototype-regressions.json": "e7d1379c6125df1fddd3dc91d0309848c631337601bf00c9ce3320976ec8480d",
+    "pooled-prototype-training.json": "388a81e60760ae12e27f9479faba9507ff8056545fada21d0ed9d26be754d01f",
+    "training.json": "41521942e4bf92589d075985426634cfa7555925cf52d039565134b558aea976",
+    "training.log": "bb424faf6c4118892721fc92b620eb9a1a4bb5b1bfd73562d806180aa51b9cd0",
+    "validation-only.json": "1f7959150a39b5cf197c64949c064b056ee1be489dd35f0ff5e9c678ddd280fc",
+    "worker-benchmark.log": "000a095ecfa8cf2a3feed5c74eb4ef791c56d40d71a850d63c2f288b1332b819",
+    "worker-build.json": "1d06de0295fb0d8ccb0637902b78522353c469fdde0f5a5477f390378502971f",
+    "worker-mutations.json": "6cea716916b6db3a7ba6c4eb72e142ba635964d406308ea48a3159da2e38be79"
+  }
+}
