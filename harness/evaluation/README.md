@@ -1,4 +1,4 @@
-Current fixed refit study: [DEV-1009 refit evidence](../../docs/evidence/dev-1009-refit/README.md) pins reviewed merged Inboxb5a89/scorer629 versus deployed606/5ed. Four earlier studies are regression only; the thirdbe8 sample supplies the separately frozen independent gate. Every prior failed study remains archived and failed. New modes do not change historical pins, gates or results. Source/check completion is not deployment.
+Current fixed refit study: [DEV-1009 refit evidence](../../docs/evidence/dev-1009-refit/README.md) pins reviewed merged Inboxb5a89/scorer629 versus deployed606/5ed. Four earlier studies are regression only; the thirdbe8 study failed on one legitimate message. Rules8 must not deploy; DEV1016 neutrally freezes a fourth cohort before correction. Every prior failed study remains archived and failed. New modes do not change historical pins, gates or results. Source/check completion is not deployment.
 
 # Paired offline routing evaluation
 

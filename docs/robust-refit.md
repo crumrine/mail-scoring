@@ -1,5 +1,7 @@
 # Robust refit and fixed reference agreement (DEV-1014)
 
+Postmerge independent acceptance FAILED: reviewed629core/b5caller caught556/1000spam but1/1000HAM on thirdbe8, versusdeployed62/1000spam0HAM. Rules8/artifact582878 mustneverdeploy orrollback. Fullthirdfailedreports/evaluator/controls/gate remain under evidence/dev-1009-refit. DEV1016 neutralfourthfreeze before1017correction/1018caller andunchangednewacceptance; productionunchanged. The development sections below are preserved as historical pre-acceptance evidence; this failed result governs release.
+
 This is source and offline evidence. Production remains the approved rules-5 pair. Rules-6 caught one legitimate message in the first independent study; rules-7 caught 482/1000 spam and0/1000HAM in the second, failing the predeclared50%recall gate. Neither artifact is a deployment or rollback target. Both failed studies and every selected row remain archived. The third cohort, SHA`be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8`, was neutrally frozen/reviewed/merged before this work:1000HAM+1000spam,0predictions. It is a disjoint reserved sample from the same dated research archives, not a new provider population.
 
 ## Final scoring behavior
