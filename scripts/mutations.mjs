@@ -5,7 +5,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
-  {id:'context-distinct-body',file:'packages/core/src/statistical.ts',before:'statisticalTokens(content.bodyText).length<5',after:'contextFeatures([content.bodyText]).positions<5',command:['test'],failure:/✖ single repeated words/},
+  {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'new Set(bodyWords.filter(hash=>weights.has(hash))).size<5',after:'bodyWords.length<5',command:['test'],failure:/✖ single repeated words/},
   {id:'context-clue-cap',file:'packages/core/src/vendor/tiling.ts',before:'if(features.length>1999)return [];',after:'',command:['test'],failure:/✖ context tiling never/},
   {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},
   {id:'context-overlap',file:'packages/core/src/vendor/tiling.ts',before:'if(used.has(feature.start)||used.has(feature.end))continue;',after:'if(false)continue;',command:['test'],failure:/✖ context tiling never/},

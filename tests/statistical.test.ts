@@ -11,20 +11,22 @@ import {contextProbabilities} from '../packages/core/dist/context-probabilities.
 import {tiledClues} from '../packages/core/dist/vendor/tiling.js';
 import {combineClues,chiTail} from '../packages/core/dist/vendor/chi.js';
 import {MODEL_COUNTS,MODEL_DOCUMENTS,MODEL_PARTITION_SHA256} from '../packages/core/dist/context-model.js';
+import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION} from '../packages/core/dist/linear-model.js';
+import {linearSpam} from '../packages/core/dist/linear.js';
 const spam=STATISTICAL_SPAM;
 const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'general-test',subject:'',text,headers:[],sourceComplete:true,...extra})));
-const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_generalized_spam');
+const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_linear_spam');
 test('general spam detects original promotional plain text and inert HTML once, with static evidence',()=>{
  for(const input of [{text:spam},{text:'',html:'<html><body><p>'+spam+'</p></body></html>'},{text:spam+'\n'+spam}]){
-  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-5');assert.equal(r.heuristicScore,60);
-  assert.deepEqual(r.reasons,[{id:'statistical_generalized_spam',contribution:60,reason:REASONS.statistical_generalized_spam}]);
+  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-6');assert.equal(r.heuristicScore,60);
+  assert.deepEqual(r.reasons,[{id:'statistical_linear_spam',contribution:60,reason:REASONS.statistical_linear_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
  }
 });
 test('additional public TRAIN vocabulary detects an authored pharmacy advertisement',()=>{
  for(const input of [{text:PHARMACY_SPAM},{text:'',html:'<p>'+PHARMACY_SPAM+'</p>'}]){
   const r=score(input.text,input);assert.equal(r.heuristicScore,60);assert.equal(hasSpam(r),true);
-  assert.deepEqual(r.reasons,[{id:'statistical_generalized_spam',contribution:60,reason:REASONS.statistical_generalized_spam}]);
+  assert.deepEqual(r.reasons,[{id:'statistical_linear_spam',contribution:60,reason:REASONS.statistical_linear_spam}]);
  }
 });
 test('legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain',()=>{
@@ -49,9 +51,37 @@ test('statistical evidence excludes quoted and forwarded text and hidden active 
 test('single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence',()=>{
  assert.equal(hasSpam(score('money '.repeat(500))),false);
  assert.equal(hasSpam(score('qzxv '.repeat(5),{subject:spam.trim()})),false);
+ assert.equal(hasSpam(score('qzxva qzxvb qzxvc qzxvd qzxve',{subject:spam.trim()})),false);
  assert.equal(hasSpam(score('',{subject:spam.slice(0,1000)})),false);
  assert.equal(hasSpam(score('Ordinary message',{headers:[{name:'X-Spam-Flag',value:'YES'},{name:'X-Spam-Status',value:spam}]})),false);
  assert.deepEqual(statisticalTokens('https://example.test/money/free/offer somebody@example.test www.example.test'),[]);
+});
+
+test('linear evidence requires supported body words, ignores repetition, and enforces feature ceilings',()=>{
+ const positive=contextFeatures([spam]).features,body=statisticalTokens(spam);
+ assert.equal(linearSpam(positive,body),true);
+ assert.equal(linearSpam(positive,[]),false);
+ assert.equal(linearSpam(positive,statisticalTokens('qzxva qzxvb qzxvc qzxvd qzxve')),false);
+ assert.equal(linearSpam(Array.from({length:2000},(_,i)=>positive[i%positive.length]),body),false);
+ assert.equal(linearSpam(positive,Array.from({length:1001},(_,i)=>body[i%body.length])),false);
+ const ordered=[...MODEL_FEATURES].sort((a,b)=>a[2]-b[2]);
+ const ham=ordered.slice(0,5).map(row=>row[0]),keyword=ordered.at(-1)![0];
+ const features=(ids:number[])=>ids.map((first,start)=>({first,second:-1,start,end:start}));
+ assert.equal(linearSpam(features([...ham,keyword]),ham),false);
+ assert.equal(linearSpam(features([...ham,...Array(100).fill(keyword)]),ham),false);
+ assert.equal(linearSpam([...positive].reverse(),[...body].reverse()),true);
+});
+
+test('current linear model contains bounded numeric aggregates from the frozen TRAIN matrix',()=>{
+ assert.equal(MODEL_VERSION,'general-4');
+ assert.equal(MODEL_TRAIN_MATRIX_SHA256,'5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa');
+ assert.equal(MODEL_FEATURES.length,25429);
+ assert.equal(new Set(MODEL_FEATURES.map(row=>row[0])).size,MODEL_FEATURES.length);
+ for(const [hash,idf,weight]of MODEL_FEATURES){
+  assert.ok(Number.isInteger(hash)&&hash>=0&&hash<=0xffffffff);
+  assert.ok(Number.isFinite(idf)&&idf>=1&&idf<12);
+  assert.ok(Number.isFinite(weight)&&Math.abs(weight)<10000);
+ }
 });
 test('HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work',()=>{
  const bodies=['<div>'.repeat(40)+spam,'<br>'.repeat(1025)+spam,'x'.repeat(32769),'<p>'+'&#xfdfa;'.repeat(3000)+'</p>'];
@@ -68,7 +98,7 @@ test('Fisher combination is symmetric, finite, bounded and preserves the unsure 
  assert.equal(combineClues(Array(65).fill(.99)),.5);assert.equal(combineClues([NaN]),.5);
  assert.equal(chiTail(-1,1),Math.exp(-1));assert.equal(chiTail(-1,100000),1);
 });
-test('numerical model is a bounded unique aggregate from the frozen training partition',()=>{
+test('historical numerical reference model is a bounded unique aggregate from the frozen training partition',()=>{
  assert.equal(MODEL_PARTITION_SHA256,'906c4e85f58bd40991acb724f36ab37f38eb74217b6cf673dc268f12c1933fd6');
  assert.deepEqual(MODEL_DOCUMENTS,[3351,66,1274]);assert.equal(MODEL_COUNTS.length,37500);
  assert.equal(new Set(MODEL_COUNTS.map(c=>c[0]+':'+c[1])).size,MODEL_COUNTS.length);
