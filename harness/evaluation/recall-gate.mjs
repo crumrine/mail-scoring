@@ -12,7 +12,8 @@ for(const path of process.argv.slice(2,5)){
 }
 assert.deepEqual(inputs.map(x=>x.report.evaluationMode),['recall-sa','recall-enron','recall-fresh']);
 assert.deepEqual(inputs.map(x=>x.report.manifestSha256),['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380','2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552']);
-const runnerSha256=sha(await readFile(new URL('./run.mjs',import.meta.url)));
+// Original first-study runner identity remains immutable as later modes are added.
+const runnerSha256='463c7b7444c4f173d849195fdf2885208611eb4553de91869e4a89591151fa45';
 const pins=Object.fromEntries(Object.entries(inputs[0].report.identities).map(([name,v])=>[name,v.pins]));
 assert.deepEqual(pins.baseline,{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'});
 assert.equal(pins.candidate.scorer,'0041d47f20d2565dc8725a3c11f0ed1af113ca74');

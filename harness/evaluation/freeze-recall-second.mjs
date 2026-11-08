@@ -41,16 +41,19 @@ if(process.argv[2]==='--self-check'){
  assert.throws(()=>selectUnseen([{...candidates[0],path:'../escape'}],[],1));
  assert.throws(()=>selectUnseen([{...candidates[0],label:'unknown'}],[],1));
  console.log(JSON.stringify({passed:true,cases:['body_exclusion','raw_exclusion','conflicting_body_labels','stable_order','exact_quota','path','label'],predictions:0}));
-}else if(process.argv.length===9){
- const [sa,train,additional,old,first,privateExclusions,outArg]=process.argv.slice(2);const out=resolve(outArg);
+}else if(process.argv.length===9||process.argv.length===10){
+ const [sa,train,additional,old,first,...tail]=process.argv.slice(2);const third=tail.length===3;
+ const [second,privateExclusions,outArg]=third?tail:[undefined,...tail];const out=resolve(outArg);
  assert(!(await lstat(out)).isSymbolicLink(),'output_symlink');
  for(let dir=out;;dir=dirname(dir)){assert(!existsSync(join(dir,'.git')),'outside_git_required');if(dirname(dir)===dir)break;}
  const metadata=[];
- for(const [index,path] of [sa,train,additional,old,first,privateExclusions].entries()){
+ const inputs=[sa,train,additional,old,first,...(third?[second]:[]),privateExclusions];
+ for(const [index,path] of inputs.entries()){
   const bytes=await readBounded(resolve(path),32*1024*1024);const data=JSON.parse(bytes);assert(Array.isArray(data.records)&&data.records.length<=30000);
-  metadata.push({data,sha256:hash(bytes),private:index===5});
+  metadata.push({data,sha256:hash(bytes),private:index===inputs.length-1});
  }
  assert.deepEqual(metadata.slice(0,5).map(m=>m.sha256),["111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803", "5a709401c29401a5bdf821056fad86c1187048b506dad172f1f4d753a3e8f7e4", "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67", "6709a966ef9780e6970960b983017984dab7caed395a32d188bc62eb12f4b263", "aa9275f4c90ef71e12400648471fdb0a5b08115497f49013bcd14fb9fd724293"]);
+ if(third)assert.equal(metadata[5].sha256,'fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19');
  const clinicalBytes=await readBounded(new URL('./clinical-train.json',import.meta.url),128*1024);
  assert.equal(hash(clinicalBytes),'8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e');
  const clinical=JSON.parse(clinicalBytes).records;assert.equal(clinical.length,100);
@@ -59,15 +62,15 @@ if(process.argv[2]==='--self-check'){
   const id=hash(raw),tokens=statisticalTokens(statisticalText('',r.text).text).sort((a,b)=>a-b);
   return {id,sha256:id,path:'messages/'+id+'.eml',label:'ham',bytes:raw.length,bodyFeatureSha256:tokens.length?hash(JSON.stringify(tokens)):id};
  });
- const excluded=[...clinicalExcluded,...metadata[0].data.records,...metadata[1].data.records.filter(r=>r.partition==='train'),...metadata[2].data.records,...metadata[3].data.records.filter(r=>r.partition==='holdout'),...metadata[4].data.records.filter(r=>r.partition==='holdout'),...metadata[5].data.records];
+ const excluded=[...clinicalExcluded,...metadata[0].data.records,...metadata[1].data.records.filter(r=>r.partition==='train'),...metadata[2].data.records,...metadata[3].data.records.filter(r=>r.partition==='holdout'),...metadata[4].data.records.filter(r=>r.partition==='holdout'),...(third?metadata[5].data.records:[]),...metadata.at(-1).data.records];
  const selected=selectUnseen(metadata[4].data.records,excluded);await mkdir(join(out,'messages'),{recursive:true});
  const source=resolve(first,'..');assert(!(await lstat(source)).isSymbolicLink());assert(!(await lstat(join(source,'messages'))).isSymbolicLink());assert(!(await lstat(join(out,'messages'))).isSymbolicLink());let total=0;
  for(const r of selected){const raw=await readBounded(join(source,r.path),r.bytes);assert.equal(raw.length,r.bytes);assert.equal(hash(raw),r.id);total+=raw.length;assert(total<=256*1024*1024);await writeFile(join(out,r.path),raw,{flag:'wx'});}
  const manifest={version:1,source:metadata[4].data.source,archives:metadata[4].data.archives,
-  selection:'Second cohort frozen before corrective detector development. First1000 per label by SHA after all prior TRAIN/observed selected corpora and private-study exclusion-only raw/body hashes; conflicting body labels and within-cohort duplicates removed. First SH/kaminski-v cohort2000/2112573a is now observed regression only. Unused cached same-archive messages were reserved from TRAIN and have never been scored. No content/model/prediction-dependent selection.',
+  selection:third?'Third cohort frozen before further detector development. First1000 per label by SHA after all prior TRAIN/observed corpora, both first2112573a and secondfd22 cohorts, authored clinical and private-study exclusion-only raw/body hashes. Conflicting body labels and within-cohort duplicates removed. Both earlier SH/kaminski-v cohorts are observed regression only. Remaining cached same-archive messages were reserved from TRAIN and have never been scored. No content/model/prediction-dependent selection.':'Second cohort frozen before corrective detector development. First1000 per label by SHA after all prior TRAIN/observed selected corpora and private-study exclusion-only raw/body hashes; conflicting body labels and within-cohort duplicates removed. First SH/kaminski-v cohort2000/2112573a is now observed regression only. Unused cached same-archive messages were reserved from TRAIN and have never been scored. No content/model/prediction-dependent selection.',
   summary:{holdout:{total:2000,ham:1000,spam:1000}},publicMetadataSha256:metadata.filter(m=>!m.private).map(m=>m.sha256),privateExclusionsUsed:true,
   records:selected.map(r=>({...r,partition:'holdout'}))};
  const bytes=JSON.stringify(manifest,null,2)+'\n';await writeFile(join(out,'manifest.json'),bytes,{flag:'wx'});
  const receipt={manifestSha256:hash(bytes),summary:manifest.summary,selectedBytes:total,selection:'neutral raw/body disjoint SHA order, first1000 per label',rawAndBodyOverlapWithExclusions:0,withinCohortRawOrBodyDuplicates:0,predictions:0};
  await writeFile(join(out,'freeze.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(receipt));
-}else throw Error('usage: --self-check OR SA_METADATA TRAIN_METADATA ADDITIONAL_TRAIN_METADATA OLD_METADATA FIRST_METADATA PRIVATE_EXCLUSIONS EXISTING_OUTSIDE_GIT_DIR');
+}else throw Error('usage: --self-check OR SA_METADATA TRAIN_METADATA ADDITIONAL_TRAIN_METADATA OLD_METADATA FIRST_METADATA [SECOND_MANIFEST] PRIVATE_EXCLUSIONS EXISTING_OUTSIDE_GIT_DIR');
