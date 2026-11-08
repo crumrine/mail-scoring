@@ -1,0 +1,27 @@
+{
+  "tests": 54,
+  "typecheck": true,
+  "freezeSelfChecks": true,
+  "gateBoundaryAndIntegrityChecks": true,
+  "archivedGateStillFailed": [
+    "stable-second:declared_gate_failed",
+    "fresh_recall_or_gain_below_predeclared_gate"
+  ],
+  "thirdFreeze": {
+    "manifestSha256": "be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8",
+    "summary": {
+      "holdout": {
+        "total": 2000,
+        "ham": 1000,
+        "spam": 1000
+      }
+    },
+    "selectedBytes": 6999225,
+    "selection": "neutral raw/body disjoint SHA order, first1000 per label",
+    "rawAndBodyOverlapWithExclusions": 0,
+    "withinCohortRawOrBodyDuplicates": 0,
+    "predictions": 0
+  },
+  "modelOrRuntimeSourceChanged": false,
+  "thirdPredictions": 0
+}
