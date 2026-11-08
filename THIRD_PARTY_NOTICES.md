@@ -271,3 +271,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+
+## Public research data used for additional original numeric aggregates
+
+Enron-Spam raw corpus: V. Metsis, I. Androutsopoulos and G. Paliouras,
+“Spam Filtering with Naive Bayes – Which Naive Bayes?”, CEAS 2006.
+Primary provenance: https://www2.aueb.gr/users/ion/data/enron-spam/readme.txt .
+Only separate fixed TRAIN archives contribute to this project's original numeric
+aggregate counts. Raw messages, their text/order, subjects and addresses are
+not redistributed. This project's Apache-2.0 license does not relicense those
+messages. No pre-trained third-party weights or additional scanner code are
+copied. Independent reserved archives are never used to fit counts or select
+parameters. Details and artifact hashes are in docs/generalization.md.

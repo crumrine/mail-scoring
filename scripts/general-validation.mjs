@@ -30,7 +30,7 @@ try{
    const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify(input)),JSON.stringify({transportVerified:false,preferencesVerified:true}));
    const decoded=JSON.parse(wire);if(decoded.ok)result=decoded.result;
   }
-  rows.push({id:record.id,label:record.label,group:record.group,htmlOnly:record.htmlOnly,status:result?.status??'unavailable',score:result?.heuristicScore??null,reasons:result?.reasons.map(r=>r.id)??[],limits:result?.limitsHit??[],detected:result?.reasons.some(r=>r.id==='statistical_context_spam')??false});
+  rows.push({id:record.id,label:record.label,group:record.group,htmlOnly:record.htmlOnly,status:result?.status??'unavailable',score:result?.heuristicScore??null,reasons:result?.reasons.map(r=>r.id)??[],limits:result?.limitsHit??[],detected:result?.reasons.some(r=>r.id==='statistical_generalized_spam')??false});
  }
 }finally{globalThis.fetch=originalFetch;}
 assert.equal(fetches,0);assert.equal(rows.length,556);

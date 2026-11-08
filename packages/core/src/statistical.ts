@@ -7,7 +7,7 @@ import {contextFeatures} from './context-features.js';
 import {contextProbabilities} from './context-probabilities.js';
 import {tiledClues} from './vendor/tiling.js';
 import type { ScoreInputV1, LimitId } from './contract.js';
-// Frozen on validation only, before the independent holdout is scored. Not a calibrated probability.
+// Existing hard-ham safeguard retained; original plus disjoint added TRAIN only. Not calibrated.
 export const SPAM_CUTOFF = 0.99;
 export const MIN_CLUES = 20;
 const probabilities=contextProbabilities(MODEL_COUNTS,MODEL_DOCUMENTS);

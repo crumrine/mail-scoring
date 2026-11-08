@@ -1,0 +1,5 @@
+
+> mail-scoring-workspace@0.1.0 worker:test
+> node scripts/worker-local.mjs
+
+actual consumer -> scorer workerd RPC tests passed

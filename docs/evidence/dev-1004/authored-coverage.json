@@ -1,0 +1,19 @@
+{
+  "scope": "Original authored synthetic pharmacy advertisement; no corpus or production accuracy claim",
+  "fixture": "fixtures/statistical.ts:PHARMACY_SPAM",
+  "fixtureSha256": "ffd8687e006ec91ba3f167cafc91dfeefac4dcc2544e25bfc5ee122c743c9325",
+  "legacy": {
+    "source": "cf588bf2870964f691e420f5e5249aa3255806f8",
+    "score": 0,
+    "ruleSetVersion": "rules-4",
+    "reasons": []
+  },
+  "candidate": {
+    "source": "52f4b3671050e23b136855ec776fd9c7ce194dcd",
+    "score": 60,
+    "ruleSetVersion": "rules-5",
+    "reasons": [
+      "statistical_generalized_spam"
+    ]
+  }
+}

@@ -21,5 +21,7 @@ if(process.argv[2]==='--self-check'){
   {...row,label:'spam',group:'spam',rawInspectable:false}];
  assert.deepEqual(contextCounts(rows),{documents:[1,1,1],entries:[[7,-1,1,1,1]]});
  assert.deepEqual(contextCounts(rows),contextCounts([...rows].reverse()));
- console.log(JSON.stringify({passed:true,cases:['TRAIN_only','no_validation_or_holdout','no_unavailable','document_not_word_frequency','ham_strata','order_invariance']}));
+ const extra=[{...row,label:'ham',group:'enron_ham'},{...row,label:'spam',group:'enron_spam'},{...row,label:'spam',group:'enron_spam',partition:'holdout'}];
+ assert.deepEqual(contextCounts([...rows,...extra]),{documents:[2,1,2],entries:[[7,-1,2,1,2]]});
+ console.log(JSON.stringify({passed:true,cases:['TRAIN_only','no_validation_or_holdout','no_unavailable','document_not_word_frequency','ham_strata','order_invariance','additionalTRAIN_excludesholdout']}));
 }

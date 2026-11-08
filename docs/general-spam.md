@@ -1,3 +1,7 @@
+Current source is rules-5/general-3: see [generalization.md](generalization.md).
+The implementation and experiments below are retained historical provenance;
+DEV-999 and OPS-614 still own acceptance and manual deployment.
+
 # General spam evidence
 
 ## Current contextual correction (DEV-1002, source only)
