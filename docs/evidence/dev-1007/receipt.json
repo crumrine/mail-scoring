@@ -1,23 +1,26 @@
 {
-  "sourceParent": "ade04922bd566edd7e16c1f0a0cfb61b8dade640",
-  "rejectedCheckpoints": [
-    "e95c01a5ca4ffcebc041a55aa089bbbc5b405abe",
-    "ade04922bd566edd7e16c1f0a0cfb61b8dade640"
-  ],
+  "sourceParent": "2705d0e41a992e30b626010115a681f027d61424",
   "rules": "rules-6",
   "model": "general-4",
-  "coreTests": 47,
-  "fixedLegitimateNotices": 21,
-  "plainHtmlLegitimateChecks": 42,
-  "coreMutants": 27,
+  "coreTests": 50,
+  "fixedLegitimateNotices": 37,
+  "plainHtmlLegitimateChecks": 74,
+  "extraGuards": [
+    "Spanish accentless partial provenance",
+    "Unsupported scripts and combining marks",
+    "Independent supported-spam word-position ceiling"
+  ],
+  "coreMutants": 30,
   "workerMutants": 8,
   "directGrowthCases": 18,
   "privateArtifact": {
-    "sha256": "618e1f2f339891a2fdcacfd0f6b3de63788584373f1fa11a328165c3f75bbb1e",
-    "bytes": 1095006
+    "sha256": "a87e4575c1ab0814731fb258b2c229cbc4a570fd57c5e9f8f443c75cc1551311",
+    "bytes": 1095288
   },
+  "frozenNumericModelSha256": "efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b",
+  "newPositivesVs2705Across4736OldCases": 0,
   "freshHoldoutPredictions": 0,
   "sourceOnly": true,
   "noDeployment": true,
-  "scope": "One TRAIN-selected subject/body head; positive BODY support plus separately frozen100 authored clinical TRAIN examples. Every rejected clinical/old-Enron FP preserved; no dropped/relabelled cases. Actual joined caller acceptance and fresh evaluation still required."
+  "scope": "Keep existing classifier coefficients. Only add supported-representation and known-body coverage guards; unsupported input is partial/statistical_limit. All rejected FP controls retained. Actual joined/fresh acceptance still required."
 }

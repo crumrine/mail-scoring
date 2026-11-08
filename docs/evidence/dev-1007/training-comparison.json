@@ -5,21 +5,111 @@
     "numpy": "2.5.3",
     "scipy": "1.17.1"
   },
-  "matrixSha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
+  "matrixSha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
   "folds": 5,
-  "candidates": 150,
+  "candidates": 450,
   "positiveBodyWordsMinimum": 5,
+  "knownBodyPercentCandidates": [
+    50,
+    65,
+    80
+  ],
   "results": [
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2096,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2241,
+        "hardHamFP": 0
+      }
+    },
     {
       "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2270,
+        "TP": 2092,
         "FP": 0,
         "TN": 5567,
-        "FN": 2067,
+        "FN": 2245,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1985,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2352,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1971,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2366,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1970,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2367,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1967,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2370,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1967,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2370,
         "hardHamFP": 0
       }
     },
@@ -28,11 +118,12 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2097,
+        "TP": 1946,
         "FP": 0,
         "TN": 5567,
-        "FN": 2240,
+        "FN": 2391,
         "hardHamFP": 0
       }
     },
@@ -41,11 +132,12 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2078,
+        "TP": 1931,
         "FP": 0,
         "TN": 5567,
-        "FN": 2259,
+        "FN": 2406,
         "hardHamFP": 0
       }
     },
@@ -54,32 +146,35 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2072,
+        "TP": 1929,
         "FP": 0,
         "TN": 5567,
-        "FN": 2265,
+        "FN": 2408,
         "hardHamFP": 0
       }
     },
     {
       "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.999,
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
       "metrics": {
-        "TP": 1894,
+        "TP": 1879,
         "FP": 0,
         "TN": 5567,
-        "FN": 2443,
+        "FN": 2458,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "subject-body-unigram",
+      "scope": "body-unigram",
       "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.995,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
       "metrics": {
         "TP": 1867,
         "FP": 0,
@@ -89,15 +184,156 @@
       }
     },
     {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1866,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2471,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1836,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2501,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1833,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2504,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1821,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2516,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1801,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2536,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1790,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2547,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1777,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2560,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1773,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2564,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1768,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2569,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1742,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2595,
+        "hardHamFP": 0
+      }
+    },
+    {
       "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1860,
+        "TP": 1736,
         "FP": 0,
         "TN": 5567,
-        "FN": 2477,
+        "FN": 2601,
         "hardHamFP": 0
       }
     },
@@ -106,11 +342,180 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1857,
+        "TP": 1731,
         "FP": 0,
         "TN": 5567,
-        "FN": 2480,
+        "FN": 2606,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1719,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2618,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1708,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2629,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1707,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2630,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1699,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2638,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1698,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2639,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1698,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2639,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1667,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2670,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1663,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2674,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1659,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2678,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1658,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2679,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1658,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2679,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1654,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2683,
         "hardHamFP": 0
       }
     },
@@ -119,11 +524,12 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1712,
+        "TP": 1608,
         "FP": 0,
         "TN": 5567,
-        "FN": 2625,
+        "FN": 2729,
         "hardHamFP": 0
       }
     },
@@ -132,11 +538,12 @@
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1695,
+        "TP": 1591,
         "FP": 0,
         "TN": 5567,
-        "FN": 2642,
+        "FN": 2746,
         "hardHamFP": 0
       }
     },
@@ -145,11 +552,180 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1692,
+        "TP": 1591,
         "FP": 0,
         "TN": 5567,
-        "FN": 2645,
+        "FN": 2746,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1577,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2760,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1567,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2770,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1560,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2777,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1540,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2797,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1524,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2813,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1523,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2814,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1506,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2831,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1503,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2834,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1500,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2837,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1419,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2918,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1406,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2931,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1405,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2932,
         "hardHamFP": 0
       }
     },
@@ -158,11 +734,26 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1031,
+        "TP": 970,
         "FP": 0,
         "TN": 5567,
-        "FN": 3306,
+        "FN": 3367,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 947,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3390,
         "hardHamFP": 0
       }
     },
@@ -171,11 +762,26 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 1004,
+        "TP": 947,
         "FP": 0,
         "TN": 5567,
-        "FN": 3333,
+        "FN": 3390,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 921,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3416,
         "hardHamFP": 0
       }
     },
@@ -184,11 +790,12 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 966,
+        "TP": 905,
         "FP": 0,
         "TN": 5567,
-        "FN": 3371,
+        "FN": 3432,
         "hardHamFP": 0
       }
     },
@@ -197,24 +804,12 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 962,
+        "TP": 902,
         "FP": 0,
         "TN": 5567,
-        "FN": 3375,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 961,
-        "FP": 0,
-        "TN": 5567,
-        "FN": 3376,
+        "FN": 3435,
         "hardHamFP": 0
       }
     },
@@ -223,11 +818,166 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 958,
+        "TP": 901,
         "FP": 0,
         "TN": 5567,
-        "FN": 3379,
+        "FN": 3436,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 901,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3436,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 884,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3453,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 880,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3457,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 880,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3457,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 877,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3460,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 872,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3465,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 853,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3484,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 815,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3522,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 815,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3522,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 814,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3523,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 812,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3525,
         "hardHamFP": 0
       }
     },
@@ -236,11 +986,12 @@
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 850,
+        "TP": 797,
         "FP": 0,
         "TN": 5567,
-        "FN": 3487,
+        "FN": 3540,
         "hardHamFP": 0
       }
     },
@@ -249,11 +1000,12 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 849,
+        "TP": 797,
         "FP": 0,
         "TN": 5567,
-        "FN": 3488,
+        "FN": 3540,
         "hardHamFP": 0
       }
     },
@@ -262,11 +1014,26 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 840,
+        "TP": 787,
         "FP": 0,
         "TN": 5567,
-        "FN": 3497,
+        "FN": 3550,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 784,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3553,
         "hardHamFP": 0
       }
     },
@@ -275,11 +1042,12 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 836,
+        "TP": 784,
         "FP": 0,
         "TN": 5567,
-        "FN": 3501,
+        "FN": 3553,
         "hardHamFP": 0
       }
     },
@@ -288,11 +1056,12 @@
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 835,
+        "TP": 783,
         "FP": 0,
         "TN": 5567,
-        "FN": 3502,
+        "FN": 3554,
         "hardHamFP": 0
       }
     },
@@ -301,11 +1070,166 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 831,
+        "TP": 779,
         "FP": 0,
         "TN": 5567,
-        "FN": 3506,
+        "FN": 3558,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 778,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3559,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 769,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3568,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 768,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3569,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 764,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3573,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 764,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3573,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 725,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3612,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 724,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3613,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 715,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3622,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 710,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3627,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 710,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3627,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 706,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3631,
         "hardHamFP": 0
       }
     },
@@ -314,11 +1238,26 @@
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 744,
+        "TP": 698,
         "FP": 0,
         "TN": 5567,
-        "FN": 3593,
+        "FN": 3639,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 684,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3653,
         "hardHamFP": 0
       }
     },
@@ -327,11 +1266,12 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 726,
+        "TP": 680,
         "FP": 0,
         "TN": 5567,
-        "FN": 3611,
+        "FN": 3657,
         "hardHamFP": 0
       }
     },
@@ -340,11 +1280,82 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 721,
+        "TP": 675,
         "FP": 0,
         "TN": 5567,
-        "FN": 3616,
+        "FN": 3662,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 666,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3671,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 661,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3676,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 636,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3701,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 619,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3718,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 615,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3722,
         "hardHamFP": 0
       }
     },
@@ -353,11 +1364,26 @@
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 463,
+        "TP": 431,
         "FP": 0,
         "TN": 5567,
-        "FN": 3874,
+        "FN": 3906,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 425,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3912,
         "hardHamFP": 0
       }
     },
@@ -366,11 +1392,26 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 449,
+        "TP": 416,
         "FP": 0,
         "TN": 5567,
-        "FN": 3888,
+        "FN": 3921,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 410,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3927,
         "hardHamFP": 0
       }
     },
@@ -379,11 +1420,40 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 444,
+        "TP": 410,
         "FP": 0,
         "TN": 5567,
-        "FN": 3893,
+        "FN": 3927,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 404,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3933,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 392,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3945,
         "hardHamFP": 0
       }
     },
@@ -392,11 +1462,68 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 409,
+        "TP": 381,
         "FP": 0,
         "TN": 5567,
-        "FN": 3928,
+        "FN": 3956,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 376,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3961,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 375,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3962,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 369,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3968,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 352,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3985,
         "hardHamFP": 0
       }
     },
@@ -405,11 +1532,26 @@
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 372,
+        "TP": 346,
         "FP": 0,
         "TN": 5567,
-        "FN": 3965,
+        "FN": 3991,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 340,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3997,
         "hardHamFP": 0
       }
     },
@@ -418,11 +1560,26 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 363,
+        "TP": 335,
         "FP": 0,
         "TN": 5567,
-        "FN": 3974,
+        "FN": 4002,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 329,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4008,
         "hardHamFP": 0
       }
     },
@@ -431,11 +1588,26 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 358,
+        "TP": 328,
         "FP": 0,
         "TN": 5567,
-        "FN": 3979,
+        "FN": 4009,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 322,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4015,
         "hardHamFP": 0
       }
     },
@@ -444,11 +1616,40 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 348,
+        "TP": 320,
         "FP": 0,
         "TN": 5567,
-        "FN": 3989,
+        "FN": 4017,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 317,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4020,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 314,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4023,
         "hardHamFP": 0
       }
     },
@@ -457,11 +1658,40 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 334,
+        "TP": 314,
         "FP": 0,
         "TN": 5567,
-        "FN": 4003,
+        "FN": 4023,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 309,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4028,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 306,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4031,
         "hardHamFP": 0
       }
     },
@@ -470,11 +1700,82 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 332,
+        "TP": 304,
         "FP": 0,
         "TN": 5567,
-        "FN": 4005,
+        "FN": 4033,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 299,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4038,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 298,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4039,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 291,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4046,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 291,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4046,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 275,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4062,
         "hardHamFP": 0
       }
     },
@@ -483,11 +1784,26 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 276,
+        "TP": 257,
         "FP": 0,
         "TN": 5567,
-        "FN": 4061,
+        "FN": 4080,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 252,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4085,
         "hardHamFP": 0
       }
     },
@@ -496,11 +1812,54 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 264,
+        "TP": 244,
         "FP": 0,
         "TN": 5567,
-        "FN": 4073,
+        "FN": 4093,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 239,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4098,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 233,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4104,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 221,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4116,
         "hardHamFP": 0
       }
     },
@@ -509,11 +1868,26 @@
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 62,
+        "TP": 57,
         "FP": 0,
         "TN": 5567,
-        "FN": 4275,
+        "FN": 4280,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 56,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4281,
         "hardHamFP": 0
       }
     },
@@ -522,11 +1896,26 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 59,
+        "TP": 55,
         "FP": 0,
         "TN": 5567,
-        "FN": 4278,
+        "FN": 4282,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 54,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4283,
         "hardHamFP": 0
       }
     },
@@ -535,19 +1924,63 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 58,
+        "TP": 54,
         "FP": 0,
         "TN": 5567,
-        "FN": 4279,
+        "FN": 4283,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "body-unigram",
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 53,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4284,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 48,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4289,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 47,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4290,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 46,
         "FP": 0,
@@ -559,13 +1992,56 @@
     {
       "scope": "body-unigram",
       "C": 10,
-      "hardWeight": 10,
+      "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 45,
+        "TP": 43,
         "FP": 0,
         "TN": 5567,
-        "FN": 4292,
+        "FN": 4294,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 42,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4295,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 42,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4295,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 41,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4296,
         "hardHamFP": 0
       }
     },
@@ -574,11 +2050,68 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 44,
+        "TP": 41,
         "FP": 0,
         "TN": 5567,
-        "FN": 4293,
+        "FN": 4296,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 40,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4297,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 38,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4299,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 37,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4300,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 36,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4301,
         "hardHamFP": 0
       }
     },
@@ -587,6 +2120,35 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 7,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4330,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 7,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4330,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
         "TP": 7,
         "FP": 0,
@@ -600,11 +2162,12 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 5,
+        "TP": 4,
         "FP": 0,
         "TN": 5567,
-        "FN": 4332,
+        "FN": 4333,
         "hardHamFP": 0
       }
     },
@@ -613,6 +2176,7 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 4,
         "FP": 0,
@@ -626,6 +2190,91 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
         "TP": 4,
         "FP": 0,
@@ -639,11 +2288,12 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3,
+        "TP": 2,
         "FP": 0,
         "TN": 5567,
-        "FN": 4334,
+        "FN": 4335,
         "hardHamFP": 0
       }
     },
@@ -652,24 +2302,12 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3,
+        "TP": 2,
         "FP": 0,
         "TN": 5567,
-        "FN": 4334,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 1,
-        "FP": 0,
-        "TN": 5567,
-        "FN": 4336,
+        "FN": 4335,
         "hardHamFP": 0
       }
     },
@@ -677,12 +2315,55 @@
       "scope": "body-unigram",
       "C": 1,
       "hardWeight": 10,
-      "cutoff": 0.995,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
       "metrics": {
-        "TP": 1,
+        "TP": 2,
         "FP": 0,
         "TN": 5567,
-        "FN": 4336,
+        "FN": 4335,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4335,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4335,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4335,
         "hardHamFP": 0
       }
     },
@@ -691,6 +2372,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -704,6 +2386,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -717,6 +2400,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -730,6 +2414,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -743,6 +2428,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -756,6 +2442,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -769,6 +2456,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -782,6 +2470,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -795,6 +2484,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -808,6 +2498,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -821,6 +2512,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -834,6 +2526,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -847,6 +2540,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -860,6 +2554,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -873,6 +2568,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -886,6 +2582,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -899,6 +2596,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -912,6 +2610,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -925,6 +2624,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -938,6 +2638,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -951,6 +2652,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -964,6 +2666,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -977,6 +2680,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -990,6 +2694,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1003,6 +2708,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1016,6 +2722,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1029,6 +2736,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1042,6 +2750,7 @@
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1055,6 +2764,7 @@
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1068,6 +2778,7 @@
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1081,6 +2792,7 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1094,6 +2806,7 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1107,6 +2820,7 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1120,6 +2834,7 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1133,6 +2848,7 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1146,6 +2862,35 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1159,6 +2904,7 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1172,6 +2918,7 @@
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1185,6 +2932,7 @@
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
@@ -1198,24 +2946,1398 @@
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.995,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 0,
         "FP": 0,
         "TN": 5567,
         "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2459,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 1878,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2439,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 1898,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2248,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2089,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2233,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2104,
         "hardHamFP": 0
       }
     },
     {
       "scope": "subject-body-unigram",
       "C": 100,
-      "hardWeight": 10,
+      "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2274,
+        "TP": 2112,
         "FP": 1,
         "TN": 5566,
-        "FN": 2063,
+        "FN": 2225,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2022,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2315,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2013,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2324,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2008,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2329,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2006,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2331,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1986,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2351,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1978,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2359,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1949,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2388,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1937,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2400,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1936,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2401,
         "hardHamFP": 1
       }
     },
@@ -1224,11 +4346,12 @@
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 65,
       "metrics": {
-        "TP": 2193,
+        "TP": 1912,
         "FP": 1,
         "TN": 5566,
-        "FN": 2144,
+        "FN": 2425,
         "hardHamFP": 0
       }
     },
@@ -1237,428 +4360,1021 @@
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1899,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2438,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1861,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2476,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1839,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2498,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1838,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2499,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1783,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2554,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1753,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2584,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1723,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2614,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1711,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2626,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1689,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2648,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1660,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2677,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 1658,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2679,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1102,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3235,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1076,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3261,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1033,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3304,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 1006,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3331,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 1006,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3331,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 988,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3349,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 982,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3355,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 929,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3408,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 903,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3434,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2534,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 1803,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2379,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 1958,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2337,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2000,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2221,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2116,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2081,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2256,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2010,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2327,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2542,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1795,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2385,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1952,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2343,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1994,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2223,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 2114,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2086,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 2251,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2010,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 2327,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2463,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1874,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2400,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1937,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2286,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 2051,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2235,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 2102,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2044,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 2293,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2020,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 2317,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2505,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1832,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2471,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1866,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2293,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 2044,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2284,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 2053,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2050,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 2287,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2043,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 2294,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2652,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1685,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2560,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1777,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2486,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1851,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2430,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1907,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2363,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1974,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2304,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 2033,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2171,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 2166,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2122,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 2215,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2058,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 2279,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2652,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1685,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2565,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1772,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2429,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1908,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2367,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1970,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2169,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 2168,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2125,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 2212,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2574,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1763,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2573,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1764,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2372,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1965,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2366,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1971,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2127,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 2210,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2109,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 2228,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2666,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1671,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2636,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1701,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2634,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1703,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2437,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1900,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2427,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1910,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2424,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1913,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
         "TP": 2178,
-        "FP": 1,
-        "TN": 5566,
+        "FP": 10,
+        "TN": 5557,
         "FN": 2159,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2131,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2206,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2110,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2227,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2103,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2234,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 2082,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2255,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 1920,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2417,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 1907,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 2430,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 1168,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 3169,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 1093,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 3244,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 1070,
-        "FP": 1,
-        "TN": 5566,
-        "FN": 3267,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2698,
-        "FP": 2,
-        "TN": 5565,
-        "FN": 1639,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2673,
-        "FP": 2,
-        "TN": 5565,
-        "FN": 1664,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2142,
-        "FP": 2,
-        "TN": 5565,
-        "FN": 2195,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 2083,
-        "FP": 2,
-        "TN": 5565,
-        "FN": 2254,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2793,
-        "FP": 3,
-        "TN": 5564,
-        "FN": 1544,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2569,
-        "FP": 3,
-        "TN": 5564,
-        "FN": 1768,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2292,
-        "FP": 3,
-        "TN": 5564,
-        "FN": 2045,
-        "hardHamFP": 3
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2236,
-        "FP": 3,
-        "TN": 5564,
-        "FN": 2101,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2803,
-        "FP": 4,
-        "TN": 5563,
-        "FN": 1534,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2579,
-        "FP": 4,
-        "TN": 5563,
-        "FN": 1758,
-        "hardHamFP": 3
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2706,
-        "FP": 7,
-        "TN": 5560,
-        "FN": 1631,
         "hardHamFP": 5
       }
     },
     {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2597,
-        "FP": 7,
-        "TN": 5560,
-        "FN": 1740,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2758,
-        "FP": 8,
-        "TN": 5559,
-        "FN": 1579,
-        "hardHamFP": 6
-      }
-    },
-    {
       "scope": "subject-body-unigram",
       "C": 1000,
       "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2714,
-        "FP": 8,
-        "TN": 5559,
-        "FN": 1623,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2904,
-        "FP": 9,
-        "TN": 5558,
-        "FN": 1433,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 2788,
-        "FP": 9,
-        "TN": 5558,
-        "FN": 1549,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2725,
-        "FP": 9,
-        "TN": 5558,
-        "FN": 1612,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2909,
+        "TP": 2165,
         "FP": 10,
         "TN": 5557,
-        "FN": 1428,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2794,
-        "FP": 10,
-        "TN": 5557,
-        "FN": 1543,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2840,
-        "FP": 11,
-        "TN": 5556,
-        "FN": 1497,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2805,
-        "FP": 11,
-        "TN": 5556,
-        "FN": 1532,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "body-unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2931,
-        "FP": 12,
-        "TN": 5555,
-        "FN": 1406,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2904,
-        "FP": 12,
-        "TN": 5555,
-        "FN": 1433,
-        "hardHamFP": 6
+        "FN": 2172,
+        "hardHamFP": 4
       }
     },
     {
@@ -1666,12 +5382,13 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.99,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 2899,
-        "FP": 12,
-        "TN": 5555,
-        "FN": 1438,
-        "hardHamFP": 6
+        "TP": 2162,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 2175,
+        "hardHamFP": 4
       }
     },
     {
@@ -1679,12 +5396,55 @@
       "C": 1000,
       "hardWeight": 1,
       "cutoff": 0.99,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 2912,
+        "TP": 2641,
+        "FP": 11,
+        "TN": 5556,
+        "FN": 1696,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2430,
+        "FP": 11,
+        "TN": 5556,
+        "FN": 1907,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2168,
+        "FP": 11,
+        "TN": 5556,
+        "FN": 2169,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2738,
         "FP": 13,
         "TN": 5554,
-        "FN": 1425,
-        "hardHamFP": 6
+        "FN": 1599,
+        "hardHamFP": 4
       }
     },
     {
@@ -1692,12 +5452,27 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 65,
       "metrics": {
-        "TP": 3029,
-        "FP": 15,
-        "TN": 5552,
-        "FN": 1308,
-        "hardHamFP": 6
+        "TP": 2493,
+        "FP": 13,
+        "TN": 5554,
+        "FN": 1844,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2218,
+        "FP": 13,
+        "TN": 5554,
+        "FN": 2119,
+        "hardHamFP": 4
       }
     },
     {
@@ -1705,12 +5480,13 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3057,
-        "FP": 16,
-        "TN": 5551,
-        "FN": 1280,
-        "hardHamFP": 6
+        "TP": 2758,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 1579,
+        "hardHamFP": 4
       }
     },
     {
@@ -1718,11 +5494,96 @@
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3036,
-        "FP": 16,
-        "TN": 5551,
-        "FN": 1301,
+        "TP": 2744,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 1593,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2510,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 1827,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2499,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 1838,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2235,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 2102,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2224,
+        "FP": 14,
+        "TN": 5553,
+        "FN": 2113,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2296,
+        "FP": 17,
+        "TN": 5550,
+        "FN": 2041,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2295,
+        "FP": 17,
+        "TN": 5550,
+        "FN": 2042,
         "hardHamFP": 6
       }
     },
@@ -1731,12 +5592,13 @@
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3243,
-        "FP": 20,
-        "TN": 5547,
-        "FN": 1094,
-        "hardHamFP": 7
+        "TP": 2922,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1415,
+        "hardHamFP": 5
       }
     },
     {
@@ -1744,12 +5606,13 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3238,
-        "FP": 20,
-        "TN": 5547,
-        "FN": 1099,
-        "hardHamFP": 7
+        "TP": 2916,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1421,
+        "hardHamFP": 5
       }
     },
     {
@@ -1757,12 +5620,13 @@
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3147,
-        "FP": 20,
-        "TN": 5547,
-        "FN": 1190,
-        "hardHamFP": 8
+        "TP": 2832,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1505,
+        "hardHamFP": 6
       }
     },
     {
@@ -1770,12 +5634,97 @@
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3138,
-        "FP": 20,
-        "TN": 5547,
-        "FN": 1199,
-        "hardHamFP": 8
+        "TP": 2827,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1510,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2657,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1680,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2651,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1686,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2576,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1761,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2575,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1762,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2354,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1983,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2348,
+        "FP": 18,
+        "TN": 5549,
+        "FN": 1989,
+        "hardHamFP": 5
       }
     },
     {
@@ -1783,38 +5732,97 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3262,
+        "TP": 2938,
+        "FP": 19,
+        "TN": 5548,
+        "FN": 1399,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2672,
+        "FP": 19,
+        "TN": 5548,
+        "FN": 1665,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2366,
+        "FP": 19,
+        "TN": 5548,
+        "FN": 1971,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2951,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1386,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2687,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1650,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2380,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1957,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2949,
         "FP": 21,
         "TN": 5546,
-        "FN": 1075,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3272,
-        "FP": 23,
-        "TN": 5544,
-        "FN": 1065,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3270,
-        "FP": 24,
-        "TN": 5543,
-        "FN": 1067,
-        "hardHamFP": 8
+        "FN": 1388,
+        "hardHamFP": 6
       }
     },
     {
@@ -1822,12 +5830,83 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3264,
-        "FP": 24,
-        "TN": 5543,
-        "FN": 1073,
-        "hardHamFP": 8
+        "TP": 2944,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1393,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2685,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1652,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2681,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1656,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2378,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1959,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2375,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1962,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2317,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 2020,
+        "hardHamFP": 7
       }
     },
     {
@@ -1835,12 +5914,27 @@
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3166,
-        "FP": 24,
-        "TN": 5543,
-        "FN": 1171,
-        "hardHamFP": 9
+        "TP": 2305,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 2032,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2847,
+        "FP": 22,
+        "TN": 5545,
+        "FN": 1490,
+        "hardHamFP": 7
       }
     },
     {
@@ -1848,12 +5942,41 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.95,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3153,
-        "FP": 24,
-        "TN": 5543,
-        "FN": 1184,
-        "hardHamFP": 9
+        "TP": 2844,
+        "FP": 22,
+        "TN": 5545,
+        "FN": 1493,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2596,
+        "FP": 22,
+        "TN": 5545,
+        "FN": 1741,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2588,
+        "FP": 22,
+        "TN": 5545,
+        "FN": 1749,
+        "hardHamFP": 7
       }
     },
     {
@@ -1861,25 +5984,55 @@
       "C": 1000,
       "hardWeight": 10,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3160,
+        "TP": 2320,
+        "FP": 24,
+        "TN": 5543,
+        "FN": 2017,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2851,
+        "FP": 25,
+        "TN": 5542,
+        "FN": 1486,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2601,
+        "FP": 25,
+        "TN": 5542,
+        "FN": 1736,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2428,
         "FP": 27,
         "TN": 5540,
-        "FN": 1177,
-        "hardHamFP": 9
-      }
-    },
-    {
-      "scope": "subject-body-unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3345,
-        "FP": 31,
-        "TN": 5536,
-        "FN": 992,
-        "hardHamFP": 8
+        "FN": 1909,
+        "hardHamFP": 6
       }
     },
     {
@@ -1887,12 +6040,83 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3342,
-        "FP": 31,
-        "TN": 5536,
-        "FN": 995,
-        "hardHamFP": 8
+        "TP": 2427,
+        "FP": 27,
+        "TN": 5540,
+        "FN": 1910,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 3014,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 1323,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 3013,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 1324,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2746,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 1591,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2745,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 1592,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 80,
+      "metrics": {
+        "TP": 2435,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 1902,
+        "hardHamFP": 6
       }
     },
     {
@@ -1900,12 +6124,13 @@
       "C": 1000,
       "hardWeight": 1,
       "cutoff": 0.95,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3179,
-        "FP": 31,
-        "TN": 5536,
-        "FN": 1158,
-        "hardHamFP": 10
+        "TP": 2328,
+        "FP": 28,
+        "TN": 5539,
+        "FN": 2009,
+        "hardHamFP": 8
       }
     },
     {
@@ -1913,11 +6138,54 @@
       "C": 1000,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 50,
       "metrics": {
-        "TP": 3349,
-        "FP": 32,
-        "TN": 5535,
-        "FN": 988,
+        "TP": 3019,
+        "FP": 29,
+        "TN": 5538,
+        "FN": 1318,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2867,
+        "FP": 29,
+        "TN": 5538,
+        "FN": 1470,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2751,
+        "FP": 29,
+        "TN": 5538,
+        "FN": 1586,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2612,
+        "FP": 29,
+        "TN": 5538,
+        "FN": 1725,
         "hardHamFP": 8
       }
     },
@@ -1926,12 +6194,13 @@
       "C": 1000,
       "hardWeight": 10,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3273,
-        "FP": 38,
-        "TN": 5529,
-        "FN": 1064,
-        "hardHamFP": 10
+        "TP": 2383,
+        "FP": 33,
+        "TN": 5534,
+        "FN": 1954,
+        "hardHamFP": 8
       }
     },
     {
@@ -1939,12 +6208,13 @@
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3265,
-        "FP": 38,
-        "TN": 5529,
-        "FN": 1072,
-        "hardHamFP": 11
+        "TP": 2379,
+        "FP": 33,
+        "TN": 5534,
+        "FN": 1958,
+        "hardHamFP": 9
       }
     },
     {
@@ -1952,13 +6222,127 @@
       "C": 1000,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "knownBodyPercent": 80,
       "metrics": {
-        "TP": 3286,
-        "FP": 39,
-        "TN": 5528,
-        "FN": 1051,
-        "hardHamFP": 11
+        "TP": 2390,
+        "FP": 34,
+        "TN": 5533,
+        "FN": 1947,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2946,
+        "FP": 35,
+        "TN": 5532,
+        "FN": 1391,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2941,
+        "FP": 35,
+        "TN": 5532,
+        "FN": 1396,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2681,
+        "FP": 35,
+        "TN": 5532,
+        "FN": 1656,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2677,
+        "FP": 35,
+        "TN": 5532,
+        "FN": 1660,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 50,
+      "metrics": {
+        "TP": 2957,
+        "FP": 36,
+        "TN": 5531,
+        "FN": 1380,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "knownBodyPercent": 65,
+      "metrics": {
+        "TP": 2688,
+        "FP": 36,
+        "TN": 5531,
+        "FN": 1649,
+        "hardHamFP": 9
       }
     }
-  ]
+  ],
+  "selected": {
+    "scope": "subject-body-unigram",
+    "C": 100,
+    "hardWeight": 20,
+    "cutoff": 0.99,
+    "knownBodyPercent": 50,
+    "metrics": {
+      "TP": 2092,
+      "FP": 0,
+      "TN": 5567,
+      "FN": 2245,
+      "hardHamFP": 0
+    }
+  },
+  "compatibilityConstraint": "Retain existing full-head C100/hardHAM20/cut.99 coefficients; coverage guards may only remove positive outcomes. Other parameter records are reference, not eligible replacements.",
+  "unrestrictedReferenceWinner": {
+    "scope": "subject-body-unigram",
+    "C": 100,
+    "hardWeight": 10,
+    "cutoff": 0.99,
+    "knownBodyPercent": 50,
+    "metrics": {
+      "TP": 2096,
+      "FP": 0,
+      "TN": 5567,
+      "FN": 2241,
+      "hardHamFP": 0
+    }
+  }
 }

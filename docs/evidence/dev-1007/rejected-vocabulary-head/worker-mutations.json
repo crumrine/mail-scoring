@@ -1,0 +1,50 @@
+[
+  {
+    "name": "outbound_fetch",
+    "caught": true,
+    "restored": true,
+    "failure": "forbidden capability: fetch"
+  },
+  {
+    "name": "content_log",
+    "caught": true,
+    "restored": true,
+    "failure": "forbidden capability: console"
+  },
+  {
+    "name": "retained_content",
+    "caught": true,
+    "restored": true,
+    "failure": "forbidden capability: globalThis"
+  },
+  {
+    "name": "resource_binding",
+    "caught": true,
+    "restored": true,
+    "failure": "unexpected configuration/binding\n+ actual - expected\n\n  [\n    'compatibility_date',\n+   'kv_namespaces',\n    'main',\n    'minify',\n    'name',\n    'observability',\n    'preview_urls',\n"
+  },
+  {
+    "name": "response_size",
+    "caught": true,
+    "restored": true,
+    "failure": "response_size targeted check failed"
+  },
+  {
+    "name": "exception_sanitizer",
+    "caught": true,
+    "restored": true,
+    "failure": "exception_sanitizer targeted check failed"
+  },
+  {
+    "name": "request_bytes",
+    "caught": true,
+    "restored": true,
+    "failure": "local targeted check failed"
+  },
+  {
+    "name": "json_depth",
+    "caught": true,
+    "restored": true,
+    "failure": "local targeted check failed"
+  }
+]

@@ -1,14 +1,14 @@
 {
-  "sha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
+  "sha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
   "rows": 9904,
   "summary": {
     "ham": {
       "total": 5567,
-      "eligible": 3947
+      "eligible": 3933
     },
     "spam": {
       "total": 4337,
-      "eligible": 3717
+      "eligible": 3526
     }
   },
   "sources": [

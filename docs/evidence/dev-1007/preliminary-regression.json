@@ -2,34 +2,39 @@
   "scope": "Observed regression; not fresh acceptance or actual joined caller",
   "totals": {
     "sa:validation": {
-      "TP": 129,
+      "TP": 126,
       "FP": 0,
       "TN": 300,
-      "FN": 127,
+      "FN": 130,
       "unavailable": 4
     },
     "sa:diagnostic": {
-      "TP": 30,
+      "TP": 28,
       "FP": 0,
       "TN": 128,
-      "FN": 34,
+      "FN": 36,
       "unavailable": 3
     },
     "sa:holdout": {
-      "TP": 390,
+      "TP": 380,
       "FP": 0,
       "TN": 1175,
-      "FN": 423,
+      "FN": 433,
       "unavailable": 11
     },
     "enron-observed:holdout": {
-      "TP": 583,
+      "TP": 537,
       "FP": 0,
       "TN": 1000,
-      "FN": 417,
+      "FN": 463,
       "unavailable": 2
     }
   },
   "hamFalsePositives": [],
-  "fetches": 0
+  "fetches": 0,
+  "monotonicComparison": {
+    "oldHead": "2705d0e41a992e30b626010115a681f027d61424",
+    "compared": 4736,
+    "newPositives": []
+  }
 }

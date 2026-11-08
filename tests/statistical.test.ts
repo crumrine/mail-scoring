@@ -12,7 +12,7 @@ import {contextProbabilities} from '../packages/core/dist/context-probabilities.
 import {tiledClues} from '../packages/core/dist/vendor/tiling.js';
 import {combineClues,chiTail} from '../packages/core/dist/vendor/chi.js';
 import {MODEL_COUNTS,MODEL_DOCUMENTS,MODEL_PARTITION_SHA256} from '../packages/core/dist/context-model.js';
-import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION} from '../packages/core/dist/linear-model.js';
+import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION,MODEL_MIN_KNOWN_BODY_PERCENT} from '../packages/core/dist/linear-model.js';
 import {linearSpam} from '../packages/core/dist/linear.js';
 const spam=STATISTICAL_SPAM;
 const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'general-test',subject:'',text,headers:[],sourceComplete:true,...extra})));
@@ -62,7 +62,7 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  const positive=contextFeatures([spam]).features,body=statisticalTokens(spam);
  assert.equal(linearSpam(positive,body),true);
  assert.equal(linearSpam(positive,[]),false);
- assert.equal(linearSpam(positive,statisticalTokens('qzxva qzxvb qzxvc qzxvd qzxve')),false);
+ assert.equal(linearSpam(positive,statisticalTokens('qzxva qzxvb qzxvc qzxvd qzxve')),undefined);
  assert.equal(linearSpam(Array.from({length:2000},(_,i)=>positive[i%positive.length]!),body),false);
  assert.equal(linearSpam(positive,Array.from({length:1001},(_,i)=>body[i%body.length]!)),false);
  const ordered=[...MODEL_FEATURES].sort((a,b)=>a[2]-b[2]);
@@ -77,12 +77,17 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  const mixed=[...fourPositive,...weakNegative];
  assert.equal(linearSpam(features(mixed),mixed),false);
  assert.equal(linearSpam(features(fourPositive),Array.from({length:100},(_,i)=>fourPositive[i%4]!)),false);
+ const fiveKnown=ordered.slice(-5).map(row=>row[0]);
+ assert.equal(linearSpam(features([...fiveKnown,0,1,2,3,4]),[...fiveKnown,0,1,2,3,4]),true);
+ const mostlyKnown=[...fiveKnown,0,1,2,3,4,5];
+ assert.equal(linearSpam(features(mostlyKnown),mostlyKnown),undefined);
  assert.equal(linearSpam([...positive].reverse(),[...body].reverse()),true);
 });
 
 test('current linear model contains bounded numeric aggregates from the frozen TRAIN matrix',()=>{
  assert.equal(MODEL_VERSION,'general-4');
- assert.equal(MODEL_TRAIN_MATRIX_SHA256,'41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b');
+ assert.equal(MODEL_MIN_KNOWN_BODY_PERCENT,50);
+ assert.equal(MODEL_TRAIN_MATRIX_SHA256,'1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49');
  assert.equal(MODEL_FEATURES.length,25439);
  assert.equal(new Set(MODEL_FEATURES.map(row=>row[0])).size,MODEL_FEATURES.length);
  for(const [hash,idf,weight]of MODEL_FEATURES){
@@ -151,4 +156,31 @@ test('legitimate clinical, pharmacy, financial, security and Unicode notices rem
    assert.equal(hasSpam(result),false,sample.subject);
   }
  }
+});
+
+test('unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent',()=>{
+ const sample=LEGITIMATE_NOTICES.find(row=>row.subject==='Recordatorio de consulta médica y revisión de tratamiento en la clínica')!;
+ assert.ok(sample);
+ for(const strip of [false,true]){
+  const transform=(text:string)=>strip?text.normalize('NFKD').replace(/\p{M}/gu,''):text;
+  const subject=transform(sample.subject),text=transform(sample.text);
+  for(const result of [score(text,{subject}),score('',{subject,html:`<article><h1>${subject}</h1><p>${text}</p></article>`})]){
+   assert.equal(result.heuristicScore,0);assert.equal(hasSpam(result),false);
+   assert.equal(result.status,'partial');assert.ok(result.limitsHit.includes('statistical_limit'));
+  }
+ }
+});
+
+test('unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence',()=>{
+ for(const suffix of [' 中文处方预约提醒',' кириллица',' e\u0301']){
+  for(const result of [score(spam+suffix),score('',{html:`<p>${spam+suffix}</p>`})]){
+   assert.equal(hasSpam(result),false);assert.ok(result.limitsHit.includes('statistical_limit'));
+  }
+ }
+});
+
+test('statistical word-position ceiling rejects supported repeated spam before truncated features can classify',()=>{
+ const result=score(spam.repeat(80));
+ assert.equal(hasSpam(result),false);assert.equal(result.heuristicScore,0);
+ assert.ok(result.limitsHit.includes('statistical_limit'));
 });

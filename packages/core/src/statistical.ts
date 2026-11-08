@@ -12,5 +12,8 @@ export function generalSpam(input:ScoreInputV1,limits:Set<LimitId>):boolean {
   const tokens=contextFeatures([content.subjectText,content.bodyText]);
   if(tokens.limited){limits.add('statistical_limit');return false;}
   if([...limits].some(limit=>!['auth_unknown','source_incomplete','html_uninspected','identity_uninspected'].includes(limit)))return false;
-  return linearSpam(tokens.features,statisticalTokens(content.bodyText));
+  if(!content.supported){limits.add('statistical_limit');return false;}
+  const result=linearSpam(tokens.features,statisticalTokens(content.bodyText));
+  if(result===undefined)limits.add('statistical_limit');
+  return result===true;
 }

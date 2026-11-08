@@ -27,13 +27,13 @@ const manifests=[
 const authoredBytes=await readBounded(root+'/harness/evaluation/clinical-train.json',128*1024);
 assert.equal(hash(authoredBytes),'8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e');
 const authored=JSON.parse(authoredBytes);assert.equal(authored.records.length,100);
-await build({stdin:{contents:`export {project} from '${inbox}/workers/lib/mail-scoring/intake.ts';export {parseRequest,guardInput} from '${root}/packages/core/src/guards.ts';export {inspect} from '${root}/packages/core/src/inspection.ts';export {statisticalText,statisticalTokens} from '${root}/packages/core/src/statistical-text.ts';export {contextFeatures,contextKey} from '${root}/packages/core/src/context-features.ts';`,loader:'ts',resolveDir:root},outfile:dir+'/train-neutral.mjs',bundle:true,platform:'node',format:'esm'});
+await build({stdin:{contents:`export {project} from ${JSON.stringify(join(inbox,'workers/lib/mail-scoring/intake.ts'))};export {parseRequest,guardInput} from ${JSON.stringify(join(root,'packages/core/src/guards.ts'))};export {inspect} from ${JSON.stringify(join(root,'packages/core/src/inspection.ts'))};export {statisticalText,statisticalTokens} from ${JSON.stringify(join(root,'packages/core/src/statistical-text.ts'))};export {contextFeatures,contextKey} from ${JSON.stringify(join(root,'packages/core/src/context-features.ts'))};`,loader:'ts',resolveDir:root},outfile:dir+'/train-neutral.mjs',bundle:true,platform:'node',format:'esm'});
 const m=await import(pathToFileURL(dir+'/train-neutral.mjs'));
 let fetches=0;globalThis.fetch=()=>{fetches++;throw Error('offline_only');};
 const rows=[],seen=new Set();
 async function extract(raw,record){
  assert(!seen.has(record.id));seen.add(record.id);
- const row={id:record.id,label:record.label,group:record.group,partition:'train',rawInspectable:raw.length<=131072,textInspectable:false,quoted:false,bodyPositions:0,bodyDistinct:0,eligible:false,features:[]};
+ const row={id:record.id,label:record.label,group:record.group,partition:'train',rawInspectable:raw.length<=131072,textInspectable:false,quoted:false,bodyPositions:0,bodyDistinct:0,eligible:false,features:[],supported:false};
  if(row.rawInspectable){try{
   const parsed=await PostalMime.parse(raw),input=m.project(parsed);
   if(!((parsed.text&&!input.text)||(!input.text.trim()&&parsed.html&&!input.html))){
@@ -42,8 +42,8 @@ async function extract(raw,record){
    const content=m.statisticalText(guarded.input.subject,guarded.input.text,guarded.input.html??'');
    const fs=m.contextFeatures([content.subjectText,content.bodyText]);row.quoted=content.quoted;
    row.bodyPositions=m.contextFeatures([content.bodyText]).positions;row.bodyDistinct=m.statisticalTokens(content.bodyText).length;
-   row.textInspectable=content.complete&&!fs.limited;
-   row.eligible=row.textInspectable&&!row.quoted&&row.bodyDistinct>=5&&[...limits].every(l=>['auth_unknown','source_incomplete','html_uninspected','identity_uninspected'].includes(l));
+   row.textInspectable=content.complete&&!fs.limited;row.supported=content.supported;
+   row.eligible=row.textInspectable&&row.supported&&!row.quoted&&row.bodyDistinct>=5&&[...limits].every(l=>['auth_unknown','source_incomplete','html_uninspected','identity_uninspected'].includes(l));
    if(row.textInspectable)row.features=fs.features.map(f=>m.contextKey(f.first,f.second));
   }
  }catch{row.textInspectable=false;row.eligible=false;row.features=[];}}
@@ -66,7 +66,7 @@ for(const r of authored.records){
 }
 assert.equal(rows.length,9904);assert.equal(fetches,0);
 const output=JSON.stringify(rows)+'\n';assert(Buffer.byteLength(output)<=128*1024*1024);
-assert.equal(hash(output),'41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b','TRAIN_feature_reproduction');
+assert.equal(hash(output),'1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49','TRAIN_feature_reproduction');
 await writeFile(dir+'/complete-training-features.json',output,{flag:'wx'});
 const receipt={sha256:hash(output),rows:rows.length,summary:Object.fromEntries(['ham','spam'].map(label=>[label,{total:rows.filter(r=>r.label===label).length,eligible:rows.filter(r=>r.label===label&&r.eligible).length}])),sources:[...manifests.map(m=>m[1]),hash(authoredBytes)],fetches,scope:'Frozen public TRAIN plus100 original authored clinical TRAIN ham; synthetic rows are development data, never independent accuracy. Exact raw byte provenance; no classifier imports or heldout reads.'};
 await writeFile(dir+'/complete-training-receipt.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));

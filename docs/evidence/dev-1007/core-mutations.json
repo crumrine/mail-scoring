@@ -1,5 +1,20 @@
 [
   {
+    "mutation": "linear-alphabet",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "linear-coverage",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
+    "mutation": "linear-coverage-status",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
     "mutation": "linear-body-cap",
     "caught": true,
     "exitCode": 1

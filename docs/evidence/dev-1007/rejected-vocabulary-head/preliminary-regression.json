@@ -1,0 +1,35 @@
+{
+  "scope": "Observed regression; not fresh acceptance or actual joined caller",
+  "totals": {
+    "sa:validation": {
+      "TP": 129,
+      "FP": 0,
+      "TN": 300,
+      "FN": 127,
+      "unavailable": 4
+    },
+    "sa:diagnostic": {
+      "TP": 30,
+      "FP": 0,
+      "TN": 128,
+      "FN": 34,
+      "unavailable": 3
+    },
+    "sa:holdout": {
+      "TP": 390,
+      "FP": 0,
+      "TN": 1175,
+      "FN": 423,
+      "unavailable": 11
+    },
+    "enron-observed:holdout": {
+      "TP": 583,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 417,
+      "unavailable": 2
+    }
+  },
+  "hamFalsePositives": [],
+  "fetches": 0
+}

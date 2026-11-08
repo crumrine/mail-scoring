@@ -13,7 +13,7 @@ warnings.simplefilter('error',ConvergenceWarning)
 assert all(metadata.version(k)==v for k,v in {'numpy':'2.5.3','scipy':'1.17.1','scikit-learn':'1.9.0','joblib':'1.6.0','threadpoolctl':'3.6.0'}.items())
 path=Path(sys.argv[1]);assert path.is_file() and not path.is_symlink()
 with path.open('rb') as source:raw=source.read(128*1024*1024+1)
-assert len(raw)<=128*1024*1024;assert hashlib.sha256(raw).hexdigest()=='41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b'
+assert len(raw)<=128*1024*1024;assert hashlib.sha256(raw).hexdigest()=='1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49'
 rows=json.loads(raw);assert len(rows)==9904 and all(r['partition']=='train' and len(r['features'])<=1999 for r in rows)
 folds=np.array([int(r['id'][:8],16)%5 for r in rows]);y=np.array([r['label']=='spam' for r in rows],dtype=np.int32);eligible=np.array([r['eligible'] for r in rows]);fiteligible=np.array([r['textInspectable'] and r['rawInspectable'] for r in rows]);groups=np.array([r['group']=='hard_ham' for r in rows]);body=[set([k for k in r['features'] if k.endswith(':-1')][-r['bodyPositions']:]) if r['bodyPositions'] else set() for r in rows]
 results=[]
@@ -24,16 +24,17 @@ for scope in ['body-unigram','subject-body-unigram']:
   for ks in features:indices.extend(sorted(vocab[k] for k in ks if k in vocab));indptr.append(len(indices))
   assert len(indices)<=20_000_000
   x=csr_matrix((np.ones(len(indices)),np.array(indices,dtype=np.int32),np.array(indptr,dtype=np.int32)),shape=(len(rows),len(vocab)))
-  tf=TfidfTransformer(norm='l2',smooth_idf=True);tf.fit(x[train]);x=tf.transform(x);bodyknown=np.array([sum(k in vocab for k in ks)>=5 for ks in body]);cache.append((train,x,eligible&bodyknown,vocab))
+  tf=TfidfTransformer(norm='l2',smooth_idf=True);tf.fit(x[train]);x=tf.transform(x);bodyknown=np.array([sum(k in vocab for k in ks)>=5 for ks in body]);coverage=np.array([100*sum(k in vocab for k in ks)/len(ks) if ks else 0 for ks in body]);cache.append((train,x,eligible&bodyknown,vocab,coverage))
  for C in [.1,1,10,100,1000]:
   for hardWeight in [1,10,20]:
-   p=np.zeros(len(rows));can=np.zeros(len(rows),dtype=bool)
-   for f,(train,x,ok,vocab) in enumerate(cache):
+   p=np.zeros(len(rows));can=np.zeros(len(rows),dtype=bool);coverage=np.zeros(len(rows))
+   for f,(train,x,ok,vocab,foldCoverage) in enumerate(cache):
     model=LogisticRegression(C=C,solver='liblinear',tol=1e-7,max_iter=2000,random_state=7151)
     sample=np.where(groups[train],hardWeight,1);model.fit(x[train],y[train],sample_weight=sample);assert list(model.classes_)==[0,1]
-    positive=np.array([sum(k in vocab and round(float(model.coef_[0][vocab[k]]),9)>0 for k in ks)>=5 for ks in body]);test=folds==f;p[test]=model.decision_function(x[test]);can[test]=(ok&positive)[test]
-   for cut in [.9,.95,.99,.995,.999]:
-    hits=can&(p>=math.log(cut/(1-cut)));m={'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&groups))};results.append({'scope':scope,'C':C,'hardWeight':hardWeight,'cutoff':cut,'metrics':m})
+    positive=np.array([sum(k in vocab and round(float(model.coef_[0][vocab[k]]),9)>0 for k in ks)>=5 for ks in body]);test=folds==f;p[test]=model.decision_function(x[test]);can[test]=(ok&positive)[test];coverage[test]=foldCoverage[test]
+   for knownPercent in [50,65,80]:
+    for cut in [.9,.95,.99,.995,.999]:
+     hits=can&(coverage>=knownPercent)&(p>=math.log(cut/(1-cut)));m={'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&groups))};results.append({'scope':scope,'C':C,'hardWeight':hardWeight,'cutoff':cut,'knownBodyPercent':knownPercent,'metrics':m})
    print(json.dumps(results[-5:]),flush=True)
-results.sort(key=lambda r:(r['metrics']['FP'],-r['metrics']['TP'],r['C'],-r['cutoff'],r['scope']!='unigram'));receipt={'algorithm':'sklearn liblinear L2 logistic; binary unique content features; TRAIN-fold TFIDF/L2; exact actual-projection/guard matrix','versions':{'sklearn':sklearn.__version__,'numpy':np.__version__,'scipy':scipy.__version__},'matrixSha256':hashlib.sha256(raw).hexdigest(),'folds':5,'candidates':150,'positiveBodyWordsMinimum':5,'results':results}
-Path(sys.argv[2]).write_text(json.dumps(receipt,indent=2)+'\n');assert results[0]=={'scope':'subject-body-unigram','C':100,'hardWeight':20,'cutoff':.99,'metrics':{'TP':2270,'FP':0,'TN':5567,'FN':2067,'hardHamFP':0}};print('SELECTED',json.dumps(results[0]),flush=True)
+results.sort(key=lambda r:(r['metrics']['FP'],-r['metrics']['TP'],-r['knownBodyPercent'],r['C'],-r['cutoff'],r['scope']!='body-unigram'));receipt={'algorithm':'sklearn liblinear L2 logistic; binary unique content features; TRAIN-fold TFIDF/L2; exact actual-projection/guard matrix','versions':{'sklearn':sklearn.__version__,'numpy':np.__version__,'scipy':scipy.__version__},'matrixSha256':hashlib.sha256(raw).hexdigest(),'folds':5,'candidates':450,'positiveBodyWordsMinimum':5,'knownBodyPercentCandidates':[50,65,80],'results':results}
+compatible=[r for r in results if r['scope']=='subject-body-unigram' and r['C']==100 and r['hardWeight']==20 and r['cutoff']==.99];assert len(compatible)==3 and all(r['metrics']['FP']==0 for r in compatible);selected=compatible[0];assert selected=={'scope':'subject-body-unigram','C':100,'hardWeight':20,'cutoff':.99,'knownBodyPercent':50,'metrics':{'TP':2092,'FP':0,'TN':5567,'FN':2245,'hardHamFP':0}};receipt.update(selected=selected,compatibilityConstraint='Retain existing full-head C100/hardHAM20/cut.99 coefficients; coverage guards may only remove positive outcomes. Other parameter records are reference, not eligible replacements.',unrestrictedReferenceWinner=results[0]);Path(sys.argv[2]).write_text(json.dumps(receipt,indent=2)+'\n');print('SELECTED',json.dumps(selected),flush=True)

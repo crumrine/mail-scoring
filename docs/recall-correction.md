@@ -40,18 +40,49 @@ The clinical root gap was insufficient legitimate-mail representation: public ha
 is largely corporate while pharmacy spam supplies medical vocabulary. A separate
 frozen100-case original synthetic clinical TRAIN supplement supplies routine
 prescription, formulary, dispensing, consultation, monitoring and benefits notices.
-It is disjoint from the21 regression notices, never substitutes for independent
+It is disjoint from the37 regression notices, never substitutes for independent
 accuracy, and introduces no medical/topic whitelist or trusted-sender shortcut.
 These TRAIN examples teach relative word weights; they do not bypass scoring.
 
-A fixed150-candidate fivefold TRAIN comparison (body versus subject/body words,
+The initial150-candidate fivefold TRAIN comparison (body versus subject/body words,
 five C values, three difficult-ham weights and five cutoffs) selects one
 subject/body head: C100, hard-ham weight20, cutoff.99.
-TFIDF is fitted within each TRAIN fold. Nine-decimal quantized counts are2270TP,
-0FP,5567TN,2067FN, including zero difficult-ham FP. These are development counts.
-The cutoff is logit(.99), not a calibrated99% probability. Twenty-one authored
+TFIDF is fitted within each TRAIN fold. Nine-decimal quantized counts are2092TP,
+0FP,5567TN,2245FN, including zero difficult-ham FP. These are development counts.
+The cutoff is logit(.99), not a calibrated99% probability. Thirty-seven authored
 regression notices remain expected0 in both plain text and HTML, including the
 original rejected clinical case. No failed assertion or label was weakened.
+
+A second independent review froze16 additional legitimate controls before scoring
+(SHAa314f3d2796607d2ceada310e2bf9c4222d8bf04f2631796e2cabff71fe4ea2d).
+Its Spanish appointment reminder failed plain and HTML. The cases and labels
+remained unchanged and approval was blocked. All16 are now retained alongside
+the earlier21 controls. The original and accentless Spanish versions remain
+expected0 with partial/statistical_limit provenance.
+
+An ASCII-word model must not infer confidence from fragments of unsupported
+letters/combining marks or from mostly unfamiliar eligible body words. Compatibility
+normalization is retained; unsupported letters/marks cause statistical abstention.
+At least50% of distinct eligible body word features must be represented in the
+model, in addition to five distinct positive body words. Low coverage is partial
+with statistical_limit, never a safe verdict. This is representation checking,
+not language identification; quoted/hidden text and existing limits still abstain.
+
+The precision correction keeps the exact C100/hard-ham20/cut.99 coefficients from
+2705d0e. Numeric bias/cutoff/weight digest
+is recorded in training.json (full SHAefcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b).
+A450-record TRAIN reference comparison includes50/65/80% coverage profiles.
+Only the three profiles retaining that full head are eligible: changing weights
+would introduce new positives after a precision fix. Within that constraint50%
+maximizes TRAIN recall at0FP; unrestricted reference winners are recorded and
+not adopted. The fitter asserts unchanged numeric coefficients. Bounded feature
+observations remain available for the fixed fit, while a separate supported flag
+controls prediction eligibility. Unsupported cases stay in counts as misses.
+
+A paired old-data check compares4736 actual scorer results under the same
+proposed compatible policy: zero newly positive cases. The updated scorer replay
+catches537/1000 observed Enron spam with0/2603 ham quarantines across all old
+Enron/SA cases. These are regressions, not joined caller or independent acceptance.
 
 The model contains25439 own numeric word-hash/IDF/coefficient triples. No literal
 words, ordered per-message features, raw corpus mail or third-party pretrained
@@ -73,14 +104,14 @@ fingerprints from all selected old tests/TRAIN and the entire reserved fresh
 archive pair. Prior private-study fingerprints are exclusion-only, never training
 or published results. The100 authored clinical TRAIN rows bring the total to9904:
 5567ham/4337spam;9693 have inspectable projected text for fitting. Unknown/error
-cases remain recorded. The21 regression notices never enter training.
+cases remain recorded. The37 regression notices never enter training.
 
 - Original SA partition: `111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803`.
 - Existing Enron TRAIN: `773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131`.
 - Added public TRAIN: `e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67`.
 - Authored clinical TRAIN: `8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e`.
-- Neutral TRAIN matrix: `41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b`.
-- Published model: `dac00ce3993a6f15479e0783d3eac4566a7b7ef515dada987e3f17542e504b98`.
+- Neutral TRAIN matrix: `1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49`.
+- Published model: `52c58c189621f5f1ad74d28103d18b803d609af5a8a48c6dab52239435652473`.
 
 With existing frozen external TRAIN directories and locked Inbox606d0edee433fbf2aee517b1f1b61e631251a79a,
 use Node24.15.0/ICU78.2 and PostalMime2.7.3:

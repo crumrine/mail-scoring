@@ -1,0 +1,151 @@
+{
+  "schema": "dev-1007-independent-immutable-controls-v1",
+  "createdBeforeFirstScoring": true,
+  "description": "Frozen independent legitimate-mail (clinical, transactional, security, financial, Unicode, subject-context) and adversarial spam controls fixed before any scoring execution.",
+  "legitimateControls": [
+    {
+      "id": "clinical-outpatient-refill-pickup",
+      "category": "clinical",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Outpatient pharmacy notification: prescription renewal ready for collection",
+      "text": "Dear Patient, the clinical pharmacist has completed the review of your blood pressure and cholesterol medication profile. Your routine tablet prescription is ready for collection at the outpatient clinic dispensary during regular hours. Please bring your photo identification and current medicine list if you would like to discuss dosing instructions with the care team."
+    },
+    {
+      "id": "clinical-cardiology-monitoring-summary",
+      "category": "clinical",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Cardiology clinic follow-up and home blood pressure monitoring plan",
+      "text": "Following your consultation with the specialist, we have updated your treatment record and medication schedule. Please continue taking your prescribed tablet dose with breakfast and record your daily blood pressure readings in the monitoring diary. Contact the practice nurse or physician if you notice side effects before your next scheduled appointment."
+    },
+    {
+      "id": "clinical-post-discharge-antibiotic-care",
+      "category": "clinical",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Hospital discharge care summary and antibiotic dosing schedule",
+      "text": "This care summary confirms the discharge instructions discussed with the ward physician and clinical pharmacist. Take the prescribed antibiotic medication with food at the scheduled times until the course is finished. Please bring this treatment record to your follow-up consultation at the medical clinic next week."
+    },
+    {
+      "id": "clinical-formulary-benefit-notice",
+      "category": "clinical",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Annual health plan formulary update and generic prescription coverage",
+      "text": "Our benefits administration team reviewed the covered prescription medication list for the upcoming plan year. Your approved generic cholesterol and hypertension treatment remains covered under the clinical formulary. Speak with your prescribing clinician or community pharmacist at your next consultation if you have questions about equivalent tablet options."
+    },
+    {
+      "id": "clinical-lab-fasting-appointment",
+      "category": "clinical",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Laboratory blood test reminder and clinic appointment confirmation",
+      "text": "You are scheduled for a routine fasting lipid panel and metabolic blood test at the medical clinic on Tuesday at 08:30 AM. Please drink only water for twelve hours before the appointment and take your regular morning medication unless instructed otherwise by your physician."
+    },
+    {
+      "id": "transactional-cloud-invoice-receipt",
+      "category": "transactional",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Monthly infrastructure invoice and payment confirmation for November",
+      "text": "Thank you for your payment. Your monthly statement for compute instances, object storage and network transfer has been paid in full via your registered corporate billing method. A detailed PDF breakdown of usage hours and tax accounting is available in the billing console."
+    },
+    {
+      "id": "transactional-equipment-shipment-notice",
+      "category": "transactional",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Hardware order dispatched: workstation replacement delivery schedule",
+      "text": "Your IT equipment order has been dispatched from the regional distribution warehouse and is scheduled for office delivery on Wednesday afternoon. Someone at the reception desk will need to sign for the parcel upon arrival."
+    },
+    {
+      "id": "security-ssh-ca-maintenance",
+      "category": "security",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Platform security advisory: internal SSH certificate authority and TLS maintenance",
+      "text": "The infrastructure security engineering team will rotate the internal bastion host keys and intermediate TLS certificates during Saturday's scheduled maintenance window at 03:00 UTC. Please update your local workstation configuration from the engineering repository and report any connection issues in the incident channel."
+    },
+    {
+      "id": "security-hardware-key-enrollment",
+      "category": "security",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Security confirmation: WebAuthn hardware token registered on your workstation account",
+      "text": "A new FIDO2 hardware security key was enrolled on your corporate directory profile during today's onboarding session. If you completed this registration with the IT helpdesk, no further action is required. Otherwise, contact the security operations desk immediately."
+    },
+    {
+      "id": "financial-payroll-tax-statement",
+      "category": "financial",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Payroll direct deposit advice and annual tax withholding summary",
+      "text": "Your biweekly salary statement and retirement plan contribution record have been posted to the employee self-service portal. Please verify your residential address and federal withholding elections before the year-end payroll processing cutoff."
+    },
+    {
+      "id": "financial-quarterly-audit-variance",
+      "category": "financial",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Third-quarter departmental operating expense reconciliation and budget forecast",
+      "text": "Attached is the reconciled general ledger summary for engineering and operations through September. Please review the capital expenditure accruals and submit any cost-center adjustments to the accounting controller before Tuesday's close."
+    },
+    {
+      "id": "unicode-german-engineering-protocol",
+      "category": "unicode",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Protokoll der Architektur-Review und Freigabe des Wartungsfensters",
+      "text": "Hallo zusammen, die Ergebnisse der gestrigen Lasttests und der Sicherheitsprüfung liegen nun vollständig vor. Alle Dienste laufen stabil innerhalb der vereinbarten Grenzen. Bitte überprüft die offenen Aufgaben bis Donnerstagmittag."
+    },
+    {
+      "id": "unicode-japanese-project-schedule",
+      "category": "unicode",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "四半期システム監査および次期開発スケジュールのご連絡",
+      "text": "お疲れ様です。来週火曜日の午前十時より、定例の設計レビュー会議を開催いたします。事前に共有フォルダ内の技術仕様書とテスト計画をご確認いただけますようお願いいたします。"
+    },
+    {
+      "id": "unicode-spanish-clinic-reminder",
+      "category": "unicode",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Recordatorio de consulta médica y revisión de tratamiento en la clínica",
+      "text": "Estimado paciente, le recordamos su próxima cita con el médico de cabecera el jueves a las 09:30 de la mañana. Por favor traiga su documento de identidad y la lista actualizada de sus medicamentos habituales."
+    },
+    {
+      "id": "subject-context-engineering-agenda",
+      "category": "subject_context",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Engineering architecture review meeting agenda and quarterly roadmap planning",
+      "text": "Please find your updated account and project review notes ready for tomorrow's session."
+    },
+    {
+      "id": "subject-context-audit-committee",
+      "category": "subject_context",
+      "label": "ham",
+      "expectedScore": 0,
+      "expectedLinearSpam": false,
+      "subject": "Operations committee schedule and internal compliance review notes",
+      "text": "The updated documentation and account summary are available for the team meeting."
+    }
+  ]
+}
