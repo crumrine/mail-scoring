@@ -65,7 +65,7 @@ test('historical rules-3 and rules-4 statistical evidence remain strictly readab
  for(const [version,id]of [['rules-3','statistical_spam'],['rules-4','statistical_context_spam']] as const){
   const current=JSON.parse(scoreRpc('1',new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'test',subject:'',text:STATISTICAL_SPAM,headers:[],sourceComplete:true}))));
   current.result.ruleSetVersion=version;
-  current.result.reasons=current.result.reasons.map((r:any)=>r.id==='statistical_ensemble_spam'?{id,contribution:r.contribution,reason:REASONS[id]}:r);
+  current.result.reasons=current.result.reasons.map((r:any)=>r.id==='statistical_generalized_spam'?{id,contribution:r.contribution,reason:REASONS[id]}:r);
   assert.ok(decodeResponse(JSON.stringify(current))?.ok);
   current.result.ruleSetVersion='rules-5';assert.equal(decodeResponse(JSON.stringify(current)),null);
  }

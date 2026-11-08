@@ -7,9 +7,8 @@ import {contextFeatures} from './context-features.js';
 import {contextProbabilities} from './context-probabilities.js';
 import {tiledClues} from './vendor/tiling.js';
 import type { ScoreInputV1, LimitId } from './contract.js';
-// Selected on original TRAIN-only five-fold comparison; not a calibrated probability.
-export const UNIGRAM_CUTOFF = 0.995;
-export const CONTEXT_CUTOFF = 0.999;
+// Existing hard-ham safeguard retained; original plus disjoint added TRAIN only. Not calibrated.
+export const SPAM_CUTOFF = 0.99;
 export const MIN_CLUES = 20;
 const probabilities=contextProbabilities(MODEL_COUNTS,MODEL_DOCUMENTS);
 /** Only guarded fields. Missing/limited/quoted text abstains; never learns from mail or preferences. */
@@ -21,8 +20,6 @@ export function generalSpam(input:ScoreInputV1,limits:Set<LimitId>):boolean {
   const tokens=contextFeatures([content.subjectText,content.bodyText]);
   if(tokens.limited){limits.add('statistical_limit');return false;}
   if([...limits].some(limit=>!['auth_unknown','source_incomplete','html_uninspected','identity_uninspected'].includes(limit)))return false;
-  const words=tiledClues(tokens.features.filter(feature=>feature.second===-1),probabilities);
-  if(words.length>=MIN_CLUES&&combineClues(words)>=UNIGRAM_CUTOFF)return true;
-  const context=tiledClues(tokens.features,probabilities);
-  return context.length>=MIN_CLUES&&combineClues(context)>=CONTEXT_CUTOFF;
+  const selected=tiledClues(tokens.features,probabilities);
+  return selected.length>=MIN_CLUES&&combineClues(selected)>=SPAM_CUTOFF;
 }

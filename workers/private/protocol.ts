@@ -27,7 +27,7 @@ function resultValid(r:unknown):r is ScoreResultV1 {
     if(r.ruleSetVersion==='rules-1'&&id==='gtube')return false;
     if(r.ruleSetVersion!=='rules-3'&&id==='statistical_spam')return false;
     if(r.ruleSetVersion!=='rules-4'&&id==='statistical_context_spam')return false;
-    if(r.ruleSetVersion!=='rules-5'&&id==='statistical_ensemble_spam')return false;
+    if(r.ruleSetVersion!=='rules-5'&&id==='statistical_generalized_spam')return false;
     if(v.reason!==REASONS[id]||typeof v.contribution!=='number'||!Number.isFinite(v.contribution)||v.contribution<0||v.contribution>RULE_CAPS[id])return false;
     seen.add(id);sum+=v.contribution;
   }

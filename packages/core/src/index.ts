@@ -53,7 +53,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
     }
   }
   if(features.gtube)add('gtube','test',['spam']);
-  if(!features.gtube&&generalSpam(input,limits))add('statistical_ensemble_spam','statistics',['spam']);
+  if(!features.gtube&&generalSpam(input,limits))add('statistical_generalized_spam','statistics',['spam']);
   if(features.marketing)add('marketing_headers','marketing',['marketing']);
   result.limitsHit=[...limits];result.status=limits.size?'partial':'complete';
   return result;

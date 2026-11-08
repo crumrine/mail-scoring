@@ -292,7 +292,7 @@
             "additionalProperties": false,
             "properties": {
               "id": {
-                "const": "statistical_ensemble_spam"
+                "const": "statistical_generalized_spam"
               },
               "contribution": {
                 "type": "integer",
@@ -300,7 +300,7 @@
                 "maximum": 60
               },
               "reason": {
-                "const": "The bounded word or contextual classifier found strong spam evidence (public-corpus model general-3; a heuristic, not a calibrated confidence probability)."
+                "const": "The bounded classifier found strong spam evidence (public-corpus model general-3; a heuristic, not a calibrated confidence probability)."
               }
             },
             "required": [

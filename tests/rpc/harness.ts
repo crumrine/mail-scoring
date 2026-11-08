@@ -42,7 +42,7 @@ export default {
     gtubeMixed.result.limitsHit.includes('control_chars')&&gtubeMixed.result.limitsHit.includes('quoted_content'),'gtube_mixed_occurrences');
   for(const content of [{text:STATISTICAL_SPAM},{text:'',html:'<p>'+STATISTICAL_SPAM+'</p>'}]){
    const assessed=await env.CONSUMER.inspectV1(bytes({...ordinary,...content}));
-   check(assessed.inspection==='assessed'&&assessed.result?.ruleSetVersion==='rules-5'&&assessed.result.heuristicScore===60&&assessed.result.reasons.some(r=>r.id==='statistical_ensemble_spam'),'statistical_positive');
+   check(assessed.inspection==='assessed'&&assessed.result?.ruleSetVersion==='rules-5'&&assessed.result.heuristicScore===60&&assessed.result.reasons.some(r=>r.id==='statistical_generalized_spam'),'statistical_positive');
   }
   const hidden=await env.CONSUMER.inspectV1(bytes({...ordinary,text:'',html:'<script>'+STATISTICAL_SPAM+'</script><p>Meeting confirmed.</p>'}));
   check(hidden.inspection==='assessed'&&hidden.result?.heuristicScore===0,'statistical_hidden');
