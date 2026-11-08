@@ -17,6 +17,8 @@ const GENERAL_PINS = {
 };
 const FRESH_MANIFEST_SHA='3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380';
 const CONTEXT_PINS={baseline:GENERAL_PINS.baseline,candidate:{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'}};
+const RECALL_FRESH_SHA='2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552';
+const RECALL_PINS={baseline:CONTEXT_PINS.candidate,candidate:{inbox:'049998e046cf37d5a5faf725d1fc75d5499d20b2',scorer:'0041d47f20d2565dc8725a3c11f0ed1af113ca74'}};
 const PARTITIONS = ['diagnostic','validation','holdout'];
 const MANIFEST_SHA = '4ff6356a2a674467d1d8ea6f97adf11d0cce04e12d03e6e22ea2f1b8e6ab7354';
 const PINS = {
@@ -47,8 +49,8 @@ function validateRecords(records, general = false, fresh = false) {
   }
 }
 
-function parseManifest(bytes, general = false, fresh = false) {
-  if (hash(bytes) !== (fresh ? FRESH_MANIFEST_SHA : general ? GENERAL_MANIFEST_SHA : MANIFEST_SHA)) throw new Error('manifest_hash');
+function parseManifest(bytes, general = false, fresh = false, expected = fresh ? FRESH_MANIFEST_SHA : general ? GENERAL_MANIFEST_SHA : MANIFEST_SHA) {
+  if (hash(bytes) !== expected) throw new Error('manifest_hash');
   const manifest = JSON.parse(bytes);
   validateRecords(manifest.records, general, fresh);
   return manifest;
@@ -139,6 +141,36 @@ function generalSelfCheck() {
  return {passed:true,cases:['fresh_label_partition_authority','fresh_holdout_gate','general_record','partition','html_stratum','recall_boundary','recall_below_gate','validation_ham_regression','diagnostic_hard_ham_regression','authored_ham_regression']};
 }
 
+function recallAcceptance(variants, controls, partitionsToCheck, independent) {
+ const partitions=Object.fromEntries(partitionsToCheck.map(part=>[part,Object.fromEntries(Object.entries(variants).map(([name,v])=>{
+  const p=v.byPartition[part];return [name,{hamFalsePositives:p.metrics.FP,hardHamFalsePositives:p.hardHam.FP,htmlHamFalsePositives:p.htmlOnly.FP,otherHamFalsePositives:p.other.FP}];
+ }))]));
+ const before=variants.baseline.byPartition.holdout.metrics,after=variants.candidate.byPartition.holdout.metrics;
+ const authoredHamFalsePositives=Object.fromEntries(Object.entries(controls).map(([name,rows])=>[name,rows.filter(r=>r.kind==='authored_ham'&&r.quarantined).length]));
+ const zeroHam=Object.values(partitions).every(p=>Object.values(p).every(v=>Object.values(v).every(n=>n===0)))&&Object.values(authoredHamFalsePositives).every(n=>n===0);
+ // Cross-products preserve the exact predeclared percentage boundaries.
+ const recallAtLeastHalf=after.spam>0&&2*after.TP>=after.spam;
+ const recallGainAtLeastTwentyPoints=before.spam>0&&after.spam>0&&100*(after.TP*before.spam-before.TP*after.spam)>=20*before.spam*after.spam;
+ return {partitions,authoredHamFalsePositives,zeroObservedHamFalsePositives:zeroHam,independent,
+  heldoutRecallGain:after.recall-before.recall,requiredAbsoluteRecallGain:0.20,requiredRecall:0.50,
+  recallAtLeastHalf,recallGainAtLeastTwentyPoints,eligible:zeroHam&&(!independent||(recallAtLeastHalf&&recallGainAtLeastTwentyPoints))};
+}
+function recallSelfCheck(){
+ const variant=(TP,FP=0)=>({byPartition:{holdout:{metrics:{TP,spam:1000,recall:TP/1000,FP},hardHam:{FP:0},htmlOnly:{FP:0},other:{FP}}}});
+ const controls={baseline:[],candidate:[]};const check=(a,b)=>recallAcceptance({baseline:a,candidate:b},controls,['holdout'],true);
+ assert.equal(check(variant(300),variant(500)).eligible,true);
+ assert.equal(check(variant(301),variant(500)).eligible,false);
+ assert.equal(check(variant(0),variant(499)).eligible,false);
+ assert.equal(check(variant(500),variant(700)).eligible,true);
+ assert.equal(check(variant(300,1),variant(500)).eligible,false);
+ assert.equal(check(variant(300),variant(500,1)).eligible,false);
+ const hard=variant(500);hard.byPartition.holdout.hardHam.FP=1;assert.equal(check(variant(300),hard).eligible,false);
+ const authored={baseline:[{kind:'authored_ham',quarantined:true}],candidate:[]};
+ assert.equal(recallAcceptance({baseline:variant(300),candidate:variant(500)},authored,['holdout'],true).eligible,false);
+ assert.equal(recallAcceptance({baseline:variant(300),candidate:variant(300)},controls,['holdout'],false).eligible,true);
+ return {passed:true,cases:['exact_50percent','exact_20point_gain','below_recall','below_gain','floating_boundary','baseline_ham_FP','candidate_ham_FP','hard_ham_FP','authored_ham_FP','observed_regression_not_independent']};
+}
+
 async function exportSource(repo, pin, paths, target) {
   if (!/^[a-f0-9]{40}$/.test(pin)) throw new Error('source_pin');
   git(repo, 'cat-file', '-e', pin+'^{commit}');
@@ -149,24 +181,25 @@ async function exportSource(repo, pin, paths, target) {
 }
 
 async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
-  const general=mode!=='legacy',fresh=mode==='fresh',context=mode==='context'||fresh;
+  const recall=mode.startsWith('recall-'),independent=mode==='recall-fresh';
+  const general=mode!=='legacy',fresh=mode==='fresh'||mode==='recall-enron'||independent,context=mode==='context'||fresh||recall;
   const partitionsToCheck=fresh?['holdout']:PARTITIONS;
-  const manifestSha=fresh?FRESH_MANIFEST_SHA:general?GENERAL_MANIFEST_SHA:MANIFEST_SHA;
-  const pinsByVariant=context?CONTEXT_PINS:general?GENERAL_PINS:PINS;
+  const manifestSha=independent?RECALL_FRESH_SHA:fresh?FRESH_MANIFEST_SHA:general?GENERAL_MANIFEST_SHA:MANIFEST_SHA;
+  const pinsByVariant=recall?RECALL_PINS:context?CONTEXT_PINS:general?GENERAL_PINS:PINS;
   const runtimeProfile=general ? (await import('./mime-runtime.mjs')).MIME_RUNTIME : undefined;
   // Validate BOTH immutable candidates before producing any held-out prediction.
   for(const pins of Object.values(pinsByVariant)) for(const [repo,pin] of [[inboxRepo,pins.inbox],[scorerRepo,pins.scorer]]) {
     if(!/^[a-f0-9]{40}$/.test(pin)) throw new Error('source_pin');
     git(repo,'cat-file','-e',pin+'^{commit}');
   }
-  selfCheck();if(general)generalSelfCheck();
+  selfCheck();if(general)generalSelfCheck();if(recall)recallSelfCheck();
   dataDir=resolve(dataDir); inboxRepo=resolve(inboxRepo); scorerRepo=resolve(scorerRepo); outputDir=resolve(outputDir);
   for (const [repo, expected] of [[inboxRepo,'https://github.com/crumrine/agentic-inbox-imap'],[scorerRepo,'https://github.com/crumrine/mail-scoring']]) {
     if (git(repo,'remote','get-url','origin').toString().trim().replace(/\.git$/,'') !== expected) throw new Error('repository_origin');
   }
-  const manifestPath=fresh?new URL('./enron-holdout-manifest.json',import.meta.url):join(dataDir,general?'partitions.json':'manifest.json');
+  const manifestPath=independent?new URL('./recall-holdout-manifest.json',import.meta.url):fresh?new URL('./enron-holdout-manifest.json',import.meta.url):join(dataDir,general?'partitions.json':'manifest.json');
   const manifestBytes = await readBounded(manifestPath,general?4*1024*1024:256*1024);
-  const manifest = parseManifest(manifestBytes,general,fresh);
+  const manifest = parseManifest(manifestBytes,general,fresh,manifestSha);
   if (manifest.records.length !== (fresh?2000:general?6046:192) || (await lstat(join(dataDir,'messages'))).isSymbolicLink()) throw new Error('manifest_count_or_path');
   const selectedRecords=general?manifest.records.filter(r=>partitionsToCheck.includes(r.partition)):manifest.records;
   assert.equal(selectedRecords.length,fresh?2000:general?2736:192);
@@ -186,16 +219,21 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
   const scratch = await mkdtemp(join(tmpdir(),'spam-evaluation-'));
   const variants={}, controls={}, identities={};
   let generalProvenance;
-  let authoredSpam,pharmacySpam;
+  let authoredSpam,pharmacySpam,legitimateNotices;
   if(general){
-    const model=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':packages/core/src/'+(context?'context-model.ts':'general-model.ts'));
-    assert.equal(hash(model),context?'e20fe32bbe2688c9407a9b1e8a6e36cce9563800f1b2bdb5878270bdb73e5ab6':'1689e31898347d42d74bb213284be00e92f70ba2161edfa7afd9eb85da2a16f0');
+    const model=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':packages/core/src/'+(recall?'linear-model.ts':context?'context-model.ts':'general-model.ts'));
+    assert.equal(hash(model),recall?'52c58c189621f5f1ad74d28103d18b803d609af5a8a48c6dab52239435652473':context?'e20fe32bbe2688c9407a9b1e8a6e36cce9563800f1b2bdb5878270bdb73e5ab6':'1689e31898347d42d74bb213284be00e92f70ba2161edfa7afd9eb85da2a16f0');
     const fixture=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':fixtures/statistical.ts');
     assert.equal(hash(fixture),context?'33359d73a7c0a466be12a28fe7d72286f65e7eafb48ea2252df36f256bf2e80a':'75ec84c3fd3f6fb48e6ede7a716b36a7a32def1dff222cef4bf18d098d817541');
     const fixtureModule=join(scratch,'authored-fixture.mjs');
     await build({stdin:{contents:fixture.toString(),loader:'ts',resolveDir:scorerRepo},outfile:fixtureModule,bundle:true,platform:'node',format:'esm'});
     ({STATISTICAL_SPAM:authoredSpam,PHARMACY_SPAM:pharmacySpam}=await import(pathToFileURL(fixtureModule)));
-    generalProvenance={modelVersion:context?'general-3':'general-1',modelSourceSha256:hash(model),partitionSha256:manifestSha,cutoff:0.99,minClues:20,maxClues:64,authoredFixtureSha256:hash(fixture),scorerLockSha256:hash(git(scorerRepo,'show',pinsByVariant.candidate.scorer+':package-lock.json'))};
+    if(recall){
+      const notices=git(scorerRepo,'show',pinsByVariant.candidate.scorer+':fixtures/legitimate-notices.ts');
+      const noticeModule=join(scratch,'notices.mjs');await build({stdin:{contents:notices.toString(),loader:'ts',resolveDir:scorerRepo},outfile:noticeModule,bundle:true,platform:'node',format:'esm'});
+      ({LEGITIMATE_NOTICES:legitimateNotices}=await import(pathToFileURL(noticeModule)));assert.equal(legitimateNotices.length,37);
+    }
+    generalProvenance={modelVersion:recall?'general-4':context?'general-3':'general-1',modelSourceSha256:hash(model),partitionSha256:manifestSha,cutoff:0.99,minClues:20,maxClues:64,authoredFixtureSha256:hash(fixture),...(recall?{trainingMatrixSha256:'1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49',minimumPositiveBodyWords:5,minimumKnownBodyPercent:50,supportedRepresentation:'NFKC normalized ASCII letters, no other letters or marks',minClues:undefined,maxClues:undefined}:{}),scorerLockSha256:hash(git(scorerRepo,'show',pinsByVariant.candidate.scorer+':package-lock.json'))};
   }
   let networkAttempts=0;
   const originalFetch=globalThis.fetch;
@@ -212,7 +250,8 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
       const module=await import(pathToFileURL(modulePath));
       const classify=async raw=>{
         let assessment,parseUnavailable=false,unavailableCause=null;
-        if (!module.inspectableRaw(raw)) { assessment=module.unavailable(); unavailableCause='raw_preflight'; }
+        // readBounded and verifySample establish exact complete-file bytes.
+        if (!module.inspectableRaw(raw, true)) { assessment=module.unavailable(); unavailableCause='raw_preflight'; }
         else {
           try {
             const parsed=await PostalMime.parse(raw);
@@ -249,18 +288,19 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
         ['unicode_ham',mime('こんにちは。明日の会議は午後三時です。'),false],
         ['userinfo_miss',mime('Account access: https://accounts.example.test@other.example.test/'),false]];
       if(general){
-        cases.push(['general_plain',mime(authoredSpam),name==='candidate',name==='candidate'?60:0],
-          ['general_html',mime(`<p>${authoredSpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),name==='candidate',name==='candidate'?60:0],
+        cases.push(['general_plain',mime(authoredSpam),recall||name==='candidate',recall||name==='candidate'?60:0],
+          ['general_html',mime(`<p>${authoredSpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),recall||name==='candidate',recall||name==='candidate'?60:0],
           ['hidden_html',mime(`<p hidden>${authoredSpam}</p><p>Ordinary meeting.</p>`,'Synthetic',[],'text/html; charset=utf-8'),false,0],
           ['quoted_html',mime(`<blockquote>${authoredSpam}</blockquote>`,'Synthetic',[],'text/html; charset=utf-8'),false,0],
           ['medical',mime('Your appointment is confirmed. Please bring your insurance card and medication list.'),false,0],
           ['financial',mime('Your statement is ready. Use your usual bookmark to review your account balance.'),false,0]);
         if(context)cases.push(['repeated_body',mime('qzxv '.repeat(5),authoredSpam.trim()),false,0],
-          ['general_pharmacy_plain',mime(pharmacySpam),name==='candidate',name==='candidate'?60:0],
-          ['general_pharmacy_html',mime(`<p>${pharmacySpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),name==='candidate',name==='candidate'?60:0]);
+          ['general_pharmacy_plain',mime(pharmacySpam),recall||name==='candidate',recall||name==='candidate'?60:0],
+          ['general_pharmacy_html',mime(`<p>${pharmacySpam}</p>`,'Synthetic',[],'text/html; charset=utf-8'),recall||name==='candidate',recall||name==='candidate'?60:0]);
         const inline=body=>new TextEncoder().encode(['From: Security Team <sender@example.test>','Reply-To: helpdesk@other.example.org','To: mailbox@example.test','Subject: Fwd: verify your password','MIME-Version: 1.0','Content-Type: multipart/mixed; boundary=report','','--report','Content-Type: text/plain','','Please investigate the reported phishing.','--report','Content-Type: message/rfc822','Content-Disposition: inline','','From: reported@example.test','Subject: Evidence','MIME-Version: 1.0','Content-Type: text/plain','','Security team: verify your password. '+body,'--report--',''].join('\r\n'));
-        cases.push(['inline_report',inline(''),name==='baseline',45],['oversized_inline_report',inline('x'.repeat(32768)),name==='baseline',name==='baseline'?45:null]);
+        cases.push(['inline_report',inline(''),!recall&&name==='baseline',45],['oversized_inline_report',inline('x'.repeat(32768)),!recall&&name==='baseline',!recall&&name==='baseline'?45:null]);
       }
+      if(recall)for(const [index,sample] of legitimateNotices.entries())for(const html of [false,true])cases.push(['legitimate_'+index+'_'+html,mime(html?`<p>${sample.text}</p>`:sample.text,sample.subject,[],`text/${html?'html':'plain'}; charset=utf-8`),false,0]);
       controls[name]=[];
       for (const [id,raw,expected,scoreOverride] of cases) {
         const result=await classify(raw);
@@ -289,29 +329,29 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
         removedReasons:before.reasons.filter(reason=>!row.reasons.some(current=>current.id===reason.id&&current.contribution===reason.contribution))};
     });
   const regressions=Object.fromEntries(Object.entries(variants).map(([name,v])=>[name,v.rows.filter(r=>r.label==='spam'&&!r.quarantined||r.label==='ham'&&r.quarantined)]));
-  const generalGate=general?generalAcceptance(variants,controls,partitionsToCheck):undefined;
+  const generalGate=recall?recallAcceptance(variants,controls,partitionsToCheck,independent):general?generalAcceptance(variants,controls,partitionsToCheck):undefined;
   const releaseReady=general?generalGate.eligible:variants.candidate.metrics.FP<=variants.baseline.metrics.FP && variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP;
-  const report={manifestSha256:manifestSha,evaluationMode:mode,independentHoldout:general&&(!context||fresh),selection:manifest.selection,...(general?{partitionSummary:manifest.summary,hardHamSubset:fresh?'not supplied by corpus; prior hard-ham regression separately required':'frozen hard_ham labels',generalProvenance,generalGate,selectedPartitions:partitionsToCheck}:{}),
+  const report={manifestSha256:manifestSha,evaluationMode:mode,independentHoldout:recall?independent:general&&(!context||fresh),selection:manifest.selection,...(general?{partitionSummary:manifest.summary,hardHamSubset:fresh?'not supplied by corpus; prior hard-ham regression separately required':'frozen hard_ham labels',generalProvenance,generalGate,selectedPartitions:partitionsToCheck}:{}),
     sourceTerms:fresh?'https://www2.aueb.gr/users/ion/data/enron-spam/readme.txt':'https://spamassassin.apache.org/old/publiccorpus/readme.html',
     runtime:{node:process.version,...(runtimeProfile?{profile:runtimeProfile}:{}),parser:lockedParser,parserEntrySha256:hash(await readFile(parserEntry)),consumerLockSha256:hash(await readFile(join(inboxRepo,'package-lock.json'))),esbuild:esbuildVersion},
     runnerSha256:hash(await readFile(fileURLToPath(import.meta.url))), sourceRepositoryHead:git(scorerRepo,'rev-parse','HEAD').toString().trim(),identities,
-    checks:{selfChecks:selfCheck(),...(general?{generalSelfChecks:generalSelfCheck()}:{}),repeatedOrderInvariant:true,networkAttempts,standardControlsExcludedFromMetrics:true},
-    policy:{mode:'filter',ordinaryThreshold:45,...(general?{statisticalThreshold:60,cutoff:0.99,minClues:20,maxClues:64}:{}),preference:'none',transport:'unknown',scope:'actual production MIME parser, intake/assessment, serialized scorer RPC adapter and routing policy; no mailbox mutation'},
+    checks:{selfChecks:selfCheck(),...(general?{generalSelfChecks:generalSelfCheck()}:{}),...(recall?{recallSelfChecks:recallSelfCheck()}:{}),repeatedOrderInvariant:true,networkAttempts,standardControlsExcludedFromMetrics:true},
+    policy:{mode:'filter',ordinaryThreshold:45,...(general?{statisticalThreshold:60,cutoff:0.99,...(recall?{minimumPositiveBodyWords:5,minimumKnownBodyPercent:50}:{minClues:20,maxClues:64})}:{}),preference:'none',transport:'unknown',scope:'actual production MIME parser, intake/assessment, serialized scorer RPC adapter and routing policy; no mailbox mutation'},
     variants,controls,changes,decisionChanges:changes.filter(row=>row.before.quarantined!==row.after.quarantined),regressions,
-    release:{scope:context?(fresh?'Fresh frozen independent Enron-Spam raw holdout; original unseen membership retained':'Observed diagnostic/validation/old holdout REGRESSION ONLY; independent acceptance still required'):general?'Paired frozen diagnostic/validation/holdout acceptance; OPS-614 owns manual release gates':'Bounded source-regression evidence; OPS-599 owns remaining manual release gates',candidateRoutingFalsePositivesDidNotIncrease:variants.candidate.metrics.FP<=variants.baseline.metrics.FP,hardHamRoutingFalsePositivesDidNotIncrease:variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP,eligible:releaseReady&&!(context&&!fresh),regressionGatePassed:releaseReady,remainingMisses:variants.candidate.metrics.FN},
+    release:{scope:recall?(independent?'Fresh untouched frozen SH/kaminski-v paired acceptance; OPS-615 owns manual deployment':'Observed SA/Enron regression only; not independent acceptance'):context?(fresh?'Fresh frozen independent Enron-Spam raw holdout; original unseen membership retained':'Observed diagnostic/validation/old holdout REGRESSION ONLY; independent acceptance still required'):general?'Paired frozen diagnostic/validation/holdout acceptance; OPS-614 owns manual release gates':'Bounded source-regression evidence; OPS-599 owns remaining manual release gates',candidateRoutingFalsePositivesDidNotIncrease:variants.candidate.metrics.FP<=variants.baseline.metrics.FP,hardHamRoutingFalsePositivesDidNotIncrease:variants.candidate.hardHam.FP<=variants.baseline.hardHam.FP,eligible:releaseReady&&(recall?independent:!(context&&!fresh)),regressionGatePassed:releaseReady,remainingMisses:variants.candidate.metrics.FN},
     limits:[...(fresh?['Enron-Spam raw source archives are dated research mail, not modern provider traffic. Balanced fixed sample; no separately labeled hard-ham subset.']:context?['Original holdout was observed before model redesign; it is regression evidence, not independent acceptance.']:[]),fresh?'Enron-Spam was published in 2006 and is not representative of a current mailbox.': 'SpamAssassin corpus dates to 2003 and is not representative of a current mailbox; frozen HTML-only strata describe bounded extraction, not rendered visibility.',
       'Inspection completeness and classification uncertainty are separate. Retained mail is not classified safe.',
       'Unavailable spam remains a routing miss; unavailable counts are also reported separately.',
       'No training, threshold tuning, mail sending, DNS/auth replay or production accuracy claim.']};
   await mkdir(outputDir,{recursive:true});
   await writeFile(join(outputDir,'report.json'),JSON.stringify(report,null,2)+'\n');
-  const lines=['# Paired offline routing evaluation','', fresh?'Fresh independent frozen Enron-Spam raw holdout2000 (1000ham/1000spam), before predictions; prior raw/body-feature matches excluded, membership explicit and fixed.':context?'Observed public diagnostic192/validation556/oldholdout1988 REGRESSION ONLY. Fresh independent acceptance required.':general?'Fixed disjoint public data: diagnostic192, validation556 and independent holdout1988. Training/exclusions and authored/installation controls are excluded from metrics.':'Fixed public-corpus slice: 192 messages, 128 ham and 64 spam. Standard installation controls are excluded.','',
+  const lines=['# Paired offline routing evaluation','', independent?'Fresh frozen untouched SH/kaminski-v,1000spam/1000ham. Fixed before development and predictions, deduplicated against all previous sources; original exclusions retained.':recall?'Previously observed public corpora REGRESSION ONLY.':fresh?'Fresh independent frozen Enron-Spam raw holdout2000 (1000ham/1000spam), before predictions; prior raw/body-feature matches excluded, membership explicit and fixed.':context?'Observed public diagnostic192/validation556/oldholdout1988 REGRESSION ONLY. Fresh independent acceptance required.':general?'Fixed disjoint public data: diagnostic192, validation556 and independent holdout1988. Training/exclusions and authored/installation controls are excluded from metrics.':'Fixed public-corpus slice: 192 messages, 128 ham and 64 spam. Standard installation controls are excluded.','',
     '| Variant | TP | FP | TN | FN | Precision | Recall | False-positive rate |','| --- | --- | --- | --- | --- | --- | --- | --- |'];
   for (const [name,v] of Object.entries(variants)) { const m=v.metrics; lines.push('| '+[name,m.TP,m.FP,m.TN,m.FN,m.precision??'undefined',m.recall??'undefined',m.falsePositiveRate??'undefined'].join(' | ')+' |'); }
   if(general){
     lines.push('','| Partition | Variant | TP | FP | TN | FN | Recall |','| --- | --- | --- | --- | --- | --- | --- |');
     for(const part of partitionsToCheck)for(const [name,v]of Object.entries(variants)){const m=v.byPartition[part].metrics;lines.push('| '+[part,name,m.TP,m.FP,m.TN,m.FN,m.recall].join(' | ')+' |');}
-    lines.push('','Predeclared held-out recall gain >=20 percentage points, no ham/hard-ham FP increase in every partition and zero authored-ham false positives: '+(releaseReady?'PASSED':'FAILED')+'. Actual gain: '+(generalGate.heldoutRecallGain*100).toFixed(2)+' percentage points.');
+    lines.push('',...(recall?['Predeclared recall >=50% and gain >=20 points on fresh cohort; zero observed HAM in BOTH variants and every corpus/partition/stratum/control. Observed corpora are regression only.']:[]),'Predeclared held-out recall gain >=20 percentage points, no ham/hard-ham FP increase in every partition and zero authored-ham false positives: '+(releaseReady?'PASSED':'FAILED')+'. Actual gain: '+(generalGate.heldoutRecallGain*100).toFixed(2)+' percentage points.');
   }
   lines.push('', 'Candidate misses remain '+report.release.remainingMisses+'. All sample changes and misses/false positives are retained by opaque content hash in report.json.','',
     'These research corpora are dated. These figures measure routing on the frozen slice. Inspection status and insufficient-evidence outcomes are reported separately.','',
@@ -322,8 +362,9 @@ async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
   if (!releaseReady) process.exitCode=1;
 }
 
-if(process.argv[2]==='--general'&&process.argv[3]==='--self-check') {await import('./mime-runtime.mjs');console.log(JSON.stringify({legacy:selfCheck(),general:generalSelfCheck()}));}
-else if(['--general','--context','--fresh'].includes(process.argv[2])&&process.argv.length===7) await run(...process.argv.slice(3),process.argv[2].slice(2));
+if(process.argv[2]==='--recall-self-check'){await import('./mime-runtime.mjs');console.log(JSON.stringify({legacy:selfCheck(),general:generalSelfCheck(),recall:recallSelfCheck()}));}
+else if(process.argv[2]==='--general'&&process.argv[3]==='--self-check') {await import('./mime-runtime.mjs');console.log(JSON.stringify({legacy:selfCheck(),general:generalSelfCheck()}));}
+else if(['--general','--context','--fresh','--recall-sa','--recall-enron','--recall-fresh'].includes(process.argv[2])&&process.argv.length===7) await run(...process.argv.slice(3),process.argv[2].slice(2));
 else if (process.argv[2]==='--self-check') console.log(JSON.stringify(selfCheck()));
 else if (process.argv.length===6) await run(...process.argv.slice(2));
-else throw new Error('usage: node run.mjs [--general|--context|--fresh] DATA_DIR INBOX_REPO SCORER_REPO OUTPUT_DIR');
+else throw new Error('usage: node run.mjs [--general|--context|--fresh|--recall-sa|--recall-enron|--recall-fresh] DATA_DIR INBOX_REPO SCORER_REPO OUTPUT_DIR');

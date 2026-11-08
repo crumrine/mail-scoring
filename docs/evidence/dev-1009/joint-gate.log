@@ -1,0 +1,1 @@
+{"eligible":false,"failures":["recall-fresh:candidate:ham_false_positive","recall-fresh:declared_gate_failed"],"fresh":{"baseline":0.064,"candidate":0.547,"hamFP":1}}

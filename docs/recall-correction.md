@@ -1,5 +1,7 @@
 # Recall correction (DEV-1007)
 
+Post-merge independent acceptance failed:547/1000spam and1/1000HAM. The candidate is not eligible for deployment. See `evidence/dev-1009/README.md` for immutable failed reports and `evidence/dev-1011/README.md` for the new untouched freeze. Earlier figures below describe source/TRAIN/observed regressions, not a passed release gate.
+
 Rules-6/general-4 is source only. DEV-1008 supplies recoverable routing, DEV-1009
 owns independent acceptance, and OPS-615 owns manual deployment. Actions and
 Builds remain paused. No deletion, expiry, rescan, mail send, private capture,
