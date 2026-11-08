@@ -5,15 +5,18 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
-  {id:'linear-single-word-stability',file:'packages/core/src/linear.ts',before:"    if(remaining<=0 || MODEL_BIAS+(dot-clue.idf*clue.weight)/Math.sqrt(remaining)<MODEL_LOGIT_CUTOFF)return false;",after:'',command:['test'],failure:/✖ single-word stability/},
+  {id:'linear-reference-body',file:'packages/core/src/linear.ts',before:'body.filter(hash=>(weights.get(hash)?.referenceWeight??0)>0).length<5',after:'false',command:['test'],failure:/✖ each fixed model requires/},
+  {id:'linear-reference-margin',file:'packages/core/src/linear.ts',before:'  if(norm<=0 || MODEL_REFERENCE_BIAS+referenceDot/Math.sqrt(norm)<MODEL_LOGIT_CUTOFF)return false;',after:'',command:['test'],failure:/✖ reference margin rejects/},
+  {id:'linear-second-word',file:'packages/core/src/linear.ts',before:'const remaining=dot-strongest-secondStrongest;',after:'const remaining=dot-strongest;',command:['test'],failure:/✖ two-word stability rejects evidence that survives losing one word/},
+  {id:'linear-two-word-stability',file:'packages/core/src/linear.ts',before:"const remaining=dot-strongest-secondStrongest;",after:"const remaining=dot;",command:['test'],failure:/✖ two-word stability/},
   {id:'linear-alphabet',file:'packages/core/src/statistical.ts',before:"if(!content.supported){limits.add('statistical_limit');return false;}",after:'',command:['test'],failure:/✖ unsupported alphabetic/},
   {id:'linear-coverage',file:'packages/core/src/linear.ts',before:'body.filter(hash=>weights.has(hash)).length*100<body.length*MODEL_MIN_KNOWN_BODY_PERCENT',after:'false',command:['test'],failure:/✖ legitimate clinical|✖ unsupported vocabulary|✖ linear evidence requires/},
   {id:'linear-coverage-status',file:'packages/core/src/statistical.ts',before:"if(result===undefined)limits.add('statistical_limit');",after:'',command:['test'],failure:/✖ unsupported vocabulary/},
   {id:'linear-body-cap',file:'packages/core/src/linear.ts',before:'bodyWords.length>1000',after:'bodyWords.length>10000',command:['test'],failure:/✖ linear evidence requires/},
   {id:'linear-feature-cap',file:'packages/core/src/linear.ts',before:'features.length>1999',after:'features.length>19990',command:['test'],failure:/✖ linear evidence requires/},
-  {id:'linear-positive-support',file:'packages/core/src/linear.ts',before:'(weights.get(hash)?.weight??0)>0',after:'weights.has(hash)',command:['test'],failure:/✖ linear evidence requires/},
+  {id:'linear-positive-support',file:'packages/core/src/linear.ts',before:'(weights.get(hash)?.weight??0)>0',after:'weights.has(hash)',command:['test'],failure:/✖ linear evidence requires|✖ each fixed model requires/},
   {id:'linear-unique-evidence',file:'packages/core/src/linear.ts',before:'[...new Set(features.filter(feature=>feature.second===-1).map(feature=>feature.first))]',after:'[...features.filter(feature=>feature.second===-1).map(feature=>feature.first)]',command:['test'],failure:/✖ linear evidence requires/},
-  {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'body.filter(hash=>(weights.get(hash)?.weight??0)>0).length<5',after:'body.length<5',command:['test'],failure:/✖ linear evidence requires/},
+  {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'body.filter(hash=>(weights.get(hash)?.weight??0)>0).length<5',after:'body.length<5',command:['test'],failure:/✖ linear evidence requires|✖ each fixed model requires/},
   {id:'context-clue-cap',file:'packages/core/src/vendor/tiling.ts',before:'if(features.length>1999)return [];',after:'',command:['test'],failure:/✖ context tiling never/},
   {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},
   {id:'context-overlap',file:'packages/core/src/vendor/tiling.ts',before:'if(used.has(feature.start)||used.has(feature.end))continue;',after:'if(false)continue;',command:['test'],failure:/✖ context tiling never/},

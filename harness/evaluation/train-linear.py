@@ -28,7 +28,7 @@ folds=np.array([int(r['id'][:8],16)%5 for r in rows])
 fit_ok=np.array([r['rawInspectable'] and r['textInspectable'] for r in rows])
 eligible=np.array([r['eligible'] for r in rows]);hard=np.array([r['group']=='hard_ham' for r in rows])
 
-def fit(train,evaluate=None):
+def fit(train,evaluate=None,regularization=100,hard_weight=20,two_word=True):
     df=Counter(k for i in np.flatnonzero(train) for k in features[i])
     keys=sorted(k for k,n in df.items() if n>=3);assert 0<len(keys)<100000
     vocabulary={k:j for j,k in enumerate(keys)};indices=[];offsets=[0]
@@ -36,8 +36,8 @@ def fit(train,evaluate=None):
         indices.extend(sorted(vocabulary[k] for k in ks if k in vocabulary));offsets.append(len(indices))
     assert len(indices)<=9904*1000
     x=csr_matrix((np.ones(len(indices)),np.array(indices,dtype=np.int32),np.array(offsets,dtype=np.int32)),shape=(len(rows),len(keys)))
-    transform=TfidfTransformer(norm='l2',smooth_idf=True);transform.fit(x[train]);model=LogisticRegression(C=100,solver='liblinear',tol=1e-7,max_iter=2000,random_state=7151)
-    model.fit(transform.transform(x[train]),y[train],sample_weight=np.where(hard[train],20,1))
+    transform=TfidfTransformer(norm='l2',smooth_idf=True);transform.fit(x[train]);model=LogisticRegression(C=regularization,solver='liblinear',tol=1e-7,max_iter=2000,random_state=7151)
+    model.fit(transform.transform(x[train]),y[train],sample_weight=np.where(hard[train],hard_weight,1))
     assert list(model.classes_)==[0,1]
     # Fixed decimal quantization makes the published artifact independent of insignificant solver tails.
     idf=np.round(transform.idf_,9);weights=np.round(model.coef_[0],9);bias=round(float(model.intercept_[0]),9)
@@ -48,36 +48,86 @@ def fit(train,evaluate=None):
     stable=np.ones(len(rows),dtype=bool)
     if evaluate is not None:
         for i in np.flatnonzero(evaluate&eligible&known&(margins>=threshold)):
-            for j in weighted.indices[weighted.indptr[i]:weighted.indptr[i+1]]:
-                if weights[j]<=0:continue
-                remainder=squared[i]-idf[j]*idf[j]
-                if remainder<=0 or bias+(dots[i]-idf[j]*weights[j])/math.sqrt(remainder)<threshold:
-                    stable[i]=False;break
+            js=weighted.indices[weighted.indptr[i]:weighted.indptr[i+1]]
+            if two_word:
+                strongest=sorted((idf[j]*weights[j] for j in js if weights[j]>0),reverse=True)[:2]
+                remaining=dots[i]-sum(strongest)
+                stable[i]=remaining>0 and bias+remaining/norm[i]>=threshold
+            else:
+                for j in js:
+                    if weights[j]<=0:continue
+                    remainder=squared[i]-idf[j]*idf[j]
+                    if remainder<=0 or bias+(dots[i]-idf[j]*weights[j])/math.sqrt(remainder)<threshold:
+                        stable[i]=False;break
     return keys,idf,weights,bias,margins,known,stable
 
 threshold=round(math.log(.99/.01),9)
-hits=np.zeros(len(rows),dtype=bool);original_hits=np.zeros(len(rows),dtype=bool)
-for f in range(5):
-    test=folds==f;_,_,_,_,margins,known,stable=fit((folds!=f)&fit_ok,test)
-    original_hits[test]=(eligible&known&(margins>=threshold))[test]
-    hits[test]=(eligible&known&stable&(margins>=threshold))[test]
+def cross_validate(regularization,hard_weight,two_word=True):
+    hits=np.zeros(len(rows),dtype=bool);original_hits=np.zeros(len(rows),dtype=bool)
+    for f in range(5):
+        test=folds==f;_,_,_,_,margins,known,stable=fit((folds!=f)&fit_ok,test,regularization,hard_weight,two_word)
+        original_hits[test]=(eligible&known&(margins>=threshold))[test]
+        hits[test]=(eligible&known&stable&(margins>=threshold))[test]
+    return hits,original_hits
+
+def confusion(hits):
+    return {'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&hard))}
+
+if '--select' in sys.argv[3:]:
+    candidates=[]
+    for regularization in [.001,.01,.1,1,10,100,125,150,200,250,300,400,500,600,750,1000]:
+        for hard_weight in [1,5,10,20,50]:
+            guarded,original=cross_validate(regularization,hard_weight)
+            assert not np.any(guarded&~original),'stability_guard_added_positive'
+            result={'C':regularization,'hardHamWeight':hard_weight,'metrics':confusion(guarded)}
+            candidates.append(result)
+            print(json.dumps(result),flush=True)
+    reference,_=cross_validate(100,20,two_word=False)
+    assert confusion(reference)=={'TP':1746,'FP':0,'TN':5567,'FN':2591,'hardHamFP':0},'reference_changed'
+    eligible=[r for r in candidates if r['metrics']['FP']==0 and r['metrics']['hardHamFP']==0]
+    eligible.sort(key=lambda r:(-r['metrics']['TP'],r['C'],-r['hardHamWeight']))
+    chosen=eligible[0] if eligible else None
+    receipt={'matrixSha256':EXPECTED,'candidates':candidates,'selected':chosen,'requiredTPImprovementOver':1746,'unchanged':{'cutoff':.99,'positiveBodyWords':5,'knownBodyPercent':50,'twoPositiveContributionLowerBound':True},'selection':'maximum robust quantized fivefold OOF TP among zero HAM/hardHAM FP; ties lower C then higher hardHAM weight','versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN only; conservative any-two-positive-word removal bound; no heldout input, thresholds or model selection'}
+    out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True);(out/'grid.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    assert chosen is not None and chosen['metrics']['TP']>1746,'no_TRAIN_improvement'
+    print(json.dumps({'selected':chosen,'gridSha256':hashlib.sha256((out/'grid.json').read_bytes()).hexdigest()}),flush=True)
+    raise SystemExit(0)
+
+hits,original_hits=cross_validate(100,20,two_word=False)
 assert not np.any(hits&~original_hits),'stability_guard_added_positive'
 original_metrics={'TP':int(np.sum(original_hits&(y==1))),'FP':int(np.sum(original_hits&(y==0))),'TN':int(np.sum(~original_hits&(y==0))),'FN':int(np.sum(~original_hits&(y==1))),'hardHamFP':int(np.sum(original_hits&hard))}
 assert original_metrics=={'TP':2092,'FP':0,'TN':5567,'FN':2245,'hardHamFP':0},'unguarded_TRAIN_reference_changed'
 metrics={'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&hard))}
 assert metrics=={'TP':1746,'FP':0,'TN':5567,'FN':2591,'hardHamFP':0},'quantized_TRAIN_CV_regression'
-keys,idf,weights,bias,_,_,_=fit(fit_ok)
-entries=sorted([[int(k.split(':')[0]),float(a),float(b)] for k,a,b in zip(keys,idf,weights)])
+previous_metrics=metrics
+hits,selected_original=cross_validate(1000,10)
+assert not np.any(hits&~selected_original),'stability_guard_added_positive'
+before_reference_metrics=confusion(hits)
+assert before_reference_metrics=={'TP':2112,'FP':0,'TN':5567,'FN':2225,'hardHamFP':0},'selected_TRAIN_CV_regression'
+hits=hits&original_hits
+metrics=confusion(hits)
+assert metrics=={'TP':1975,'FP':0,'TN':5567,'FN':2362,'hardHamFP':0},'agreement_TRAIN_CV_regression'
+keys,idf,weights,bias,_,_,_=fit(fit_ok,regularization=1000,hard_weight=10)
+reference_keys,reference_idf,reference_weights,reference_bias,_,_,_=fit(fit_ok,regularization=100,hard_weight=20)
+assert keys==reference_keys and np.array_equal(idf,reference_idf),'shared_vocabulary_or_IDF_changed'
+reference_entries=sorted([[int(k.split(':')[0]),float(a),float(b)] for k,a,b in zip(reference_keys,reference_idf,reference_weights)])
+entries=sorted([[int(k.split(':')[0]),float(a),float(b),float(c)] for k,a,b,c in zip(keys,idf,weights,reference_weights)])
+def numeric_source(bias,entries,reference=None):
+    value='export const MODEL_BIAS = '+json.dumps(bias)+';\n'
+    if reference is not None:value+='export const MODEL_REFERENCE_BIAS = '+json.dumps(reference)+';\n'
+    value+='export const MODEL_LOGIT_CUTOFF = '+json.dumps(threshold)+';\n'
+    value+='export const MODEL_FEATURES:ReadonlyArray<readonly ['+','.join(['number']*len(entries[0]))+']> = [\n'+',\n'.join('  '+json.dumps(row,allow_nan=False) for row in entries)+'\n];\n'
+    return value
+assert hashlib.sha256(numeric_source(reference_bias,reference_entries).encode()).hexdigest()=='efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b','original_reference_changed'
 partitions=['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131','e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67','8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e']
 source='// Copyright (c) 2026 Brian Crumrine\n// SPDX-License-Identifier: Apache-2.0\n// Own numeric TRAIN-only subject/body unigram IDF/coefficients. No literal words or per-message order.\n'
-source+='export const MODEL_VERSION = "general-5";\nexport const MODEL_TRAIN_MATRIX_SHA256 = '+json.dumps(EXPECTED)+';\n'
+source+='export const MODEL_VERSION = "general-6";\nexport const MODEL_TRAIN_MATRIX_SHA256 = '+json.dumps(EXPECTED)+';\n'
 source+='export const MODEL_PARTITIONS = '+json.dumps(partitions)+' as const;\n'
 source+='export const MODEL_MIN_KNOWN_BODY_PERCENT = 50;\n'
-source+='export const MODEL_BIAS = '+json.dumps(bias)+';\nexport const MODEL_LOGIT_CUTOFF = '+json.dumps(threshold)+';\n'
-source+='export const MODEL_FEATURES:ReadonlyArray<readonly [number,number,number]> = [\n'+',\n'.join('  '+json.dumps(row,allow_nan=False) for row in entries)+'\n];\n'
-assert hashlib.sha256(source[source.index('export const MODEL_BIAS'):].encode()).hexdigest()=='efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b','frozen_numeric_coefficients_changed'
+source+=numeric_source(bias,entries,reference_bias)
+assert hashlib.sha256(source[source.index('export const MODEL_BIAS'):].encode()).hexdigest()=='7272fbb25e86cd0bb41635ad1b3dd0689b087bf8a8fd5760c359accb241dd12c','frozen_numeric_coefficients_changed'
 out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True);(out/'linear-model.ts').write_text(source)
 if '--write-model' in sys.argv[3:]:Path('packages/core/src/linear-model.ts').write_text(source)
 else:assert Path('packages/core/src/linear-model.ts').read_text()==source,'model_reproduction_mismatch'
-receipt={'frozenNumericModelSha256':'efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b','coefficientSource':'2705d0e41a992e30b626010115a681f027d61424','model':'general-5','algorithm':'one L2 logistic subject/body unigram TFIDF head','C':100,'hardHamWeight':20,'cutoff':.99,'minimumPositiveBodyWords':5,'minimumKnownBodyFraction':.5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'singlePositiveFeatureRemovalStability':True,'unguardedReferenceFiveFoldTraining':original_metrics,'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
+receipt={'frozenNumericModelSha256':'7272fbb25e86cd0bb41635ad1b3dd0689b087bf8a8fd5760c359accb241dd12c','selectionGridSha256':'d245241b374be6280c5842600676c6f5ecdab738fb8224c1234313c150678997','previousNumericModelSha256':'efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b','model':'general-6','algorithm':'two correlated fixed L2 subject/body unigram margins with shared IDFs','C':1000,'hardHamWeight':10,'cutoff':.99,'minimumPositiveBodyWords':5,'minimumKnownBodyFraction':.5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'twoPositiveContributionLowerBound':True,'guaranteesAnyTwoPositiveRemoval':True,'unguardedReferenceFiveFoldTraining':original_metrics,'previousGuardedReferenceFiveFoldTraining':previous_metrics,'unguardedSelectedFiveFoldTraining':confusion(selected_original),'beforeReferenceConjunctionFiveFoldTraining':before_reference_metrics,'fixedReferenceConjunction':True,'referenceC':100,'referenceHardHamWeight':20,'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
 (out/'training.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))

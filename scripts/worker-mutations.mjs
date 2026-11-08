@@ -24,8 +24,10 @@ const run=(name,args)=>{const r=spawnSync(process.execPath,args,{encoding:'utf8'
 await mutation('response_size','workers/private/protocol.ts',s=>s.replace('RPC_OUTPUT_BYTES = 4096','RPC_OUTPUT_BYTES = 8192'),()=>run('response_size',['--test','tests/rpc.test.ts']));
 await mutation('exception_sanitizer','workers/private/adapter.ts',s=>s.replace("catch{return failure('internal_failure');}","catch{return 'PRIVATE_CANARY_877';}"),()=>run('exception_sanitizer',['--test','tests/rpc.test.ts']));
 const local=async()=>{await writeFile('.artifacts/worker/private.js',await bundle());run('local',['scripts/worker-local.mjs']);};
-await mutation('single_feature_stability','packages/core/src/linear.ts',s=>s.replace('    if(remaining<=0 || MODEL_BIAS+(dot-clue.idf*clue.weight)/Math.sqrt(remaining)<MODEL_LOGIT_CUTOFF)return false;',''),local);
-assert.match(await readFile('.artifacts/worker/mutation-single_feature_stability-workerd.log','utf8'),/single_feature_stability/);
+await mutation('second_feature_stability','packages/core/src/linear.ts',s=>s.replace('const remaining=dot-strongest-secondStrongest;','const remaining=dot-strongest;'),local);
+assert.match(await readFile('.artifacts/worker/mutation-second_feature_stability-workerd.log','utf8'),/two_feature_stability/);
+await mutation('two_feature_stability','packages/core/src/linear.ts',s=>s.replace('const remaining=dot-strongest-secondStrongest;','const remaining=dot;'),local);
+assert.match(await readFile('.artifacts/worker/mutation-two_feature_stability-workerd.log','utf8'),/two_feature_stability/);
 await mutation('request_bytes','packages/core/src/contract.ts',s=>s.replace('requestBytes: 262144','requestBytes: 262145'),local);
 await mutation('json_depth','packages/core/src/contract.ts',s=>s.replace('jsonDepth: 6','jsonDepth: 7'),local);
 await writeFile('.artifacts/worker/private.js',productionBundle);run('production_restored',['scripts/worker-local.mjs']);

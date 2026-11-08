@@ -1,0 +1,21 @@
+{
+  "originalFragileSpam": {
+    "wordCount": 14,
+    "distinctKnown": 12,
+    "positiveWords": 9,
+    "baseLogit": 6.073056631835022,
+    "minimumAfterPositiveRemoval": 4.669395731475755,
+    "cutoff": 4.59511985,
+    "score": 60
+  },
+  "newBoundary": {
+    "text": "Congratulations! You have been specially selected for an exclusive opportunity to earn extra",
+    "wordCount": 13,
+    "distinctKnown": 11,
+    "positiveWords": 8,
+    "baseLogit": 4.669395731475755,
+    "minimumAfterPositiveRemoval": 3.3085477129511753,
+    "cutoff": 4.59511985,
+    "score": 0
+  }
+}
