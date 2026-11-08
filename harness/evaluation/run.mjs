@@ -16,7 +16,7 @@ const GENERAL_PINS = {
  candidate:{inbox:'5e694c7108e25437b5cd85f2cf1df6818f18e0ef',scorer:'041e79c5f56880b8eff0e210968569461cb95fc0'},
 };
 const FRESH_MANIFEST_SHA='3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380';
-const CONTEXT_PINS={baseline:GENERAL_PINS.baseline,candidate:{inbox:'AWAITING_MERGED_DEV1005',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'}};
+const CONTEXT_PINS={baseline:GENERAL_PINS.baseline,candidate:{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'}};
 const PARTITIONS = ['diagnostic','validation','holdout'];
 const MANIFEST_SHA = '4ff6356a2a674467d1d8ea6f97adf11d0cce04e12d03e6e22ea2f1b8e6ab7354';
 const PINS = {
