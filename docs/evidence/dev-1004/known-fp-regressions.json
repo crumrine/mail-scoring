@@ -1,0 +1,42 @@
+{
+  "scope": "Observed first-failure CORE regressions only, not fresh heldout or actual caller routing",
+  "source": "52f4b3671050e23b136855ec776fd9c7ce194dcd",
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "legacyDecoder": "WHATWG windows-1252 aliases"
+  },
+  "callerProjectionSha256": "29615a04b0124f946a2d92311c7b23e513f3b5aadccbae51c6b9b872fe124043",
+  "callerProjectionRepoHead": "f564c3a86f4360762a2fe0a3ede31cc40667041d",
+  "firstReportSha256": "d2e79f93f380b2cfb775defdf7ba3ea91027ad95682fa9ad9f17a765d98e927f",
+  "fetches": 0,
+  "rows": [
+    {
+      "id": "00bc48864310a3fe69617e61e8e47a2f6c702ff5932903e18751ffb163d78888",
+      "partition": "diagnostic",
+      "status": "partial",
+      "score": 0,
+      "reasons": [],
+      "statistical": false
+    },
+    {
+      "id": "dafe7e126b096bbb23b26d8c75c710316f86db0c0dd3468954366f6a97b30cac",
+      "partition": "holdout",
+      "status": "partial",
+      "score": 0,
+      "reasons": [],
+      "statistical": false
+    },
+    {
+      "id": "deeaff68df34279cfd5c3d4ccd61fdaa3a014b7c9428a899f7615477cab71a74",
+      "partition": "holdout",
+      "status": "partial",
+      "score": 0,
+      "reasons": [
+        "marketing_headers"
+      ],
+      "statistical": false
+    }
+  ]
+}

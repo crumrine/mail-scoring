@@ -49,7 +49,7 @@ priors, three cutoffs) and27 same-prior OR pairs on five SHA-defined TRAIN
 folds. The existing difficult-ham safeguard is retained as a required
 compatibility condition after the pooled-prior failures. Within that guard,
 context-only0.99 has274TP/0FP and equals the two-head recall while using less
-code. Those are development counts, not independent performance. All cohorts
+code. Those are development counts over4757 feature-extraction rows, not independent performance. Of4804 frozen TRAIN members,47 fail the raw/text preflight before feature extraction and are not used to fit the model. Independent routing evaluation retains every selected case, including unavailable mail. All cohorts
 that influenced diagnosis are regression data; a new independently frozen
 2000-case raw Enron-Spam holdout (first official raw ham/beck-s and spam/BG
 archives,1000perlabel after neutral deduplication) remains untouched until the

@@ -1,0 +1,595 @@
+{
+  "predeclaredCandidates": 45,
+  "combinations": [
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 435,
+        "FP": 5,
+        "TN": 3450,
+        "FN": 867,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 386,
+        "FP": 4,
+        "TN": 3451,
+        "FN": 916,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 333,
+        "FP": 2,
+        "TN": 3453,
+        "FN": 969,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 433,
+        "FP": 4,
+        "TN": 3451,
+        "FN": 869,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 374,
+        "FP": 2,
+        "TN": 3453,
+        "FN": 928,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 304,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 998,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 432,
+        "FP": 4,
+        "TN": 3451,
+        "FN": 870,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 371,
+        "FP": 2,
+        "TN": 3453,
+        "FN": 931,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "method": "pooled",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 279,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1023,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 168,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1134,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 151,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1151,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 118,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1184,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 168,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1134,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 150,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1152,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 113,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1189,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 168,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1134,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 150,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1152,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "equal",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 113,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1189,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 274,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1028,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 242,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1060,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.99,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 200,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1102,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 274,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1028,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 241,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1061,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.995,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 196,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1106,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.99,
+      "metrics": {
+        "TP": 274,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1028,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.995,
+      "metrics": {
+        "TP": 241,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1061,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "method": "sqrt",
+      "unigramCutoff": 0.999,
+      "contextCutoff": 0.999,
+      "metrics": {
+        "TP": 191,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1111,
+        "hardHamFP": 0
+      }
+    }
+  ],
+  "selected": {
+    "scope": "context",
+    "method": "sqrt",
+    "cutoff": 0.99,
+    "metrics": {
+      "TP": 274,
+      "FP": 0,
+      "TN": 3455,
+      "FN": 1028,
+      "hardHamFP": 0,
+      "hardHamTotal": 82
+    },
+    "kind": "context",
+    "minCutoff": 0.99,
+    "heads": 1
+  },
+  "selection": "retain existing sqrt-hardham safetyguard; maxTRAIN-CVTP subjectto0FP; tiehigherminimumcutoff, fewerheads, simplerprior; no othercorpusread",
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "legacyDecoder": "WHATWG windows-1252 aliases"
+  },
+  "scope": "Development only:5fold hashCV onTRAIN rows; novalidation/holdout/freshcorpusread",
+  "positions": 1000,
+  "cutoff": 0.99,
+  "minClues": 20,
+  "maxClues": 64,
+  "featuresSha256": "f425bd39b2ca7b111cc8269ee4a80c8642bb3898a4418383d2811579fcbc3bb4",
+  "rows": 4757,
+  "results": [
+    {
+      "scope": "unigram",
+      "method": "pooled",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 297,
+        "FP": 2,
+        "TN": 3453,
+        "FN": 1005,
+        "hardHamFP": 1,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "pooled",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 248,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1054,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "pooled",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 167,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1135,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "equal",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 61,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1241,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "equal",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 45,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1257,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "equal",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 25,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1277,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "sqrt",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 136,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1166,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "sqrt",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 120,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1182,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "unigram",
+      "method": "sqrt",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 92,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1210,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "pooled",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 432,
+        "FP": 4,
+        "TN": 3451,
+        "FN": 870,
+        "hardHamFP": 1,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "pooled",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 371,
+        "FP": 2,
+        "TN": 3453,
+        "FN": 931,
+        "hardHamFP": 1,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "pooled",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 279,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1023,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "equal",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 168,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1134,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "equal",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 150,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1152,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "equal",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 113,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1189,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "sqrt",
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 274,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1028,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "sqrt",
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 241,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1061,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "scope": "context",
+      "method": "sqrt",
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 190,
+        "FP": 0,
+        "TN": 3455,
+        "FN": 1112,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    }
+  ]
+}
