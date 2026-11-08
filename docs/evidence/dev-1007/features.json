@@ -1,10 +1,10 @@
 {
-  "sha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
-  "rows": 9804,
+  "sha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
+  "rows": 9904,
   "summary": {
     "ham": {
-      "total": 5467,
-      "eligible": 3847
+      "total": 5567,
+      "eligible": 3947
     },
     "spam": {
       "total": 4337,
@@ -14,8 +14,9 @@
   "sources": [
     "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
     "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
-    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67"
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+    "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
   ],
   "fetches": 0,
-  "scope": "Only frozen TRAIN rows, existing projection/guards plus explicit complete-file byte provenance; NUL alone is not a stream-completeness signal. Core control/quote/resource guards preserved. No classifier imports; no heldout raw bytes."
+  "scope": "Frozen public TRAIN plus100 original authored clinical TRAIN ham; synthetic rows are development data, never independent accuracy. Exact raw byte provenance; no classifier imports or heldout reads."
 }

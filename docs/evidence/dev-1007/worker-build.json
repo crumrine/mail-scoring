@@ -1,7 +1,7 @@
 {
   "private": {
-    "bytes": 1087865,
-    "gzipBytes": 377685,
+    "bytes": 1093511,
+    "gzipBytes": 377978,
     "modules": [
       "packages/core/src/contract.ts",
       "packages/core/src/guards.ts",
@@ -49,8 +49,8 @@
       "workers/private/adapter.ts",
       "workers/private/index.ts"
     ],
-    "dryRunBytes": 1089360,
-    "dryRunGzipBytes": 378501
+    "dryRunBytes": 1095006,
+    "dryRunGzipBytes": 378802
   },
   "consumer": {
     "bytes": 6323,

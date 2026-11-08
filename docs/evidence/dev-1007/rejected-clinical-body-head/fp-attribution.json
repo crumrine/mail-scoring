@@ -1,0 +1,30 @@
+{
+  "id": "07efa8ecb20b17a4b9bdcc7dbc11dc0da16153825220a73edd1f1b5065f1e52d",
+  "rawBytes": 483,
+  "rawNUL": false,
+  "subjectWords": 4,
+  "bodyPositions": 12,
+  "currentBody": {
+    "distinct": 9,
+    "known": 9,
+    "pos": 6,
+    "margin": 3.045670734715947,
+    "cut": 2.944438979
+  },
+  "currentFull": {
+    "distinct": 10,
+    "known": 10,
+    "pos": 6,
+    "margin": 2.9015451797077922,
+    "cut": 2.944438979
+  },
+  "oldCombined": {
+    "distinct": 10,
+    "known": 10,
+    "pos": 5,
+    "margin": 2.9129284381745273,
+    "cut": 4.59511985
+  },
+  "quoted": false,
+  "complete": true
+}

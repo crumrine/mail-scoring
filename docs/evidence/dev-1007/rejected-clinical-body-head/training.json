@@ -1,0 +1,37 @@
+{
+  "model": "general-4",
+  "algorithm": "one L2 logistic body-unigram TFIDF head",
+  "C": 10,
+  "hardHamWeight": 10,
+  "cutoff": 0.95,
+  "minimumPositiveBodyWords": 5,
+  "maxWordPositions": 1000,
+  "quantizedDigits": 9,
+  "rows": 9904,
+  "fitRows": 9693,
+  "entries": 24871,
+  "matrixSha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
+  "sourcePartitions": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+    "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
+  ],
+  "modelSha256": "e8c6af9301fe1302e9864bef39ec0c3186ca56ab70e378a30c74a2550305e66b",
+  "quantizedFiveFoldTraining": {
+    "TP": 2097,
+    "FP": 0,
+    "TN": 5567,
+    "FN": 2240,
+    "hardHamFP": 0
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "python": "3.12.13",
+  "scope": "TRAIN-only development; never an independent accuracy or production deployment claim"
+}

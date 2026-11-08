@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import {test} from 'node:test';
+import {LEGITIMATE_NOTICES} from '../fixtures/legitimate-notices.ts';
 import assert from 'node:assert/strict';
 import {STATISTICAL_SPAM,PHARMACY_SPAM} from '../fixtures/statistical.ts';
 import {scoreRequest,REASONS} from '@mail-scoring/core';
@@ -71,13 +72,18 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  const features=(ids:number[])=>ids.map((first,start)=>({first,second:-1,start,end:start}));
  assert.equal(linearSpam(features([...ham,keyword]),ham),false);
  assert.equal(linearSpam(features([...ham,...Array(100).fill(keyword)]),ham),false);
+ const fourPositive=ordered.slice(-4).map(row=>row[0]);
+ const weakNegative=ordered.filter(row=>row[2]<0).slice(-5).map(row=>row[0]);
+ const mixed=[...fourPositive,...weakNegative];
+ assert.equal(linearSpam(features(mixed),mixed),false);
+ assert.equal(linearSpam(features(fourPositive),Array.from({length:100},(_,i)=>fourPositive[i%4]!)),false);
  assert.equal(linearSpam([...positive].reverse(),[...body].reverse()),true);
 });
 
 test('current linear model contains bounded numeric aggregates from the frozen TRAIN matrix',()=>{
  assert.equal(MODEL_VERSION,'general-4');
- assert.equal(MODEL_TRAIN_MATRIX_SHA256,'5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa');
- assert.equal(MODEL_FEATURES.length,25429);
+ assert.equal(MODEL_TRAIN_MATRIX_SHA256,'41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b');
+ assert.equal(MODEL_FEATURES.length,25439);
  assert.equal(new Set(MODEL_FEATURES.map(row=>row[0])).size,MODEL_FEATURES.length);
  for(const [hash,idf,weight]of MODEL_FEATURES){
   assert.ok(Number.isInteger(hash)&&hash>=0&&hash<=0xffffffff);
@@ -136,4 +142,13 @@ test('context probabilities preserve square-root-count legitimate strata and doc
  const probabilities=contextProbabilities([[1,-1,100,0,10],[2,-1,0,1,10]],[100,1,10]);
  assert.ok(Math.abs(probabilities.get('1:-1')!-(1.5+110*(11/21))/113)<1e-14);
  assert.ok(Math.abs(probabilities.get('2:-1')!-(1.5+11*(11/12))/14)<1e-14);
+});
+
+test('legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML',()=>{
+ for(const sample of LEGITIMATE_NOTICES){
+  for(const result of [score(sample.text,{subject:sample.subject}),score('',{subject:sample.subject,html:`<article><h1>${sample.subject}</h1><p>${sample.text}</p></article>`})]){
+   assert.equal(result.heuristicScore,0,sample.subject);
+   assert.equal(hasSpam(result),false,sample.subject);
+  }
+ }
 });

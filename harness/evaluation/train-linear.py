@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.exceptions import ConvergenceWarning
 
-EXPECTED='5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa'
+EXPECTED='41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b'
 VERSIONS={'numpy':'2.5.3','scipy':'1.17.1','scikit-learn':'1.9.0','joblib':'1.6.0','threadpoolctl':'3.6.0'}
 assert all(metadata.version(k)==v for k,v in VERSIONS.items()),'training_dependency_version'
 warnings.simplefilter('error',ConvergenceWarning)
@@ -19,7 +19,7 @@ path=Path(sys.argv[1]);assert not path.is_symlink() and path.is_file()
 with path.open('rb') as source:raw=source.read(128*1024*1024+1)
 assert len(raw)<=128*1024*1024 and hashlib.sha256(raw).hexdigest()==EXPECTED,'TRAIN_matrix_hash'
 rows=json.loads(raw)
-assert len(rows)==9804 and len({r['id'] for r in rows})==9804
+assert len(rows)==9904 and len({r['id'] for r in rows})==9904
 assert all(r['partition']=='train' and r['label'] in ['ham','spam'] and isinstance(r['eligible'],bool) and 0<=r['bodyPositions']<=1000 and len(r['features'])<=1999 for r in rows)
 features=[set(k for k in r['features'] if k.endswith(':-1')) for r in rows]
 body=[set([k for k in r['features'] if k.endswith(':-1')][-r['bodyPositions']:]) if r['bodyPositions'] else set() for r in rows]
@@ -34,7 +34,7 @@ def fit(train):
     vocabulary={k:j for j,k in enumerate(keys)};indices=[];offsets=[0]
     for ks in features:
         indices.extend(sorted(vocabulary[k] for k in ks if k in vocabulary));offsets.append(len(indices))
-    assert len(indices)<=9804*1000
+    assert len(indices)<=9904*1000
     x=csr_matrix((np.ones(len(indices)),np.array(indices,dtype=np.int32),np.array(offsets,dtype=np.int32)),shape=(len(rows),len(keys)))
     transform=TfidfTransformer(norm='l2',smooth_idf=True);transform.fit(x[train]);model=LogisticRegression(C=100,solver='liblinear',tol=1e-7,max_iter=2000,random_state=7151)
     model.fit(transform.transform(x[train]),y[train],sample_weight=np.where(hard[train],20,1))
@@ -53,11 +53,11 @@ for f in range(5):
     _,_,_,_,margins,known=fit((folds!=f)&fit_ok);test=folds==f
     hits[test]=(eligible&known&(margins>=threshold))[test]
 metrics={'TP':int(np.sum(hits&(y==1))),'FP':int(np.sum(hits&(y==0))),'TN':int(np.sum(~hits&(y==0))),'FN':int(np.sum(~hits&(y==1))),'hardHamFP':int(np.sum(hits&hard))}
-assert metrics=={'TP':2288,'FP':0,'TN':5467,'FN':2049,'hardHamFP':0},'quantized_TRAIN_CV_regression'
+assert metrics=={'TP':2270,'FP':0,'TN':5567,'FN':2067,'hardHamFP':0},'quantized_TRAIN_CV_regression'
 keys,idf,weights,bias,_,_=fit(fit_ok)
 entries=sorted([[int(k.split(':')[0]),float(a),float(b)] for k,a,b in zip(keys,idf,weights)])
-partitions=['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131','e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67']
-source='// Copyright (c) 2026 Brian Crumrine\n// SPDX-License-Identifier: Apache-2.0\n// Own numeric TRAIN-only unigram IDF/coefficients. No literal words or per-message order.\n'
+partitions=['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131','e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67','8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e']
+source='// Copyright (c) 2026 Brian Crumrine\n// SPDX-License-Identifier: Apache-2.0\n// Own numeric TRAIN-only subject/body unigram IDF/coefficients. No literal words or per-message order.\n'
 source+='export const MODEL_VERSION = "general-4";\nexport const MODEL_TRAIN_MATRIX_SHA256 = '+json.dumps(EXPECTED)+';\n'
 source+='export const MODEL_PARTITIONS = '+json.dumps(partitions)+' as const;\n'
 source+='export const MODEL_BIAS = '+json.dumps(bias)+';\nexport const MODEL_LOGIT_CUTOFF = '+json.dumps(threshold)+';\n'
@@ -65,5 +65,5 @@ source+='export const MODEL_FEATURES:ReadonlyArray<readonly [number,number,numbe
 out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True);(out/'linear-model.ts').write_text(source)
 if '--write-model' in sys.argv[3:]:Path('packages/core/src/linear-model.ts').write_text(source)
 else:assert Path('packages/core/src/linear-model.ts').read_text()==source,'model_reproduction_mismatch'
-receipt={'model':'general-4','algorithm':'one L2 logistic unigram TFIDF head','C':100,'hardHamWeight':20,'cutoff':.99,'minimumPositiveBodyWords':5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
+receipt={'model':'general-4','algorithm':'one L2 logistic subject/body unigram TFIDF head','C':100,'hardHamWeight':20,'cutoff':.99,'minimumPositiveBodyWords':5,'maxWordPositions':1000,'quantizedDigits':9,'rows':len(rows),'fitRows':int(np.sum(fit_ok)),'entries':len(entries),'matrixSha256':EXPECTED,'sourcePartitions':partitions,'modelSha256':hashlib.sha256(source.encode()).hexdigest(),'quantizedFiveFoldTraining':metrics,'versions':VERSIONS,'python':platform.python_version(),'scope':'TRAIN-only development; never an independent accuracy or production deployment claim'}
 (out/'training.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))

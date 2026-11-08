@@ -5,1959 +5,1959 @@
     "numpy": "2.5.3",
     "scipy": "1.17.1"
   },
-  "matrixSha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
+  "matrixSha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
   "folds": 5,
   "candidates": 150,
   "positiveBodyWordsMinimum": 5,
   "results": [
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 2288,
+        "TP": 2270,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2049,
+        "TN": 5567,
+        "FN": 2067,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2165,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2172,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 100,
+      "scope": "body-unigram",
+      "C": 10,
       "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2164,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2173,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.999,
+      "cutoff": 0.95,
       "metrics": {
         "TP": 2097,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 2240,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2095,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2242,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2089,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2248,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 1931,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2406,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1000,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
-        "TP": 1926,
+        "TP": 2078,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2411,
+        "TN": 5567,
+        "FN": 2259,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2072,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2265,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 1000,
-      "hardWeight": 10,
+      "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
-        "TP": 1924,
+        "TP": 1894,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2413,
+        "TN": 5567,
+        "FN": 2443,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
-        "TP": 1887,
+        "TP": 1867,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2450,
+        "TN": 5567,
+        "FN": 2470,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 1875,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 2462,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.995,
       "metrics": {
-        "TP": 1873,
+        "TP": 1860,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2464,
+        "TN": 5567,
+        "FN": 2477,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1857,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2480,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
-        "TP": 1702,
+        "TP": 1712,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2635,
+        "TN": 5567,
+        "FN": 2625,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.995,
       "metrics": {
-        "TP": 1685,
+        "TP": 1695,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2652,
+        "TN": 5567,
+        "FN": 2642,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.995,
       "metrics": {
-        "TP": 1682,
+        "TP": 1692,
         "FP": 0,
-        "TN": 5467,
-        "FN": 2655,
+        "TN": 5567,
+        "FN": 2645,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 1095,
+        "TP": 1031,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3242,
+        "TN": 5567,
+        "FN": 3306,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 1003,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3334,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 999,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3338,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 990,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3347,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 873,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3464,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 861,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3476,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 859,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3478,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 828,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3509,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 761,
+        "TP": 1004,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3576,
+        "TN": 5567,
+        "FN": 3333,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 966,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3371,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 962,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3375,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 961,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3376,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 750,
+        "TP": 958,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3587,
+        "TN": 5567,
+        "FN": 3379,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 850,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3487,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.999,
       "metrics": {
-        "TP": 619,
+        "TP": 849,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3718,
+        "TN": 5567,
+        "FN": 3488,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 609,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3728,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
-        "TP": 609,
+        "TP": 840,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3728,
+        "TN": 5567,
+        "FN": 3497,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 555,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3782,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 528,
+        "TP": 836,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3809,
+        "TN": 5567,
+        "FN": 3501,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 835,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3502,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 520,
+        "TP": 831,
         "FP": 0,
-        "TN": 5467,
-        "FN": 3817,
+        "TN": 5567,
+        "FN": 3506,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 482,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3855,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 480,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3857,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 477,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3860,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 436,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3901,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 394,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3943,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 386,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 3951,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 189,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4148,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 180,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4157,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 179,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4158,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 157,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4180,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 127,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4210,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 120,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4217,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 79,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4258,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 77,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4260,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 76,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4261,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 11,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4326,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 11,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4326,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 11,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4326,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
       "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 8,
+        "TP": 744,
         "FP": 0,
-        "TN": 5467,
-        "FN": 4329,
+        "TN": 5567,
+        "FN": 3593,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 726,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3611,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 721,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3616,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 463,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3874,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 449,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3888,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 444,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3893,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 409,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3928,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 372,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3965,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 363,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3974,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 358,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3979,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 348,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3989,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 334,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4003,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 332,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4005,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 276,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4061,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 264,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4073,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 62,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4275,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 59,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4278,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 58,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4279,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 46,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4291,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 45,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4292,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 44,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4293,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
         "TP": 7,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4330,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 1,
-      "hardWeight": 20,
+      "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 7,
+        "TP": 5,
         "FP": 0,
-        "TN": 5467,
-        "FN": 4330,
+        "TN": 5567,
+        "FN": 4332,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 4,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4333,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 3,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4334,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 3,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4334,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
         "TP": 1,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4336,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 4336,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.99,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.95,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 1,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 10,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 0.1,
       "hardWeight": 20,
       "cutoff": 0.9,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.999,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 0,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4337,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
+      "scope": "body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 1,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 10,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
       "C": 1,
       "hardWeight": 20,
       "cutoff": 0.995,
       "metrics": {
         "TP": 0,
         "FP": 0,
-        "TN": 5467,
+        "TN": 5567,
         "FN": 4337,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 0,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4337,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 0,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4337,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 0,
-        "FP": 0,
-        "TN": 5467,
-        "FN": 4337,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 2293,
+        "TP": 2274,
         "FP": 1,
-        "TN": 5466,
-        "FN": 2044,
+        "TN": 5566,
+        "FN": 2063,
         "hardHamFP": 1
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 2219,
+        "TP": 2193,
         "FP": 1,
-        "TN": 5466,
-        "FN": 2118,
+        "TN": 5566,
+        "FN": 2144,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 20,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 2207,
+        "TP": 2178,
         "FP": 1,
-        "TN": 5466,
-        "FN": 2130,
+        "TN": 5566,
+        "FN": 2159,
         "hardHamFP": 0
       }
     },
     {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.999,
-      "metrics": {
-        "TP": 2100,
-        "FP": 1,
-        "TN": 5466,
-        "FN": 2237,
-        "hardHamFP": 1
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 1207,
-        "FP": 1,
-        "TN": 5466,
-        "FN": 3130,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 1115,
-        "FP": 1,
-        "TN": 5466,
-        "FN": 3222,
-        "hardHamFP": 0
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 2180,
-        "FP": 2,
-        "TN": 5465,
-        "FN": 2157,
-        "hardHamFP": 2
+        "TP": 2131,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2206,
+        "hardHamFP": 1
       }
     },
     {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2119,
-        "FP": 2,
-        "TN": 5465,
-        "FN": 2218,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.999,
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
       "metrics": {
         "TP": 2110,
-        "FP": 2,
-        "TN": 5465,
+        "FP": 1,
+        "TN": 5566,
         "FN": 2227,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "context",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2686,
-        "FP": 3,
-        "TN": 5464,
-        "FN": 1651,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2306,
-        "FP": 3,
-        "TN": 5464,
-        "FN": 2031,
-        "hardHamFP": 3
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2252,
-        "FP": 3,
-        "TN": 5464,
-        "FN": 2085,
-        "hardHamFP": 2
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 10,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 2808,
-        "FP": 4,
-        "TN": 5463,
-        "FN": 1529,
         "hardHamFP": 1
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2103,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2234,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 2082,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2255,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1920,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2417,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1907,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2430,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1168,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3169,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1093,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3244,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1070,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 3267,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 10,
       "hardWeight": 10,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 2696,
-        "FP": 4,
-        "TN": 5463,
-        "FN": 1641,
+        "TP": 2698,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 1639,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2673,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 1664,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2142,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2195,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 2083,
+        "FP": 2,
+        "TN": 5565,
+        "FN": 2254,
         "hardHamFP": 2
       }
     },
     {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2631,
-        "FP": 4,
-        "TN": 5463,
-        "FN": 1706,
-        "hardHamFP": 4
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2630,
-        "FP": 4,
-        "TN": 5463,
-        "FN": 1707,
-        "hardHamFP": 4
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2639,
-        "FP": 5,
-        "TN": 5462,
-        "FN": 1698,
-        "hardHamFP": 4
-      }
-    },
-    {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 2984,
-        "FP": 6,
-        "TN": 5461,
-        "FN": 1353,
-        "hardHamFP": 4
-      }
-    },
-    {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 10,
-      "hardWeight": 10,
+      "hardWeight": 20,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 2817,
-        "FP": 6,
-        "TN": 5461,
-        "FN": 1520,
+        "TP": 2793,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1544,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2569,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1768,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2292,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 2045,
         "hardHamFP": 3
       }
     },
     {
-      "scope": "context",
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2236,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 2101,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2803,
+        "FP": 4,
+        "TN": 5563,
+        "FN": 1534,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2579,
+        "FP": 4,
+        "TN": 5563,
+        "FN": 1758,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2706,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1631,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2597,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1740,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "body-unigram",
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.9,
+      "metrics": {
+        "TP": 2758,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1579,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2714,
+        "FP": 8,
+        "TN": 5559,
+        "FN": 1623,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2904,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1433,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2788,
+        "FP": 9,
+        "TN": 5558,
+        "FN": 1549,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
       "metrics": {
         "TP": 2725,
-        "FP": 6,
-        "TN": 5461,
+        "FP": 9,
+        "TN": 5558,
         "FN": 1612,
-        "hardHamFP": 4
+        "hardHamFP": 6
       }
     },
     {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3006,
-        "FP": 7,
-        "TN": 5460,
-        "FN": 1331,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 2985,
-        "FP": 7,
-        "TN": 5460,
-        "FN": 1352,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2866,
-        "FP": 7,
-        "TN": 5460,
-        "FN": 1471,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2859,
-        "FP": 7,
-        "TN": 5460,
-        "FN": 1478,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2853,
-        "FP": 7,
-        "TN": 5460,
-        "FN": 1484,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2719,
-        "FP": 8,
-        "TN": 5459,
-        "FN": 1618,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2719,
-        "FP": 8,
-        "TN": 5459,
-        "FN": 1618,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3217,
-        "FP": 9,
-        "TN": 5458,
-        "FN": 1120,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3216,
-        "FP": 9,
-        "TN": 5458,
-        "FN": 1121,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.995,
-      "metrics": {
-        "TP": 2731,
-        "FP": 9,
-        "TN": 5458,
-        "FN": 1606,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3237,
-        "FP": 11,
-        "TN": 5456,
-        "FN": 1100,
-        "hardHamFP": 5
-      }
-    },
-    {
-      "scope": "context",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3234,
-        "FP": 11,
-        "TN": 5456,
-        "FN": 1103,
+        "TP": 2909,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1428,
         "hardHamFP": 7
       }
     },
     {
-      "scope": "unigram",
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2794,
+        "FP": 10,
+        "TN": 5557,
+        "FN": 1543,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 10,
       "hardWeight": 1,
       "cutoff": 0.9,
       "metrics": {
-        "TP": 2850,
+        "TP": 2840,
         "FP": 11,
-        "TN": 5456,
-        "FN": 1487,
+        "TN": 5556,
+        "FN": 1497,
         "hardHamFP": 6
       }
     },
     {
-      "scope": "context",
+      "scope": "body-unigram",
       "C": 1000,
-      "hardWeight": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2805,
+        "FP": 11,
+        "TN": 5556,
+        "FN": 1532,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 3239,
+        "TP": 2931,
         "FP": 12,
-        "TN": 5455,
-        "FN": 1098,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2914,
-        "FP": 13,
-        "TN": 5454,
-        "FN": 1423,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.99,
-      "metrics": {
-        "TP": 2909,
-        "FP": 13,
-        "TN": 5454,
-        "FN": 1428,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3253,
-        "FP": 14,
-        "TN": 5453,
-        "FN": 1084,
+        "TN": 5555,
+        "FN": 1406,
         "hardHamFP": 7
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 1000,
-      "hardWeight": 1,
+      "hardWeight": 10,
       "cutoff": 0.99,
       "metrics": {
-        "TP": 2925,
-        "FP": 14,
-        "TN": 5453,
-        "FN": 1412,
+        "TP": 2904,
+        "FP": 12,
+        "TN": 5555,
+        "FN": 1433,
         "hardHamFP": 6
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2899,
+        "FP": 12,
+        "TN": 5555,
+        "FN": 1438,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2912,
+        "FP": 13,
+        "TN": 5554,
+        "FN": 1425,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3029,
+        "FP": 15,
+        "TN": 5552,
+        "FN": 1308,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 1,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 3058,
+        "TP": 3057,
         "FP": 16,
-        "TN": 5451,
-        "FN": 1279,
+        "TN": 5551,
+        "FN": 1280,
         "hardHamFP": 6
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 10,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 3044,
-        "FP": 17,
-        "TN": 5450,
-        "FN": 1293,
+        "TP": 3036,
+        "FP": 16,
+        "TN": 5551,
+        "FN": 1301,
         "hardHamFP": 6
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3243,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1094,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
       "C": 100,
       "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3238,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1099,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3147,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1190,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3138,
+        "FP": 20,
+        "TN": 5547,
+        "FN": 1199,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3262,
+        "FP": 21,
+        "TN": 5546,
+        "FN": 1075,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
       "cutoff": 0.95,
       "metrics": {
-        "TP": 3037,
-        "FP": 17,
-        "TN": 5450,
-        "FN": 1300,
-        "hardHamFP": 6
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3343,
-        "FP": 20,
-        "TN": 5447,
-        "FN": 994,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3338,
-        "FP": 20,
-        "TN": 5447,
-        "FN": 999,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3251,
-        "FP": 20,
-        "TN": 5447,
-        "FN": 1086,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3249,
-        "FP": 20,
-        "TN": 5447,
-        "FN": 1088,
-        "hardHamFP": 7
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 100,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3267,
-        "FP": 22,
-        "TN": 5445,
-        "FN": 1070,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "context",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3354,
+        "TP": 3272,
         "FP": 23,
-        "TN": 5444,
-        "FN": 983,
+        "TN": 5544,
+        "FN": 1065,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3270,
+        "FP": 24,
+        "TN": 5543,
+        "FN": 1067,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3264,
+        "FP": 24,
+        "TN": 5543,
+        "FN": 1073,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3166,
+        "FP": 24,
+        "TN": 5543,
+        "FN": 1171,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3153,
+        "FP": 24,
+        "TN": 5543,
+        "FN": 1184,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3160,
+        "FP": 27,
+        "TN": 5540,
+        "FN": 1177,
+        "hardHamFP": 9
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3345,
+        "FP": 31,
+        "TN": 5536,
+        "FN": 992,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "subject-body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3342,
+        "FP": 31,
+        "TN": 5536,
+        "FN": 995,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3179,
+        "FP": 31,
+        "TN": 5536,
+        "FN": 1158,
         "hardHamFP": 10
       }
     },
     {
-      "scope": "unigram",
+      "scope": "subject-body-unigram",
       "C": 1000,
       "hardWeight": 1,
-      "cutoff": 0.95,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3349,
+        "FP": 32,
+        "TN": 5535,
+        "FN": 988,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3273,
+        "FP": 38,
+        "TN": 5529,
+        "FN": 1064,
+        "hardHamFP": 10
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3265,
+        "FP": 38,
+        "TN": 5529,
+        "FN": 1072,
+        "hardHamFP": 11
+      }
+    },
+    {
+      "scope": "body-unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
       "metrics": {
         "TP": 3286,
-        "FP": 24,
-        "TN": 5443,
+        "FP": 39,
+        "TN": 5528,
         "FN": 1051,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3278,
-        "FP": 24,
-        "TN": 5443,
-        "FN": 1059,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.95,
-      "metrics": {
-        "TP": 3277,
-        "FP": 24,
-        "TN": 5443,
-        "FN": 1060,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 1,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3351,
-        "FP": 29,
-        "TN": 5438,
-        "FN": 986,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 20,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3348,
-        "FP": 30,
-        "TN": 5437,
-        "FN": 989,
-        "hardHamFP": 8
-      }
-    },
-    {
-      "scope": "unigram",
-      "C": 1000,
-      "hardWeight": 10,
-      "cutoff": 0.9,
-      "metrics": {
-        "TP": 3347,
-        "FP": 30,
-        "TN": 5437,
-        "FN": 990,
-        "hardHamFP": 8
+        "hardHamFP": 11
       }
     }
   ]

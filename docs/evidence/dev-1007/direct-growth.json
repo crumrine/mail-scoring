@@ -7,126 +7,126 @@
     {
       "kind": "root",
       "size": 1000,
-      "elapsedMs": 0.22358300000000497,
+      "elapsedMs": 0.22220799999999485,
       "heapDeltaBytes": 18384,
-      "rssDeltaBytes": 16384
+      "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000,
-      "elapsedMs": 0.006458000000002073,
+      "elapsedMs": 0.006542000000003156,
       "heapDeltaBytes": 6928,
-      "rssDeltaBytes": 0
+      "rssDeltaBytes": 16384
     },
     {
       "kind": "transport",
       "size": 1000,
-      "elapsedMs": 0.007457999999999743,
+      "elapsedMs": 0.022999999999996135,
       "heapDeltaBytes": 6912,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000,
-      "elapsedMs": 0.005707999999998492,
+      "elapsedMs": 0.005792000000006681,
       "heapDeltaBytes": 6928,
       "rssDeltaBytes": 0
     },
     {
       "kind": "root",
       "size": 100000,
-      "elapsedMs": 0.00795800000000213,
+      "elapsedMs": 0.02779099999999346,
       "heapDeltaBytes": 7304,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 100000,
-      "elapsedMs": 0.008624999999994998,
+      "elapsedMs": 0.00970799999998917,
       "heapDeltaBytes": 7056,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 100000,
-      "elapsedMs": 0.019209000000017795,
+      "elapsedMs": 0.018292000000002417,
       "heapDeltaBytes": 3808,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 100000,
-      "elapsedMs": 0.04729199999999878,
+      "elapsedMs": 0.019499999999993634,
       "heapDeltaBytes": 3840,
       "rssDeltaBytes": 0
     },
     {
       "kind": "root",
       "size": 1000000,
-      "elapsedMs": 0.028416999999990367,
+      "elapsedMs": 0.02754200000003948,
       "heapDeltaBytes": 4008,
       "rssDeltaBytes": 0
     },
     {
       "kind": "header",
       "size": 1000000,
-      "elapsedMs": 0.01999999999998181,
+      "elapsedMs": 0.05470800000011877,
       "heapDeltaBytes": 5768,
       "rssDeltaBytes": 0
     },
     {
       "kind": "transport",
       "size": 1000000,
-      "elapsedMs": 0.008958000000120592,
+      "elapsedMs": 0.009083999999802472,
       "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "attachment",
       "size": 1000000,
-      "elapsedMs": 0.02312500000016371,
+      "elapsedMs": 0.010457999999744061,
       "heapDeltaBytes": 848,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 1048576,
-      "elapsedMs": 1.3161660000000666,
+      "elapsedMs": 1.222458999999617,
       "heapDeltaBytes": 22512,
-      "rssDeltaBytes": 0
+      "rssDeltaBytes": 16384
     },
     {
       "kind": "concatenation",
       "size": 1048576,
-      "elapsedMs": 0.019958000000315224,
+      "elapsedMs": 0.012000000000170985,
       "heapDeltaBytes": 1480,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 16777216,
-      "elapsedMs": 0.020125000000007276,
+      "elapsedMs": 0.02108300000008967,
       "heapDeltaBytes": 1480,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 16777216,
-      "elapsedMs": 0.05933299999969677,
+      "elapsedMs": 0.014874999999847205,
       "heapDeltaBytes": 1480,
       "rssDeltaBytes": 0
     },
     {
       "kind": "repeat",
       "size": 67108864,
-      "elapsedMs": 0.01375000000007276,
+      "elapsedMs": 0.009000000000014552,
       "heapDeltaBytes": 1480,
       "rssDeltaBytes": 0
     },
     {
       "kind": "concatenation",
       "size": 67108864,
-      "elapsedMs": 0.018082999999933236,
+      "elapsedMs": 0.011375000000043656,
       "heapDeltaBytes": 1480,
       "rssDeltaBytes": 0
     }

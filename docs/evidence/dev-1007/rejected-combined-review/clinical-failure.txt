@@ -1,0 +1,23 @@
+Command exited with code 1.
+
+Command output:
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: unexpected linear spam on plain sample: Medication therapy management & generic formulary update
+
+true !== false
+
+    at file:///Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/independent-adversarial.mjs:178:12
+    at check (file:///Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/independent-adversarial.mjs:54:9)
+    at file:///Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/independent-adversarial.mjs:148:7 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: true,
+  expected: false,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

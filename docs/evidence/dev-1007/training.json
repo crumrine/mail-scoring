@@ -1,27 +1,28 @@
 {
   "model": "general-4",
-  "algorithm": "one L2 logistic unigram TFIDF head",
+  "algorithm": "one L2 logistic subject/body unigram TFIDF head",
   "C": 100,
   "hardHamWeight": 20,
   "cutoff": 0.99,
   "minimumPositiveBodyWords": 5,
   "maxWordPositions": 1000,
   "quantizedDigits": 9,
-  "rows": 9804,
-  "fitRows": 9593,
-  "entries": 25429,
-  "matrixSha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
+  "rows": 9904,
+  "fitRows": 9693,
+  "entries": 25439,
+  "matrixSha256": "41cfddf1ba4baf4a49ff84a621905ff6f662fad9f034f771225bee96662b440b",
   "sourcePartitions": [
     "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
     "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
-    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67"
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+    "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
   ],
-  "modelSha256": "65ec78614d2c7b231af3d416519f31ca12f21fba03de7d07549f8c32ee0a5528",
+  "modelSha256": "dac00ce3993a6f15479e0783d3eac4566a7b7ef515dada987e3f17542e504b98",
   "quantizedFiveFoldTraining": {
-    "TP": 2288,
+    "TP": 2270,
     "FP": 0,
-    "TN": 5467,
-    "FN": 2049,
+    "TN": 5567,
+    "FN": 2067,
     "hardHamFP": 0
   },
   "versions": {

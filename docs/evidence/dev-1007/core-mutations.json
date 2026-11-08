@@ -1,5 +1,10 @@
 [
   {
+    "mutation": "linear-body-cap",
+    "caught": true,
+    "exitCode": 1
+  },
+  {
     "mutation": "linear-feature-cap",
     "caught": true,
     "exitCode": 1
