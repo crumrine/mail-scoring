@@ -39,7 +39,7 @@ try{
  assert.ok(counts.length<100000);assert.equal(attempts,0);
  const source='// Copyright (c) 2026 Brian Crumrine\n// SPDX-License-Identifier: Apache-2.0\n'+
   '// Numeric document aggregates from the fixed TRAIN partition only. No words, messages or phrase strings.\n'+
-  'export const MODEL_VERSION = "general-2";\n'+
+  'export const MODEL_VERSION = "general-3";\n'+
   'export const MODEL_PARTITION_SHA256 = '+JSON.stringify(sha256(frozen))+';\n'+
   'export const MODEL_DOCUMENTS:readonly [number,number,number] = '+JSON.stringify(documents)+';\n'+
   'export const MODEL_COUNTS:ReadonlyArray<readonly [number,number,number,number,number]> = [\n'+counts.map(c=>'  '+JSON.stringify(c)).join(',\n')+'\n];\n';
@@ -47,6 +47,6 @@ try{
  await writeFile('.artifacts/context/context-model.ts',source);
  await writeFile('.artifacts/context/training-features.json',JSON.stringify(rows)+'\n');
  if(process.argv[4]==='--write-model')await writeFile('packages/core/src/context-model.ts',source);
- const receipt={runtime:MIME_RUNTIME,partitionSha256:sha256(frozen),modelVersion:'general-2',hamMixture:{estimator:'square-root document counts',hardWeight:Math.sqrt(documents[1])/(Math.sqrt(documents[0])+Math.sqrt(documents[1]))},modelSourceSha256:sha256(source),documents,entries:counts.length,featurePositionsCap:1000,maxFeatures:1999,readPartitions:['train'],rawMessagesRead:rows.length,readIdsSha256:sha256(JSON.stringify(rows.map(r=>r.id).sort())),eligibleIdsSha256:sha256(JSON.stringify(rows.filter(r=>r.textInspectable).map(r=>r.id).sort())),fetches:attempts};
+ const receipt={runtime:MIME_RUNTIME,partitionSha256:sha256(frozen),modelVersion:'general-3',hamMixture:{estimator:'pooled legitimate document counts'},modelSourceSha256:sha256(source),documents,entries:counts.length,featurePositionsCap:1000,maxFeatures:1999,readPartitions:['train'],rawMessagesRead:rows.length,readIdsSha256:sha256(JSON.stringify(rows.map(r=>r.id).sort())),eligibleIdsSha256:sha256(JSON.stringify(rows.filter(r=>r.textInspectable).map(r=>r.id).sort())),fetches:attempts};
  await writeFile('.artifacts/context/training.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));
 }finally{globalThis.fetch=fetch;await rm(temp,{recursive:true,force:true});}

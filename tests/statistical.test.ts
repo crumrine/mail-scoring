@@ -13,11 +13,11 @@ import {combineClues,chiTail} from '../packages/core/dist/vendor/chi.js';
 import {MODEL_COUNTS,MODEL_DOCUMENTS,MODEL_PARTITION_SHA256} from '../packages/core/dist/context-model.js';
 const spam=STATISTICAL_SPAM;
 const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'general-test',subject:'',text,headers:[],sourceComplete:true,...extra})));
-const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_context_spam');
+const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_ensemble_spam');
 test('general spam detects original promotional plain text and inert HTML once, with static evidence',()=>{
  for(const input of [{text:spam},{text:'',html:'<html><body><p>'+spam+'</p></body></html>'},{text:spam+'\n'+spam}]){
-  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-4');assert.equal(r.heuristicScore,60);
-  assert.deepEqual(r.reasons,[{id:'statistical_context_spam',contribution:60,reason:REASONS.statistical_context_spam}]);
+  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-5');assert.equal(r.heuristicScore,60);
+  assert.deepEqual(r.reasons,[{id:'statistical_ensemble_spam',contribution:60,reason:REASONS.statistical_ensemble_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
  }
 });
@@ -94,8 +94,9 @@ test('context tiling never counts an overlapping word or duplicate clue twice',(
  const many=Array.from({length:70},(_,i)=>({first:i+1,second:-1,start:i,end:i}));
  assert.equal(tiledClues(many,new Map(many.map(f=>[contextKey(f.first,f.second),.9]))).length,64);
 });
-test('context probabilities preserve square-root-count legitimate strata and document evidence strength',()=>{
+test('context probabilities pool legitimate document evidence independent of strata',()=>{
  const probabilities=contextProbabilities([[1,-1,100,0,10],[2,-1,0,1,10]],[100,1,10]);
- assert.ok(Math.abs(probabilities.get('1:-1')!-(1.5+110*(11/21))/113)<1e-14);
- assert.ok(Math.abs(probabilities.get('2:-1')!-(1.5+11*(11/12))/14)<1e-14);
+ assert.ok(Math.abs(probabilities.get('1:-1')!-(1.5+110*(101/201))/113)<1e-14);
+ assert.ok(Math.abs(probabilities.get('2:-1')!-(1.5+11*(101/102))/14)<1e-14);
+ assert.deepEqual(contextProbabilities([[1,-1,50,50,10]],[100,100,10]),contextProbabilities([[1,-1,100,0,10]],[200,0,10]));
 });

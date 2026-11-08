@@ -10,7 +10,7 @@ const checks=[
   {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},
   {id:'context-overlap',file:'packages/core/src/vendor/tiling.ts',before:'if(used.has(feature.start)||used.has(feature.end))continue;',after:'if(false)continue;',command:['test'],failure:/✖ context tiling never/},
   {id:'context-position-cap',file:'packages/core/src/context-features.ts',before:'positions===1000',after:'positions===100000',command:['test'],failure:/✖ context features keep/},
-  {id:'context-ham-mixture',file:'packages/core/src/context-probabilities.ts',before:'Math.sqrt(documents[1])/(Math.sqrt(documents[0])+Math.sqrt(documents[1]))',after:'documents[1]/(documents[0]+documents[1])',command:['test'],failure:/✖ context probabilities preserve/},
+  {id:'pooled-document-frequency',file:'packages/core/src/context-probabilities.ts',before:'(easy+hard)/(documents[0]+documents[1])',after:'(easy+hard)/(2*(documents[0]+documents[1]))',command:['test'],failure:/✖ context probabilities pool/},
   {id:'statistical-detection',file:'packages/core/src/index.ts',before:"if(!features.gtube&&generalSpam(input,limits))",after:"if(false)",command:['test'],failure:/✖ general spam detects/},
   {id:'html-depth',file:'packages/core/src/html-text.ts',before:'stack.length===32',after:'stack.length===32000',command:['test'],failure:/✖ HTML source, tag, depth/},
   {id:'html-active-skip',file:'packages/core/src/html-text.ts',before:'SKIP.has(name)',after:'false',command:['test'],failure:/✖ statistical evidence excludes/},

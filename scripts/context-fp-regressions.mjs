@@ -28,7 +28,7 @@ try{
   const input=project(await PostalMime.parse(raw));input.preferences={senderAllowed:false,senderBlocked:false};
   const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify(input)),JSON.stringify({transportVerified:false,preferencesVerified:true}));
   const value=decodeResponse(wire);assert.ok(value?.ok);
-  rows.push({id:row.id,partition:row.partition,status:value.result.status,score:value.result.heuristicScore,reasons:value.result.reasons.map(r=>r.id),statistical:value.result.reasons.some(r=>r.id==='statistical_context_spam')});
+  rows.push({id:row.id,partition:row.partition,status:value.result.status,score:value.result.heuristicScore,reasons:value.result.reasons.map(r=>r.id),statistical:value.result.reasons.some(r=>r.id==='statistical_ensemble_spam')});
  }
  const result={scope:'Observed first-failure CORE regressions only, not fresh heldout or actual caller routing',source:execFileSync('git',['rev-parse','HEAD']).toString().trim(),runtime:MIME_RUNTIME,callerProjectionSha256:sha256(await readFile(resolve(inbox,'workers/lib/mail-scoring/intake.ts'))),callerProjectionRepoHead:execFileSync('git',['-C',inbox,'rev-parse','HEAD']).toString().trim(),firstReportSha256:sha256(reportBytes),fetches,rows};
  await writeFile(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 // Numeric document aggregates from the fixed TRAIN partition only. No words, messages or phrase strings.
-export const MODEL_VERSION = "general-2";
+export const MODEL_VERSION = "general-3";
 export const MODEL_PARTITION_SHA256 = "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803";
 export const MODEL_DOCUMENTS:readonly [number,number,number] = [2353,66,320];
 export const MODEL_COUNTS:ReadonlyArray<readonly [number,number,number,number,number]> = [
