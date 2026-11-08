@@ -112,7 +112,7 @@ and does not grant redistribution rights to unrelated corpora.
 Copyright (C) 2002-2007 Python Software Foundation; All Rights Reserved.
 Copyright (c) 2002-2004 Python Software Foundation; All Rights Reserved.
 Source: smontanaro/spambayes at 8ae169fde78371780019db5b7b7acfb4950bab8f, spambayes/spambayes/{classifier.py,chi2.py}.
-Changes: bounded TypeScript numeric-only Fisher combiner in vendor/chi.ts; original bounded tokenizer, aggregate hashed-count model and static result policy. No Python runtime, database, URL retrieval, online learning, original SpamBayes tokenizer or model included.
+Changes: bounded TypeScript numeric-only Fisher combiner in vendor/chi.ts and non-overlapping unigram/bigram clue selection in vendor/tiling.ts (classifier.py _getclues lines377-444); original bounded tokenizer, aggregate hashed-count model and static result policy. No Python runtime, database, URL retrieval, online learning, original SpamBayes tokenizer or model included.
 
 Copyright (C) 2002-2007 Python Software Foundation; All Rights Reserved
 

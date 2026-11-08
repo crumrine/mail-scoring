@@ -1,0 +1,25 @@
+{
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "legacyDecoder": "WHATWG windows-1252 aliases"
+  },
+  "partitionSha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+  "modelVersion": "general-2",
+  "modelSourceSha256": "73da0c5408a372d3558a567bc41a211d544894eb01585328b8f9ddb04cf84423",
+  "documents": [
+    2419,
+    320
+  ],
+  "entries": 22443,
+  "featurePositionsCap": 1000,
+  "maxFeatures": 1999,
+  "readPartitions": [
+    "train"
+  ],
+  "rawMessagesRead": 2787,
+  "readIdsSha256": "c3bbb17c38541cc1065b54dfad0861c815726a07f3f5aa3d6043908bb117c81d",
+  "eligibleIdsSha256": "7b5cc4a25c5cccec316d6a17f2ed7711c507d2fcd548bc48e83ebadfd783bca2",
+  "fetches": 0
+}
