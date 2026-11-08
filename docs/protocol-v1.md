@@ -1,3 +1,5 @@
+> Current additive contract: engine0.1.0/schema1/RPC1, rules-8 and strict historical versions1–7. `statistical_refit_spam` is valid only under8; robust7/linear6/older reasons keep their original exact versions. GTUBE2–8 remains supported; unknown9 is rejected. Generated schemas and [robust-refit.md](robust-refit.md) describe current source. The rules-2 deterministic foundation and rollout examples below are historical.
+
 # Bounded scoring protocol v1
 
 Current rules-6 adds the version-specific `statistical_linear_spam` reason,

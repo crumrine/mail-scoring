@@ -1,5 +1,7 @@
 # Precision guard (DEV-1010)
 
+Historical rules-7 correction. Current rules-8 development and the third-cohort release hold are described in [robust-refit.md](robust-refit.md). Neither rules-6 nor rules-7 may be deployed.
+
 The first untouched SH/kaminski-v acceptance of merged rules-6/general-4 caught547/1000spam and1/1000HAM, failing the predeclared zero-HAM gate. The deployed rules-5 pair caught64spam and0HAM on that same cohort. All original records, labels, misses and unavailable cases remain in `evidence/dev-1009`; that entire cohort is now observed regression only. Rules-6 is ineligible for deployment. The second1000HAM/1000spam cohort was neutrally frozen before this correction at SHAfd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19, independently reproduced/reviewed and merged through DEV-1011/PR14. It remains unscored during this source ticket.
 
 ## General correction

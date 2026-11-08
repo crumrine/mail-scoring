@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-7",
+      "const": "rules-8",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
@@ -20,7 +20,8 @@
         "rules-4",
         "rules-5",
         "rules-6",
-        "rules-7"
+        "rules-7",
+        "rules-8"
       ]
     },
     "status": {
@@ -66,7 +67,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 16,
+      "maxItems": 17,
       "items": {
         "oneOf": [
           {
@@ -281,6 +282,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_refit_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "Two fixed classifiers agree on spam; the new model also survives losing its two strongest words (general-6; heuristic, not calibrated confidence)."
               }
             },
             "required": [
