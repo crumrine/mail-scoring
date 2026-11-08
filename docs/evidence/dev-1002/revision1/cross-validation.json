@@ -1,0 +1,50 @@
+{
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "legacyDecoder": "WHATWG windows-1252 aliases"
+  },
+  "scope": "Development only:5fold hashCV onTRAIN rows; novalidation/holdout/freshcorpusread",
+  "positions": 1000,
+  "cutoff": 0.99,
+  "minClues": 20,
+  "maxClues": 64,
+  "featuresSha256": "d24f2e6d9f76c679f4f49f8e8bc91c00e141fc80eb14704cf14edd330059c9c5",
+  "rows": 2787,
+  "results": [
+    {
+      "method": "pooled",
+      "metrics": {
+        "TP": 223,
+        "FP": 2,
+        "TN": 2453,
+        "FN": 109,
+        "hardHamFP": 2,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "method": "equal",
+      "metrics": {
+        "TP": 91,
+        "FP": 0,
+        "TN": 2455,
+        "FN": 241,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    },
+    {
+      "method": "sqrt",
+      "metrics": {
+        "TP": 168,
+        "FP": 0,
+        "TN": 2455,
+        "FN": 164,
+        "hardHamFP": 0,
+        "hardHamTotal": 82
+      }
+    }
+  ]
+}

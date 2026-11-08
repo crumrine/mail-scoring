@@ -1,0 +1,45 @@
+{
+  "ticket": "DEV-1002",
+  "revision": 1,
+  "source": "c062fab384dd9cd43baf2c83a543c62a5e3f07d3",
+  "runtimeSource": "c062fab384dd9cd43baf2c83a543c62a5e3f07d3",
+  "supersededHead": "d149ca76b93113bb63d4c140a618cb7703aa8623",
+  "oldReview": "Stopped before verdict/approval afterauthorreproduced distinct-body regression; native normalreworkcycle1/revision1; oldevidencepreserved",
+  "fix": "Restore ORIGINAL5distinctnormalizedbodywords, not5positions, before subject-derived statistical evidence; fixedunfixednegativetest andtargetedmutant prove60->0 onauthoredrepeatedunknownbody/strongtrimmedSubject. CVbodydistinctguard reconstructedfromUNCHANGEDnumericmatrix.",
+  "modelSourceSha256": "c5cdbff4d63b98e9689013d6b9934635f445736657c65d854e867e6dd00a117c",
+  "modelUnchanged": true,
+  "trainingFeatureMatrixSha256": "d24f2e6d9f76c679f4f49f8e8bc91c00e141fc80eb14704cf14edd330059c9c5",
+  "trainingCvMetricsUnchanged": true,
+  "privateBundle": {
+    "sha256": "4c87c9da55e090ca0366af9296cd0c1617368299b39c5b307b56e36819c85f78",
+    "bytes": 777784
+  },
+  "checks": {
+    "full": "43coregroups/typecheck/build/actualworkerd graph,caps/RPC passed",
+    "mutations": "23core+8Worker caught/restored; distinctbodymutant reinstatesunfixedpositions andfailsauthorednegative",
+    "growth": "18allocation/growth passed",
+    "benchmarks": "warm/coldNode/actualWorker executed; localwallonly,nohostedCPU/cost",
+    "modelCv": "unchangednumericaltable c5cd,unchanged TRAINmatrixd24andallthreepredeclaredestimatormetrics; nometadata/threshold/sampletuning",
+    "oldKnownFp": "all3core0/nomodelreason/0fetches; notnewcalleracceptance",
+    "validation": "78TP0FP300TN178FN provisionalactualscorer+existingprojection,notcaller4/independent performance"
+  },
+  "files": {
+    "benchmark.json": "b20df42d6206acaa9e8b78e07406dce976c884fe42b218042b7ca51a44196697",
+    "benchmark.log": "ef3688cfc454ade080275b37aabfe3986dcf440cfd2b810b5a9adbf1a1c1c2dc",
+    "core-mutations.json": "0682f2fa82cb0de23a00d21a035c2336a17321b08f2309a689182fb44d6cbb7c",
+    "cross-validation.json": "d3fcf27eb57d6df3d05cc1e94431fc8bbe8ca9ade3c23f1cd6f034a5939e1779",
+    "cv.log": "d3fcf27eb57d6df3d05cc1e94431fc8bbe8ca9ade3c23f1cd6f034a5939e1779",
+    "direct-growth.json": "d75c871f3dcd533b66e9faf1ea8aaecc262f5999ec7269a1ef90c1fa2ed18e77",
+    "distinct-body-finding.json": "490af2b97bc168d2f4691d56aec1d4685740d384ed8f9d1f7f5e47781b013ffa",
+    "full-checks.log": "ce3dd46ce9a5556996aedc814397fbf436aaa3e40d6a8a662ba8cae4333bd2b6",
+    "old-fp-regressions.json": "e2ceb962629d17b364ff582ede2277aa828360b74a00d1754e8512efe5816222",
+    "old-fp-regressions.log": "f1a38ebd597f4e8c0e4c7ac76069691b402572983241afe2de8dcc43c037e58d",
+    "unfixed-distinct-body.log": "09c80975b776dbaff6fa3c79e2b9f33b5d23af30bb0cc4730f676d1c84da3d74",
+    "validation.json": "f188b7f11a4f07d864c8dfb77ad64303d2ae7fbb17a9e73ae7c390f41b92d5e6",
+    "validation.log": "a49e29bc7763684028a9c5e53b9b8332eff0c02cc15f07e6c7759192d6a7d86f",
+    "worker-benchmark.log": "b3b257e1a5bd0f7b9b4f941a7d10096f8fa6e19cdd4bf5ffe8d1c03c5b7b9f72",
+    "worker-build.json": "3b1498ab8316292e3666e7c0d2f1c0d4da2e6f88740931e4509eafc3f6b047d9",
+    "worker-mutations.json": "6cea716916b6db3a7ba6c4eb72e142ba635964d406308ea48a3159da2e38be79"
+  },
+  "remaining": "FreshindependentreviewofNEWhead, normalmerge,DEV1003compatiblecaller,DEV999honestpairedacceptanceandOPS614exactartifactmanualrelease. No freshcorpuspredictions,deployment/mail/privatecapture/deletion/rescan."
+}
