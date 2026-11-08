@@ -1,0 +1,40 @@
+{
+  "ticket": "DEV-997",
+  "source": "2e0225a9dfa3e0bc2bad324a1962fd885c2c1465",
+  "unapprovedPreviousHead": "62bd9a26879bbb567e8d071ab3928d42d2586caa",
+  "runtime": "Node24.15.0/ICU78.2; npm11.12.1",
+  "checks": {
+    "full": "39groups/typecheck/build/actualworkerdRPC/capabilities/17core+8Worker mutations restored/18directgrowth passed",
+    "runtimeRegression": "oldNode24.13 fails explicit profile; pinnedNode passes",
+    "frozenData": "Mac and VPS byte-identical new manifests/features; all6046 label/partition assignments and exclusions unchanged; no holdout predictions",
+    "model": "9413 count triples/doc totals byte-equivalent; only partition provenance constant changed",
+    "privateBundleSha256": "b846a9ab404695d8a55557df5acd44c58e28dd69a15a0b2c9ab1517c8a8934c8",
+    "privateBundleByteIdentical": true,
+    "validationOnly": {
+      "TP": 139,
+      "FP": 0,
+      "TN": 300,
+      "FN": 117
+    },
+    "limitations": "Actual scorerRPC and old projection plus proposed HTML-only field; not actual caller routing or heldout acceptance. Current source is not independently approved or deployed."
+  },
+  "files": {
+    "before-bundle.json": "b94932f72bc27bbf50bace499a76f63755c10403244fda5581f085d41d1bfeeb",
+    "core-validation.json": "4b8aff1d4ecfd590d67015504a58ea46aa2151b0eb6305ab1092565cc637c42c",
+    "freeze.log": "487efe0a3971a13234b58dcee06da6830f1155f4a0c05937eeaeffab27c6e03b",
+    "full-check.log": "8dd9c0b0a4fa9ff0cbc15a07802d0b0c9a60ac6c897d7b586951fa59cafaff78",
+    "growth.json": "535bfec533a9c3f6e5a96a6d2634b07b5074da276a24d962a43bcb57b150b303",
+    "growth.log": "17183eb0e4fa3071e303f735b8a0d661976231ff1c39a7fd79406e02100703a2",
+    "inline-report-regression.json": "063a63800f7b5c551399a937be22d0ce37861818efcbd8afc4020d9c8765ac73",
+    "model.json": "5eadce6d324e3c5e0db77e3f472e6ff75a231b5edc97ed859f3af1f43d91f63e",
+    "pinned-runtime-reproduction.json": "4164000236718d5f3cee943c4503a639d1db9538169d0a4602456eca2eb32c83",
+    "pinned-runtime.json": "85ceb20dd6e3e16771ab473e8e1ab5b1d094c817d22421455f04de133e2dddff",
+    "sbom.log": "4987113d38e0a8292f93e0a62ebbc16c01c74628524e41182c79cd2c676a8d34",
+    "tooling-provenance.json": "00067e72953ceac767fca1508096f25e635e88e97bba9c15fa40d41676d74a48",
+    "trainer-self-check.json": "8ee9bac4356da639a82aa7d056deed723d23a3b53947b08e3e14ab3d557d54bf",
+    "training.log": "44b8a218b2d619386d9e50acddbd7a83d49517d455c7563508ce82883becb845",
+    "unfixed-runtime.log": "5242eec791ff04458bb8fb072007d201aab78cbbf959dea490ef861df487d0ee",
+    "validation-prototype.json": "e7f197e53d658142e47cda66fd0db490f13129e9d48695e9fa403bae6fdb8a99",
+    "validation.log": "e7f217128d934402ef79cdb46e95f61868f77609f859f30881e65603a141a1e6"
+  }
+}

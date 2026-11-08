@@ -101,6 +101,10 @@ at most 64 selected clues, and body evidence. On the prototype validation-only
 measurement these detect 140/256 spam with 0/300 ham flagged. This is a development
 observation, not a claim of actual joined routing or held-out performance.
 DEV-999 owns that exact-source paired measurement and keeps all misses/FPs.
+With the pinned MIME runtime, actual scorer RPC plus the proposed bounded
+HTML-only projection detects 139/256 validation spam and flags 0/300 ham;
+this still does not test the new caller policy. The older 135/256 receipt used
+the incompatible author runtime and remains historical evidence.
 
 ## Bounds and abstention
 
