@@ -1,5 +1,10 @@
 # DEV-1002 contextual correction evidence
 
+This root directory preserves revision0. Its review was stopped without a
+verdict after an authored distinct-body evidence regression was reproduced.
+Current corrected acceptance is in `revision1/`; no revision0 approval or
+deployment is claimed.
+
 Source/runtime, exact numerical model and checked private Worker artifact hashes
 are in `receipt.json`. This is source work, not deployment. The original general-1
 acceptance failed (3 hard-ham false positives); DEV-999 preserves that complete

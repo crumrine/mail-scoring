@@ -13,7 +13,11 @@ sample exclusion was changed to erase the failure.
 Rules-4/general-2 adds adjacent-word context and non-overlapping clue selection,
 adapted from the same pinned PSF SpamBayes classifier.py `_getclues` implementation
 (lines377-444). A word position can contribute to only one selected unigram or
-bigram. Duplicate clues count once. Pair identities store two numeric word hashes,
+bigram. Duplicate clues count once. The original requirement for at least five
+**distinct** body words remains; repetition cannot let a strong subject become a
+body verdict. The first contextual revision accidentally counted positions
+instead; an authored unfixed/restored regression caught it before any approval
+or deployment, and independent review restarted on the corrected head. Pair identities store two numeric word hashes,
 with -1 marking a unigram, avoiding a second pair-hash collision domain. There
 are no literal words, phrases, message text or per-message sequences in the model.
 

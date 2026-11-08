@@ -42,6 +42,7 @@ test('statistical evidence excludes quoted and forwarded text and hidden active 
 });
 test('single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence',()=>{
  assert.equal(hasSpam(score('money '.repeat(500))),false);
+ assert.equal(hasSpam(score('qzxv '.repeat(5),{subject:spam.trim()})),false);
  assert.equal(hasSpam(score('',{subject:spam.slice(0,1000)})),false);
  assert.equal(hasSpam(score('Ordinary message',{headers:[{name:'X-Spam-Flag',value:'YES'},{name:'X-Spam-Status',value:spam}]})),false);
  assert.deepEqual(statisticalTokens('https://example.test/money/free/offer somebody@example.test www.example.test'),[]);
