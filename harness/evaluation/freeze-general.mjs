@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict';
+import {MIME_RUNTIME} from './mime-runtime.mjs';
 import {readFile,writeFile,lstat,mkdtemp,rm} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
@@ -65,5 +66,5 @@ try{
  const path=join(ROOT,'partitions.json');
  try{assert.equal((await readBounded(path,4*1024*1024)).toString('utf8'),output,'frozen partition drift');}catch(e){if(e.code!=='ENOENT')throw e;await writeFile(path,output);}
  await writeFile(join(ROOT,'features.json'),JSON.stringify(records)+'\n');
- console.log(JSON.stringify({manifestSha256:hash(output),summary}));
+ console.log(JSON.stringify({runtime:MIME_RUNTIME,manifestSha256:hash(output),summary}));
 }finally{await rm(tmp,{recursive:true,force:true});}

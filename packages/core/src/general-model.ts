@@ -3,7 +3,7 @@
 // Original numerical aggregate counts generated from the declared public training partition.
 // No source messages, words, addresses, URLs or sequences are included. Provenance: docs/general-spam.md.
 export const MODEL_VERSION = "general-1";
-export const MODEL_PARTITION_SHA256 = "f3bb8ee9f757bc374ff27c10526a02f58509b5bbd399e1151235e261ebaed6e9";
+export const MODEL_PARTITION_SHA256 = "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803";
 export const MODEL_DOCUMENTS:readonly [number,number] = [2452,331];
 export const MODEL_COUNTS:ReadonlyArray<readonly [number,number,number]> = [
   [225585,10,0],

@@ -29,6 +29,8 @@ core plus a [private Worker RPC adapter and off-by-default consumer sample](docs
 ## Local verification
 
 Use Node 24.15.0 and npm 11.12.1 (`nvm use`; `npm install -g npm@11.12.1 --ignore-scripts`).
+The full check and general-spam data tools enforce that Node version and a
+synthetic MIME decoder profile; older Node24 builds can change frozen features.
 
 ```sh
 npm ci

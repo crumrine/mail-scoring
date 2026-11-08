@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict';
+import {MIME_RUNTIME} from './mime-runtime.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
@@ -25,9 +26,9 @@ if(process.argv[2]==='--self-check'){
 }
 const root=process.argv[2];
 const frozen=await readBounded(root+'/partitions.json',4*1024*1024);
-assert.equal(sha256(frozen),'f3bb8ee9f757bc374ff27c10526a02f58509b5bbd399e1151235e261ebaed6e9');
+assert.equal(sha256(frozen),'111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803');
 const featureBytes=await readBounded(root+'/features.json',16*1024*1024);
-assert.equal(sha256(featureBytes),'52015ffb261b3590d375b88e7a5d08882ec0d4d78a085ad6b9ea14cebbea0ff6');
+assert.equal(sha256(featureBytes),'59d3915ab9b93943d3f454fa940e2d1da21f8ba0d766874dbc94f4b32b330e36');
 const manifest=JSON.parse(frozen),features=JSON.parse(featureBytes);
 assert.deepEqual(features.map(({features,...row})=>row),manifest.records);
 for(const row of features)assert.ok(Array.isArray(row.features)&&row.features.length<=1000&&row.features.every(n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff));
@@ -65,6 +66,6 @@ for(const cutoff of [.9,.95,.98,.99,.995,.999,.9999])for(const minClues of [12,2
  for(const r of rows){const spam=r.value>=cutoff&&r.clues>=minClues;if(r.label==='spam'){if(spam)TP++;else FN++;}else{if(spam)FP++;else TN++;}}
  metrics.push({cutoff,minClues,TP,FP,TN,FN});
 }
-const report={partitionSha256:model.partitionSha256,documents,modelEntries:entries.length,validationOnly:true,rows,metrics};
+const report={runtime:MIME_RUNTIME,partitionSha256:model.partitionSha256,documents,modelEntries:entries.length,validationOnly:true,rows,metrics};
 await writeFile('.artifacts/general/validation.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({partitionSha256:model.partitionSha256,documents,modelEntries:entries.length,metrics}));

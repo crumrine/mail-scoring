@@ -61,9 +61,20 @@ is exact normalized feature deduplication, not proof against all near-duplicate
 or thread/template leakage. No predictions enter selection.
 
 Frozen partition SHA256:
-`f3bb8ee9f757bc374ff27c10526a02f58509b5bbd399e1151235e261ebaed6e9`.
+`111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803`.
 Numeric feature-file SHA256:
-`52015ffb261b3590d375b88e7a5d08882ec0d4d78a085ad6b9ea14cebbea0ff6`.
+`59d3915ab9b93943d3f454fa940e2d1da21f8ba0d766874dbc94f4b32b330e36`.
+
+Independent reproduction caught an author-tooling mismatch: Node24.13 on Mac
+decoded legacy Western MIME bytes differently from the repository's pinned
+Node24.15.0. Repeating extraction under the pinned runtime gives byte-identical
+Mac/VPS manifests and features. Every one of the 6046 original label/partition
+assignments and every exclusion is unchanged; no holdout prediction was made.
+Five body-feature hashes and six numeric feature arrays changed, while the
+generated 9413 model count triples and document totals are identical. The old
+inputs and receipts remain historical evidence. `mime-runtime.mjs` now checks
+the exact runtime and synthetic Windows-1252 alias decoding before MIME extraction,
+training or general validation. Thresholds were unchanged.
 
 | Partition | Ham | Spam | Hard ham |
 | --- | ---: | ---: | ---: |
@@ -118,9 +129,10 @@ of this reason means insufficient statistical evidence, never verified ham.
 
 ## Reproduction and release limits
 
-Use the locked dependencies (scripts disabled), Node24 and Python3:
+Use the locked dependencies (scripts disabled), exact Node24.15.0 and Python3:
 
 ```
+node harness/evaluation/mime-runtime.mjs
 python3 harness/evaluation/prepare-general.py --self-check
 python3 harness/evaluation/prepare-general.py /external/data
 node harness/evaluation/freeze-general.mjs /external/data /installed/inbox

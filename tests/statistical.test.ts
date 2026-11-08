@@ -59,7 +59,7 @@ test('Fisher combination is symmetric, finite, bounded and preserves the unsure 
  assert.equal(chiTail(-1,1),Math.exp(-1));assert.equal(chiTail(-1,100000),1);
 });
 test('numerical model is a bounded unique aggregate from the frozen training partition',()=>{
- assert.equal(MODEL_PARTITION_SHA256,'f3bb8ee9f757bc374ff27c10526a02f58509b5bbd399e1151235e261ebaed6e9');
+ assert.equal(MODEL_PARTITION_SHA256,'111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803');
  assert.deepEqual(MODEL_DOCUMENTS,[2452,331]);assert.equal(MODEL_COUNTS.length,9413);
  assert.equal(new Set(MODEL_COUNTS.map(c=>c[0])).size,MODEL_COUNTS.length);
  for(const [id,h,s]of MODEL_COUNTS){assert.ok(Number.isInteger(id)&&id>=0&&id<=0xffffffff);assert.ok(h>=0&&h<=MODEL_DOCUMENTS[0]);assert.ok(s>=0&&s<=MODEL_DOCUMENTS[1]);assert.ok(h+s>=3);}
