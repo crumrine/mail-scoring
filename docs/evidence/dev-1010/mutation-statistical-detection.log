@@ -1,0 +1,259 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.902917ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (20.758667ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (5.199875ms)
+✔ header, URL, metadata cardinalities below/at/above (0.938042ms)
+✔ secondary fields and multibyte truncation are bounded (0.256916ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.38775ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (0.576791ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.545667ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (2.7945ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.688583ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.132ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.210916ms)
+✔ unprepared roots are refused before any structural operation (0.277292ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (1.5455ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (11.360417ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.2265ms)
+✔ recall release gate rejects lower recall, hidden HAM catches and changed source/evidence (338.837541ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.85775ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.562209ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.892583ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (1.383417ms)
+✖ new statistical evidence requires declared rules-7 (0.598ms)
+✖ historical rules-3 through rules-6 statistical evidence remain strictly readable (0.612625ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (11.108458ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.24825ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (31.768625ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (2.134583ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.380167ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.590291ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (14.114792ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (11.459583ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.260459ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (46.100208ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (17.096666ms)
+✖ general spam detects original promotional plain text and inert HTML once, with static evidence (2.045125ms)
+✖ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.366041ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (4.992667ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (0.520791ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (1.048709ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (7.300959ms)
+✔ single-word stability rejects numerical evidence carried by one influential clue (4.354542ms)
+✔ single-word stability abstains on the original fragile synthetic prefix in plain text and HTML (0.194875ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (8.072042ms)
+✖ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (8.322291ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.166416ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (12.751667ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.497083ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.2995ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.173208ms)
+✔ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (1.776083ms)
+✖ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (0.516083ms)
+✖ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (0.295708ms)
+✖ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (4.691875ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 45
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1154.316584
+
+✖ failing tests:
+
+test at tests/rpc.test.ts:57:1
+✖ new statistical evidence requires declared rules-7 (0.598ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 60
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rpc.test.ts:59:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 60,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rpc.test.ts:64:1
+✖ historical rules-3 through rules-6 statistical evidence remain strictly readable (0.612625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   ok: true,
+  +   result: {
+  +     engineVersion: '0.1.0',
+  +     error: null,
+  +     heuristicScore: 0,
+  +     limitsHit: [
+  +       'auth_unknown'
+  +     ],
+  +     reasons: [],
+  +     ruleSetVersion: 'rules-7',
+  +     schemaVersion: '1',
+  +     signals: {
+  +       marketing: 'unknown',
+  +       phishing: 'unknown',
+  +       spam: 'unknown'
+  +     },
+  +     status: 'partial'
+  +   },
+  +   rpcVersion: '1'
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rpc.test.ts:70:50)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { rpcVersion: '1', ok: true, result: { schemaVersion: '1', engineVersion: '0.1.0', ruleSetVersion: 'rules-7', status: 'partial', heuristicScore: 0, signals: [Object], reasons: [], limitsHit: [Array], error: null } },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:20:1
+✖ general spam detects original promotional plain text and inert HTML once, with static evidence (2.045125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 60
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:22:83)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 60,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:27:1
+✖ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.366041ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 60
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:29:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 60,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:122:1
+✖ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (8.322291ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.limitsHit.includes('statistical_limit'))
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:128:30)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:184:1
+✖ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (0.516083ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(result.limitsHit.includes('statistical_limit'))
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:192:49)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:197:1
+✖ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (0.295708ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(result.limitsHit.includes('statistical_limit'))
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:200:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/statistical.test.ts:205:1
+✖ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (4.691875ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(result.limitsHit.includes('statistical_limit'))
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/statistical.test.ts:208:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

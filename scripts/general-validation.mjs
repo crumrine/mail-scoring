@@ -22,7 +22,7 @@ try{
  for(const record of manifest.records.filter(r=>r.partition==='validation')){
   const raw=new Uint8Array(await readBounded(join(root,record.path),record.bytes));assert.equal(sha256(raw),record.id);
   let result=null;
-  if(inspectableRaw(raw)){
+  if(inspectableRaw(raw,true)){
    const parsed=await PostalMime.parse(raw),input=project(parsed);
    // Proposed bounded HTML-only projection; actual caller routing is independently verified downstream.
    if(!input.text&&parsed.html&&parsed.html.length<=32768&&Buffer.byteLength(parsed.html)<=32768)input.html=parsed.html;
@@ -30,7 +30,7 @@ try{
    const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify(input)),JSON.stringify({transportVerified:false,preferencesVerified:true}));
    const decoded=JSON.parse(wire);if(decoded.ok)result=decoded.result;
   }
-  rows.push({id:record.id,label:record.label,group:record.group,htmlOnly:record.htmlOnly,status:result?.status??'unavailable',score:result?.heuristicScore??null,reasons:result?.reasons.map(r=>r.id)??[],limits:result?.limitsHit??[],detected:result?.reasons.some(r=>r.id==='statistical_linear_spam')??false});
+  rows.push({id:record.id,label:record.label,group:record.group,htmlOnly:record.htmlOnly,status:result?.status??'unavailable',score:result?.heuristicScore??null,reasons:result?.reasons.map(r=>r.id)??[],limits:result?.limitsHit??[],detected:result?.reasons.some(r=>r.id==='statistical_robust_spam')??false});
  }
 }finally{globalThis.fetch=originalFetch;}
 assert.equal(fetches,0);assert.equal(rows.length,556);

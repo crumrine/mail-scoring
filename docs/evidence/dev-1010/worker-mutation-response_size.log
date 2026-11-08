@@ -1,0 +1,43 @@
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.942416ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.656333ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.680875ms)
+✖ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (4.395541ms)
+✔ new statistical evidence requires declared rules-7 (1.484958ms)
+✔ historical rules-3 through rules-6 statistical evidence remain strictly readable (1.508334ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1166.642792
+
+✖ failing tests:
+
+test at tests/rpc.test.ts:34:1
+✖ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (4.395541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   error: 'invalid_input',
+  +   ok: false,
+  +   rpcVersion: '1'
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rpc.test.ts:46:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { rpcVersion: '1', ok: false, error: 'invalid_input' },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
