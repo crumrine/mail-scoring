@@ -1,4 +1,12 @@
-# DEV-1009: prospective fifth acceptance
+# DEV-1009: rules-10 passed the fifth independent test
+
+The fifth holdout caught **532 of 1,000 spam (53.2%)** versus **211 of 1,000 (21.1%)** with the original deployed filter, a gain of **32.1 percentage points**. The replacement flagged **zero of 1,000 legitimate messages** on the fifth and **zero of 7,603** across all seven research cohorts. It caught **551 of 1,000** in the original benchmark, up from **212 of 1,000**. The known reference false positive is still present in the fourth archive and is corrected by the replacement.
+
+The source, runner and controls were committed as `7c529c2b17f583affcdf14809b83d2b84ad61160` before any joined predictions. The [ordering receipt](before-fifth-predictions.json) records all six observed passes before the fifth first opened at 01:05:34.897631 UTC on November 9, 2026. All 14,736 selected cases, exact labels, unavailable results and misses remain in the seven reports. All 167 authored legitimate examples passed in both plain text and HTML. The fifth is now observed; reproduction does not restore untouched status.
+
+The [acceptance receipt](acceptance.json) is local evidence. Independent reproduction and normal merge remain required before OPS-615 can deploy the exact reviewed artifacts. The original production filter remains live until that manual rollout is verified. Historical rules-6 through rules-9 remain rejected for deployment or rollback.
+
+## Procedure frozen before predictions
 
 The exact merged pair is Inbox `2170ff6c5d29f0d8ecd8fb08f584556ae821f793` and scorer `f8aa6004c7a0990ae99dff51b2da0afe41bad412` (rules-10/general-8, Inbox policy 9). Reference remains the original deployed filter at Inbox `606d0edee433fbf2aee517b1f1b61e631251a79a` and scorer `5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0`. The [fourth rejection](../dev-1009-wordpair/README.md) and exact original reference outcomes remain archived, including its known legitimate catch.
 

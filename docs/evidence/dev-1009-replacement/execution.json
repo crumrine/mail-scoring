@@ -1,0 +1,200 @@
+[
+  {
+    "mode": "sa",
+    "startedAt": "2026-11-09T01:04:44.484902+00:00",
+    "completedAt": "2026-11-09T01:04:58.402576+00:00",
+    "exitCode": 0,
+    "reportSha256": "f39ab1deab7244cdec8b54bf61f3f152f055e795956fca5caac2587e82fec172",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 290,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 843,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "candidate": {
+      "TP": 475,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 658,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "baselineHamIds": [],
+    "failures": []
+  },
+  {
+    "mode": "enron",
+    "startedAt": "2026-11-09T01:04:58.407553+00:00",
+    "completedAt": "2026-11-09T01:05:05.949545+00:00",
+    "exitCode": 0,
+    "reportSha256": "9d551ef73c77dac436be7a4364bc22a102a91ae5748dcf67810cdd8d226a344d",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 212,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 788,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 551,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 449,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [],
+    "failures": []
+  },
+  {
+    "mode": "first",
+    "startedAt": "2026-11-09T01:05:05.953156+00:00",
+    "completedAt": "2026-11-09T01:05:13.268647+00:00",
+    "exitCode": 0,
+    "reportSha256": "4b2415b07d0a386c652b7d5e069382ecfd8d9585fa03f253cfbff8f435063aea",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 64,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 936,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 512,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 488,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [],
+    "failures": []
+  },
+  {
+    "mode": "second",
+    "startedAt": "2026-11-09T01:05:13.272170+00:00",
+    "completedAt": "2026-11-09T01:05:20.301017+00:00",
+    "exitCode": 0,
+    "reportSha256": "b215a16f6d13bd765eb0bf43a31e3bdc96d972d2ed46970640930d127bd6d1f9",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 67,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 933,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 490,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 510,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [],
+    "failures": []
+  },
+  {
+    "mode": "third",
+    "startedAt": "2026-11-09T01:05:20.304551+00:00",
+    "completedAt": "2026-11-09T01:05:27.384396+00:00",
+    "exitCode": 0,
+    "reportSha256": "85f6099845710065da429402d2e8b0c2b9dd47236f4a7f76c77b8447bd87ad0f",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 62,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 938,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 553,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 447,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [],
+    "failures": []
+  },
+  {
+    "mode": "fourth",
+    "startedAt": "2026-11-09T01:05:27.387941+00:00",
+    "completedAt": "2026-11-09T01:05:34.893953+00:00",
+    "exitCode": 0,
+    "reportSha256": "cc3777dac52490abe811ad58769a3b2099d677e55c0de6936c44926c4ab359f6",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 188,
+      "FP": 1,
+      "TN": 999,
+      "FN": 812,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 507,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 493,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [
+      "dfc9acee291da921677d3d8f766ace54850498546dea43230e81e7650772f6af"
+    ],
+    "failures": []
+  },
+  {
+    "mode": "fifth",
+    "startedAt": "2026-11-09T01:05:34.897631+00:00",
+    "completedAt": "2026-11-09T01:05:41.603724+00:00",
+    "exitCode": 0,
+    "reportSha256": "32f7ac4e383ead8397f45f91595437beba4a029a2fc2c4aa8fff54a5bbecde1e",
+    "regressionGatePassed": true,
+    "baseline": {
+      "TP": 211,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 789,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "candidate": {
+      "TP": 532,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 468,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baselineHamIds": [],
+    "failures": []
+  }
+]
