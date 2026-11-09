@@ -1,0 +1,72 @@
+{
+  "reports": [
+    {
+      "manifestSha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+      "counts": {
+        "TP": 475,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 658,
+        "unavailable": 18
+      },
+      "falsePositives": []
+    },
+    {
+      "manifestSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380",
+      "counts": {
+        "TP": 551,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 449,
+        "unavailable": 2
+      },
+      "falsePositives": []
+    },
+    {
+      "manifestSha256": "2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552",
+      "counts": {
+        "TP": 512,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 488,
+        "unavailable": 9
+      },
+      "falsePositives": []
+    },
+    {
+      "manifestSha256": "fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19",
+      "counts": {
+        "TP": 490,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 510,
+        "unavailable": 11
+      },
+      "falsePositives": []
+    },
+    {
+      "manifestSha256": "be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8",
+      "counts": {
+        "TP": 553,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 447,
+        "unavailable": 10
+      },
+      "falsePositives": []
+    },
+    {
+      "manifestSha256": "1e9b81b5275989be10b5685695700ccc3a92ee163517fd45eedf0bd92395e15d",
+      "counts": {
+        "TP": 507,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 493,
+        "unavailable": 3
+      },
+      "falsePositives": []
+    }
+  ],
+  "fetches": 0,
+  "fifthPredictions": 0
+}

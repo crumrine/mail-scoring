@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-9",
+      "const": "rules-10",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
@@ -22,7 +22,8 @@
         "rules-6",
         "rules-7",
         "rules-8",
-        "rules-9"
+        "rules-9",
+        "rules-10"
       ]
     },
     "status": {
@@ -68,7 +69,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 18,
+      "maxItems": 19,
       "items": {
         "oneOf": [
           {
@@ -283,6 +284,28 @@
               },
               "reason": {
                 "const": "The message declares mailing-list or bulk characteristics."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_balanced_evidence_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "Spam evidence remains strong after discounting two words and retaining evidence against spam (general-8 heuristic)."
               }
             },
             "required": [

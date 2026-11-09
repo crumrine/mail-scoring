@@ -1,4 +1,4 @@
-> Current additive contract: engine0.1.0/schema1/RPC1, rules-9 and strict historical versions1–8. `statistical_word_pair_spam` is valid only under9; older reasons retain their exact historical versions/text. GTUBE2–9 remains supported; unknown10 is rejected. Generated schemas and [contextual-precision.md](contextual-precision.md) describe current source. The deterministic foundation and rollout examples below are historical.
+> Current additive contract: engine 0.1.0 / schema 1 / RPC 1, rules-10 and strict historical versions 1–9. `statistical_balanced_evidence_spam` is valid only under rules-10. Historical reason IDs and text are unchanged. GTUBE remains supported by rules-2 through rules-10.
 
 # Bounded scoring protocol v1
 

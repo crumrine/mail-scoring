@@ -18,7 +18,7 @@ export default {
     const marketing=score(prepared({...ordinary,headers:[{name:'List-Id',value:'synthetic.test'}]}));
     check(marketing.heuristicScore===0 && marketing.signals.marketing==='present');
     const gtube=score(prepared({...ordinary,text:GTUBE_MARKER}));
-    check(gtube.ruleSetVersion==='rules-9' && gtube.heuristicScore===100 && gtube.reasons[0]?.id==='gtube');
+    check(gtube.ruleSetVersion==='rules-10' && gtube.heuristicScore===100 && gtube.reasons[0]?.id==='gtube');
     const gtubeQuoted=score(prepared({...ordinary,text:`> ${GTUBE_MARKER}`}));
     check(gtubeQuoted.heuristicScore===0 && gtubeQuoted.limitsHit.includes('quoted_content'));
     const expanded=score(prepared({...ordinary,text:'\ufdfa'.repeat(10000)}));

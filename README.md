@@ -4,7 +4,7 @@ Release hold: rules-6, rules-8 and rules-9 caught legitimate mail in independent
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Current source contains rejected rules-9/general-7.** The [contextual precision correction](docs/contextual-precision.md) and all historical test results remain available. DEV-1009 owns independent acceptance of the next candidate, and OPS-615 owns manual deployment. Source and training results do not override independent acceptance.
+**Current source candidate is rules-10/general-8.** The [contradictory evidence correction](docs/evidence/dev-1020/README.md) keeps all historical results. DEV-1009 owns independent acceptance of the compatible scorer and caller; OPS-615 owns manual deployment. Source and training results do not establish acceptance or deployment.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

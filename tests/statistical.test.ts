@@ -13,22 +13,22 @@ import {contextProbabilities} from '../packages/core/dist/context-probabilities.
 import {tiledClues} from '../packages/core/dist/vendor/tiling.js';
 import {combineClues,chiTail} from '../packages/core/dist/vendor/chi.js';
 import {MODEL_COUNTS,MODEL_DOCUMENTS,MODEL_PARTITION_SHA256} from '../packages/core/dist/context-model.js';
-import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION,MODEL_MIN_KNOWN_BODY_PERCENT,MODEL_BIAS,MODEL_LOGIT_CUTOFF} from '../packages/core/dist/linear-model.js';
+import {MODEL_FEATURES,MODEL_TRAIN_MATRIX_SHA256,MODEL_VERSION,MODEL_MIN_KNOWN_BODY_PERCENT,MODEL_MIN_POSITIVE_PERCENT,MODEL_BIAS,MODEL_LOGIT_CUTOFF} from '../packages/core/dist/linear-model.js';
 import {linearSpam} from '../packages/core/dist/linear.js';
 const spam=STATISTICAL_SPAM;
 const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'general-test',subject:'',text,headers:[],sourceComplete:true,...extra})));
-const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_word_pair_spam');
+const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_balanced_evidence_spam');
 test('general spam detects original promotional plain text and inert HTML once, with static evidence',()=>{
  for(const input of [{text:spam},{text:'',html:'<html><body><p>'+spam+'</p></body></html>'},{text:spam+'\n'+spam}]){
-  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-9');assert.equal(r.heuristicScore,60);
-  assert.deepEqual(r.reasons,[{id:'statistical_word_pair_spam',contribution:60,reason:REASONS.statistical_word_pair_spam}]);
+  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-10');assert.equal(r.heuristicScore,60);
+  assert.deepEqual(r.reasons,[{id:'statistical_balanced_evidence_spam',contribution:60,reason:REASONS.statistical_balanced_evidence_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
  }
 });
 test('additional public TRAIN vocabulary detects an authored pharmacy advertisement',()=>{
  for(const input of [{text:PHARMACY_SPAM},{text:'',html:'<p>'+PHARMACY_SPAM+'</p>'}]){
   const r=score(input.text,input);assert.equal(r.heuristicScore,60);assert.equal(hasSpam(r),true);
-  assert.deepEqual(r.reasons,[{id:'statistical_word_pair_spam',contribution:60,reason:REASONS.statistical_word_pair_spam}]);
+  assert.deepEqual(r.reasons,[{id:'statistical_balanced_evidence_spam',contribution:60,reason:REASONS.statistical_balanced_evidence_spam}]);
  }
 });
 test('legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain',()=>{
@@ -90,6 +90,23 @@ test('linear evidence requires supported body words, ignores repetition, and enf
  const mostlyKnown=[...fiveKnown,0,1,2,3,4,5];
  assert.equal(linearSpam(numericFeatures(wordRows(mostlyKnown)),mostlyKnown),undefined);
  assert.equal(linearSpam([...positive].reverse(),[...body].reverse()),true);
+});
+
+test('contradictory evidence stops a high-margin classification',()=>{
+ const contribution=(row:typeof MODEL_FEATURES[number])=>row[2]*row[3];
+ const ordered=[...modelWords].sort((a,b)=>contribution(b)-contribution(a));
+ const positive=ordered.slice(0,20),negative=ordered.slice(-10).reverse();
+ const positiveLeft=positive.slice(2).reduce((sum,row)=>sum+contribution(row),0);
+ const share=(rows:typeof MODEL_FEATURES)=>100*positiveLeft/(positiveLeft-rows.reduce((sum,row)=>sum+contribution(row),0));
+ const enough=negative.slice(0,9);
+ const body=positive.map(row=>row[0]);
+ assert.ok(share(enough)>=MODEL_MIN_POSITIVE_PERCENT);
+ assert.ok(share(negative)<MODEL_MIN_POSITIVE_PERCENT);
+ assert.ok(numericMargin([...positive,...negative],2)>=MODEL_LOGIT_CUTOFF);
+ const passing=numericFeatures([...positive,...enough]);
+ assert.equal(linearSpam(passing,body),true);
+ assert.equal(linearSpam([...passing,...Array(15).fill(passing.at(-1)!)],body),true);
+ assert.equal(linearSpam(numericFeatures([...positive,...negative]),body),false);
 });
 
 test('two-word stability rejects evidence that survives losing one word',()=>{
@@ -154,22 +171,22 @@ test('historical authored spam prefixes still abstain in plain text and HTML',()
 
 test('all frozen authored legitimate controls remain assessed, partial, zero-score in plain text and HTML',async()=>{
  const {readFile}=await import('node:fs/promises');
- const raw=await readFile('harness/evaluation/refit-legitimate-controls.json');
- assert.equal(createHash('sha256').update(raw).digest('hex'),'667dc0c9052480d0e63a83b7097550c1f8d9550a575ed9a15bf5d7d515e84975');
- const controls=JSON.parse(raw.toString()).records;assert.equal(controls.length,119);
+ const raw=await readFile('harness/evaluation/wordpair-legitimate-controls.json');
+ assert.equal(createHash('sha256').update(raw).digest('hex'),'973f7dd28694bc1b98a4be601a253a3fd1913da9eebbb187555b3d6622dbc3e2');
+ const controls=JSON.parse(raw.toString()).records;assert.equal(controls.length,143);
  const escape=(text:string)=>text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
  for(const sample of controls)for(const extra of [{text:sample.text},{text:'',html:`<p>${escape(sample.text)}</p>`}]){
   assert.equal(sample.label,'ham');const result=score(extra.text,{subject:sample.subject,...extra});
-  assert.equal(result.ruleSetVersion,'rules-9');assert.equal(result.status,'partial');assert.equal(result.heuristicScore,0,sample.id);assert.equal(hasSpam(result),false,sample.id);
+  assert.equal(result.ruleSetVersion,'rules-10');assert.equal(result.status,'partial');assert.equal(result.heuristicScore,0,sample.id);assert.equal(hasSpam(result),false,sample.id);
  }
 });
 
 test('current linear model contains bounded numeric aggregates from the frozen TRAIN matrix',()=>{
- assert.equal(MODEL_VERSION,'general-7');assert.equal(MODEL_MIN_KNOWN_BODY_PERCENT,50);
+ assert.equal(MODEL_VERSION,'general-8');assert.equal(MODEL_MIN_KNOWN_BODY_PERCENT,50);assert.equal(MODEL_MIN_POSITIVE_PERCENT,55);
  assert.equal(MODEL_TRAIN_MATRIX_SHA256,'1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49');
  assert.equal(MODEL_FEATURES.length,50000);assert.equal(modelWords.length,25439);
  assert.equal(new Set(MODEL_FEATURES.map(row=>contextKey(row[0],row[1]))).size,MODEL_FEATURES.length);
- assert.equal(createHash('sha256').update(JSON.stringify({bias:MODEL_BIAS,features:MODEL_FEATURES})).digest('hex'),'55716233cf854b8ca2d4156d1f198b7d96fd22b0b9b8532a4b20c377b6db5be8');
+ assert.equal(createHash('sha256').update(JSON.stringify({bias:MODEL_BIAS,features:MODEL_FEATURES})).digest('hex'),'a570227e94e5e6d7fa9f558cefa73079916ce08c62e6038e9f3951c96c9620f6');
  for(const [first,second,idf,weight]of MODEL_FEATURES){
   assert.ok(Number.isInteger(first)&&first>=0&&first<=0xffffffff);
   assert.ok(Number.isInteger(second)&&second>=-1&&second<=0xffffffff);
