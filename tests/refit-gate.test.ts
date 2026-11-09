@@ -3,7 +3,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtempSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
-import {createHash} from 'node:crypto';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -12,7 +11,8 @@ test('refit release gate requires five complete pinned studies, every frozen HAM
  const root=mkdtempSync(join(tmpdir(),'refit-gate-check-'));
  try{
   const pins={baseline:{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'},candidate:{inbox:'b5a89a074e362d8123ee3bf260b6208c78503479',scorer:'62919bc8f939bc94c0552fc6a3917c03a3373646'}};
-  const runnerSha256=createHash('sha256').update(readFileSync('harness/evaluation/run.mjs')).digest('hex');
+  // Original refit study used the immutable 4ae runner, not later shared-runner extensions.
+  const runnerSha256='62bc563aee626e1ff2e7ba146ef8eac8a9fbe9365d481f15c1158cee5c9c57cf';
   const frozen=JSON.parse(readFileSync('harness/evaluation/refit-legitimate-controls.json','utf8')).records;
   const manifests=['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380','2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552','fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19','be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8'];
   const make=()=>['refit-sa','refit-enron','refit-first','refit-second','refit-third'].map((evaluationMode,index)=>({evaluationMode,manifestSha256:manifests[index],runnerSha256,independentHoldout:index===4,checks:{networkAttempts:0,repeatedOrderInvariant:true},generalProvenance:{modelVersion:'general-6',modelSourceSha256:'a08e63c014ef291ad94a6c1c357aca0b7fc308948efb7720d35133d4fb487d8f',twoPositiveContributionLowerBound:true,fixedReferenceConjunction:true,legitimateControlsSha256:'667dc0c9052480d0e63a83b7097550c1f8d9550a575ed9a15bf5d7d515e84975'},identities:Object.fromEntries(Object.entries(pins).map(([name,pins])=>[name,{pins:{...pins}}])),variants:Object.fromEntries(['baseline','candidate'].map(name=>{

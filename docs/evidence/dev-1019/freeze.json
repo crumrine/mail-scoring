@@ -1,0 +1,15 @@
+{
+  "manifestSha256": "7e713aabc0adde0cc734cd7d73c3db13c919c96d6a765d42c7f468796bad1357",
+  "summary": {
+    "holdout": {
+      "total": 2000,
+      "ham": 1000,
+      "spam": 1000
+    }
+  },
+  "selectedBytes": 9128645,
+  "selection": "neutral raw/body disjoint SHA order, first1000 per label",
+  "rawAndBodyOverlapWithExclusions": 0,
+  "withinCohortRawOrBodyDuplicates": 0,
+  "predictions": 0
+}

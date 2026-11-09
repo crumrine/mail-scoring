@@ -1,10 +1,10 @@
 # Mail Scoring
 
-Release hold: rules-6 and rules-8 each caught legitimate mail in independent acceptance; rules-7 failed the fixed 50% recall gate. Do not deploy any of them or use them for rollback. All failures remain archived. DEV-1016 freezes a fourth untouched cohort before corrective classifier work; reviewed DEV-1017/1018 and unchanged DEV-1009 gates must precede OPS-615 manual release. Production remains the approved rules-5 pair.
+Release hold: rules-6, rules-8 and rules-9 caught legitimate mail in independent acceptance; rules-7 failed the fixed 50% recall gate. Rules-9 also missed 50% recall, and the original deployed rules-5 filter flagged the same legitimate research message. See the [fourth failed study](docs/evidence/dev-1009-wordpair/README.md). Do not deploy or roll back to rules-6 through rules-9.
 
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Current source candidate: bounded deterministic/phishing/GTUBE rules plus rules-9/general-7 word-pair evidence. Independent acceptance and deployment remain pending.** See the [contextual precision correction](docs/contextual-precision.md). The [robust refit](docs/robust-refit.md) and [third failed study](docs/evidence/dev-1009-refit/README.md) remain recorded. [DEV-1016](docs/evidence/dev-1016/README.md) freezes a fourth untouched cohort before DEV-1017/1018 corrective source work. DEV-1009 owns unchanged independent acceptance and OPS-615 owns manual deployment. Source or TRAIN results do not override a failed independent gate or establish modern mailbox accuracy.
+**Current source contains rejected rules-9/general-7.** The [contextual precision correction](docs/contextual-precision.md) and all historical test results remain available. DEV-1009 owns independent acceptance of the next candidate, and OPS-615 owns manual deployment. Source and training results do not override independent acceptance.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 

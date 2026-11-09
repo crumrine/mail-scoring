@@ -1,0 +1,779 @@
+{
+  "pins": {
+    "baseline": {
+      "inbox": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+      "scorer": "5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0"
+    },
+    "candidate": {
+      "inbox": "35718322ea97e1c6cec6adee8b0483950bc65f99",
+      "scorer": "453cc3423e222b0e853bf3d8e9d590ee01e44bf7"
+    }
+  },
+  "runnerSha256": "41379c9bc8562fd67190c30deed314e269d3e9e76eeaa447c67d0c8c5936627f",
+  "controlsSha256": "973f7dd28694bc1b98a4be601a253a3fd1913da9eebbb187555b3d6622dbc3e2",
+  "legitimateCases": 143,
+  "legitimatePlainHtmlEvaluationsPerVariantPerStudy": 286,
+  "inputs": [
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-sa/report.json",
+      "sha256": "1f0afd9f02c8d444f98dc5dfc0a85706f2556aa59f405943c8b4de5af5eac853",
+      "mode": "wordpair-sa",
+      "manifestSha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+      "baseline": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 290,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 843,
+        "precision": 1,
+        "recall": 0.2559576345984113,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-5": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2428,
+          "rule_evidence": 290,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1978,
+          "10": 432,
+          "15": 14,
+          "20": 3,
+          "25": 1,
+          "60": 250,
+          "70": 37,
+          "75": 2,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_generalized_spam": 290
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 75,
+          "url_uninspected": 1
+        }
+      },
+      "candidate": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 474,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 659,
+        "precision": 1,
+        "recall": 0.4183583406884378,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-9": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2244,
+          "rule_evidence": 474,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1814,
+          "10": 418,
+          "15": 8,
+          "20": 3,
+          "25": 1,
+          "60": 414,
+          "70": 51,
+          "75": 8,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_word_pair_spam": 474
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 163,
+          "url_uninspected": 1
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-enron/report.json",
+      "sha256": "4c4fccb47ef179d10d212cad11df4e8f8ca083c5cac50d6a0c4a1e3775036d86",
+      "mode": "wordpair-enron",
+      "manifestSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 212,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 788,
+        "precision": 1,
+        "recall": 0.212,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1930,
+          "unavailable": 70
+        },
+        "ruleSets": {
+          "rules-5": 1930,
+          "unavailable": 70
+        },
+        "engineVersions": {
+          "0.1.0": 1930,
+          "unavailable": 70
+        },
+        "unavailableCauses": {
+          "raw_preflight": 69,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1718,
+          "rule_evidence": 212,
+          "unavailable": 70
+        },
+        "scores": {
+          "0": 1697,
+          "10": 16,
+          "15": 2,
+          "20": 3,
+          "60": 192,
+          "70": 20,
+          "unavailable": 70
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_generalized_spam": 212
+        },
+        "limits": {
+          "auth_unknown": 1930,
+          "control_chars": 65,
+          "html_uninspected": 286,
+          "identity_uninspected": 1638,
+          "quoted_content": 37,
+          "source_incomplete": 1930,
+          "statistical_limit": 18
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 525,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 475,
+        "precision": 1,
+        "recall": 0.525,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1998,
+          "unavailable": 2
+        },
+        "ruleSets": {
+          "rules-9": 1998,
+          "unavailable": 2
+        },
+        "engineVersions": {
+          "0.1.0": 1998,
+          "unavailable": 2
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1473,
+          "rule_evidence": 525,
+          "unavailable": 2
+        },
+        "scores": {
+          "0": 1456,
+          "10": 15,
+          "15": 1,
+          "20": 1,
+          "60": 501,
+          "70": 21,
+          "75": 1,
+          "80": 2,
+          "unavailable": 2
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_word_pair_spam": 525
+        },
+        "limits": {
+          "auth_unknown": 1998,
+          "control_chars": 74,
+          "html_uninspected": 296,
+          "identity_uninspected": 1706,
+          "quoted_content": 37,
+          "source_incomplete": 1998,
+          "statistical_limit": 134
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-first/report.json",
+      "sha256": "268fda90996db9ccecbe7922c9c756947973b3b0b02dacce313e237b925a6bfb",
+      "mode": "wordpair-first",
+      "manifestSha256": "2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 64,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 936,
+        "precision": 1,
+        "recall": 0.064,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1838,
+          "unavailable": 162
+        },
+        "ruleSets": {
+          "rules-5": 1838,
+          "unavailable": 162
+        },
+        "engineVersions": {
+          "0.1.0": 1838,
+          "unavailable": 162
+        },
+        "unavailableCauses": {
+          "raw_preflight": 153,
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1774,
+          "rule_evidence": 64,
+          "unavailable": 162
+        },
+        "scores": {
+          "0": 1742,
+          "10": 31,
+          "15": 1,
+          "60": 56,
+          "70": 7,
+          "95": 1,
+          "unavailable": 162
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_generalized_spam": 64
+        },
+        "limits": {
+          "auth_unknown": 1838,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1567,
+          "quoted_content": 158,
+          "source_incomplete": 1838,
+          "statistical_limit": 20
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 464,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 536,
+        "precision": 1,
+        "recall": 0.464,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1991,
+          "unavailable": 9
+        },
+        "ruleSets": {
+          "rules-9": 1991,
+          "unavailable": 9
+        },
+        "engineVersions": {
+          "0.1.0": 1991,
+          "unavailable": 9
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1527,
+          "rule_evidence": 464,
+          "unavailable": 9
+        },
+        "scores": {
+          "0": 1498,
+          "10": 28,
+          "15": 1,
+          "60": 453,
+          "70": 10,
+          "95": 1,
+          "unavailable": 9
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_word_pair_spam": 464
+        },
+        "limits": {
+          "auth_unknown": 1991,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1720,
+          "quoted_content": 158,
+          "source_incomplete": 1991,
+          "statistical_limit": 85
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-second/report.json",
+      "sha256": "681ebece0609e9bb8bc340ec455dc01bcd00a4f0285684fdbe60a507f8764691",
+      "mode": "wordpair-second",
+      "manifestSha256": "fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 67,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 933,
+        "precision": 1,
+        "recall": 0.067,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1823,
+          "unavailable": 177
+        },
+        "ruleSets": {
+          "rules-5": 1823,
+          "unavailable": 177
+        },
+        "engineVersions": {
+          "0.1.0": 1823,
+          "unavailable": 177
+        },
+        "unavailableCauses": {
+          "raw_preflight": 166,
+          "scorer_unavailable": 11
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1756,
+          "rule_evidence": 67,
+          "unavailable": 177
+        },
+        "scores": {
+          "0": 1719,
+          "10": 34,
+          "15": 2,
+          "35": 1,
+          "60": 58,
+          "70": 7,
+          "80": 1,
+          "95": 1,
+          "unavailable": 177
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 2,
+          "reply_to_mismatch": 44,
+          "sensitive_request_combined": 2,
+          "statistical_generalized_spam": 67
+        },
+        "limits": {
+          "auth_unknown": 1823,
+          "control_chars": 41,
+          "html_uninspected": 239,
+          "identity_uninspected": 1602,
+          "quoted_content": 143,
+          "source_incomplete": 1823,
+          "statistical_limit": 15
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 449,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 551,
+        "precision": 1,
+        "recall": 0.449,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1989,
+          "unavailable": 11
+        },
+        "ruleSets": {
+          "rules-9": 1989,
+          "unavailable": 11
+        },
+        "engineVersions": {
+          "0.1.0": 1989,
+          "unavailable": 11
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 11
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1540,
+          "rule_evidence": 449,
+          "unavailable": 11
+        },
+        "scores": {
+          "0": 1500,
+          "10": 35,
+          "15": 2,
+          "20": 1,
+          "35": 2,
+          "60": 443,
+          "70": 6,
+          "unavailable": 11
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 2,
+          "reply_to_mismatch": 44,
+          "sensitive_request_combined": 2,
+          "statistical_word_pair_spam": 449
+        },
+        "limits": {
+          "auth_unknown": 1989,
+          "control_chars": 42,
+          "html_uninspected": 239,
+          "identity_uninspected": 1768,
+          "quoted_content": 143,
+          "source_incomplete": 1989,
+          "statistical_limit": 77
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-third/report.json",
+      "sha256": "315d6916c525e88c479c2229f49e154d81c29f388ec04fa231f9a0c57e78549e",
+      "mode": "wordpair-third",
+      "manifestSha256": "be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 62,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 938,
+        "precision": 1,
+        "recall": 0.062,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1793,
+          "unavailable": 207
+        },
+        "ruleSets": {
+          "rules-5": 1793,
+          "unavailable": 207
+        },
+        "engineVersions": {
+          "0.1.0": 1793,
+          "unavailable": 207
+        },
+        "unavailableCauses": {
+          "raw_preflight": 197,
+          "scorer_unavailable": 10
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1731,
+          "rule_evidence": 62,
+          "unavailable": 207
+        },
+        "scores": {
+          "0": 1697,
+          "10": 31,
+          "15": 2,
+          "35": 1,
+          "60": 51,
+          "70": 10,
+          "75": 1,
+          "unavailable": 207
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 42,
+          "sensitive_request_combined": 1,
+          "statistical_generalized_spam": 62
+        },
+        "limits": {
+          "auth_unknown": 1793,
+          "control_chars": 41,
+          "html_uninspected": 227,
+          "identity_uninspected": 1592,
+          "quoted_content": 161,
+          "source_incomplete": 1793,
+          "statistical_limit": 13
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 499,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 501,
+        "precision": 1,
+        "recall": 0.499,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1990,
+          "unavailable": 10
+        },
+        "ruleSets": {
+          "rules-9": 1990,
+          "unavailable": 10
+        },
+        "engineVersions": {
+          "0.1.0": 1990,
+          "unavailable": 10
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 10
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1491,
+          "rule_evidence": 499,
+          "unavailable": 10
+        },
+        "scores": {
+          "0": 1459,
+          "10": 28,
+          "15": 3,
+          "35": 1,
+          "60": 486,
+          "70": 13,
+          "unavailable": 10
+        },
+        "reasons": {
+          "display_identity_mismatch": 3,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 42,
+          "sensitive_request_combined": 1,
+          "statistical_word_pair_spam": 499
+        },
+        "limits": {
+          "auth_unknown": 1990,
+          "control_chars": 41,
+          "html_uninspected": 228,
+          "identity_uninspected": 1789,
+          "quoted_content": 161,
+          "source_incomplete": 1990,
+          "statistical_limit": 70
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/Documents/Codex/2026-11-08/spam-recall-788/wordpair-paired-acceptance/wordpair-fourth/report.json",
+      "sha256": "d713d16e4aead1f39d1019c1f5af146c5a2a168b35b51d4f78467804bdaa09d1",
+      "mode": "wordpair-fourth",
+      "manifestSha256": "1e9b81b5275989be10b5685695700ccc3a92ee163517fd45eedf0bd92395e15d",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 188,
+        "FP": 1,
+        "TN": 999,
+        "FN": 812,
+        "precision": 0.9947089947089947,
+        "recall": 0.188,
+        "falsePositiveRate": 0.001,
+        "inspection": {
+          "partial": 1912,
+          "unavailable": 88
+        },
+        "ruleSets": {
+          "rules-5": 1912,
+          "unavailable": 88
+        },
+        "engineVersions": {
+          "0.1.0": 1912,
+          "unavailable": 88
+        },
+        "unavailableCauses": {
+          "raw_preflight": 85,
+          "scorer_unavailable": 3
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1723,
+          "rule_evidence": 189,
+          "unavailable": 88
+        },
+        "scores": {
+          "0": 1706,
+          "10": 17,
+          "60": 172,
+          "70": 16,
+          "80": 1,
+          "unavailable": 88
+        },
+        "reasons": {
+          "impersonation_combined": 1,
+          "marketing_headers": 13,
+          "reply_to_mismatch": 34,
+          "statistical_generalized_spam": 189
+        },
+        "limits": {
+          "auth_unknown": 1912,
+          "control_chars": 50,
+          "html_limit": 5,
+          "html_uninspected": 325,
+          "identity_uninspected": 1639,
+          "quoted_content": 123,
+          "source_incomplete": 1912,
+          "statistical_limit": 35
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 479,
+        "FP": 1,
+        "TN": 999,
+        "FN": 521,
+        "precision": 0.9979166666666667,
+        "recall": 0.479,
+        "falsePositiveRate": 0.001,
+        "inspection": {
+          "partial": 1997,
+          "unavailable": 3
+        },
+        "ruleSets": {
+          "rules-9": 1997,
+          "unavailable": 3
+        },
+        "engineVersions": {
+          "0.1.0": 1997,
+          "unavailable": 3
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 3
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1517,
+          "rule_evidence": 480,
+          "unavailable": 3
+        },
+        "scores": {
+          "0": 1501,
+          "10": 15,
+          "15": 1,
+          "60": 460,
+          "70": 19,
+          "80": 1,
+          "unavailable": 3
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "impersonation_combined": 1,
+          "marketing_headers": 13,
+          "reply_to_mismatch": 35,
+          "statistical_word_pair_spam": 480
+        },
+        "limits": {
+          "auth_unknown": 1997,
+          "control_chars": 57,
+          "html_limit": 5,
+          "html_uninspected": 332,
+          "identity_uninspected": 1723,
+          "quoted_content": 123,
+          "source_incomplete": 1997,
+          "statistical_limit": 186
+        }
+      }
+    }
+  ],
+  "predeclared": {
+    "minimumFreshRecall": 0.5,
+    "minimumAbsoluteFreshGain": 0.2,
+    "zeroObservedHamFalsePositivesBothVariants": true
+  },
+  "failures": [
+    "wordpair-fourth:baseline:ham_false_positive",
+    "wordpair-fourth:baseline:stratum_ham_false_positive",
+    "wordpair-fourth:baseline:stratum_ham_false_positive",
+    "wordpair-fourth:candidate:ham_false_positive",
+    "wordpair-fourth:candidate:stratum_ham_false_positive",
+    "wordpair-fourth:candidate:stratum_ham_false_positive",
+    "wordpair-fourth:declared_gate_failed",
+    "fresh_recall_or_gain_below_predeclared_gate"
+  ],
+  "eligible": false,
+  "scope": "Five earlier observed corpora are regression only. Fourth sample is disjoint from all prior selections and authored controls, drawn from unused SH/kaminski-v and BG/beck-s members of the same dated archives, not a new population or modern provider accuracy. Later reproduction does not restore untouched status. Every earlier failed study remains failed. OPS-615 separately owns manual deployment."
+}
