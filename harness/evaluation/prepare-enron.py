@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Offline bounded acquisition normalization; no scoring or training.
 from pathlib import Path,PurePosixPath
+from io import BytesIO
 import sys,importlib.util,gzip,tarfile,json,hashlib
 HELPERS=Path(__file__).resolve().parent
 sys.path.insert(0,str(HELPERS))
@@ -9,6 +10,7 @@ spec=importlib.util.spec_from_file_location('prepare_general',HELPERS/'prepare-g
 from prepare import ExpandedLimit
 SOURCES=[('beck-s.tar.gz','ham','28ad9e6b40a323fba13ece2e63a0aee6f66435ac3f1fd2974a6777eeb39456a2','ham/beck-s.tar.gz'),('BG.tar.gz','spam','4a4eb6e9c1bcd899d21ae09bbd4d880f541b5d42d967a47b10198c304e110f8c','spam/BG.tar.gz')]
 TRAIN_MODE='--train' in sys.argv[1:]
+KITCHEN_MODE='--kitchen-ham' in sys.argv[1:]
 def digest(data):return hashlib.sha256(data).hexdigest()
 def safe(m):
  p=PurePosixPath(m.name)
@@ -26,7 +28,7 @@ def prepare(root):
   path=root/name;data=helpers.read_bounded(path,32*1024*1024)
   if digest(data)!=expected:raise ValueError('archive_hash')
   archives.append({'file':name,'sha256':expected,'bytes':len(data),'url':'https://www2.aueb.gr/users/ion/data/enron-spam/raw/'+relative})
-  with gzip.open(path,'rb') as source:
+  with gzip.GzipFile(fileobj=BytesIO(data)) as source:
    with tarfile.open(fileobj=ExpandedLimit(source,128*1024*1024),mode='r|') as archive:
     for count,m in enumerate(archive,1):
      if count>20000:raise ValueError('member_count')
@@ -46,7 +48,7 @@ def prepare(root):
      else:helpers.write_new(target,raw)
      records[key]={'id':key,'sha256':key,'bytes':len(raw),'label':label,'group':'enron_'+label,'path':'messages/'+key+'.eml','labelAuthority':'Official raw archive ham/spam directory labels'}
      if len(records)>30000:raise ValueError('record_count')
- manifest={'version':1,'source':'https://www2.aueb.gr/users/ion/data/enron-spam/readme.txt','terms':'Public Enron-Spam research corpus. Acknowledge Metsis, Androutsopoulos and Paliouras, CEAS2006. No raw redistribution, model upload, training or live mail sending.','scope':('Fixed official raw ham/spam archives listed in archives; no preprocessed view or classifier selection.' if TRAIN_MODE else 'First official raw ham and spam archives; no preprocessed view or classifier selection.'),'archives':archives,'records':sorted(records.values(),key=lambda r:r['id'])}
+ manifest={'version':1,'source':'https://www2.aueb.gr/users/ion/data/enron-spam/readme.txt','terms':'Public Enron-Spam research corpus. Acknowledge Metsis, Androutsopoulos and Paliouras, CEAS2006. No raw redistribution, model upload, training or live mail sending.','scope':('Fixed official raw ham/spam archives listed in archives; no preprocessed view or classifier selection.' if TRAIN_MODE or KITCHEN_MODE else 'First official raw ham and spam archives; no preprocessed view or classifier selection.'),'archives':archives,'records':sorted(records.values(),key=lambda r:r['id'])}
  data=(json.dumps(manifest,indent=2)+'\n').encode();target=root/'all.json'
  if target.exists() or target.is_symlink():
   if helpers.read_bounded(target,32*1024*1024)!=data:raise ValueError('manifest_drift')
@@ -72,4 +74,6 @@ if __name__=='__main__':
  else:
   if len(sys.argv)>2 and sys.argv[2]=='--train':
    SOURCES=[('farmer-d.tar.gz','ham','e7aedf0a0ace79f088ecbefeb2070999e5c4d874058150878d0d17d558af4d6f','ham/farmer-d.tar.gz'),('GP.tar.gz','spam','b3d60059c1d17d8cbc1c9f42c7070ad41768cf0c7efa7055bce9af96e40f3a5a','spam/GP.tar.gz')]
+  elif len(sys.argv)>2 and sys.argv[2]=='--kitchen-ham':
+   SOURCES=[('kitchen-l.tar.gz','ham','4532348c4eb6b3a4ff97ed880a349c5592458debb93956e52c294f612ba1c57b','ham/kitchen-l.tar.gz')]
   prepare(Path(sys.argv[1]))
