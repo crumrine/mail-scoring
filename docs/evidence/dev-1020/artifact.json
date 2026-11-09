@@ -1,0 +1,9 @@
+{
+  "rules": "rules-10",
+  "model": "general-8",
+  "checkedDryArtifactSha256": "bf0c0329d30231d6e8e72afb036f021220a1ede5657ba420075b80836007563a",
+  "checkedDryArtifactBytes": 2330667,
+  "localWorkerByteEqual": true,
+  "fifthPredictions": 0,
+  "productionMutation": false
+}

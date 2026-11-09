@@ -5,6 +5,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'linear-positive-share',file:'packages/core/src/linear.ts',before:'return 100*positiveLeft>=MODEL_MIN_POSITIVE_PERCENT*(positiveLeft+negativeMass);',after:'return true;',command:['test'],failure:/✖ contradictory evidence stops/},
   {id:'linear-pair-evidence',file:'packages/core/src/linear.ts',before:'const clue=weights.get(contextKey(feature.first,feature.second));if(!clue)continue;',after:'const clue=weights.get(contextKey(feature.first,feature.second));if(!clue||feature.second!==-1)continue;',command:['test'],failure:/✖ adjacent-pair negative evidence/},
   {id:'linear-pair-word-loss',file:'packages/core/src/linear.ts',before:'if(feature.second!==-1&&feature.second!==feature.first)positive.set(feature.second,(positive.get(feature.second)??0)+contribution);',after:'',command:['test'],failure:/✖ word-loss bound/},
   {id:'linear-second-word',file:'packages/core/src/linear.ts',before:'const remaining=dot-strongest-secondStrongest;',after:'const remaining=dot-strongest;',command:['test'],failure:/✖ two-word stability rejects evidence that survives losing one word/},
@@ -15,7 +16,7 @@ const checks=[
   {id:'linear-body-cap',file:'packages/core/src/linear.ts',before:'bodyWords.length>1000',after:'bodyWords.length>10000',command:['test'],failure:/✖ linear evidence requires/},
   {id:'linear-feature-cap',file:'packages/core/src/linear.ts',before:'features.length>1999',after:'features.length>19990',command:['test'],failure:/✖ linear evidence requires/},
   {id:'linear-positive-support',file:'packages/core/src/linear.ts',before:'(weights.get(contextKey(hash,-1))?.weight??0)>0',after:'weights.has(contextKey(hash,-1))',command:['test'],failure:/✖ linear evidence requires|✖ each fixed model requires/},
-  {id:'linear-unique-evidence',file:'packages/core/src/linear.ts',before:'[...new Map(features.map(feature=>[contextKey(feature.first,feature.second),feature])).values()]',after:'[...features]',command:['test'],failure:/✖ linear evidence requires|✖ two-word stability rejects evidence/},
+  {id:'linear-unique-evidence',file:'packages/core/src/linear.ts',before:'[...new Map(features.map(feature=>[contextKey(feature.first,feature.second),feature])).values()]',after:'[...features]',command:['test'],failure:/✖ linear evidence requires|✖ two-word stability rejects evidence|✖ contradictory evidence stops/},
   {id:'linear-known-body',file:'packages/core/src/linear.ts',before:'body.filter(hash=>(weights.get(contextKey(hash,-1))?.weight??0)>0).length<5',after:'body.length<5',command:['test'],failure:/✖ linear evidence requires|✖ each fixed model requires/},
   {id:'context-clue-cap',file:'packages/core/src/vendor/tiling.ts',before:'if(features.length>1999)return [];',after:'',command:['test'],failure:/✖ context tiling never/},
   {id:'context-selected-cap',file:'packages/core/src/vendor/tiling.ts',before:'selected.length===64',after:'selected.length===64000',command:['test'],failure:/✖ context tiling never/},

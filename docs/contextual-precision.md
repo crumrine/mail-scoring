@@ -1,6 +1,6 @@
 # Word-pair precision correction (DEV-1017)
 
-Rules-9/general-7 is a source candidate, not an approved release. Rules-6 and8
+Rules-9/general-7 is rejected by the [fourth paired study](evidence/dev-1009-wordpair/README.md). Rules-6 and8
 each caught legitimate mail in independent acceptance; rules-7 missed the fixed
 recall gate. Those failures, models and reports remain archived and none may be
 deployed or used for rollback. Production remains the approved rules-5 pair.
