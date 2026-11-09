@@ -3,7 +3,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtempSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
-import {createHash} from 'node:crypto';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -12,7 +11,7 @@ test('wordpair release gate requires six complete pinned studies, every frozen H
  const root=mkdtempSync(join(tmpdir(),'wordpair-gate-check-'));
  try{
   const pins={baseline:{inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'},candidate:{inbox:'35718322ea97e1c6cec6adee8b0483950bc65f99',scorer:'453cc3423e222b0e853bf3d8e9d590ee01e44bf7'}};
-  const runnerSha256=createHash('sha256').update(readFileSync('harness/evaluation/run.mjs')).digest('hex');
+  const runnerSha256='41379c9bc8562fd67190c30deed314e269d3e9e76eeaa447c67d0c8c5936627f';
   const frozen=JSON.parse(readFileSync('harness/evaluation/wordpair-legitimate-controls.json','utf8')).records;
   const selections=[{"mode":"wordpair-sa","manifestSha256":"111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803","selectedIdLabelsSha256":"658644be4b59699c438d0322a25179ac490b004c3fc05fcd73d6dd7156c380ac","rows":2736,"ham":1603,"spam":1133},{"mode":"wordpair-enron","manifestSha256":"3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380","selectedIdLabelsSha256":"b3f6176f82292e98f372f590255e64d077c75e2c2f20ec5eec44cc5dd96ccba5","rows":2000,"ham":1000,"spam":1000},{"mode":"wordpair-first","manifestSha256":"2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552","selectedIdLabelsSha256":"8b9d8fd67d33d627e5954f15e472dcf4ff0c659192a2be527214b2884281596a","rows":2000,"ham":1000,"spam":1000},{"mode":"wordpair-second","manifestSha256":"fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19","selectedIdLabelsSha256":"0aff4aeea50392a3b9fcdb460b8dc7ab4fee8b67a7561424acdb175313f87bb7","rows":2000,"ham":1000,"spam":1000},{"mode":"wordpair-third","manifestSha256":"be8dd2cf1e0a2c6b288d57e26ea3f7dda94768d05b6555a9e0dd83715af6dac8","selectedIdLabelsSha256":"1de77663b0e1f9730bc40b5432767db820bc4ab6b31e228384c54d1a789bbbe9","rows":2000,"ham":1000,"spam":1000},{"mode":"wordpair-fourth","manifestSha256":"1e9b81b5275989be10b5685695700ccc3a92ee163517fd45eedf0bd92395e15d","selectedIdLabelsSha256":"abd6a73c763d05934b0a0272e13d849c7af96832fdc28d4da7b709594365100c","rows":2000,"ham":1000,"spam":1000}];
   const manifests=selections.map(s=>s.manifestSha256);
