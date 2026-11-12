@@ -5,6 +5,8 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 await mkdir('.artifacts',{recursive:true});
 const checks=[
+  {id:'brand-rule',file:'packages/core/src/index.ts',before:"if(brandImpersonation(input,limits,features.work))",after:'if(false)',command:['test'],failure:/✖ HTML feature review lure/},
+  {id:'brand-negative-control',file:'packages/core/src/brand.ts',before:'if(aligned(sender,brand.domains))return false;',after:'// Deliberately ignore legitimate sender alignment.',command:['test'],failure:/✖ brand mention, sender mismatch/},
   {id:'linear-positive-share',file:'packages/core/src/linear.ts',before:'return 100*positiveLeft>=MODEL_MIN_POSITIVE_PERCENT*(positiveLeft+negativeMass);',after:'return true;',command:['test'],failure:/✖ contradictory evidence stops/},
   {id:'linear-pair-evidence',file:'packages/core/src/linear.ts',before:'const clue=weights.get(contextKey(feature.first,feature.second));if(!clue)continue;',after:'const clue=weights.get(contextKey(feature.first,feature.second));if(!clue||feature.second!==-1)continue;',command:['test'],failure:/✖ adjacent-pair negative evidence/},
   {id:'linear-pair-word-loss',file:'packages/core/src/linear.ts',before:'if(feature.second!==-1&&feature.second!==feature.first)positive.set(feature.second,(positive.get(feature.second)??0)+contribution);',after:'',command:['test'],failure:/✖ word-loss bound/},

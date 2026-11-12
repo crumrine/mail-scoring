@@ -5,6 +5,7 @@ import { guardInput, parseRequest } from './guards.js';
 import { authenticationFailed } from './vendor/authentication-failed.js';
 import { generalSpam } from './statistical.js';
 import { inspect } from './inspection.js';
+import { brandImpersonation } from './brand.js';
 export * from './contract.js';
 export { guardInput, boundedText, parseRequest, readRequest } from './guards.js';
 export function unavailable(error: Exclude<ScoreResultV1['error'],null>): ScoreResultV1 {
@@ -29,7 +30,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const authFailed=!!(trusted && authenticationFailed(t));
   if(!trusted)limits.add('auth_unknown');
   const features=inspect(input,limits);
-  const totals={authentication:0,links:0,identity:0,content:0,preference:0,marketing:0,test:0,statistics:0};
+  const totals={authentication:0,links:0,identity:0,content:0,brand:0,preference:0,marketing:0,test:0,statistics:0};
   const add=(id:ReasonId,family:keyof typeof FAMILY_CAPS,signals:Array<keyof ScoreResultV1['signals']>)=>{
     // Rules fire at most once; correlated families and total have independent caps.
     const contribution=Math.min(RULE_CAPS[id],FAMILY_CAPS[family]-totals[family],100-result.heuristicScore);
@@ -45,6 +46,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   const suspicious=authFailed || features.mismatch || features.userinfo || features.replyMismatch || features.displayMismatch;
   if(features.authority && suspicious)add('impersonation_combined','identity',['phishing']);
   if(features.sensitive && suspicious)add('sensitive_request_combined','content',['spam','phishing']);
+  if(brandImpersonation(input,limits,features.work))add('brand_impersonation_combined','brand',['spam','phishing']);
   if(input.preferences) {
     if(context.preferencesVerified!==true)limits.add('preferences_unknown');
     else {
