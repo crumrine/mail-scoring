@@ -58,6 +58,7 @@ test('new statistical evidence requires declared rules-10',()=>{
  const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'test',subject:'',text:STATISTICAL_SPAM,headers:[],sourceComplete:true})));
  const current=decodeResponse(wire);assert.ok(current?.ok);assert.equal(current.result.heuristicScore,60);
  for(const version of ['rules-1','rules-2','rules-3','rules-4','rules-5','rules-6','rules-7','rules-8','rules-9']){const old=JSON.parse(wire);old.result.ruleSetVersion=version;assert.equal(decodeResponse(JSON.stringify(old)),null);}
+ const historical=JSON.parse(wire);historical.result.ruleSetVersion='rules-10';assert.ok(decodeResponse(JSON.stringify(historical))?.ok);
  const ordinary=JSON.parse(scoreRpc('1',input));ordinary.result.ruleSetVersion='rules-2';ordinary.result.limitsHit.push('html_limit');assert.equal(decodeResponse(JSON.stringify(ordinary)),null);
 });
 
