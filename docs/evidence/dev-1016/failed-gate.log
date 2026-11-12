@@ -1,0 +1,1 @@
+{"eligible":false,"failures":["refit-third:candidate:ham_false_positive","refit-third:candidate:stratum_ham_false_positive","refit-third:candidate:stratum_ham_false_positive","refit-third:declared_gate_failed"],"fresh":{"baseline":0.062,"candidate":0.556,"hamFP":1}}

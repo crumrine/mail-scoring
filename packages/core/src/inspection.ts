@@ -1,9 +1,31 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
-import {type ScoreInputV1,type LimitId} from './contract.js';
+import {GTUBE_MARKER,type ScoreInputV1,type LimitId} from './contract.js';
+import {MULTILINE_CONTROLS,rawSourceText} from './guards.js';
 import {normalizeText,phraseSignals} from './vendor/text.js';
 import {linkTarget,visibleTarget,type LinkWork} from './vendor/links.js';
 import {marketingHeaders} from './vendor/bulk.js';
+/** Exact 68-byte ASCII GTUBE marker on an unquoted plain-text line before any forwarded block. */
+function hasUnquotedGtube(text:string,limits:Set<LimitId>):boolean {
+  if(!text.includes(GTUBE_MARKER))return false;
+  let found=false;
+  for(let lineStart=0;lineStart<text.length;) {
+    let lineEnd=lineStart;
+    while(lineEnd<text.length && text[lineEnd]!=='\n' && text[lineEnd]!=='\r')lineEnd++;
+    const line=text.slice(lineStart,lineEnd);
+    // Controls cannot hide a quote prefix or turn a broken marker into a match.
+    const prefix=line.replace(MULTILINE_CONTROLS,'').replace(/^[ \t]+/,'').slice(0,29).toLowerCase();
+    if(prefix.startsWith('>'))limits.add('quoted_content');
+    else {
+      if(prefix.startsWith('-----original message-----') || prefix.startsWith('---------- forwarded message')) {
+        limits.add('quoted_content');break;
+      }
+      if(line.includes(GTUBE_MARKER))found=true;
+    }
+    lineStart=lineEnd+1;
+  }
+  return found;
+}
 /** Conservative parsed mailbox host. No raw RFC address-list parsing or suffix trust. */
 function mailboxHost(address:string|undefined,limits:Set<LimitId>):string|null {
   if(address===undefined || address==='')return null;
@@ -23,6 +45,7 @@ export function inspect(input:ScoreInputV1,limits:Set<LimitId>) {
   const normalized=normalizeText([input.subject,input.text,input.extractedText??'',input.addresses?.displayName??'']);
   if(normalized.truncated)limits.add('normalized_bytes');
   if(normalized.quoted)limits.add('quoted_content');
+  const gtube=hasUnquotedGtube(rawSourceText(input),limits);
   const content=phraseSignals(normalized.text);
   const work:LinkWork={parses:0,decodePasses:0};
   let mismatch=false,userinfo=false;
@@ -40,6 +63,6 @@ export function inspect(input:ScoreInputV1,limits:Set<LimitId>) {
   const displayHost=display?.includes('@')?mailboxHost(display,limits):null;
   return {mismatch,userinfo,replyMismatch:!!(from && reply && from!==reply),
     displayMismatch:!!(from && displayHost && from!==displayHost),
-    sensitive:content.sensitive,authority:content.authority,
+    sensitive:content.sensitive,authority:content.authority,gtube,
     marketing:marketingHeaders(input.headers),work,normalized};
 }

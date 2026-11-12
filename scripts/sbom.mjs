@@ -5,15 +5,16 @@ import {createHash} from 'node:crypto';
 const bytes=await readFile('package-lock.json');const lock=JSON.parse(bytes);
 const packages=Object.entries(lock.packages).filter(([path,p])=>path.startsWith('node_modules/')&&!p.link).map(([path,p])=>({
   name:path.split('node_modules/').at(-1),version:p.version,license:p.license??'NOASSERTION',
-  resolved:p.resolved,integrity:p.integrity,scope:'development-only',optional:p.optional??false,hasInstallScript:p.hasInstallScript??false,
+  resolved:p.resolved,integrity:p.integrity,scope:p.dev?'development-only':'runtime',optional:p.optional??false,hasInstallScript:p.hasInstallScript??false,
 }));
 const sbom={format:'mail-scoring-provenance-1',lockSha256:createHash('sha256').update(bytes).digest('hex'),
-  runtimeDependencies:[],vendored:[{name:'Mailguard authenticationFailed',repository:'https://github.com/Sarv/mailguard',revision:'ae51a1ddee18649ef729a4195313cbf57db22e87',version:'0.4.3',source:'src/verdict.ts',local:'packages/core/src/vendor/authentication-failed.ts',license:'MIT',data:'none',modifications:'Narrow type; non-null argument enforced by wrapper; retained predicate logic',sha256:createHash('sha256').update(await readFile('packages/core/src/vendor/authentication-failed.ts')).digest('hex')}],
+  runtimeDependencies:packages.filter(p=>p.scope==='runtime'),vendored:[{name:'Mailguard authenticationFailed',repository:'https://github.com/Sarv/mailguard',revision:'ae51a1ddee18649ef729a4195313cbf57db22e87',version:'0.4.3',source:'src/verdict.ts',local:'packages/core/src/vendor/authentication-failed.ts',license:'MIT',data:'none',modifications:'Narrow type; non-null argument enforced by wrapper; retained predicate logic',sha256:createHash('sha256').update(await readFile('packages/core/src/vendor/authentication-failed.ts')).digest('hex')}],
   packages,notes:['All npm lifecycle scripts disabled by .npmrc; optional platform binaries installed by npm lock resolution.', 'Lock lists all platforms, while npm ci installs the host platform only.', 'Package-level tooling inventory; native workerd includes its upstream runtime components, not redistributed in this source repository. See exact upstream tag for full native notices.']};
 const selected=JSON.parse(await readFile('docs/evidence/mailguard/rules-provenance.json','utf8'));
 for(const a of selected.adaptations)sbom.vendored.push({name:`Mailguard ${a.functions}`,repository:selected.repository,revision:selected.revision,version:selected.version,source:a.source,sourceSha256:a.sourceSha256,local:a.local,license:selected.license,data:'none',modifications:a.modifications,sha256:createHash('sha256').update(await readFile(a.local)).digest('hex')});
+for(const [local,source]of [['packages/core/src/vendor/chi.ts','spambayes/spambayes/classifier.py and chi2.py'],['packages/core/src/vendor/tiling.ts','spambayes/spambayes/classifier.py _getclues']])sbom.vendored.push({name:'SpamBayes bounded adaptation',repository:'https://github.com/smontanaro/spambayes',revision:'8ae169fde78371780019db5b7b7acfb4950bab8f',source,local,license:'PSF',data:'none',modifications:'Bounded pure numeric TypeScript only; no database, online learning, tokenizer, URL slurping or upstream model',sha256:createHash('sha256').update(await readFile(local)).digest('hex')});
 await writeFile('docs/evidence/sbom.json',JSON.stringify(sbom,null,2)+'\n');
-console.log(JSON.stringify({packages:packages.length,runtimeDependencies:0,vendored:sbom.vendored.length}));
+console.log(JSON.stringify({packages:packages.length,runtimeDependencies:sbom.runtimeDependencies.length,vendored:sbom.vendored.length}));
 
 await mkdir('.artifacts/licenses',{recursive:true});
 await writeFile('.artifacts/licenses/sbom.json',JSON.stringify(sbom,null,2)+'\n');

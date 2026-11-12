@@ -15,10 +15,15 @@ workerd routes them to a local denying service with no network/disk service.
 
 These cases test contracts and protections, not classification accuracy.
 
-`rules/` contains 22 independently authored cases with expected scores/signals:
+`rules/` contains 25 cases with expected scores/signals:
 new contact, newsletter, receipt, forward/reply, multilingual/Unicode, quoted harmful
 text, misleading and userinfo links, combined impersonation, forged authentication
 and reply chain, prompt instructions, urgency/sensitive text alone, identity anomalies,
-verified/unverified preferences and auth pass/fail. No real sender brands are used.
+verified/unverified preferences, auth pass/fail, and standard GTUBE positive,
+near-match negative and quoted negative controls (`gtube-{positive,negative,quoted}.json`).
+The 68-byte GTUBE string and standard explanatory text in `gtube-positive.json` are
+from the public-domain Apache SpamAssassin GTUBE specification (see
+`THIRD_PARTY_NOTICES.md`); all addresses, headers and Message-IDs use synthetic
+`.test` values and no real sender brands are used.
 Seeded properties and exact supplied evaluator adversarial shapes run in
 `tests/rules.test.ts`; reading evaluator notes is not claimed as a benchmark rerun.

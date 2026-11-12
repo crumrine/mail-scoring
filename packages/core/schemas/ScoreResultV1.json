@@ -12,9 +12,19 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "enum": [
+      "const": "rules-11",
+      "x-compatibleRuleSetVersions": [
         "rules-1",
-        "rules-2"
+        "rules-2",
+        "rules-3",
+        "rules-4",
+        "rules-5",
+        "rules-6",
+        "rules-7",
+        "rules-8",
+        "rules-9",
+        "rules-10",
+        "rules-11"
       ]
     },
     "status": {
@@ -60,7 +70,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 11,
+      "maxItems": 20,
       "items": {
         "oneOf": [
           {
@@ -304,13 +314,211 @@
               "contribution",
               "reason"
             ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_balanced_evidence_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "Spam evidence remains strong after discounting two words and retaining evidence against spam (general-8 heuristic)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_word_pair_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded word and adjacent-pair classifier retains spam evidence after discounting positive clues incident to its two strongest words (general-7; heuristic, not calibrated confidence)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_refit_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "Two fixed classifiers agree on spam; the new model also survives losing its two strongest words (general-6; heuristic, not calibrated confidence)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_robust_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded classifier retained spam evidence with any one positive word removed (public-corpus model general-5; heuristic, not calibrated confidence)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_linear_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded linear classifier found strong spam evidence (public-corpus model general-4; a heuristic, not a calibrated confidence probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_generalized_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded classifier found strong spam evidence (public-corpus model general-3; a heuristic, not a calibrated confidence probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_context_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded contextual classifier found strong spam evidence (public-corpus model general-2; a heuristic, not a calibrated confidence probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "statistical_spam"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 60
+              },
+              "reason": {
+                "const": "The bounded content classifier found strong spam evidence (public-corpus model general-1; a heuristic, not a calibrated confidence probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "gtube"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "reason": {
+                "const": "The plain-text body contains the standard GTUBE test marker (intentional test trigger, not a calibrated spam probability)."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
           }
         ]
       }
     },
     "limitsHit": {
       "type": "array",
-      "maxItems": 19,
+      "maxItems": 21,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -332,7 +540,9 @@
           "url_decode_limit",
           "url_uninspected",
           "quoted_content",
-          "identity_uninspected"
+          "identity_uninspected",
+          "html_limit",
+          "statistical_limit"
         ]
       }
     },

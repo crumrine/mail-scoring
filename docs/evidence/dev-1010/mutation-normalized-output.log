@@ -1,0 +1,134 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.604958ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (23.714542ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (5.291583ms)
+✔ header, URL, metadata cardinalities below/at/above (0.95375ms)
+✔ secondary fields and multibyte truncation are bounded (0.285292ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.45925ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.089833ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.930416ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (2.646542ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (1.268833ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.128875ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.256667ms)
+✔ unprepared roots are refused before any structural operation (0.391291ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.668958ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (11.007125ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.210708ms)
+✔ recall release gate rejects lower recall, hidden HAM catches and changed source/evidence (355.991958ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.825917ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.659708ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.618541ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (5.890667ms)
+✔ new statistical evidence requires declared rules-7 (1.156417ms)
+✔ historical rules-3 through rules-6 statistical evidence remain strictly readable (1.463ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (15.868375ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.544708ms)
+✖ normalized output guard bounds expansion before materializing full NFKC output (6.963ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (3.7775ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.467625ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.657042ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (11.821541ms)
+✖ fixed phrase matches resist word repetition, Unicode expansion and prompts (22.810375ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.504083ms)
+✖ seeded adversarial properties keep finite static schema and incomplete semantics (93.612042ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (24.60275ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (9.894166ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.897458ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.21975ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (2.392ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (3.194833ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (9.359417ms)
+✔ single-word stability rejects numerical evidence carried by one influential clue (4.691625ms)
+✔ single-word stability abstains on the original fragile synthetic prefix in plain text and HTML (0.254334ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (3.820416ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (17.819291ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.231666ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (13.712375ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.525375ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.476292ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.091958ms)
+✔ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (7.390666ms)
+✔ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (0.79925ms)
+✔ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (1.236ms)
+✔ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (9.291959ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 50
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1165.85625
+
+✖ failing tests:
+
+test at tests/rules.test.ts:67:1
+✖ normalized output guard bounds expansion before materializing full NFKC output (6.963ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(x.normalized.bytes<=65536)
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rules.test.ts:70:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/rules.test.ts:140:1
+✖ fixed phrase matches resist word repetition, Unicode expansion and prompts (22.810375ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(x.normalized.bytes<=65536)
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rules.test.ts:142:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/rules.test.ts:154:1
+✖ seeded adversarial properties keep finite static schema and incomplete semantics (93.612042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1010/tests/rules.test.ts:175:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

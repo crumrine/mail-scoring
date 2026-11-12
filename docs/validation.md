@@ -1,3 +1,5 @@
+Current source candidate: see [contextual precision and release gates](contextual-precision.md). Rules6/7/8 remain rejected; fourth cohort is unscored throughout source work/review.
+
 # Validation and source evidence
 
 Run from a fresh checkout with Node **24.15.0**, npm **11.12.1**, Linux x64:
@@ -158,3 +160,22 @@ service is now implemented in DEV-877; its [contract, configuration, local check
 release boundary and rollback procedure](private-worker.md) supersede the earlier
 "private service pending" note. Inbox/live integration remains pending. Current
 worker snapshots are `docs/evidence/worker-*.json`; CI emits exact-head receipts.
+
+## DEV-988 standard GTUBE recognition (`rules-2`)
+
+`DEV-988` adds bounded recognition for the exact 68-byte ASCII GTUBE marker in
+unquoted plain-text body lines (`input.text` only, bounded to 131072 UTF-8 bytes
+before scanning) and increments the emitted `ruleSetVersion` to `rules-2` while
+accepting `rules-1` and `rules-2` in `decodeResponse` (rejecting `gtube` under
+`rules-1`). Callers (`DEV-989`) must be updated and deployed to accept
+`rules-1 | rules-2` before deploying a `rules-2` scorer (`OPS-599`).
+
+Synthetic fixtures `fixtures/rules/gtube-{positive,negative,quoted}.json` and
+targeted unit/RPC/workerd tests cover the official marker with MIME-derived fields,
+nonspam and near-match controls, header/subject/HTML/extractedText/address/URL/anchor
+exclusions, case/byte/whitespace/line-break/invisible/control/fullwidth variants,
+quoted (`>`) and forwarded-divider negative controls, unquoted markers alongside
+quoted lines, repeated markers (single contribution capped at 100), and `source_bytes`
+ceilings. Mutation check `gtube-detection` in `scripts/mutations.mjs` verifies that
+disabling GTUBE detection fails the positive GTUBE test assertion and passes when
+restored. Marker/fixture provenance is recorded in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).

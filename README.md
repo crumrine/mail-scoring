@@ -1,8 +1,10 @@
 # Mail Scoring
 
+Release hold: rules-6, rules-8 and rules-9 caught legitimate mail in independent acceptance; rules-7 failed the fixed 50% recall gate. Rules-9 also missed 50% recall, and the original deployed rules-5 filter flagged the same legitimate research message. See the [fourth failed study](docs/evidence/dev-1009-wordpair/README.md). Do not deploy or roll back to rules-6 through rules-9.
+
 An open-source, explainable email scoring engine designed for Cloudflare Workers, with Agentic Inbox as its first consumer.
 
-**Status: bounded v0.1 deterministic core (`rules-2`), private RPC adapter and local workerd validation.** Named link, identity, combined-content and explicit preference rules maintain independent marketing evidence. [Rules-2](docs/rules-2.md) adds combined brand impersonation evidence from caller-extracted text/anchors. Raw HTML remains uninspected/partial in this portable core. Detection accuracy or savings are not claimed.
+**Current source candidate is rules-10/general-8.** The [contradictory evidence correction](docs/evidence/dev-1020/README.md) keeps all historical results. DEV-1009 owns independent acceptance of the compatible scorer and caller; OPS-615 owns manual deployment. Source and training results do not establish acceptance or deployment.
 
 The engine returns evidence, scores and inspection completeness. The application decides where mail belongs. The initial release uses deterministic, bounded rules. AI, attachment scanning, live reputation lookups and public hosted APIs are outside v0.1.
 
@@ -29,6 +31,8 @@ core plus a [private Worker RPC adapter and off-by-default consumer sample](docs
 ## Local verification
 
 Use Node 24.15.0 and npm 11.12.1 (`nvm use`; `npm install -g npm@11.12.1 --ignore-scripts`).
+The full check and general-spam data tools enforce that Node version and a
+synthetic MIME decoder profile; older Node24 builds can change frozen features.
 
 ```sh
 npm ci
@@ -54,8 +58,8 @@ scripts disabled, and regenerates `docs/evidence/mailguard/audit.json`. It does 
 run upstream tests or lifecycle scripts. `npm run sbom` and `node scripts/schemas.mjs`
 (after build) reproduce the committed inventory and schema artifacts.
 
-CI uses fresh `npm ci` and the same checks, publishing synthetic evidence under the
-exact source SHA. See [validation scope and evidence](docs/validation.md).
+GitHub Actions and automatic Builds are paused. Run the locked checks and
+independent review locally, with exact-source evidence. See [validation scope and evidence](docs/validation.md).
 
 ## License
 

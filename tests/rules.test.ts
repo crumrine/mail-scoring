@@ -4,7 +4,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync} from 'node:fs';
 import {Ajv2020} from 'ajv/dist/2020.js';
-import {score,scoreRequest,parseRequest,guardInput,LIMITS,REASONS,type ScoreContext,type ScoreResultV1} from '@mail-scoring/core';
+import {score,scoreRequest,parseRequest,guardInput,GTUBE_MARKER,LIMITS,REASONS,RULE_SET_VERSION,type ScoreContext,type ScoreResultV1} from '@mail-scoring/core';
 import {inspect} from '../packages/core/dist/inspection.js';
 import {normalizeText} from '../packages/core/dist/vendor/text.js';
 const ajv=new Ajv2020({strict:false});
@@ -16,6 +16,7 @@ const parsed=(x:unknown)=>parseRequest(encoded(x)).value;
 const scored=(x:unknown,c:ScoreContext={receivedAt:1792540800000})=>score(parsed(x),c);
 function valid(r:ScoreResultV1) {
   assert.equal(outputSchema(r),true,JSON.stringify(outputSchema.errors));
+  assert.equal(r.ruleSetVersion,RULE_SET_VERSION);
   assert.ok(encoded(r).length<=LIMITS.outputBytes);
   assert.equal(r.heuristicScore,r.reasons.reduce((n,x)=>n+x.contribution,0));
   assert.equal(new Set(r.reasons.map(x=>x.id)).size,r.reasons.length);
@@ -40,6 +41,27 @@ test('synthetic rule fixtures validate schema, exact contributions and determini
     for(const limit of fixture.expectedLimits)assert.ok(result.limitsHit.includes(limit),name);
     for(let i=0;i<5;i++)assert.deepEqual(score(p,fixture.context),result,name);
     assert.equal(JSON.stringify(p),before);
+  }
+});
+test('GTUBE requires a literal marker outside quotes and forwards on the original line',()=>{
+  for(const control of ['\x00','\x85','\u202e']) {
+    const quoted=` \t${control}> ${GTUBE_MARKER}`;
+    const split=GTUBE_MARKER.replace('GTUBE',`GT${control}UBE`);
+    const forwarded=`-----Original${control} Message-----\r\n${GTUBE_MARKER}`;
+    const gmailForward=`---------- Forwarded${control} message ---------\n${GTUBE_MARKER}`;
+    for(const text of [quoted,split,`${quoted}\n${split}`,`${split}\r\n${quoted}`,
+      forwarded,gmailForward,`${split}\r\n${forwarded}`,`${split}\n${gmailForward}`]) {
+      const result=scored({...base(),text});valid(result);
+      assert.equal(result.heuristicScore,0,JSON.stringify(text));
+      assert.equal(result.status,'partial');
+      assert.ok(result.limitsHit.includes('control_chars'));
+      assert.equal(result.limitsHit.includes('quoted_content'),text!==split);
+    }
+    const literal=scored({...base(),text:`${quoted}\n${control}${GTUBE_MARKER}\n${forwarded}`});
+    valid(literal);
+    assert.deepEqual(literal.reasons,[{id:'gtube',contribution:100,reason:REASONS.gtube}]);
+    assert.equal(literal.status,'partial');
+    assert.ok(literal.limitsHit.includes('control_chars') && literal.limitsHit.includes('quoted_content'));
   }
 });
 test('normalized output guard bounds expansion before materializing full NFKC output',()=>{
@@ -151,4 +173,108 @@ test('seeded adversarial properties keep finite static schema and incomplete sem
   assert.equal(scoreRequest(encoded({...maximum,subject:maximum.subject+'s'})).error,'request_limit');
   valid(scoreRequest(new Uint8Array(LIMITS.requestBytes+1)));
   assert.equal(normalizeText(['x'.repeat(131072)]).truncated,true);
+});
+test('standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying',()=>{
+  assert.equal(GTUBE_MARKER.length,68);
+  assert.equal(new TextEncoder().encode(GTUBE_MARKER).byteLength,68);
+  const pos=scored({...base(),subject:'Test spam mail (GTUBE)',
+    headers:[{name:'Message-ID',value:'<gtube.1010101@example.test>'}],
+    addresses:{from:'sender@example.test',replyTo:'sender@example.test',envelopeFrom:'sender@example.test',displayName:'Sender'},
+    text:`Preface line.\n\n${GTUBE_MARKER}\n\nFooter line.`});
+  valid(pos);
+  assert.equal(pos.heuristicScore,100);
+  assert.equal(pos.status,'partial');
+  assert.deepEqual(pos.limitsHit,['auth_unknown']);
+  assert.deepEqual(pos.signals,{spam:'present',phishing:'unknown',marketing:'unknown'});
+  assert.deepEqual(pos.reasons,[{id:'gtube',contribution:100,reason:REASONS.gtube}]);
+  // Verified transport pass makes status complete; incomplete/HTML/unknown inputs stay partial.
+  const verifiedPass=scored({...base(),text:GTUBE_MARKER,
+    transport:{provenance:'upstream',complete:true,spf:'pass',dkim:'pass',dmarc:'pass'}},{transportVerified:true});
+  valid(verifiedPass);assert.equal(verifiedPass.status,'complete');assert.equal(verifiedPass.heuristicScore,100);
+  const incomplete=scored({...base(),text:GTUBE_MARKER,html:'<p>uninspected</p>',sourceComplete:false});
+  valid(incomplete);assert.equal(incomplete.status,'partial');assert.equal(incomplete.heuristicScore,100);
+  assert.ok(incomplete.limitsHit.includes('source_incomplete') && incomplete.limitsHit.includes('html_uninspected') && incomplete.limitsHit.includes('auth_unknown'));
+  // Nonspam control (reply-to host mismatch = 10, no GTUBE).
+  const nonspam=scored({...base(),subject:'Test nonspam mail',addresses:{from:'sender@example.test',replyTo:'list@other.test'},text:'Ordinary nonspam body without test marker.'});
+  valid(nonspam);assert.equal(nonspam.heuristicScore,10);assert.ok(!nonspam.reasons.some(r=>r.id==='gtube'));
+  // Non-body fields must never trigger GTUBE recognition.
+  for(const nonBody of [
+    {...base(),subject:GTUBE_MARKER},
+    {...base(),headers:[{name:'X-Spam-Status',value:GTUBE_MARKER},{name:'Comments',value:GTUBE_MARKER}]},
+    {...base(),extractedText:GTUBE_MARKER},
+    {...base(),html:`<p>${GTUBE_MARKER}</p>`},
+    {...base(),addresses:{from:'sender@example.test',displayName:GTUBE_MARKER}},
+    {...base(),urls:[`https://example.test/${GTUBE_MARKER}`]},
+    {...base(),anchors:[{text:GTUBE_MARKER,href:`https://example.test/${GTUBE_MARKER}`}]},
+  ]) {
+    const r=scored(nonBody);valid(r);
+    assert.equal(r.heuristicScore,0);assert.ok(!r.reasons.some(x=>x.id==='gtube'));
+  }
+  // Case, byte, truncation, internal whitespace, line-break, invisible and fullwidth variants must not trigger.
+  for(const variant of [
+    GTUBE_MARKER.toLowerCase(),
+    GTUBE_MARKER.replace('GTUBE','Gtube'),
+    GTUBE_MARKER.slice(0,67),
+    GTUBE_MARKER.slice(1),
+    GTUBE_MARKER.slice(0,-1)+'Y',
+    'Y'+GTUBE_MARKER.slice(1),
+    GTUBE_MARKER.replace('*GTUBE-','* GTUBE-'),
+    GTUBE_MARKER.replace('*GTUBE-','*\tGTUBE-'),
+    GTUBE_MARKER.replace('*GTUBE-','*\nGTUBE-'),
+    GTUBE_MARKER.replace('*GTUBE-','*\r\nGTUBE-'),
+    GTUBE_MARKER.replace('GTUBE','GT\u200bUBE'),
+    GTUBE_MARKER.replace('GTUBE','GT\u00adUBE'),
+    GTUBE_MARKER.replace('GTUBE','GT\x00UBE'),
+    GTUBE_MARKER.replace('GTUBE','GT\u202eUBE'),
+    GTUBE_MARKER.replace('GTUBE','ＧＴＵＢＥ'),
+  ]) {
+    const r=scored({...base(),text:variant});valid(r);
+    assert.equal(r.heuristicScore,0);assert.ok(!r.reasons.some(x=>x.id==='gtube'));
+  }
+  // Quoted and forwarded markers must not trigger, and must record quoted_content.
+  for(const quotedText of [
+    `> ${GTUBE_MARKER}`,
+    `   \t >${GTUBE_MARKER}`,
+    `Reply text.\n> ${GTUBE_MARKER}\nMore reply text.`,
+    `FYI\n-----Original Message-----\n${GTUBE_MARKER}`,
+    `FYI\n   ---------- Forwarded message ---------\n${GTUBE_MARKER}`,
+  ]) {
+    const r=scored({...base(),text:quotedText});valid(r);
+    assert.equal(r.heuristicScore,0);assert.ok(!r.reasons.some(x=>x.id==='gtube'));
+    assert.ok(r.limitsHit.includes('quoted_content'));
+  }
+  // Unquoted marker with surrounding text, leading whitespace, Unicode, or separate quoted/forwarded blocks triggers and preserves limits.
+  for(const [unquotedText,expectQuoted] of [
+    [`   \t ${GTUBE_MARKER}   `,false],
+    [`こんにちは ${GTUBE_MARKER} 🌍`,false],
+    [`> earlier quote\n${GTUBE_MARKER}`,true],
+    [`${GTUBE_MARKER}\n> later quote`,true],
+    [`${GTUBE_MARKER}\n-----Original Message-----\nquoted body`,true],
+  ] as const) {
+    const r=scored({...base(),text:unquotedText});valid(r);
+    assert.equal(r.heuristicScore,100);
+    assert.deepEqual(r.reasons,[{id:'gtube',contribution:100,reason:REASONS.gtube}]);
+    assert.equal(r.limitsHit.includes('quoted_content'),expectQuoted);
+  }
+  // Repetition never multiplies contributions; combined rules stay capped at 100.
+  for(const count of [2,10,50]) {
+    const repeated=scored({...base(),text:(`${GTUBE_MARKER}\n`).repeat(count)});valid(repeated);
+    assert.equal(repeated.heuristicScore,100);
+    assert.deepEqual(repeated.reasons,[{id:'gtube',contribution:100,reason:REASONS.gtube}]);
+  }
+  const combined=scored({...base(),text:`Security team: verify your password.\n${GTUBE_MARKER}`,
+    addresses:{from:'a@example.test',replyTo:'b@other.test'}},{});
+  valid(combined);assert.equal(combined.heuristicScore,100);
+  assert.deepEqual(combined.reasons.map(r=>[r.id,r.contribution]),[['reply_to_mismatch',10],['impersonation_combined',10],['sensitive_request_combined',25],['gtube',55]]);
+  // Source byte ceiling bounds before scanning.
+  const exactEnd=scored({...base(),text:' '.repeat(LIMITS.sourceBytes-GTUBE_MARKER.length)+GTUBE_MARKER});
+  valid(exactEnd);assert.equal(exactEnd.heuristicScore,100);assert.ok(!exactEnd.limitsHit.includes('source_bytes'));
+  const beforeOverflow=scored({...base(),text:GTUBE_MARKER+' '.repeat(LIMITS.sourceBytes)});
+  valid(beforeOverflow);assert.equal(beforeOverflow.heuristicScore,100);assert.ok(beforeOverflow.limitsHit.includes('source_bytes'));
+  const straddlingCeiling=scored({...base(),text:' '.repeat(LIMITS.sourceBytes-10)+GTUBE_MARKER});
+  valid(straddlingCeiling);assert.equal(straddlingCeiling.heuristicScore,0);assert.ok(straddlingCeiling.limitsHit.includes('source_bytes'));
+  const afterCeiling=scored({...base(),text:' '.repeat(LIMITS.sourceBytes)+GTUBE_MARKER});
+  valid(afterCeiling);assert.equal(afterCeiling.heuristicScore,0);assert.ok(afterCeiling.limitsHit.includes('source_bytes'));
+  const manyLines=scored({...base(),text:'a\n'.repeat(2048)+GTUBE_MARKER});
+  valid(manyLines);assert.equal(manyLines.heuristicScore,100);
 });

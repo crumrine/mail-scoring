@@ -1,0 +1,33 @@
+{
+  "scope": "Old observed FP core regression only, no new training, no independent acceptance or actual caller4 routing",
+  "rows": [
+    {
+      "id": "00bc48864310a3fe69617e61e8e47a2f6c702ff5932903e18751ffb163d78888",
+      "partition": "diagnostic",
+      "status": "partial",
+      "score": 0,
+      "reasons": [],
+      "statistical": false
+    },
+    {
+      "id": "dafe7e126b096bbb23b26d8c75c710316f86db0c0dd3468954366f6a97b30cac",
+      "partition": "holdout",
+      "status": "partial",
+      "score": 60,
+      "reasons": [
+        "statistical_context_spam"
+      ],
+      "statistical": true
+    },
+    {
+      "id": "deeaff68df34279cfd5c3d4ccd61fdaa3a014b7c9428a899f7615477cab71a74",
+      "partition": "holdout",
+      "status": "partial",
+      "score": 0,
+      "reasons": [
+        "marketing_headers"
+      ],
+      "statistical": false
+    }
+  ]
+}

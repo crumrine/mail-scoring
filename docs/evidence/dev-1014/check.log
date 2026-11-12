@@ -1,0 +1,121 @@
+
+> mail-scoring-workspace@0.1.0 check
+> node harness/evaluation/mime-runtime.mjs && npm run typecheck && npm test && npm run workerd-spike && npm run mutation-test && npm run direct-growth && npm run worker:build && npm run worker:test && npm run worker:mutations
+
+{"node":"v24.15.0","icu":"78.2","unicode":"17.0","legacyDecoder":"WHATWG windows-1252 aliases"}
+
+> mail-scoring-workspace@0.1.0 typecheck
+> npm run build && tsc --noEmit
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.653166ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (25.470625ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (3.15025ms)
+✔ header, URL, metadata cardinalities below/at/above (0.909125ms)
+✔ secondary fields and multibyte truncation are bounded (0.588334ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.660833ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (2.305416ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.769125ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (6.692791ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (1.122458ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.160041ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.325666ms)
+✔ unprepared roots are refused before any structural operation (0.959584ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.708791ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (13.081542ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (1.384542ms)
+✔ recall release gate rejects lower recall, hidden HAM catches and changed source/evidence (377.266375ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.895292ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.789959ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1000.898583ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (4.858458ms)
+✔ new statistical evidence requires declared rules-8 (2.799125ms)
+✔ historical rules-3 through rules-7 statistical evidence remain strictly readable (3.715292ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (24.82525ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.546291ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (26.072875ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (2.481125ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.521208ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.600875ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (10.869083ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (22.235ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.364416ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (69.999458ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (23.305416ms)
+✔ stable release gate requires all four complete pinned studies, zero HAM and exact recall boundaries (490.87575ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (5.886875ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.929167ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (3.476542ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.559459ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (2.769542ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (10.765041ms)
+✔ two-word stability rejects numerical evidence carried by one influential clue (5.465958ms)
+✔ two-word stability rejects evidence that survives losing one word (2.143458ms)
+✔ each fixed model requires its own five positive body words (7.080583ms)
+✔ reference margin rejects strong refit evidence outside the frozen original margin (7.794542ms)
+✔ two-word stability preserves abstention on the original authored spam prefix (0.306875ms)
+✔ two-word stability abstains on the shorter original synthetic prefix in plain text and HTML (0.148208ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (13.557583ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (19.227125ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.248125ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (12.565458ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.523542ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.311ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.081334ms)
+✔ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (7.283125ms)
+✔ unsupported vocabulary abstains with partial provenance for the frozen Spanish notice and accentless equivalent (0.641208ms)
+✔ unsupported alphabetic scripts abstain before ASCII fragments can become statistical evidence (0.808208ms)
+✔ statistical word-position ceiling rejects supported repeated spam before truncated features can classify (9.359792ms)
+ℹ tests 58
+ℹ suites 0
+ℹ pass 58
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1282.322583
+
+> mail-scoring-workspace@0.1.0 workerd-spike
+> node scripts/workerd-spike.mjs
+
+{"workerd":"passed","coreBundleBytes":1383881,"coreGzipBytes":523883,"runtimeImports":0,"nativeInitializationProbes":3,"hostProcessAndProbesMs":395.42787500000003}
+
+> mail-scoring-workspace@0.1.0 mutation-test
+> node scripts/mutations.mjs
+
+[{"mutation":"linear-reference-body","caught":true,"exitCode":1},{"mutation":"linear-reference-margin","caught":true,"exitCode":1},{"mutation":"linear-second-word","caught":true,"exitCode":1},{"mutation":"linear-two-word-stability","caught":true,"exitCode":1},{"mutation":"linear-alphabet","caught":true,"exitCode":1},{"mutation":"linear-coverage","caught":true,"exitCode":1},{"mutation":"linear-coverage-status","caught":true,"exitCode":1},{"mutation":"linear-body-cap","caught":true,"exitCode":1},{"mutation":"linear-feature-cap","caught":true,"exitCode":1},{"mutation":"linear-positive-support","caught":true,"exitCode":1},{"mutation":"linear-unique-evidence","caught":true,"exitCode":1},{"mutation":"linear-known-body","caught":true,"exitCode":1},{"mutation":"context-clue-cap","caught":true,"exitCode":1},{"mutation":"context-selected-cap","caught":true,"exitCode":1},{"mutation":"context-overlap","caught":true,"exitCode":1},{"mutation":"context-position-cap","caught":true,"exitCode":1},{"mutation":"context-ham-mixture","caught":true,"exitCode":1},{"mutation":"statistical-detection","caught":true,"exitCode":1},{"mutation":"html-depth","caught":true,"exitCode":1},{"mutation":"html-active-skip","caught":true,"exitCode":1},{"mutation":"statistical-budget","caught":true,"exitCode":1},{"mutation":"url-length","caught":true,"exitCode":1},{"mutation":"normalized-output","caught":true,"exitCode":1},{"mutation":"anchor-count","caught":true,"exitCode":1},{"mutation":"url-decode","caught":true,"exitCode":1},{"mutation":"family-cap","caught":true,"exitCode":1},{"mutation":"total-cap","caught":true,"exitCode":1},{"mutation":"quote-skip","caught":true,"exitCode":1},{"mutation":"preference-provenance","caught":true,"exitCode":1},{"mutation":"source-bound","caught":true,"exitCode":1},{"mutation":"parsed-root","caught":true,"exitCode":1},{"mutation":"lazy-string","caught":true,"exitCode":1},{"mutation":"gtube-detection","caught":true,"exitCode":1},{"mutation":"network-deny","caught":true,"exitCode":1}]
+
+> mail-scoring-workspace@0.1.0 direct-growth
+> npm run build && node --expose-gc scripts/direct-growth.mjs
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+{"runtime":"v24.15.0","platform":"darwin","arch":"arm64","cpu":"Apple M5 Pro","samples":[{"kind":"root","size":1000,"elapsedMs":0.3256250000000023,"heapDeltaBytes":18400,"rssDeltaBytes":16384},{"kind":"header","size":1000,"elapsedMs":0.008082999999999174,"heapDeltaBytes":6960,"rssDeltaBytes":0},{"kind":"transport","size":1000,"elapsedMs":0.008125000000006821,"heapDeltaBytes":6928,"rssDeltaBytes":0},{"kind":"attachment","size":1000,"elapsedMs":0.007707999999993831,"heapDeltaBytes":6960,"rssDeltaBytes":0},{"kind":"root","size":100000,"elapsedMs":0.023374999999987267,"heapDeltaBytes":7320,"rssDeltaBytes":0},{"kind":"header","size":100000,"elapsedMs":0.018541999999996506,"heapDeltaBytes":7088,"rssDeltaBytes":0},{"kind":"transport","size":100000,"elapsedMs":0.04224999999996726,"heapDeltaBytes":3840,"rssDeltaBytes":0},{"kind":"attachment","size":100000,"elapsedMs":0.021250000000009095,"heapDeltaBytes":3856,"rssDeltaBytes":0},{"kind":"root","size":1000000,"elapsedMs":0.027166000000079293,"heapDeltaBytes":4024,"rssDeltaBytes":0},{"kind":"header","size":1000000,"elapsedMs":0.023707999999714957,"heapDeltaBytes":5784,"rssDeltaBytes":0},{"kind":"transport","size":1000000,"elapsedMs":0.007916000000022905,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"attachment","size":1000000,"elapsedMs":0.009625000000141881,"heapDeltaBytes":848,"rssDeltaBytes":0},{"kind":"repeat","size":1048576,"elapsedMs":2.2525829999999587,"heapDeltaBytes":22512,"rssDeltaBytes":98304},{"kind":"concatenation","size":1048576,"elapsedMs":0.015833999999813386,"heapDeltaBytes":1496,"rssDeltaBytes":0},{"kind":"repeat","size":16777216,"elapsedMs":0.04795899999999165,"heapDeltaBytes":1496,"rssDeltaBytes":0},{"kind":"concatenation","size":16777216,"elapsedMs":0.022167000000081316,"heapDeltaBytes":1496,"rssDeltaBytes":0},{"kind":"repeat","size":67108864,"elapsedMs":0.01212500000019645,"heapDeltaBytes":1496,"rssDeltaBytes":0},{"kind":"concatenation","size":67108864,"elapsedMs":0.013707999999951426,"heapDeltaBytes":1496,"rssDeltaBytes":0}],"caveat":"Synthetic local Node observations, one cold call per constructed fixture. Fixture allocation and GC precede timing. Heap deltas are not peak-memory guarantees; no hosted CPU, accuracy or billing claim. Membership gate and O(1) length preflight enforce work bounds; 4MiB allocation regression threshold leaves runtime noise headroom."}
+
+> mail-scoring-workspace@0.1.0 worker:build
+> node scripts/worker-build.mjs
+
+{"private":{"bytes":1387580,"gzipBytes":524973,"modules":["packages/core/src/contract.ts","packages/core/src/guards.ts","packages/core/src/vendor/authentication-failed.ts","node_modules/entities/dist/esm/generated/decode-data-html.js","node_modules/entities/dist/esm/generated/decode-data-xml.js","node_modules/entities/dist/esm/decode-codepoint.js","node_modules/entities/dist/esm/decode.js","node_modules/htmlparser2/dist/esm/Tokenizer.js","node_modules/htmlparser2/dist/esm/Parser.js","node_modules/domelementtype/lib/esm/index.js","node_modules/domhandler/lib/esm/node.js","node_modules/domhandler/lib/esm/index.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-html.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/decode-data-xml.js","node_modules/dom-serializer/node_modules/entities/lib/esm/decode_codepoint.js","node_modules/dom-serializer/node_modules/entities/lib/esm/decode.js","node_modules/dom-serializer/node_modules/entities/lib/esm/generated/encode-html.js","node_modules/dom-serializer/node_modules/entities/lib/esm/escape.js","node_modules/dom-serializer/node_modules/entities/lib/esm/encode.js","node_modules/dom-serializer/node_modules/entities/lib/esm/index.js","node_modules/dom-serializer/lib/esm/foreignNames.js","node_modules/dom-serializer/lib/esm/index.js","node_modules/domutils/lib/esm/stringify.js","node_modules/domutils/lib/esm/traversal.js","node_modules/domutils/lib/esm/manipulation.js","node_modules/domutils/lib/esm/querying.js","node_modules/domutils/lib/esm/legacy.js","node_modules/domutils/lib/esm/helpers.js","node_modules/domutils/lib/esm/feeds.js","node_modules/domutils/lib/esm/index.js","node_modules/htmlparser2/dist/esm/index.js","packages/core/src/html-text.ts","packages/core/src/vendor/text.ts","packages/core/src/statistical-text.ts","packages/core/src/context-features.ts","packages/core/src/linear-model.ts","packages/core/src/linear.ts","packages/core/src/statistical.ts","packages/core/src/vendor/links.ts","packages/core/src/vendor/bulk.ts","packages/core/src/inspection.ts","packages/core/src/index.ts","workers/private/protocol.ts","workers/private/adapter.ts","workers/private/index.ts"],"dryRunBytes":1389075,"dryRunGzipBytes":525796},"consumer":{"bytes":6927,"gzipBytes":2482,"modules":["packages/core/src/contract.ts","workers/private/protocol.ts","workers/consumer/integration.ts","workers/consumer/index.ts"],"dryRunBytes":7131,"dryRunGzipBytes":2606}}
+
+> mail-scoring-workspace@0.1.0 worker:test
+> node scripts/worker-local.mjs
+
+actual consumer -> scorer workerd RPC tests passed
+
+> mail-scoring-workspace@0.1.0 worker:mutations
+> node scripts/worker-mutations.mjs
+
+[{"name":"outbound_fetch","caught":true,"restored":true,"failure":"forbidden capability: fetch"},{"name":"content_log","caught":true,"restored":true,"failure":"forbidden capability: console"},{"name":"retained_content","caught":true,"restored":true,"failure":"forbidden capability: globalThis"},{"name":"resource_binding","caught":true,"restored":true,"failure":"unexpected configuration/binding\n+ actual - expected\n\n  [\n    'compatibility_date',\n+   'kv_namespaces',\n    'main',\n    'minify',\n    'name',\n    'observability',\n    'preview_urls',\n"},{"name":"response_size","caught":true,"restored":true,"failure":"response_size targeted check failed"},{"name":"exception_sanitizer","caught":true,"restored":true,"failure":"exception_sanitizer targeted check failed"},{"name":"second_feature_stability","caught":true,"restored":true,"failure":"local targeted check failed"},{"name":"two_feature_stability","caught":true,"restored":true,"failure":"local targeted check failed"},{"name":"request_bytes","caught":true,"restored":true,"failure":"local targeted check failed"},{"name":"json_depth","caught":true,"restored":true,"failure":"local targeted check failed"}]

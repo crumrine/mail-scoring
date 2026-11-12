@@ -1,0 +1,406 @@
+{
+  "version": 1,
+  "provenance": "Original authored synthetic routine-care TRAIN ham; no real patient or corpus message. Fixed before refitting. Separate from regression notices; not independent accuracy evidence.",
+  "records": [
+    {
+      "subject": "Prescription renewal review",
+      "text": "This is a routine care record. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The following note summarizes the recent care review. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The practice has added an update to the treatment record. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "This administrative message accompanies the care summary. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "This information is for the patient and their caregiver. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The care coordinator has recorded the following information. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The clinical service confirms the documented care arrangements. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The local health service has prepared this patient information. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Prescription renewal review",
+      "text": "The treatment team has completed the scheduled review. Our pharmacy team checked your prescription renewal request against the medication record. Your physician will review the monitoring results before authorizing the next refill. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "This is a routine care record. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The following note summarizes the recent care review. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The practice has added an update to the treatment record. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "This administrative message accompanies the care summary. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "Here are the follow-up arrangements agreed at the consultation. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "This information is for the patient and their caregiver. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The care coordinator has recorded the following information. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The clinical service confirms the documented care arrangements. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The local health service has prepared this patient information. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Clinical medication reconciliation",
+      "text": "The treatment team has completed the scheduled review. At your outpatient visit the clinical pharmacist compared the medications you take at home with the hospital chart. The updated prescription profile records the agreed tablet doses and administration times. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "This is a routine care record. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The following note summarizes the recent care review. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The practice has added an update to the treatment record. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "This administrative message accompanies the care summary. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "Here are the follow-up arrangements agreed at the consultation. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "This information is for the patient and their caregiver. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The care coordinator has recorded the following information. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The clinical service confirms the documented care arrangements. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The local health service has prepared this patient information. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Routine hypertension follow-up",
+      "text": "The treatment team has completed the scheduled review. The nurse recorded your home blood pressure readings in the clinical profile. The physician will review the prescription medication and monitoring diary during your next appointment. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "This is a routine care record. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The following note summarizes the recent care review. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The practice has added an update to the treatment record. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "This administrative message accompanies the care summary. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "This information is for the patient and their caregiver. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The care coordinator has recorded the following information. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The clinical service confirms the documented care arrangements. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The local health service has prepared this patient information. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Cholesterol therapy consultation",
+      "text": "The treatment team has completed the scheduled review. Your specialist discussed the cholesterol measurements and treatment goals. The clinical consultation record explains the prescription medicine choice and the planned follow-up blood test. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "This is a routine care record. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The following note summarizes the recent care review. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The practice has added an update to the treatment record. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "This administrative message accompanies the care summary. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "This information is for the patient and their caregiver. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The care coordinator has recorded the following information. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The clinical service confirms the documented care arrangements. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The local health service has prepared this patient information. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Community dispensary collection",
+      "text": "The treatment team has completed the scheduled review. Our community pharmacy prepared the repeat prescription medicines requested by your practice. Collection is available during the posted opening hours; the pharmacist will check your patient details at the counter. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "This is a routine care record. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The following note summarizes the recent care review. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The practice has added an update to the treatment record. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "This administrative message accompanies the care summary. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "Here are the follow-up arrangements agreed at the consultation. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "This information is for the patient and their caregiver. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The care coordinator has recorded the following information. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The clinical service confirms the documented care arrangements. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The local health service has prepared this patient information. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Generic medicine substitution information",
+      "text": "The treatment team has completed the scheduled review. The clinic reviewed the generic medication formulary and equivalent treatment covered by your health plan. Your pharmacist will explain the active ingredient and tablet appearance at the consultation. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "This is a routine care record. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The following note summarizes the recent care review. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The practice has added an update to the treatment record. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "This administrative message accompanies the care summary. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "This information is for the patient and their caregiver. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The care coordinator has recorded the following information. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The clinical service confirms the documented care arrangements. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The local health service has prepared this patient information. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Medication interaction consultation",
+      "text": "The treatment team has completed the scheduled review. Our clinical team checked your prescription medication profile. The interaction review considers your allergy history, other prescribed medicines and the timing of each dose. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "This is a routine care record. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The following note summarizes the recent care review. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The practice has added an update to the treatment record. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "This administrative message accompanies the care summary. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "Here are the follow-up arrangements agreed at the consultation. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "This information is for the patient and their caregiver. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The care coordinator has recorded the following information. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The clinical service confirms the documented care arrangements. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The local health service has prepared this patient information. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Post-discharge analgesia instructions",
+      "text": "The treatment team has completed the scheduled review. The ward physician documented your pain management plan before discharge. The printed medication schedule records the prescription and identifies symptoms that need further clinical assessment. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "This is a routine care record. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. A family member may help record questions for the care team."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The following note summarizes the recent care review. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The practice has added an update to the treatment record. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "This administrative message accompanies the care summary. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "This information is for the patient and their caregiver. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The care coordinator has recorded the following information. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The clinical service confirms the documented care arrangements. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The local health service has prepared this patient information. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Antibiotic treatment follow-up",
+      "text": "The treatment team has completed the scheduled review. Your prescribing clinician recorded the antibiotic prescription and follow-up arrangements in the treatment profile. The practice nurse can explain the medication directions and review reported side effects. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "This is a routine care record. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. The clinical record contains the full instructions and follow-up date."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The following note summarizes the recent care review. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. Use the usual clinic contact details if clarification is needed."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The practice has added an update to the treatment record. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. The printed care plan is available at the reception desk."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "This administrative message accompanies the care summary. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. Discuss questions with the treating clinician at the next scheduled visit."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "Here are the follow-up arrangements agreed at the consultation. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. No change should be made without discussing the written plan with the care team."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "This information is for the patient and their caregiver. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. Keep this note with the other treatment documents."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The care coordinator has recorded the following information. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. The patient information desk can arrange an accessible copy of this record."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The clinical service confirms the documented care arrangements. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. The next appointment remains at the time previously arranged."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The local health service has prepared this patient information. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. Please take the current medicine list to the next consultation."
+    },
+    {
+      "subject": "Prescription benefit administration",
+      "text": "The treatment team has completed the scheduled review. Our benefits team processed the insurance documentation for your approved prescription treatment. The account record shows the covered generic medicine and pharmacy contribution for this plan year. A family member may help record questions for the care team."
+    }
+  ]
+}

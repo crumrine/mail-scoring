@@ -1,0 +1,86 @@
+
+> mail-scoring-workspace@0.1.0 test
+> npm run build && node --test --test-reporter=spec tests/*.test.ts
+
+
+> mail-scoring-workspace@0.1.0 build
+> tsc -p packages/core/tsconfig.json && node scripts/copy-notices.mjs
+
+✔ UTF-8 clipping is exact and never splits a code point (0.593208ms)
+✔ source and extracted byte limits below/at/above; combined budget includes controls (19.044458ms)
+✔ header byte accounting includes delimiters and never exceeds field/block caps (4.3625ms)
+✔ header, URL, metadata cardinalities below/at/above (0.967916ms)
+✔ secondary fields and multibyte truncation are bounded (0.245584ms)
+✔ malformed fields, controls, duplicate names and attachment bytes cannot become trusted data (0.525334ms)
+✔ transport claims and authserv-id never grant trust; ambiguity invalidates context (1.874791ms)
+✔ raw request caps and structural preflight precede parsing; errors never echo content (2.187084ms)
+✔ stream accumulation enforces limit without Content-Length and cancels oversize source (3.276958ms)
+✔ synthetic hostile fixtures produce only bounded static outputs and no console calls (0.939542ms)
+✔ array accessors, sparse arrays and hidden object getters are never executed (0.100167ms)
+✔ header multibyte and bidi control handling is partial and bounded (0.210541ms)
+✔ unprepared roots are refused before any structural operation (0.459667ms)
+✔ lazy strings are omitted before flattening beyond representation ceiling (0.409042ms)
+✔ bundle policy catches static/dynamic imports, logs and outbound APIs (10.123125ms)
+✔ workerd config cannot implicitly restore internet, native modules or storage (0.38625ms)
+✔ RPC validates bytes and bounded context and sanitizes unexpected exceptions (0.8915ms)
+✔ consumer preserves delivery on disabled/missing/throwing/malformed services (0.810625ms)
+✔ consumer wait limit preserves delivery without claiming CPU cancellation (1001.480084ms)
+✔ response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits (4.577042ms)
+✔ new statistical evidence requires declared rules-6 (2.037041ms)
+✔ historical rules-3, rules-4 and rules-5 statistical evidence remain strictly readable (1.451167ms)
+✔ synthetic rule fixtures validate schema, exact contributions and determinism (22.617792ms)
+✔ GTUBE requires a literal marker outside quotes and forwards on the original line (1.047ms)
+✔ normalized output guard bounds expansion before materializing full NFKC output (20.418333ms)
+✔ anchor work is bounded by one shared URL budget before URL parsing (1.879334ms)
+✔ URL decoding has a finite pass budget and never follows wrappers (0.389709ms)
+✔ correlated contribution caps survive repeated evidence and global saturation (0.465958ms)
+✔ linear quote skipping and inert HTML adversarial shapes remain partial (8.400792ms)
+✔ fixed phrase matches resist word repetition, Unicode expansion and prompts (20.903708ms)
+✔ hostile policy code, auth context and preference assertions are refused (0.358958ms)
+✔ seeded adversarial properties keep finite static schema and incomplete semantics (66.323708ms)
+✔ standard GTUBE marker recognition is exact, bounded, unquoted-only and non-multiplying (23.239833ms)
+✔ general spam detects original promotional plain text and inert HTML once, with static evidence (7.581333ms)
+✔ additional public TRAIN vocabulary detects an authored pharmacy advertisement (0.7105ms)
+✔ legitimate security, financial, medical, newsletter, Unicode and ordinary correspondence abstain (2.446959ms)
+✔ statistical evidence excludes quoted and forwarded text and hidden active HTML (1.413709ms)
+✔ single repeated words, empty body, forged headers, raw addresses and URLs are insufficient evidence (2.692958ms)
+✔ linear evidence requires supported body words, ignores repetition, and enforces feature ceilings (7.514666ms)
+✔ current linear model contains bounded numeric aggregates from the frozen TRAIN matrix (4.336375ms)
+✔ HTML source, tag, depth, output and statistical token ceilings abstain before unbounded work (18.721542ms)
+✔ Fisher combination is symmetric, finite, bounded and preserves the unsure middle (0.211625ms)
+✔ historical numerical reference model is a bounded unique aggregate from the frozen training partition (12.451041ms)
+✔ context features keep positions bounded, skip whole URLs and addresses and separate sources (0.425916ms)
+✔ context tiling never counts an overlapping word or duplicate clue twice (0.417666ms)
+✔ context probabilities preserve square-root-count legitimate strata and document evidence strength (0.077333ms)
+✖ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (7.748ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 46
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1194.297958
+
+✖ failing tests:
+
+test at tests/statistical.test.ts:147:1
+✖ legitimate clinical, pharmacy, financial, security and Unicode notices remain nonspam in plain text and HTML (7.748ms)
+  AssertionError [ERR_ASSERTION]: Recordatorio de consulta médica y revisión de tratamiento en la clínica
+
+  60 !== 0
+
+      at TestContext.<anonymous> (file:///Users/brian/projects/mail-scoring-dev-1007/tests/statistical.test.ts:150:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 60,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

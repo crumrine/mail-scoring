@@ -1,0 +1,37 @@
+{
+  "id": "005ad8698df0bedf9f2f954d250d452e85c95dfa4b98775848e193c80c2895ab",
+  "label": "ham",
+  "rawBytes": 548,
+  "rawContainsNul": false,
+  "supported": true,
+  "complete": true,
+  "quoted": false,
+  "cutoff": 4.59511985,
+  "bias": 2.367301919,
+  "full": {
+    "distinct": 19,
+    "known": 17,
+    "positive": 10,
+    "negative": 7,
+    "logit": 5.347050771632617,
+    "maxPositiveContribution": 0.9886551885064031
+  },
+  "bodyOnly": {
+    "distinct": 18,
+    "known": 17,
+    "positive": 10,
+    "negative": 7,
+    "logit": 5.347050771632617,
+    "maxPositiveContribution": 0.9886551885064031
+  },
+  "subjectOnly": {
+    "distinct": 2,
+    "known": 0,
+    "positive": 0,
+    "negative": 0,
+    "logit": null,
+    "maxPositiveContribution": null
+  },
+  "fetches": 0,
+  "scope": "Read-only numeric diagnosis of observed failed case, not candidate/threshold selection; no raw text output or model/source changes"
+}

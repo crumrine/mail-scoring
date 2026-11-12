@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "legacyDecoder": "WHATWG windows-1252 aliases"
+  },
+  "partitionSha256": "906c4e85f58bd40991acb724f36ab37f38eb74217b6cf673dc268f12c1933fd6",
+  "sourcePartitionsSha256": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131"
+  ],
+  "modelVersion": "general-3",
+  "hamMixture": {
+    "estimator": "existing square-root legitimate-stratum safeguard",
+    "hardWeight": 0.12306937399890502
+  },
+  "modelSourceSha256": "e20fe32bbe2688c9407a9b1e8a6e36cce9563800f1b2bdb5878270bdb73e5ab6",
+  "documents": [
+    3351,
+    66,
+    1274
+  ],
+  "entries": 37500,
+  "featurePositionsCap": 1000,
+  "maxFeatures": 1999,
+  "readPartitions": [
+    "train"
+  ],
+  "rawMessagesRead": 4757,
+  "readIdsSha256": "967d103f708a262e7df5dc742123607f06ac0cc0d4e8b0c562b245f1401fdab3",
+  "eligibleIdsSha256": "8da58faa8a9fc274bb63b32c9ecf9b476b31ef2660497b9d36e8490993aac29e",
+  "fetches": 0
+}

@@ -1,0 +1,155 @@
+{
+  "reviewId": "8892c9aa-c921-41da-9d81-015ee8a754d7",
+  "ticket": "DEV-1007",
+  "repository": "crumrine/mail-scoring",
+  "pr": 13,
+  "base": "69b84a2f0d523992e7a135fc4d3fff98227a8fc3",
+  "head": "ade04922bd566edd7e16c1f0a0cfb61b8dade640",
+  "rejectedCheckpoint": "e95c01a5ca4ffcebc041a55aa089bbbc5b405abe",
+  "frozenInboxHead": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+  "verdict": "approved",
+  "findings": [],
+  "runtime": {
+    "node": "v24.15.0",
+    "icu": "78.2",
+    "npm": "11.12.1",
+    "pythonFitter": "3.12.13",
+    "pythonPackages": {
+      "numpy": "2.5.3",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.9.0",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "postalMime": "2.7.3",
+    "workerd": "1.20261021.1",
+    "wrangler": "4.151.3"
+  },
+  "completedChecks": {
+    "npmRunCheck": {
+      "passed": true,
+      "coreTests": 46,
+      "coreMutants": 26,
+      "workerMutants": 8,
+      "directGrowthCases": 18,
+      "workerdSpike": "passed",
+      "workerLocalRpcTests": "passed"
+    },
+    "schemasAndSbom": {
+      "passed": true,
+      "committedOutputsUnchanged": true,
+      "packages": 119,
+      "runtimeDependencies": 7,
+      "vendored": 7
+    },
+    "workerDryRunArtifact": {
+      "passed": true,
+      "sha256": "2c058941ae2a1bb67b1284a8058921ff8470dda5aaca5fb98041824b08a52b3f",
+      "bytes": 1089360,
+      "gzipBytes": 378501,
+      "includesLinearModules": [
+        "packages/core/src/linear-model.ts",
+        "packages/core/src/linear.ts"
+      ],
+      "excludesHistoricalModules": [
+        "packages/core/src/context-model.ts",
+        "packages/core/src/context-probabilities.ts",
+        "packages/core/src/vendor/chi.ts",
+        "packages/core/src/vendor/tiling.ts"
+      ],
+      "configAndBindingsUnchanged": true
+    },
+    "benchmarks": {
+      "coreBenchmarkPassed": true,
+      "ordinaryP95Ms": 0.057834,
+      "ordinaryP95TargetMs": 25,
+      "workerBenchmarkPassed": true,
+      "ordinaryWarmTargetMet": true,
+      "ordinaryColdTargetMet": true
+    },
+    "trainFeatureReproduction": {
+      "passed": true,
+      "matrixSha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
+      "rows": 9804,
+      "ham": 5467,
+      "spam": 4337,
+      "fitRows": 9593,
+      "fetches": 0,
+      "sourcePartitions": [
+        "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+        "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+        "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67"
+      ]
+    },
+    "trainModelReproduction": {
+      "passed": true,
+      "modelVersion": "general-4",
+      "ruleSetVersion": "rules-6",
+      "modelSha256": "65ec78614d2c7b231af3d416519f31ca12f21fba03de7d07549f8c32ee0a5528",
+      "entries": 25429,
+      "bias": 2.383994269,
+      "logitCutoff": 4.59511985,
+      "quantizedDigits": 9,
+      "minimumPositiveBodyWords": 5,
+      "quantizedFiveFoldTraining": {
+        "TP": 2288,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2049,
+        "hardHamFP": 0
+      }
+    },
+    "trainGridComparison": {
+      "passed": true,
+      "candidates": 150,
+      "comparisonSha256": "bd657fc69a65d906942fa770411138eb2227ceb3d6595193cdb78f4275048076",
+      "selected": {
+        "scope": "unigram",
+        "C": 100,
+        "hardWeight": 20,
+        "cutoff": 0.99,
+        "metrics": {
+          "TP": 2288,
+          "FP": 0,
+          "TN": 5467,
+          "FN": 2049,
+          "hardHamFP": 0
+        }
+      }
+    },
+    "independentAdversarialSuite": {
+      "passed": true,
+      "checks": [
+        "model_manifest_and_feature_matrix_integrity",
+        "independent_legitimate_controls_abstain",
+        "strong_subject_and_positive_body_support_guard",
+        "invariance_ceilings_and_exclusions",
+        "quote_html_control_and_gtube_guards",
+        "protocol_version_reason_matrix_and_frozen_inbox_caller",
+        "fitter_and_comparison_reject_tampered_inputs"
+      ]
+    },
+    "freshHoldoutPredictions": 0,
+    "worktreesClean": true
+  },
+  "artifacts": {
+    "checkLog": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/check.log",
+    "benchmark": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/benchmark.json",
+    "workerBenchmark": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/worker-benchmark.json",
+    "reproducedFeatures": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/features/complete-training-features.json",
+    "reproducedFeatureReceipt": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/features/complete-training-receipt.json",
+    "reproducedModel": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/model/linear-model.ts",
+    "reproducedTrainingReceipt": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/model/training.json",
+    "reproducedComparison": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/comparison.json",
+    "coreValidation": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/core-validation.json",
+    "independentAdversarialScript": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/independent-adversarial.mjs",
+    "independentAdversarialReport": "/Users/brian/Documents/Codex/2026-11-08/spam-review-dev-1007/evidence/independent-adversarial.json"
+  },
+  "limitations": [
+    "TRAIN-only model fitting and dated public corpora (SpamAssassin and Enron-Spam) do not establish modern mailbox accuracy or zero future false positives.",
+    "Dense medical/pharmacy terminology without broader conversational context can accumulate positive unigram weights from historical pharmacy-spam training data.",
+    "Historical observed cohorts are regression only; independent paired evaluation on the unseen frozen kaminski-v/SH holdout cohort belongs to DEV-1009 (>=50% recall, +20 points over rules-5, and zero observed ham quarantines across all strata).",
+    "Caller-side rules-6 routing acceptance and actual stream byte completeness tracking (fixing NUL-based short-read inference) belong to DEV-1008; pre-1008 callers intentionally reject rules-6 responses as unavailable/preserve-Inbox.",
+    "Source review only: no live routing change, provider mail send, private mail capture, hosted Cloudflare Workers CPU measurement, or production deployment (OPS-615 owns manual release after DEV-1008 and DEV-1009 complete)."
+  ]
+}

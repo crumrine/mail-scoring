@@ -1,4 +1,12 @@
+> Current additive contract: engine 0.1.0 / schema 1 / RPC 1, rules-10 and strict historical versions 1–9. `statistical_balanced_evidence_spam` is valid only under rules-10. Historical reason IDs and text are unchanged. GTUBE remains supported by rules-2 through rules-10.
+
 # Bounded scoring protocol v1
+
+Current rules-6 adds the version-specific `statistical_linear_spam` reason,
+maximum60, with the static general-4 heuristic explanation. Earlier rules1–5
+remain readable under their original strict reason/version contracts. Only
+rules2–6 recognize GTUBE. Unknown7 is refused. See the [recall correction and
+TRAIN provenance](recall-correction.md) for bounded linear evidence and its limits.
 
 The stable exports are `@mail-scoring/core` (`score`, `scoreRequest`, `guardInput`,
 `boundedText`, `parseRequest`, `readRequest`, `unavailable`, constants and types),
@@ -17,7 +25,7 @@ Required: `schemaVersion: "1"`, `policyVersion` (1–64 ASCII letters/digits/dot
 underscore/hyphen), `subject`, `headers` (ordered `{name,value}` records), `text`,
 and `sourceComplete` (boolean). Optional fields:
 
-- `html` is bounded inert source, **not parsed in rules-1**. Nonempty supplied
+- `html` is bounded inert source, **not parsed in rules-1/rules-2**. Nonempty supplied
   HTML always adds `html_uninspected`, even if truncation discards it. No HTML extraction is enabled; this is the explicit minimal path
   authorized by DEV-876 note 5391. Future extraction needs separate measured guards.
 - `extractedText` is already-decoded caller text, separately capped. Supplying it
@@ -43,7 +51,7 @@ and `sourceComplete` (boolean). Optional fields:
 No arbitrary rules, nested caller metadata, raw MIME, correlation IDs, timestamps,
 model responses, attachment bytes, or actions. `receivedAt` is an optional trusted
 code-context argument (safe integer Unix milliseconds, 0..8640000000000000; default
-0). No age rule exists in rules-1; the core never reads a clock. The same bounded
+0). No age rule exists in rules-1/rules-2; the core never reads a clock. The same bounded
 input/time/context/policy produces the same result. No context fields are accepted
 in serialized requests.
 Unknown fields at inspected levels, wrong types, invalid header names and malformed
@@ -91,7 +99,7 @@ structuredClone. Pass bounded bytes across that boundary and parse at the receiv
 | URL decoding | At most 2 whole encoded-scheme passes per URL, max 200 parses/400 decode passes across 100 pairs; no wrapper traversal |
 | Attachment metadata | 32; filename 255 bytes and mediaType 127 bytes |
 | Subject / each address | 2048 / 512 bytes; at most three separate mailbox-host parses |
-| Result | at most 4096 UTF-8 bytes; max 10 distinct reasons and 19 distinct limit IDs |
+| Result | at most 4096 UTF-8 bytes; max 11 distinct reasons and 19 distinct limit IDs |
 
 The exported `boundedText` first reads string length in O(1). Above 262144 UTF-16
 code units it returns `{text:"", bytes:0, truncated:true}` without indexing, slicing
@@ -137,7 +145,7 @@ fallback is retained in the predicate but not enabled by this wrapper.
 
 ## Named rules and caps
 
-`rules-1` applies each rule once in this fixed order. All positive contributions
+`rules-2` applies each rule once in this fixed order. All positive contributions
 are clipped to the remaining family cap and then the remaining total [0,100].
 A rule can retain a zero contribution with a present signal after a cap is reached;
 reason contributions always sum exactly to the score. No negative contribution
@@ -155,7 +163,34 @@ supply rule weights or change execution.
 | sensitive_request_combined | 25 | content / 25 | spam + phishing |
 | sender_blocked | 40 | preference / 40 | spam |
 | sender_allowed | 0 | preference / 40 | context only; never erases evidence |
+| gtube | 100 | test / 100 | spam (intentional test marker) |
 | marketing_headers | 0 | marketing / 0 | marketing only |
+
+`gtube` matches only the exact 68-byte uppercase ASCII standard test marker
+`XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X` on an
+unquoted line of the bounded plain-text body (`input.text`, capped at 131072 UTF-8
+bytes before scanning). The same original line must contain the contiguous
+marker and pass the quote check. Quote and forward prefixes are checked after
+stripping C0/C1/bidi controls; the marker itself is matched before stripping.
+A marker in `subject`,
+`headers`, `extractedText`, `html`, `addresses`, `urls` or `anchors` never triggers
+`gtube`. Case changes, altered or truncated bytes, internal whitespace or line
+breaks, invisible characters and fullwidth forms do not match.
+
+Quoted-body behavior for `gtube` is explicit and linear: lines whose first
+non-space/tab character is `>` are skipped and record `quoted_content`, and lines
+beginning (after optional spaces/tabs, case-insensitively) with
+`-----original message-----` or `---------- forwarded message` record
+`quoted_content` and stop scanning the remainder of `input.text`. Consequently, a
+GTUBE marker that appears only inside `>` quoted lines or after a forwarded-message
+divider does not trigger `gtube` (negative control, `quoted_content` partial), while
+an unquoted literal body marker triggers `gtube` even if surrounded by ordinary text
+or accompanied by separate quoted/forwarded lines (positive control, preserving
+`quoted_content` partial when quotes are present). Repeated GTUBE markers fire at
+most once (`test` family cap 100, clipped to remaining `[0,100]` total). Its static
+reason identifies an intentional standard test trigger, never a calibrated spam
+probability, and never manufactures `complete` status or trusted transport/preference
+provenance.
 
 A sensitive request (password/code/wire/gift-card phrase) or authority claim
 (security team/account administrator/technical support/chief executive) only fires
@@ -198,26 +233,35 @@ failure. Unknown/ambiguous authentication remains neutral.
 ## Output and versioning
 
 The output always has schemaVersion `1`, engineVersion `0.1.0`, ruleSetVersion
-`rules-1`; status `complete|partial|unavailable`; finite heuristicScore in
+`rules-2` (with `ScoreResultV1` typing `ruleSetVersion` as `'rules-1' | 'rules-2'`
+for rollout compatibility); status `complete|partial|unavailable`; finite heuristicScore in
 [0,100]; independent spam/phishing/marketing `present|unknown` signals; reasons;
 limitsHit; and error. This is a heuristic number, **not a calibrated probability**.
 
-`REASONS`, `RULE_CAPS`, `FAMILY_CAPS` and `LIMIT_IDS` are frozen finite registries.
+`REASONS`, `RULE_CAPS`, `FAMILY_CAPS`, `RULE_SET_VERSIONS` and `LIMIT_IDS` are frozen finite registries.
 The generated result schema pins each reason ID/text and integer contribution range;
 tests validate every fixture and adversarial result using development-only Ajv.
 There is no arbitrary reason, echoed subject/address/URL, routing command or raw
-error. New limits include preferences_unknown, normalized_bytes, url_decode_limit,
+error. Limits include preferences_unknown, normalized_bytes, url_decode_limit,
 url_uninspected, quoted_content and identity_uninspected. Errors remain null,
 invalid_input, request_limit or invalid_json. Unavailable has score 0, unknown
 signals, empty reasons/limits and a static error; it is not complete/safe.
 
 Any limit or unknown authentication makes the assessment partial. Later changes
-must version the rule set and regenerate the schema. Schema 1 consumers must handle
-new reason IDs as unknown without evaluating their text; incompatible schemas
-fail to unavailable. The JSON schema intentionally pins this engine/rule set for
-reproducibility. The output closure has no attacker-derived text fields or dynamic
-weights and can emit at most ten reasons; range/cap/output-byte properties are
-verified independently by tests.
+must version the rule set and regenerate the schema.
+The JSON schema pins `ruleSetVersion: "rules-2"` for current scorer output and
+records `x-compatibleRuleSetVersions: ["rules-1", "rules-2"]`. The output closure
+has no attacker-derived text fields or dynamic weights and can emit at most 11
+reasons; range/cap/output-byte properties are verified independently by tests.
+
+**Rollout compatibility contract (caller-first deployment):** Existing Agentic Inbox
+(`08b92457015b3615e325cf4b57954daa12a628c2`) strictly pins `ruleSetVersion === 'rules-1'`
+and the initial 10 `REASONS` in its response validator, rejecting any unrecognized
+rule-set version or reason ID as `null` (`unavailable`, preserving Inbox delivery).
+Do **not** deploy a `rules-2` scorer ahead of an accepting caller. Update and deploy
+the caller (`DEV-989`) first so `decodeResponse` accepts both `'rules-1'` and `'rules-2'`
+(while rejecting `gtube` under `'rules-1'` and continuing to reject arbitrary versions
+or reasons), and only then deploy the `rules-2` scorer (`OPS-599`).
 
 These are inspection limits. Callers preserve original delivery/storage, recovery
 and explicit re-evaluation on partial/unavailable. No reject, bounce, delete,

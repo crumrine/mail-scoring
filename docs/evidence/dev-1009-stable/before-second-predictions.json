@@ -1,0 +1,395 @@
+{
+  "at": "2026-11-08T20:04:21.961815+00:00",
+  "oldRegressions": [
+    {
+      "mode": "stable-sa",
+      "startedAt": "2026-11-08T20:04:00.978486+00:00",
+      "completedAt": "2026-11-08T20:04:10.801298+00:00",
+      "exitCode": 0,
+      "reportSha256": "57e4a8f1006acdfe98036088374ec47af97c724900cf495f5e593fe75dce0318",
+      "regressionGatePassed": true,
+      "metrics": {
+        "baseline": {
+          "total": 2736,
+          "spam": 1133,
+          "ham": 1603,
+          "TP": 290,
+          "FP": 0,
+          "TN": 1603,
+          "FN": 843,
+          "precision": 1,
+          "recall": 0.2559576345984113,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 2718,
+            "unavailable": 18
+          },
+          "ruleSets": {
+            "rules-5": 2718,
+            "unavailable": 18
+          },
+          "engineVersions": {
+            "0.1.0": 2718,
+            "unavailable": 18
+          },
+          "unavailableCauses": {
+            "raw_preflight": 1,
+            "scorer_unavailable": 17
+          },
+          "uncertainty": {
+            "insufficient_evidence": 2428,
+            "rule_evidence": 290,
+            "unavailable": 18
+          },
+          "scores": {
+            "0": 1978,
+            "10": 432,
+            "15": 14,
+            "20": 3,
+            "25": 1,
+            "60": 250,
+            "70": 37,
+            "75": 2,
+            "80": 1,
+            "unavailable": 18
+          },
+          "reasons": {
+            "display_identity_mismatch": 5,
+            "impersonation_combined": 4,
+            "link_userinfo": 12,
+            "marketing_headers": 1671,
+            "reply_to_mismatch": 474,
+            "statistical_generalized_spam": 290
+          },
+          "limits": {
+            "auth_unknown": 2718,
+            "control_chars": 17,
+            "duplicate_header": 1,
+            "html_uninspected": 588,
+            "identity_uninspected": 1744,
+            "quoted_content": 1063,
+            "source_incomplete": 2718,
+            "statistical_limit": 75,
+            "url_uninspected": 1
+          }
+        },
+        "candidate": {
+          "total": 2736,
+          "spam": 1133,
+          "ham": 1603,
+          "TP": 464,
+          "FP": 0,
+          "TN": 1603,
+          "FN": 669,
+          "precision": 1,
+          "recall": 0.4095322153574581,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 2718,
+            "unavailable": 18
+          },
+          "ruleSets": {
+            "rules-7": 2718,
+            "unavailable": 18
+          },
+          "engineVersions": {
+            "0.1.0": 2718,
+            "unavailable": 18
+          },
+          "unavailableCauses": {
+            "raw_preflight": 1,
+            "scorer_unavailable": 17
+          },
+          "uncertainty": {
+            "insufficient_evidence": 2254,
+            "rule_evidence": 464,
+            "unavailable": 18
+          },
+          "scores": {
+            "0": 1816,
+            "10": 425,
+            "15": 9,
+            "20": 3,
+            "25": 1,
+            "60": 412,
+            "70": 44,
+            "75": 7,
+            "80": 1,
+            "unavailable": 18
+          },
+          "reasons": {
+            "display_identity_mismatch": 5,
+            "impersonation_combined": 4,
+            "link_userinfo": 12,
+            "marketing_headers": 1671,
+            "reply_to_mismatch": 474,
+            "statistical_robust_spam": 464
+          },
+          "limits": {
+            "auth_unknown": 2718,
+            "control_chars": 17,
+            "duplicate_header": 1,
+            "html_uninspected": 588,
+            "identity_uninspected": 1744,
+            "quoted_content": 1063,
+            "source_incomplete": 2718,
+            "statistical_limit": 163,
+            "url_uninspected": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "stable-enron",
+      "startedAt": "2026-11-08T20:04:10.804533+00:00",
+      "completedAt": "2026-11-08T20:04:16.350504+00:00",
+      "exitCode": 0,
+      "reportSha256": "697fe594ba3884297ace913d03a18cdce24563e26b10d35c536d15d9b24abdff",
+      "regressionGatePassed": true,
+      "metrics": {
+        "baseline": {
+          "total": 2000,
+          "spam": 1000,
+          "ham": 1000,
+          "TP": 212,
+          "FP": 0,
+          "TN": 1000,
+          "FN": 788,
+          "precision": 1,
+          "recall": 0.212,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 1930,
+            "unavailable": 70
+          },
+          "ruleSets": {
+            "rules-5": 1930,
+            "unavailable": 70
+          },
+          "engineVersions": {
+            "0.1.0": 1930,
+            "unavailable": 70
+          },
+          "unavailableCauses": {
+            "raw_preflight": 69,
+            "scorer_unavailable": 1
+          },
+          "uncertainty": {
+            "insufficient_evidence": 1718,
+            "rule_evidence": 212,
+            "unavailable": 70
+          },
+          "scores": {
+            "0": 1697,
+            "10": 16,
+            "15": 2,
+            "20": 3,
+            "60": 192,
+            "70": 20,
+            "unavailable": 70
+          },
+          "reasons": {
+            "display_identity_mismatch": 5,
+            "marketing_headers": 8,
+            "reply_to_mismatch": 39,
+            "statistical_generalized_spam": 212
+          },
+          "limits": {
+            "auth_unknown": 1930,
+            "control_chars": 65,
+            "html_uninspected": 286,
+            "identity_uninspected": 1638,
+            "quoted_content": 37,
+            "source_incomplete": 1930,
+            "statistical_limit": 18
+          }
+        },
+        "candidate": {
+          "total": 2000,
+          "spam": 1000,
+          "ham": 1000,
+          "TP": 461,
+          "FP": 0,
+          "TN": 1000,
+          "FN": 539,
+          "precision": 1,
+          "recall": 0.461,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 1998,
+            "unavailable": 2
+          },
+          "ruleSets": {
+            "rules-7": 1998,
+            "unavailable": 2
+          },
+          "engineVersions": {
+            "0.1.0": 1998,
+            "unavailable": 2
+          },
+          "unavailableCauses": {
+            "raw_preflight": 1,
+            "scorer_unavailable": 1
+          },
+          "uncertainty": {
+            "insufficient_evidence": 1537,
+            "rule_evidence": 461,
+            "unavailable": 2
+          },
+          "scores": {
+            "0": 1521,
+            "10": 14,
+            "15": 1,
+            "20": 1,
+            "60": 436,
+            "70": 22,
+            "75": 1,
+            "80": 2,
+            "unavailable": 2
+          },
+          "reasons": {
+            "display_identity_mismatch": 5,
+            "marketing_headers": 8,
+            "reply_to_mismatch": 39,
+            "statistical_robust_spam": 461
+          },
+          "limits": {
+            "auth_unknown": 1998,
+            "control_chars": 74,
+            "html_uninspected": 296,
+            "identity_uninspected": 1706,
+            "quoted_content": 37,
+            "source_incomplete": 1998,
+            "statistical_limit": 134
+          }
+        }
+      }
+    },
+    {
+      "mode": "stable-first",
+      "startedAt": "2026-11-08T20:04:16.354068+00:00",
+      "completedAt": "2026-11-08T20:04:21.959197+00:00",
+      "exitCode": 0,
+      "reportSha256": "704609dc2f22b0084951686ddef08acb50eef932174bb83690b5707712aa3cdd",
+      "regressionGatePassed": true,
+      "metrics": {
+        "baseline": {
+          "total": 2000,
+          "spam": 1000,
+          "ham": 1000,
+          "TP": 64,
+          "FP": 0,
+          "TN": 1000,
+          "FN": 936,
+          "precision": 1,
+          "recall": 0.064,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 1838,
+            "unavailable": 162
+          },
+          "ruleSets": {
+            "rules-5": 1838,
+            "unavailable": 162
+          },
+          "engineVersions": {
+            "0.1.0": 1838,
+            "unavailable": 162
+          },
+          "unavailableCauses": {
+            "raw_preflight": 153,
+            "scorer_unavailable": 9
+          },
+          "uncertainty": {
+            "insufficient_evidence": 1774,
+            "rule_evidence": 64,
+            "unavailable": 162
+          },
+          "scores": {
+            "0": 1742,
+            "10": 31,
+            "15": 1,
+            "60": 56,
+            "70": 7,
+            "95": 1,
+            "unavailable": 162
+          },
+          "reasons": {
+            "display_identity_mismatch": 1,
+            "marketing_headers": 5,
+            "reply_to_mismatch": 39,
+            "sensitive_request_combined": 1,
+            "statistical_generalized_spam": 64
+          },
+          "limits": {
+            "auth_unknown": 1838,
+            "control_chars": 31,
+            "html_uninspected": 323,
+            "identity_uninspected": 1567,
+            "quoted_content": 158,
+            "source_incomplete": 1838,
+            "statistical_limit": 20
+          }
+        },
+        "candidate": {
+          "total": 2000,
+          "spam": 1000,
+          "ham": 1000,
+          "TP": 486,
+          "FP": 0,
+          "TN": 1000,
+          "FN": 514,
+          "precision": 1,
+          "recall": 0.486,
+          "falsePositiveRate": 0,
+          "inspection": {
+            "partial": 1991,
+            "unavailable": 9
+          },
+          "ruleSets": {
+            "rules-7": 1991,
+            "unavailable": 9
+          },
+          "engineVersions": {
+            "0.1.0": 1991,
+            "unavailable": 9
+          },
+          "unavailableCauses": {
+            "scorer_unavailable": 9
+          },
+          "uncertainty": {
+            "insufficient_evidence": 1505,
+            "rule_evidence": 486,
+            "unavailable": 9
+          },
+          "scores": {
+            "0": 1478,
+            "10": 26,
+            "15": 1,
+            "60": 473,
+            "70": 12,
+            "95": 1,
+            "unavailable": 9
+          },
+          "reasons": {
+            "display_identity_mismatch": 1,
+            "marketing_headers": 5,
+            "reply_to_mismatch": 39,
+            "sensitive_request_combined": 1,
+            "statistical_robust_spam": 486
+          },
+          "limits": {
+            "auth_unknown": 1991,
+            "control_chars": 31,
+            "html_uninspected": 323,
+            "identity_uninspected": 1720,
+            "quoted_content": 158,
+            "source_incomplete": 1991,
+            "statistical_limit": 85
+          }
+        }
+      }
+    }
+  ],
+  "secondManifestSha256": "fd22eeb502f108f688e1bee70e389c8f11e83e569dad87211f71361d4459fc19"
+}

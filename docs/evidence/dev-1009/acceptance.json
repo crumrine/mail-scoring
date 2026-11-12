@@ -1,0 +1,403 @@
+{
+  "pins": {
+    "baseline": {
+      "inbox": "606d0edee433fbf2aee517b1f1b61e631251a79a",
+      "scorer": "5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0"
+    },
+    "candidate": {
+      "inbox": "049998e046cf37d5a5faf725d1fc75d5499d20b2",
+      "scorer": "0041d47f20d2565dc8725a3c11f0ed1af113ca74"
+    }
+  },
+  "runnerSha256": "463c7b7444c4f173d849195fdf2885208611eb4553de91869e4a89591151fa45",
+  "inputs": [
+    {
+      "path": "/Users/brian/projects/mail-scoring-dev-1011/docs/evidence/dev-1009/sa/report.json",
+      "sha256": "c6e5dab155674250b1f27f8a3a108cf6e7a54c4afa9e7015ac4b8dc880a7f54b",
+      "mode": "recall-sa",
+      "manifestSha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+      "baseline": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 290,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 843,
+        "precision": 1,
+        "recall": 0.2559576345984113,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-5": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2428,
+          "rule_evidence": 290,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1978,
+          "10": 432,
+          "15": 14,
+          "20": 3,
+          "25": 1,
+          "60": 250,
+          "70": 37,
+          "75": 2,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_generalized_spam": 290
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 75,
+          "url_uninspected": 1
+        }
+      },
+      "candidate": {
+        "total": 2736,
+        "spam": 1133,
+        "ham": 1603,
+        "TP": 534,
+        "FP": 0,
+        "TN": 1603,
+        "FN": 599,
+        "precision": 1,
+        "recall": 0.471315092674316,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 2718,
+          "unavailable": 18
+        },
+        "ruleSets": {
+          "rules-6": 2718,
+          "unavailable": 18
+        },
+        "engineVersions": {
+          "0.1.0": 2718,
+          "unavailable": 18
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 17
+        },
+        "uncertainty": {
+          "insufficient_evidence": 2184,
+          "rule_evidence": 534,
+          "unavailable": 18
+        },
+        "scores": {
+          "0": 1756,
+          "10": 417,
+          "15": 7,
+          "20": 3,
+          "25": 1,
+          "60": 472,
+          "70": 52,
+          "75": 9,
+          "80": 1,
+          "unavailable": 18
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "impersonation_combined": 4,
+          "link_userinfo": 12,
+          "marketing_headers": 1671,
+          "reply_to_mismatch": 474,
+          "statistical_linear_spam": 534
+        },
+        "limits": {
+          "auth_unknown": 2718,
+          "control_chars": 17,
+          "duplicate_header": 1,
+          "html_uninspected": 588,
+          "identity_uninspected": 1744,
+          "quoted_content": 1063,
+          "source_incomplete": 2718,
+          "statistical_limit": 163,
+          "url_uninspected": 1
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/projects/mail-scoring-dev-1011/docs/evidence/dev-1009/enron-observed/report.json",
+      "sha256": "9043cc5eb1ec9d37a703b27467d2200a00bb9a5fa8c71a3dec3b64473949c4cd",
+      "mode": "recall-enron",
+      "manifestSha256": "3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 212,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 788,
+        "precision": 1,
+        "recall": 0.212,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1930,
+          "unavailable": 70
+        },
+        "ruleSets": {
+          "rules-5": 1930,
+          "unavailable": 70
+        },
+        "engineVersions": {
+          "0.1.0": 1930,
+          "unavailable": 70
+        },
+        "unavailableCauses": {
+          "raw_preflight": 69,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1718,
+          "rule_evidence": 212,
+          "unavailable": 70
+        },
+        "scores": {
+          "0": 1697,
+          "10": 16,
+          "15": 2,
+          "20": 3,
+          "60": 192,
+          "70": 20,
+          "unavailable": 70
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_generalized_spam": 212
+        },
+        "limits": {
+          "auth_unknown": 1930,
+          "control_chars": 65,
+          "html_uninspected": 286,
+          "identity_uninspected": 1638,
+          "quoted_content": 37,
+          "source_incomplete": 1930,
+          "statistical_limit": 18
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 537,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 463,
+        "precision": 1,
+        "recall": 0.537,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1998,
+          "unavailable": 2
+        },
+        "ruleSets": {
+          "rules-6": 1998,
+          "unavailable": 2
+        },
+        "engineVersions": {
+          "0.1.0": 1998,
+          "unavailable": 2
+        },
+        "unavailableCauses": {
+          "raw_preflight": 1,
+          "scorer_unavailable": 1
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1461,
+          "rule_evidence": 537,
+          "unavailable": 2
+        },
+        "scores": {
+          "0": 1447,
+          "10": 12,
+          "15": 1,
+          "20": 1,
+          "60": 510,
+          "70": 24,
+          "75": 1,
+          "80": 2,
+          "unavailable": 2
+        },
+        "reasons": {
+          "display_identity_mismatch": 5,
+          "marketing_headers": 8,
+          "reply_to_mismatch": 39,
+          "statistical_linear_spam": 537
+        },
+        "limits": {
+          "auth_unknown": 1998,
+          "control_chars": 74,
+          "html_uninspected": 296,
+          "identity_uninspected": 1706,
+          "quoted_content": 37,
+          "source_incomplete": 1998,
+          "statistical_limit": 134
+        }
+      }
+    },
+    {
+      "path": "/Users/brian/projects/mail-scoring-dev-1011/docs/evidence/dev-1009/fresh/report.json",
+      "sha256": "b081584ad014b0800c38c96e4916c7e20a5856ebf0cf4a6e56ee0171e691cba0",
+      "mode": "recall-fresh",
+      "manifestSha256": "2112573a17e0d71d96313846e7659b3aa5b574fc6b1e41a277f9d1481afe7552",
+      "baseline": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 64,
+        "FP": 0,
+        "TN": 1000,
+        "FN": 936,
+        "precision": 1,
+        "recall": 0.064,
+        "falsePositiveRate": 0,
+        "inspection": {
+          "partial": 1838,
+          "unavailable": 162
+        },
+        "ruleSets": {
+          "rules-5": 1838,
+          "unavailable": 162
+        },
+        "engineVersions": {
+          "0.1.0": 1838,
+          "unavailable": 162
+        },
+        "unavailableCauses": {
+          "raw_preflight": 153,
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1774,
+          "rule_evidence": 64,
+          "unavailable": 162
+        },
+        "scores": {
+          "0": 1742,
+          "10": 31,
+          "15": 1,
+          "60": 56,
+          "70": 7,
+          "95": 1,
+          "unavailable": 162
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_generalized_spam": 64
+        },
+        "limits": {
+          "auth_unknown": 1838,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1567,
+          "quoted_content": 158,
+          "source_incomplete": 1838,
+          "statistical_limit": 20
+        }
+      },
+      "candidate": {
+        "total": 2000,
+        "spam": 1000,
+        "ham": 1000,
+        "TP": 547,
+        "FP": 1,
+        "TN": 999,
+        "FN": 453,
+        "precision": 0.9981751824817519,
+        "recall": 0.547,
+        "falsePositiveRate": 0.001,
+        "inspection": {
+          "partial": 1991,
+          "unavailable": 9
+        },
+        "ruleSets": {
+          "rules-6": 1991,
+          "unavailable": 9
+        },
+        "engineVersions": {
+          "0.1.0": 1991,
+          "unavailable": 9
+        },
+        "unavailableCauses": {
+          "scorer_unavailable": 9
+        },
+        "uncertainty": {
+          "insufficient_evidence": 1443,
+          "rule_evidence": 548,
+          "unavailable": 9
+        },
+        "scores": {
+          "0": 1417,
+          "10": 25,
+          "15": 1,
+          "60": 534,
+          "70": 13,
+          "95": 1,
+          "unavailable": 9
+        },
+        "reasons": {
+          "display_identity_mismatch": 1,
+          "marketing_headers": 5,
+          "reply_to_mismatch": 39,
+          "sensitive_request_combined": 1,
+          "statistical_linear_spam": 548
+        },
+        "limits": {
+          "auth_unknown": 1991,
+          "control_chars": 31,
+          "html_uninspected": 323,
+          "identity_uninspected": 1720,
+          "quoted_content": 158,
+          "source_incomplete": 1991,
+          "statistical_limit": 85
+        }
+      }
+    }
+  ],
+  "predeclared": {
+    "minimumFreshRecall": 0.5,
+    "minimumAbsoluteFreshGain": 0.2,
+    "zeroObservedHamFalsePositivesBothVariants": true
+  },
+  "failures": [
+    "recall-fresh:candidate:ham_false_positive",
+    "recall-fresh:declared_gate_failed"
+  ],
+  "eligible": false,
+  "scope": "Paired frozen research mail routing, not modern production accuracy or zero future false positives. Observed SA/Enron are regression only; SH/kaminski-v independent. OPS-615 owns separate manual release."
+}

@@ -39,8 +39,7 @@ const scorerArchive=join(out,'scorer.tar');command('git',['archive','--format=ta
 command('tar',['-xf',scorerArchive,'-C',scorerScratch]);
 checkConfig(JSON.parse(await readFile(join(scorerScratch,'workers/private/wrangler.json'),'utf8')));
 const bundle=await build({absWorkingDir:scorerScratch,entryPoints:['workers/private/index.ts'],bundle:true,format:'esm',platform:'browser',target:'es2024',external:['cloudflare:workers'],metafile:true,write:false,minify:true});
-// This historical harness exports its fixed rules-1 scorer pin, not the current rules-2 source.
-checkWorkerBundle(bundle.outputFiles[0].text,bundle.metafile,scorerModules.filter(p=>p!=='packages/core/src/brand.ts'));
+checkWorkerBundle(bundle.outputFiles[0].text,bundle.metafile,scorerModules);
 await writeFile(join(scratch,'dev880-scorer.js'),bundle.outputFiles[0].text);
 await writeFile(join(out,'scorer-metafile.json'),JSON.stringify(bundle.metafile,null,2)+'\n');
 const hash=b=>createHash('sha256').update(b).digest('hex');

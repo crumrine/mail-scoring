@@ -1,0 +1,11 @@
+file:///Users/brian/projects/mail-scoring-dev-999/harness/evaluation/run.mjs:41
+        row.path !== 'messages/' + row.id + '.eml' || !row.labelAuthority) throw new Error('manifest_record');
+                                                                                 ^
+
+Error: manifest_record
+    at validateRecords (file:///Users/brian/projects/mail-scoring-dev-999/harness/evaluation/run.mjs:41:82)
+    at parseManifest (file:///Users/brian/projects/mail-scoring-dev-999/harness/evaluation/run.mjs:51:3)
+    at run (file:///Users/brian/projects/mail-scoring-dev-999/harness/evaluation/run.mjs:156:20)
+    at async file:///Users/brian/projects/mail-scoring-dev-999/harness/evaluation/run.mjs:308:65
+
+Node.js v24.15.0

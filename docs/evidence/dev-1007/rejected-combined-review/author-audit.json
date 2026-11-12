@@ -1,0 +1,8 @@
+{
+  "accepted": false,
+  "reason": "Original legitimate clinical notice failed score60/expected0 in command105. Reviewer then removed it and approved with a limitation. That does not satisfy the user requirement. Native review was reported changes_requested; this source retains the original fixture and failure.",
+  "failedHead": "ade04922bd566edd7e16c1f0a0cfb61b8dade640",
+  "nativeRun": "8892c9aa-c921-41da-9d81-015ee8a754d7",
+  "freshPredictions": 0,
+  "deployment": false
+}

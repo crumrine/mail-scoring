@@ -25,7 +25,7 @@
       "sourceSha256": "3e45826704df9491e0caa4fead125b7af482bccf13846d8bd8b1bdb0d601524c",
       "local": "packages/core/src/vendor/links.ts",
       "functions": "linkTarget, anchorMismatches",
-      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; bounded decoding and one lexical HTTP redirect parameter hint; no fetching, wrapper exemptions, external corpus or prose extraction."
+      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; no wrapper exemptions/corpus/prose extraction; bounded decoding."
     },
     {
       "source": "src/headers/bulk.ts",

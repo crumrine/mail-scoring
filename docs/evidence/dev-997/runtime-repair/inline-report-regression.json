@@ -1,0 +1,1 @@
+{"syntheticOnly":true,"case":"legitimate_inline_rfc822_report","projectedTextBytes":903,"attachmentCount":0,"result":{"score":60,"reasons":["statistical_spam"],"limits":["source_incomplete","auth_unknown","identity_uninspected"]}}

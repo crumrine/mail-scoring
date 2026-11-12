@@ -1,0 +1,7 @@
+# DEV-1021: prospective comparator
+
+The original [fourth study](../dev-1009-wordpair/README.md) remains rejected under its original gate. The original deployed rules-5 filter is the comparison reference; a prospective study cannot require that the reference's known false positive disappear. Match the exact published row-level outputs on all six observed studies, including the false positive. Record any reference false positives on the fifth. Keep the original filter in filter mode on the same selected cases.
+
+The replacement still needs zero legitimate catches across every complete paired cohort and every authored control. Counts are recomputed from the rows and each partition, including hard-ham, HTML and other strata. Both sets must contain the same exact cases, labels and strata; fresh identities are pinned from metadata. Unavailable cases must remain in the denominators without a quarantine. On the fifth, require at least 50% recall and a gain of at least 20 percentage points versus that reference, both using integer counts. Any one failure rejects the replacement.
+
+DEV-1009 owns wiring this helper to the actual pinned runtime, source/protocol and mandatory control checks, followed by all six observed runs before the first fifth predictions. This helper alone is not a release approval. Tests use observed reports and fabricate future reports from the frozen fifth's opaque metadata only. They do not read the fifth's mail, run a classifier or create predictions. Rules-9 still fails the prospective legitimate-mail check.

@@ -1,0 +1,74 @@
+{
+  "frozenNumericModelSha256": "7272fbb25e86cd0bb41635ad1b3dd0689b087bf8a8fd5760c359accb241dd12c",
+  "selectionGridSha256": "d245241b374be6280c5842600676c6f5ecdab738fb8224c1234313c150678997",
+  "previousNumericModelSha256": "efcf3625ce74ad461998661980eb70d74e18a71d0c701adb0352bcc94f182a6b",
+  "model": "general-6",
+  "algorithm": "two correlated fixed L2 subject/body unigram margins with shared IDFs",
+  "C": 1000,
+  "hardHamWeight": 10,
+  "cutoff": 0.99,
+  "minimumPositiveBodyWords": 5,
+  "minimumKnownBodyFraction": 0.5,
+  "maxWordPositions": 1000,
+  "quantizedDigits": 9,
+  "rows": 9904,
+  "fitRows": 9693,
+  "entries": 25439,
+  "matrixSha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
+  "sourcePartitions": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67",
+    "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e"
+  ],
+  "modelSha256": "a08e63c014ef291ad94a6c1c357aca0b7fc308948efb7720d35133d4fb487d8f",
+  "twoPositiveContributionLowerBound": true,
+  "guaranteesAnyTwoPositiveRemoval": true,
+  "unguardedReferenceFiveFoldTraining": {
+    "TP": 2092,
+    "FP": 0,
+    "TN": 5567,
+    "FN": 2245,
+    "hardHamFP": 0
+  },
+  "previousGuardedReferenceFiveFoldTraining": {
+    "TP": 1746,
+    "FP": 0,
+    "TN": 5567,
+    "FN": 2591,
+    "hardHamFP": 0
+  },
+  "unguardedSelectedFiveFoldTraining": {
+    "TP": 2636,
+    "FP": 10,
+    "TN": 5557,
+    "FN": 1701,
+    "hardHamFP": 4
+  },
+  "beforeReferenceConjunctionFiveFoldTraining": {
+    "TP": 2112,
+    "FP": 0,
+    "TN": 5567,
+    "FN": 2225,
+    "hardHamFP": 0
+  },
+  "fixedReferenceConjunction": true,
+  "referenceC": 100,
+  "referenceHardHamWeight": 20,
+  "quantizedFiveFoldTraining": {
+    "TP": 1975,
+    "FP": 0,
+    "TN": 5567,
+    "FN": 2362,
+    "hardHamFP": 0
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "python": "3.12.13",
+  "scope": "TRAIN-only development; never an independent accuracy or production deployment claim"
+}

@@ -1,0 +1,6 @@
+{
+  "sha256": "3e849af2f739f483db105b4c1ce9f3ea04eecdba4a52a032547be34fc6c4f2f2",
+  "bytes": 1095744,
+  "workerLocalTests": "passed",
+  "scope": "exact checked dry-run private artifact; source candidate only; no deployment"
+}

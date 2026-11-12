@@ -1,0 +1,8 @@
+{
+  "runtimeAndLockUnchanged": true,
+  "historicalGateFilesAndTestsUnchanged": true,
+  "oldThirdManifestExactlyReproduced": true,
+  "fourthPredictions": 0,
+  "failedAcceptanceRemainsIneligible": true,
+  "fourthManifestSha256": "1e9b81b5275989be10b5685695700ccc3a92ee163517fd45eedf0bd92395e15d"
+}

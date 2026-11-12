@@ -1,7 +1,7 @@
 {
   "private": {
-    "bytes": 16099,
-    "gzipBytes": 5821,
+    "bytes": 16995,
+    "gzipBytes": 6235,
     "modules": [
       "packages/core/src/contract.ts",
       "packages/core/src/guards.ts",
@@ -15,19 +15,19 @@
       "workers/private/adapter.ts",
       "workers/private/index.ts"
     ],
-    "dryRunBytes": 16775,
-    "dryRunGzipBytes": 6169
+    "dryRunBytes": 17722,
+    "dryRunGzipBytes": 6609
   },
   "consumer": {
-    "bytes": 4780,
-    "gzipBytes": 1981,
+    "bytes": 5025,
+    "gzipBytes": 2104,
     "modules": [
       "packages/core/src/contract.ts",
       "workers/private/protocol.ts",
       "workers/consumer/integration.ts",
       "workers/consumer/index.ts"
     ],
-    "dryRunBytes": 4984,
-    "dryRunGzipBytes": 2100
+    "dryRunBytes": 5229,
+    "dryRunGzipBytes": 2224
   }
 }

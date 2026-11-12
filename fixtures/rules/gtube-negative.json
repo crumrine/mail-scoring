@@ -1,0 +1,34 @@
+{
+  "name": "gtube-negative",
+  "input": {
+    "schemaVersion": "1",
+    "policyVersion": "synthetic-1",
+    "subject": "Test non-trigger near-match mail (GTUBE negative control)",
+    "headers": [
+      {
+        "name": "message-id",
+        "value": "<gtube-negative.1010101@example.test>"
+      }
+    ],
+    "addresses": {
+      "from": "sender@example.test",
+      "replyTo": "sender@example.test",
+      "envelopeFrom": "sender@example.test",
+      "displayName": "Test Sender"
+    },
+    "text": "Negative control with altered final byte:\n\nXJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34Y\n",
+    "sourceComplete": true
+  },
+  "context": {
+    "receivedAt": 1792540800000
+  },
+  "expectedScore": 0,
+  "expectedSignals": {
+    "spam": "unknown",
+    "phishing": "unknown",
+    "marketing": "unknown"
+  },
+  "expectedLimits": [
+    "auth_unknown"
+  ]
+}

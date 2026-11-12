@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Brian Crumrine
 // SPDX-License-Identifier: Apache-2.0
 import {writeFile} from 'node:fs/promises';
-import {LIMITS,LIMIT_IDS,REASONS,RULE_CAPS} from '../packages/core/dist/index.js';
+import {ENGINE_VERSION,LIMITS,LIMIT_IDS,REASONS,RULE_CAPS,RULE_SET_VERSION,RULE_SET_VERSIONS} from '../packages/core/dist/index.js';
 const string=(bytes)=>({type:'string',maxLength:bytes,'x-maxUtf8Bytes':bytes});
 const obj=(properties,required=Object.keys(properties))=>({type:'object',additionalProperties:false,properties,required});
 const bool={type:'boolean'};
@@ -19,7 +19,7 @@ const input=obj({
 },['schemaVersion','policyVersion','subject','headers','text','sourceComplete']);
 input['x-totalAnchorsAndUrls']=100;input['x-normalizedOutputBytes']=65536;
 input['x-combinedSourceBytes']=131072;input['x-requestBytes']=262144;input['x-jsonDepth']=6;input['x-jsonTokens']=4096;
-const output=obj({schemaVersion:{const:'1'},engineVersion:{const:'0.1.0'},ruleSetVersion:{enum:['rules-1','rules-2']},
+const output=obj({schemaVersion:{const:'1'},engineVersion:{const:ENGINE_VERSION},ruleSetVersion:{const:RULE_SET_VERSION,'x-compatibleRuleSetVersions':RULE_SET_VERSIONS},
   status:{enum:['complete','partial','unavailable']},heuristicScore:{type:'number',minimum:0,maximum:100},
   signals:obj({spam:{enum:['present','unknown']},phishing:{enum:['present','unknown']},marketing:{enum:['present','unknown']}}),
   reasons:{type:'array',maxItems:Object.keys(REASONS).length,items:{oneOf:Object.entries(REASONS).map(([id,reason])=>obj({id:{const:id},contribution:{type:'integer',minimum:0,maximum:RULE_CAPS[id]},reason:{const:reason}}))}},

@@ -1,0 +1,30 @@
+{
+  "ticket": "DEV-997",
+  "source": "f50f5c8d2d2290167ba2babbf742644a4d615304",
+  "runtime": "Node24.13.0; fullcheck via npm11.12.1",
+  "checks": {
+    "full": "39/39 groups; typecheck/build; actualworkerd/nodenetwork-native probes;17core+8Worker mutations with restored controls;18direct growth",
+    "extraGrowth": "36 hostile HTML sizes/shapes pass, max local observed14.31ms; not hostedCPU",
+    "coreValidation": "Actual scorerRPC plus proposed HTML-only projection:135TP0FP300TN121FN; validationonly not currentcaller routing or heldoutacceptance",
+    "benchmark": "Ordinary localNode/warm/coldprivateRPC targets met; sourcebudgetcases slower, no universal/hostedclaim",
+    "runtimeAudit": "0known vulnerabilities reported; runtimegraph/notices/SBOMpinned",
+    "frozenData": "selection/hash regenerated unchanged; training only; untouchedholdout1988",
+    "limits": "OldmostlyEnglishpubliccorpus, hash-body exact dedupnotallnear-duplicates, no live/provider acceptance or modernaccuracy"
+  },
+  "files": {
+    "docs/evidence/dev-997/validation-first-trial.json": "5c440af0913cbb684c3245b1455820d7212c9f50c839275b7cfac798bcf76551",
+    "docs/evidence/dev-997/validation-prototype.json": "e026b02f67b395131fdb99f56e309e26ad8bb40807e72cb22ee1a547bfbcef3a",
+    "docs/evidence/dev-997/worker-mutations.json": "6cea716916b6db3a7ba6c4eb72e142ba635964d406308ea48a3159da2e38be79",
+    "docs/evidence/dev-997/typecheck.log": "3a49b548bb2bc65abb5303c529457f984e3a99c6a53cc12411027574a98baed6",
+    "docs/evidence/dev-997/growth.json": "93fbf85b93221250ac70508a2b13c607b05676fc409e43edd1411d859f87df5c",
+    "docs/evidence/dev-997/direct-growth.json": "9e619cf69f30618f5dccc9baa65e297b9b30c7312aca726b4b01351170861815",
+    "docs/evidence/dev-997/mutations.json": "7c2133b1c6da654e6b674400dc904b8384ebe192436324ed65dc25ff6e483889",
+    "docs/evidence/dev-997/worker-build.json": "b773373f2d574a226e0fb5d0e3bd7e5037a9875acec06ca09770029b04deb720",
+    "docs/evidence/dev-997/worker-benchmark.json": "9ab70fbb00af0511fec315a5541e93613d58a360680fe7c24615159c3d6ce921",
+    "docs/evidence/dev-997/core-validation.json": "70ae78d5d838c42e2dcef1c6d8e3b6d4167338d9e4f8112bae56ad2001e8be87",
+    "docs/evidence/dev-997/runtime-audit.json": "b7b0050b16cf9becc9959df1454fba905e57f15cc5096337916452e13d4e2b13",
+    "docs/evidence/dev-997/full-check.log": "9129b4358a1af0d7ad641142db0408197ccd324e5448a6d1a20a0e38be55dc61",
+    "docs/evidence/dev-997/core-benchmark.json": "f9340707944ec325e68d6a42b3a9a249fad47a2dd2529fd7c30cf1affe1293e6",
+    "docs/evidence/dev-997/dataset.json": "b34388097c8bf7ac5166781909ba48b2f982c3323f95fc3029a2e3f288d0ee39"
+  }
+}

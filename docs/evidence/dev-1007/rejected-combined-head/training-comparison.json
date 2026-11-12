@@ -1,0 +1,1964 @@
+{
+  "algorithm": "sklearn liblinear L2 logistic; binary unique content features; TRAIN-fold TFIDF/L2; exact actual-projection/guard matrix",
+  "versions": {
+    "sklearn": "1.9.0",
+    "numpy": "2.5.3",
+    "scipy": "1.17.1"
+  },
+  "matrixSha256": "5659424c5f135cc873eba6e7124def0983db07662730533563826cc0864822aa",
+  "folds": 5,
+  "candidates": 150,
+  "positiveBodyWordsMinimum": 5,
+  "results": [
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2288,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2049,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2165,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2172,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2164,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2173,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 2097,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2240,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2095,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2242,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2089,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2248,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1931,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2406,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1926,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2411,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1924,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2413,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1887,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2450,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1875,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2462,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1873,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2464,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1702,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2635,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1685,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2652,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1682,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 2655,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1095,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3242,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 1003,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3334,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 999,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3338,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 990,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3347,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 873,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3464,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 861,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3476,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 859,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3478,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 828,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3509,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 761,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3576,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 750,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3587,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 619,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3718,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 609,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3728,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 609,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3728,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 555,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3782,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 528,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3809,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 520,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3817,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 482,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3855,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 480,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3857,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 477,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3860,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 436,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3901,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 394,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3943,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 386,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 3951,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 189,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4148,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 180,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4157,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 179,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4158,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 157,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4180,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 127,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4210,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 120,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4217,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 79,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4258,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 77,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4260,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 76,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4261,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 11,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4326,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 11,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4326,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 11,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4326,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 8,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4329,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 7,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4330,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 7,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4330,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 1,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4336,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 0.1,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "TN": 5467,
+        "FN": 4337,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2293,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 2044,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 2118,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2207,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 2130,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 2100,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 2237,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1207,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 3130,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 1115,
+        "FP": 1,
+        "TN": 5466,
+        "FN": 3222,
+        "hardHamFP": 0
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2180,
+        "FP": 2,
+        "TN": 5465,
+        "FN": 2157,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2119,
+        "FP": 2,
+        "TN": 5465,
+        "FN": 2218,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.999,
+      "metrics": {
+        "TP": 2110,
+        "FP": 2,
+        "TN": 5465,
+        "FN": 2227,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2686,
+        "FP": 3,
+        "TN": 5464,
+        "FN": 1651,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2306,
+        "FP": 3,
+        "TN": 5464,
+        "FN": 2031,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2252,
+        "FP": 3,
+        "TN": 5464,
+        "FN": 2085,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2808,
+        "FP": 4,
+        "TN": 5463,
+        "FN": 1529,
+        "hardHamFP": 1
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2696,
+        "FP": 4,
+        "TN": 5463,
+        "FN": 1641,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2631,
+        "FP": 4,
+        "TN": 5463,
+        "FN": 1706,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2630,
+        "FP": 4,
+        "TN": 5463,
+        "FN": 1707,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2639,
+        "FP": 5,
+        "TN": 5462,
+        "FN": 1698,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2984,
+        "FP": 6,
+        "TN": 5461,
+        "FN": 1353,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2817,
+        "FP": 6,
+        "TN": 5461,
+        "FN": 1520,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "scope": "context",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2725,
+        "FP": 6,
+        "TN": 5461,
+        "FN": 1612,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3006,
+        "FP": 7,
+        "TN": 5460,
+        "FN": 1331,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 2985,
+        "FP": 7,
+        "TN": 5460,
+        "FN": 1352,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2866,
+        "FP": 7,
+        "TN": 5460,
+        "FN": 1471,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2859,
+        "FP": 7,
+        "TN": 5460,
+        "FN": 1478,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2853,
+        "FP": 7,
+        "TN": 5460,
+        "FN": 1484,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2719,
+        "FP": 8,
+        "TN": 5459,
+        "FN": 1618,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2719,
+        "FP": 8,
+        "TN": 5459,
+        "FN": 1618,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3217,
+        "FP": 9,
+        "TN": 5458,
+        "FN": 1120,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3216,
+        "FP": 9,
+        "TN": 5458,
+        "FN": 1121,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.995,
+      "metrics": {
+        "TP": 2731,
+        "FP": 9,
+        "TN": 5458,
+        "FN": 1606,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3237,
+        "FP": 11,
+        "TN": 5456,
+        "FN": 1100,
+        "hardHamFP": 5
+      }
+    },
+    {
+      "scope": "context",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3234,
+        "FP": 11,
+        "TN": 5456,
+        "FN": 1103,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 10,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 2850,
+        "FP": 11,
+        "TN": 5456,
+        "FN": 1487,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3239,
+        "FP": 12,
+        "TN": 5455,
+        "FN": 1098,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2914,
+        "FP": 13,
+        "TN": 5454,
+        "FN": 1423,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2909,
+        "FP": 13,
+        "TN": 5454,
+        "FN": 1428,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3253,
+        "FP": 14,
+        "TN": 5453,
+        "FN": 1084,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.99,
+      "metrics": {
+        "TP": 2925,
+        "FP": 14,
+        "TN": 5453,
+        "FN": 1412,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3058,
+        "FP": 16,
+        "TN": 5451,
+        "FN": 1279,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3044,
+        "FP": 17,
+        "TN": 5450,
+        "FN": 1293,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3037,
+        "FP": 17,
+        "TN": 5450,
+        "FN": 1300,
+        "hardHamFP": 6
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3343,
+        "FP": 20,
+        "TN": 5447,
+        "FN": 994,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3338,
+        "FP": 20,
+        "TN": 5447,
+        "FN": 999,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3251,
+        "FP": 20,
+        "TN": 5447,
+        "FN": 1086,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3249,
+        "FP": 20,
+        "TN": 5447,
+        "FN": 1088,
+        "hardHamFP": 7
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 100,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3267,
+        "FP": 22,
+        "TN": 5445,
+        "FN": 1070,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "context",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3354,
+        "FP": 23,
+        "TN": 5444,
+        "FN": 983,
+        "hardHamFP": 10
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3286,
+        "FP": 24,
+        "TN": 5443,
+        "FN": 1051,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3278,
+        "FP": 24,
+        "TN": 5443,
+        "FN": 1059,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.95,
+      "metrics": {
+        "TP": 3277,
+        "FP": 24,
+        "TN": 5443,
+        "FN": 1060,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 1,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3351,
+        "FP": 29,
+        "TN": 5438,
+        "FN": 986,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 20,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3348,
+        "FP": 30,
+        "TN": 5437,
+        "FN": 989,
+        "hardHamFP": 8
+      }
+    },
+    {
+      "scope": "unigram",
+      "C": 1000,
+      "hardWeight": 10,
+      "cutoff": 0.9,
+      "metrics": {
+        "TP": 3347,
+        "FP": 30,
+        "TN": 5437,
+        "FN": 990,
+        "hardHamFP": 8
+      }
+    }
+  ]
+}

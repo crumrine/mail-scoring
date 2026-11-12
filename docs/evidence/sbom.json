@@ -1,7 +1,78 @@
 {
   "format": "mail-scoring-provenance-1",
-  "lockSha256": "05368cc627dc4116d1b87aca4b6338b011c8aebd4298fa0e6e1bac0c08256dcb",
-  "runtimeDependencies": [],
+  "lockSha256": "04a9aa23345d13d0b2e16dadd1bfde39dadb825dd2f88b8435cddbb9837798de",
+  "runtimeDependencies": [
+    {
+      "name": "dom-serializer",
+      "version": "2.0.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/dom-serializer/-/dom-serializer-2.0.0.tgz",
+      "integrity": "sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "entities",
+      "version": "4.5.0",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz",
+      "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domelementtype",
+      "version": "2.3.0",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz",
+      "integrity": "sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domhandler",
+      "version": "5.0.3",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domhandler/-/domhandler-5.0.3.tgz",
+      "integrity": "sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domutils",
+      "version": "3.2.2",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domutils/-/domutils-3.2.2.tgz",
+      "integrity": "sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "entities",
+      "version": "6.0.1",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/entities/-/entities-6.0.1.tgz",
+      "integrity": "sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "htmlparser2",
+      "version": "10.0.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/htmlparser2/-/htmlparser2-10.0.0.tgz",
+      "integrity": "sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    }
+  ],
   "vendored": [
     {
       "name": "Mailguard authenticationFailed",
@@ -51,8 +122,8 @@
       "local": "packages/core/src/vendor/links.ts",
       "license": "MIT",
       "data": "none",
-      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; bounded decoding and one lexical HTTP redirect parameter hint; no fetching, wrapper exemptions, external corpus or prose extraction.",
-      "sha256": "0cf6f0db9cd5650f66617dcc12225bdea32f2d07f1e49ab71303f6747d728f70"
+      "modifications": "HTTP URL structure and mismatch selection adapted; exact normalized hostname instead of PSL; no wrapper exemptions/corpus/prose extraction; bounded decoding.",
+      "sha256": "ffdabe4e580624af09ec2cf080bb9c468cecf88cde40d05225c512798b8bc796"
     },
     {
       "name": "Mailguard bulkHeaderSignals",
@@ -66,6 +137,28 @@
       "data": "none",
       "modifications": "Only list-id, list-unsubscribe and precedence predicates; auto-submitted/ESP tables omitted.",
       "sha256": "3cd6adcf319a18acd35f44e0bbe8b23033cddc522e4932ddcb5abd4cf605e09f"
+    },
+    {
+      "name": "SpamBayes bounded adaptation",
+      "repository": "https://github.com/smontanaro/spambayes",
+      "revision": "8ae169fde78371780019db5b7b7acfb4950bab8f",
+      "source": "spambayes/spambayes/classifier.py and chi2.py",
+      "local": "packages/core/src/vendor/chi.ts",
+      "license": "PSF",
+      "data": "none",
+      "modifications": "Bounded pure numeric TypeScript only; no database, online learning, tokenizer, URL slurping or upstream model",
+      "sha256": "d63e96917c9b1b09af166d4f1992745c9b15553fda57127c5ae3e31d579cf841"
+    },
+    {
+      "name": "SpamBayes bounded adaptation",
+      "repository": "https://github.com/smontanaro/spambayes",
+      "revision": "8ae169fde78371780019db5b7b7acfb4950bab8f",
+      "source": "spambayes/spambayes/classifier.py _getclues",
+      "local": "packages/core/src/vendor/tiling.ts",
+      "license": "PSF",
+      "data": "none",
+      "modifications": "Bounded pure numeric TypeScript only; no database, online learning, tokenizer, URL slurping or upstream model",
+      "sha256": "0fe3498739192d685752e3f6d3b874f9e8afadf494d7daad64025cd82edec3ea"
     }
   ],
   "packages": [
@@ -830,6 +923,66 @@
       "hasInstallScript": false
     },
     {
+      "name": "dom-serializer",
+      "version": "2.0.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/dom-serializer/-/dom-serializer-2.0.0.tgz",
+      "integrity": "sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "entities",
+      "version": "4.5.0",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz",
+      "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domelementtype",
+      "version": "2.3.0",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz",
+      "integrity": "sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domhandler",
+      "version": "5.0.3",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domhandler/-/domhandler-5.0.3.tgz",
+      "integrity": "sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "domutils",
+      "version": "3.2.2",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/domutils/-/domutils-3.2.2.tgz",
+      "integrity": "sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
+      "name": "entities",
+      "version": "6.0.1",
+      "license": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/entities/-/entities-6.0.1.tgz",
+      "integrity": "sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
+    },
+    {
       "name": "error-stack-parser-es",
       "version": "1.0.5",
       "license": "MIT",
@@ -878,6 +1031,16 @@
       "scope": "development-only",
       "optional": true,
       "hasInstallScript": true
+    },
+    {
+      "name": "htmlparser2",
+      "version": "10.0.0",
+      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/htmlparser2/-/htmlparser2-10.0.0.tgz",
+      "integrity": "sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==",
+      "scope": "runtime",
+      "optional": false,
+      "hasInstallScript": false
     },
     {
       "name": "json-schema-traverse",

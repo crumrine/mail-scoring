@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "original frozenTRAIN hash mismatch rejects before message reads",
+    "modified repository Enron TRAIN membership hash rejects before message reads",
+    "selected extraTRAIN raw IDs and neutralbodyfeatures disjoint from all prior and entire reserved independent archive pair",
+    "independent holdout frozen before model fitting and predictions remain0",
+    "6 archive/expansion checks and original preparation checks pass",
+    "model hash matches default nonmutating reproduction"
+  ],
+  "rawMessagesRedistributed": false,
+  "privateSupplementalResultsIncluded": false
+}

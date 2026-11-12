@@ -1,0 +1,49 @@
+{
+  "scope": "Observed regression; not fresh acceptance or actual joined caller",
+  "totals": {
+    "sa:validation": {
+      "TP": 125,
+      "FP": 0,
+      "TN": 300,
+      "FN": 131,
+      "unavailable": 4
+    },
+    "sa:diagnostic": {
+      "TP": 27,
+      "FP": 0,
+      "TN": 128,
+      "FN": 37,
+      "unavailable": 3
+    },
+    "sa:holdout": {
+      "TP": 376,
+      "FP": 0,
+      "TN": 1175,
+      "FN": 437,
+      "unavailable": 11
+    },
+    "enron-observed:holdout": {
+      "TP": 542,
+      "FP": 1,
+      "TN": 999,
+      "FN": 458,
+      "unavailable": 2
+    }
+  },
+  "hamFalsePositives": [
+    {
+      "id": "07efa8ecb20b17a4b9bdcc7dbc11dc0da16153825220a73edd1f1b5065f1e52d",
+      "partition": "enron-observed:holdout",
+      "score": 60,
+      "reasons": [
+        "statistical_linear_spam"
+      ],
+      "limits": [
+        "source_incomplete",
+        "auth_unknown",
+        "identity_uninspected"
+      ]
+    }
+  ],
+  "fetches": 0
+}

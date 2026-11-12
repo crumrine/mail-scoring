@@ -1,0 +1,14 @@
+{
+  "base": "ac801bf192bd60fc48618a8019b5c0b028db21a4",
+  "tests": 59,
+  "coreMutants": 34,
+  "restoredWorkerMutants": 10,
+  "directGrowthSamples": 18,
+  "modelSha256": "ce506fc71c7b465ccf2fef1218c821739c381509c93abd7f8a98ec4da516d052",
+  "checkedPrivateArtifactSha256": "2255409bc192d088c0d3c6e0d6c7058f592a66c21b407f9026665e3e18dfe36c",
+  "checkedPrivateArtifactBytes": 2327023,
+  "checkedAndPrivateJsByteEqual": true,
+  "fourthHoldoutPredictions": 0,
+  "productionMutation": false,
+  "scope": "Source and local evidence only; no fresh acceptance or live delivery guarantee"
+}

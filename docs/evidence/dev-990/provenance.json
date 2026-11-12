@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "source": "https://spamassassin.apache.org/old/publiccorpus/readme.html",
+  "selection": "64 unique SHA256-sorted messages per group; no classifier-based selection",
+  "usage": "Offline filter testing offered by source. Sender copyrights retained. Raw messages held outside public repositories. Never send into live mail.",
+  "archives": [
+    {
+      "file": "readme.html",
+      "url": "https://spamassassin.apache.org/old/publiccorpus/readme.html",
+      "bytes": 4566,
+      "sha256": "9f8cc0c8be6f32b25226d3ece26da775a6e008581b8fb061a679e3acee6b64be"
+    },
+    {
+      "file": "20030228_easy_ham.tar.bz2",
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham.tar.bz2",
+      "bytes": 1612216,
+      "sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438"
+    },
+    {
+      "file": "20030228_hard_ham.tar.bz2",
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_hard_ham.tar.bz2",
+      "bytes": 1029898,
+      "sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9"
+    },
+    {
+      "file": "20030228_spam.tar.bz2",
+      "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_spam.tar.bz2",
+      "bytes": 1183768,
+      "sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743"
+    }
+  ],
+  "manifestSha256": "4ff6356a2a674467d1d8ea6f97adf11d0cce04e12d03e6e22ea2f1b8e6ab7354"
+}

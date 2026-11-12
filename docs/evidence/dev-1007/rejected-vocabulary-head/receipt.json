@@ -1,0 +1,23 @@
+{
+  "sourceParent": "ade04922bd566edd7e16c1f0a0cfb61b8dade640",
+  "rejectedCheckpoints": [
+    "e95c01a5ca4ffcebc041a55aa089bbbc5b405abe",
+    "ade04922bd566edd7e16c1f0a0cfb61b8dade640"
+  ],
+  "rules": "rules-6",
+  "model": "general-4",
+  "coreTests": 47,
+  "fixedLegitimateNotices": 21,
+  "plainHtmlLegitimateChecks": 42,
+  "coreMutants": 27,
+  "workerMutants": 8,
+  "directGrowthCases": 18,
+  "privateArtifact": {
+    "sha256": "618e1f2f339891a2fdcacfd0f6b3de63788584373f1fa11a328165c3f75bbb1e",
+    "bytes": 1095006
+  },
+  "freshHoldoutPredictions": 0,
+  "sourceOnly": true,
+  "noDeployment": true,
+  "scope": "One TRAIN-selected subject/body head; positive BODY support plus separately frozen100 authored clinical TRAIN examples. Every rejected clinical/old-Enron FP preserved; no dropped/relabelled cases. Actual joined caller acceptance and fresh evaluation still required."
+}

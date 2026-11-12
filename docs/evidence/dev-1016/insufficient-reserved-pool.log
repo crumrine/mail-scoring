@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: insufficient_unseen_spam
+    at selectUnseen (file:///Users/brian/projects/mail-scoring-dev-1009-refit/harness/evaluation/freeze-recall-second.mjs:31:122)
+    at file:///Users/brian/projects/mail-scoring-dev-1009-refit/harness/evaluation/freeze-recall-second.mjs:73:17 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

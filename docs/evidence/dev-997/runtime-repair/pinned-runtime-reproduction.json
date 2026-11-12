@@ -1,0 +1,14 @@
+{
+  "partitions.json": {
+    "sha256": "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "bytes": 3540263,
+    "crossPlatformByteEqual": true
+  },
+  "features.json": {
+    "sha256": "59d3915ab9b93943d3f454fa940e2d1da21f8ba0d766874dbc94f4b32b330e36",
+    "bytes": 9339606,
+    "crossPlatformByteEqual": true
+  },
+  "all6046AssignmentsUnchanged": true,
+  "holdoutPredictions": 0
+}

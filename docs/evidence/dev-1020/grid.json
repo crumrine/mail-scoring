@@ -1,0 +1,2646 @@
+{
+  "matrixSha256": "1e86b9a7f97af06517a7bb00faeb42d5f4e6ba264678c7548e714a1b471dfd49",
+  "candidates": [
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1874,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2463,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1470,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2867,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1006,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3331,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 665,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3672,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 370,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3967,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1930,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2407,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2610,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1727,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1869,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2468,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1460,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2877,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1001,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3336,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 662,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3675,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 367,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3970,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1928,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2409,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2604,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1733,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1860,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2477,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1452,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2885,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 994,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3343,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 661,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3676,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 366,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3971,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1923,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2414,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2602,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1735,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1851,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2486,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1446,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2891,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 983,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3354,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 655,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3682,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 360,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3977,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1913,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2424,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1739,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1842,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2495,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1905,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2432,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1739,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1439,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2898,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1905,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2432,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1739,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 973,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3364,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1905,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2432,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1739,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 648,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3689,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1905,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2432,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1739,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "C": 1000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 359,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3978,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 1905,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2432,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2598,
+        "FP": 3,
+        "TN": 5564,
+        "FN": 1739,
+        "hardHamFP": 2
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1989,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2348,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1547,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2790,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1063,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3274,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 690,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3647,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 400,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3937,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2061,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2276,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2700,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1637,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1985,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2352,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1543,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2794,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3282,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 689,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3648,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 394,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3943,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2058,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2279,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2698,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1639,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1979,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2358,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1533,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2804,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1046,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3291,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 687,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3650,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 389,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3948,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2055,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2282,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2696,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1641,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1970,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2367,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1526,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2811,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1034,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3303,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 684,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3653,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 385,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3952,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2049,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2288,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2692,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1645,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 1958,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2379,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2043,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2294,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2690,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1647,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1520,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2817,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2043,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2294,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2690,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1647,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1031,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3306,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2043,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2294,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2690,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1647,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 682,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3655,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2043,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2294,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2690,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1647,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 2000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 380,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3957,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2043,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2294,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2690,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1647,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2118,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2219,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1647,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2690,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1136,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3201,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 742,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3595,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 429,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3908,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2219,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2118,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2791,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1546,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2117,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2220,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1642,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2695,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1129,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3208,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 740,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3597,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 428,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3909,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2216,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2121,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1550,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2111,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2226,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1634,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2703,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1127,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3210,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 735,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3602,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 429,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3908,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2211,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2126,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2787,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1550,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2104,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2233,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1625,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2712,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1118,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3219,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 732,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3605,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 425,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3912,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2206,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2131,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2096,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2241,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2200,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2137,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1622,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2715,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2200,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2137,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1113,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3224,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2200,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2137,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 729,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3608,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2200,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2137,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 5000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 420,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3917,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2200,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2137,
+        "hardHamFP": 0
+      },
+      "unguardedMetrics": {
+        "TP": 2782,
+        "FP": 5,
+        "TN": 5562,
+        "FN": 1555,
+        "hardHamFP": 3
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2197,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2140,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1719,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2618,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1186,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3151,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 768,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3569,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 5,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 460,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3877,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2312,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2025,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2195,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2142,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1715,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2622,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1180,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3157,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 764,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3573,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 10,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 457,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3880,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2310,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2027,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2831,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1506,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2192,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2145,
+        "hardHamFP": 1
+      },
+      "twoWordOnly": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1704,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2633,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1174,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3163,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 762,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3575,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 20,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 455,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3882,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2308,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2029,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2830,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1507,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2188,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2149,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1696,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2641,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1169,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3168,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 760,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3577,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 50,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 449,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3888,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2307,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2030,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2828,
+        "FP": 6,
+        "TN": 5561,
+        "FN": 1509,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 55,
+      "metrics": {
+        "TP": 2185,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2152,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2304,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2033,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2826,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1511,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 60,
+      "metrics": {
+        "TP": 1690,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 2647,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2304,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2033,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2826,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1511,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 65,
+      "metrics": {
+        "TP": 1167,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3170,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2304,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2033,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2826,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1511,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 70,
+      "metrics": {
+        "TP": 758,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3579,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2304,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2033,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2826,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1511,
+        "hardHamFP": 4
+      }
+    },
+    {
+      "C": 10000,
+      "hardHamWeight": 100,
+      "minimumPositivePercent": 75,
+      "metrics": {
+        "TP": 448,
+        "FP": 0,
+        "TN": 5567,
+        "FN": 3889,
+        "hardHamFP": 0
+      },
+      "twoWordOnly": {
+        "TP": 2304,
+        "FP": 1,
+        "TN": 5566,
+        "FN": 2033,
+        "hardHamFP": 1
+      },
+      "unguardedMetrics": {
+        "TP": 2826,
+        "FP": 7,
+        "TN": 5560,
+        "FN": 1511,
+        "hardHamFP": 4
+      }
+    }
+  ],
+  "selected": {
+    "C": 10000,
+    "hardHamWeight": 50,
+    "minimumPositivePercent": 55,
+    "metrics": {
+      "TP": 2188,
+      "FP": 0,
+      "TN": 5567,
+      "FN": 2149,
+      "hardHamFP": 0
+    },
+    "twoWordOnly": {
+      "TP": 2307,
+      "FP": 1,
+      "TN": 5566,
+      "FN": 2030,
+      "hardHamFP": 1
+    },
+    "unguardedMetrics": {
+      "TP": 2828,
+      "FP": 6,
+      "TN": 5561,
+      "FN": 1509,
+      "hardHamFP": 4
+    }
+  },
+  "requiredTP": 2058,
+  "vocabularyCap": 50000,
+  "cutoff": 0.99,
+  "positiveBodyWords": 5,
+  "knownBodyPercent": 50,
+  "twoWordIncidentPositiveBound": true,
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "python": "3.12.13",
+  "scope": "TRAIN only; per-fold vocabulary/IDF; no heldout inputs or threshold selection"
+}
