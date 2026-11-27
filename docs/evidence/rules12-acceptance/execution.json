@@ -1,0 +1,254 @@
+[
+  {
+    "mode": "sa",
+    "startedAt": "2026-11-27T20:18:15.542Z",
+    "completedAt": "2026-11-27T20:18:38.934Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "a5721d80481bb2f8e6de6a89f41189cee77e0219dc14821959f943e164c63e94",
+    "candidate": {
+      "TP": 438,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 695,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "baseline": {
+      "TP": 290,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 843,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "enron",
+    "startedAt": "2026-11-27T20:18:38.940Z",
+    "completedAt": "2026-11-27T20:18:54.064Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "1aef6372923d143f9771de69de4189af89987e524c3ce447a58abac787c93b30",
+    "candidate": {
+      "TP": 545,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 455,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 212,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 788,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "first",
+    "startedAt": "2026-11-27T20:18:54.070Z",
+    "completedAt": "2026-11-27T20:19:08.841Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "0c641f953a1074cbfa2cf3f2884c9afbfb4da34766a5557b41e441259ed4fd8d",
+    "candidate": {
+      "TP": 507,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 493,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 64,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 936,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "second",
+    "startedAt": "2026-11-27T20:19:08.849Z",
+    "completedAt": "2026-11-27T20:19:23.734Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "fd1740092dcd3960e2614cc75cfc03d80f966c8ad187a82e0607c0a758021eb4",
+    "candidate": {
+      "TP": 487,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 513,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 67,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 933,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "third",
+    "startedAt": "2026-11-27T20:19:23.738Z",
+    "completedAt": "2026-11-27T20:19:38.534Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "5e2642ce17aadafe6dcbc53f554ee82dcbe089eaa2103ebfcfb93c6ec8cba732",
+    "candidate": {
+      "TP": 549,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 451,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 62,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 938,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "fourth",
+    "startedAt": "2026-11-27T20:19:38.538Z",
+    "completedAt": "2026-11-27T20:19:54.414Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "f6d8f5b0ccbe36ded50c27285edb139beee19a9c3716632ef0c6f187f97aaeca",
+    "candidate": {
+      "TP": 498,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 502,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 188,
+      "FP": 1,
+      "TN": 999,
+      "FN": 812,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "fifth",
+    "startedAt": "2026-11-27T20:19:54.419Z",
+    "completedAt": "2026-11-27T20:20:10.763Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "43e3e73a503d0b18ee5b8ab0a3172a7654549e3c69878f6503d392a65b1aaff1",
+    "candidate": {
+      "TP": 524,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 476,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 211,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 789,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "sixth",
+    "startedAt": "2026-11-27T20:20:10.767Z",
+    "completedAt": "2026-11-27T20:20:27.510Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "c9eeaca7e0783649553ef416b023972d78686e325a182b3f0b0546d0d698ae8b",
+    "candidate": {
+      "TP": 519,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 481,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 185,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 815,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "seventh",
+    "startedAt": "2026-11-27T20:20:28.926Z",
+    "completedAt": "2026-11-27T20:20:44.770Z",
+    "exitCode": 0,
+    "runnerSha256": "fd91190550dcdb6414b413789c6e9dc5c3b8d2fd5b339e306f1d751abe4d14a9",
+    "sourceHead": "17c34afe7a9fa0a15b8e0f45f1f68edce6ea3982",
+    "reportSha256": "6e4dc555ad7467773f51d7184a4940a96d688e44078a1a21b35358f8f9493583",
+    "candidate": {
+      "TP": 529,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 471,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 220,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 780,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  }
+]
