@@ -1,0 +1,7 @@
+# Eighth cohort metadata freeze
+
+Before developing a correction for the observed phishing miss, freeze 600 legitimate and 600 spam messages by raw SHA from the remaining unused kitchen-l and GP metadata. Exclude all prior TRAIN and eight observed cohorts including the seventh, 100 clinical and 167 authored controls, and supplied private exclusion-only raw/body hashes. Conflicting labels and duplicate bodies are removed. No model predictions or inspectability filters are used. The selector reproduces the seventh manifest byte-for-byte. The available eligible kitchen-l pool is below 1,000 unique legitimate messages, so this sample is smaller than the preceding 1,000-per-class cohorts.
+
+Manifest `harness/evaluation/recall-eighth-holdout-manifest.json`: SHA-256 `4d24e570303290285ede380b497dd148172b45ca0057a6cd60f022b5d8bbed26`, 1,200 records, 5,420,744 bytes. No eighth-cohort message has been scored or read by this selector. Public raw bytes must be hash-verified before classification. This dated balanced research sample does not represent current mail. The supplied private exclusions have not been proven historically complete.
+
+Independently review the freeze before detector development. Freeze candidate, tests and runner before any eighth prediction. Preserve the nine earlier observed cohort results, zero legitimate quarantines, 50% recall and 20-point gain over the original reference; count unavailable spam as misses. Deployment requires separate exact-source release review and manual verification.
