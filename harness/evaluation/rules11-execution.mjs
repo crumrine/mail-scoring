@@ -25,7 +25,7 @@ const runnerSha256=sha256(await readFile(runner));
 const controls=JSON.parse(await readBounded('harness/evaluation/replacement-legitimate-controls.json',1024*1024));
 const authoredIds=controls.records.flatMap(r=>['plain','html'].map(type=>'legitimate_'+r.id+'_'+type));
 const manifest=await readBounded('harness/evaluation/recall-sixth-holdout-manifest.json',4*1024*1024);
-assert.equal(sha256(manifest),'33b743705fa31b3b41701ce0d28f4cfec0a5c1d58c184066e26d541c73609e5a');
+assert.equal(sha256(manifest),'ec5b6ba3d47b6bb5e2795d7159051e75b05b52945db07eac548295b192a7aab8');
 const records=JSON.parse(manifest).records;assert.equal(records.length,2000);
 const workerd=createRequire(join(process.cwd(),'package.json'))('workerd').default;
 const env={...process.env,MINIFLARE_WORKERD_PATH:workerd,WRANGLER_SEND_METRICS:'false',INBOX_LOCAL_ONLY:'1',RULES11_PRIOR_DIR:out};

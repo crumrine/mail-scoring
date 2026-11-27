@@ -34,7 +34,7 @@ function fabricated(before:number,after:number,hamBefore=0,hamAfter=0){
    quarantined:m.label==='ham'?ham++<fp:spam++<tp,
   }));
  }
- return {...r,manifestSha256:'33b743705fa31b3b41701ce0d28f4cfec0a5c1d58c184066e26d541c73609e5a',
+ return {...r,manifestSha256:'ec5b6ba3d47b6bb5e2795d7159051e75b05b52945db07eac548295b192a7aab8',
   variants:{baseline:variant(rows(before,hamBefore)),candidate:variant(rows(after,hamAfter))}};
 }
 

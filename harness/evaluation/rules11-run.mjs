@@ -35,7 +35,7 @@ const REPLACEMENT_MODES=new Map([
  ['replacement-third',[REFIT_THIRD_SHA,'recall-third-holdout-manifest.json']],
  ['replacement-fourth',[WORDPAIR_FOURTH_SHA,'recall-fourth-holdout-manifest.json']],
  ['replacement-fifth',['7e713aabc0adde0cc734cd7d73c3db13c919c96d6a765d42c7f468796bad1357','recall-fifth-holdout-manifest.json']],
- ['replacement-sixth',['33b743705fa31b3b41701ce0d28f4cfec0a5c1d58c184066e26d541c73609e5a','recall-sixth-holdout-manifest.json']],
+ ['replacement-sixth',['ec5b6ba3d47b6bb5e2795d7159051e75b05b52945db07eac548295b192a7aab8','recall-sixth-holdout-manifest.json']],
 ]);
 const WORDPAIR_PINS={baseline:CONTEXT_PINS.candidate,candidate:{inbox:'35718322ea97e1c6cec6adee8b0483950bc65f99',scorer:'453cc3423e222b0e853bf3d8e9d590ee01e44bf7'}};
 const REFIT_CONTROLS_SHA='667dc0c9052480d0e63a83b7097550c1f8d9550a575ed9a15bf5d7d515e84975';
@@ -205,6 +205,7 @@ async function exportSource(repo, pin, paths, target) {
 
 async function run(dataDir, inboxRepo, scorerRepo, outputDir, mode = 'legacy') {
   const replacement=REPLACEMENT_MODES.get(mode);
+  if(replacement)assert.equal(git(scorerRepo,'status','--porcelain','--untracked-files=no').toString().trim(),'','evaluator_source_must_be_committed');
   const wordpair=mode.startsWith('wordpair-'),refit=mode.startsWith('refit-'),stable=mode.startsWith('stable-'),recall=mode.startsWith('recall-')||stable||refit||wordpair||!!replacement,independent=mode==='replacement-sixth'||mode==='recall-fresh'||mode==='stable-second'||mode==='refit-third'||mode==='wordpair-fourth';
   const general=mode!=='legacy',fresh=!!replacement?.[1]||mode==='fresh'||mode==='recall-enron'||mode==='stable-enron'||mode==='stable-first'||['refit-enron','refit-first','refit-second','wordpair-enron','wordpair-first','wordpair-second','wordpair-third'].includes(mode)||independent,context=mode==='context'||fresh||recall;
   const partitionsToCheck=fresh?['holdout']:PARTITIONS;
