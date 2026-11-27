@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-11",
+      "const": "rules-12",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
@@ -24,7 +24,8 @@
         "rules-8",
         "rules-9",
         "rules-10",
-        "rules-11"
+        "rules-11",
+        "rules-12"
       ]
     },
     "status": {
@@ -70,7 +71,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 20,
+      "maxItems": 21,
       "items": {
         "oneOf": [
           {
@@ -241,6 +242,28 @@
               },
               "reason": {
                 "const": "A recognized brand claim, unrelated sender and unrelated action link accompany an account or review lure."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "credential_phishing_combined"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 45
+              },
+              "reason": {
+                "const": "An account restriction and password request accompany an unrelated action link."
               }
             },
             "required": [

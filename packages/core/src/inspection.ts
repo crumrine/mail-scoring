@@ -61,7 +61,7 @@ export function inspect(input:ScoreInputV1,limits:Set<LimitId>) {
   const reply=mailboxHost(input.addresses?.replyTo,limits);
   const display=input.addresses?.displayName;
   const displayHost=display?.includes('@')?mailboxHost(display,limits):null;
-  return {mismatch,userinfo,replyMismatch:!!(from && reply && from!==reply),
+  return {from,mismatch,userinfo,replyMismatch:!!(from && reply && from!==reply),
     displayMismatch:!!(from && displayHost && from!==displayHost),
     sensitive:content.sensitive,authority:content.authority,gtube,
     marketing:marketingHeaders(input.headers),work,normalized};
