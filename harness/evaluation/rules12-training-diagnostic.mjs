@@ -9,7 +9,8 @@ import {join,resolve} from 'node:path';
 import {tmpdir} from 'node:os';
 import {createHash} from 'node:crypto';
 import {readBounded} from './files.mjs';
-import {createRuntime} from './rules11-runtime.mjs';
+import {createRuntime as createBaselineRuntime} from './rules11-runtime.mjs';
+import {createRuntime as createTrainingRuntime} from './rules12-train-runtime.mjs';
 import './mime-runtime.mjs';
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const increment=(obj,key)=>{obj[key]=(obj[key]??0)+1;};
@@ -47,13 +48,13 @@ try {
   for(const [repo,ref,paths,target] of [[inbox,pin.inbox,['workers/lib/mail-scoring'],caller],[scorer,pin.scorer,['packages/core/src','workers/private'],core]]){
    const tar=execFileSync('git',['-C',repo,'archive',ref,...paths],{maxBuffer:16*1024*1024});execFileSync('tar',['-xf','-','-C',target],{input:tar});
   }
-  runtimes.push(await createRuntime(caller,core,inbox,scorer));
+  runtimes.push(await (name==='rules10'?createBaselineRuntime:createTrainingRuntime)(caller,core,inbox,scorer));
  }
- const totals=Object.fromEntries(['ham','spam'].map(label=>[label,{total:0,rules10:{quarantined:0,unavailable:0},rules11:{quarantined:0,unavailable:0},lost:0,gained:0,lostLimits:{},gainedLimits:{}}]));
+ const totals=Object.fromEntries(['ham','spam'].map(label=>[label,{total:0,rules10:{quarantined:0,unavailable:0},rules11:{quarantined:0,unavailable:0},lost:0,gained:0,lostLimits:{},gainedLimits:{},lostControlFields:{},lostAnchorWhitespaceOnly:0}]));
  async function evaluate(raw,label){
   assert(label==='ham'||label==='spam');const [old,current]=await Promise.all(runtimes.map(r=>r.classify(raw)));const stat=totals[label];stat.total++;
   for(const [name,result] of [['rules10',old],['rules11',current]]){if(result.quarantined)stat[name].quarantined++;if(result.status==='unavailable')stat[name].unavailable++;}
-  if(old.quarantined&&!current.quarantined){stat.lost++;for(const limit of current.limits)increment(stat.lostLimits,limit);if(current.status==='unavailable')increment(stat.lostLimits,'unavailable');}
+  if(old.quarantined&&!current.quarantined){stat.lost++;if(current.limits.includes('control_chars')){for(const [field,present] of Object.entries(current.flags))if(present)increment(stat.lostControlFields,field);if(current.flags.anchorText&&!current.flags.anchorTextUnsafe)stat.lostAnchorWhitespaceOnly++;}for(const limit of current.limits)increment(stat.lostLimits,limit);if(current.status==='unavailable')increment(stat.lostLimits,'unavailable');}
   if(!old.quarantined&&current.quarantined){stat.gained++;for(const limit of current.limits)increment(stat.gainedLimits,limit);}
  }
  for(const row of records){
