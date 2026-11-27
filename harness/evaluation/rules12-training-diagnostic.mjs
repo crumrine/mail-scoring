@@ -40,7 +40,7 @@ const clinicalBytes=await readBounded('harness/evaluation/clinical-train.json',1
 assert.equal(hash(clinicalBytes),'8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e');
 const clinical=JSON.parse(clinicalBytes).records;assert.equal(clinical.length,100);
 const scratch=await mkdtemp(join(tmpdir(),'rules12-train-code-'));
-const pins={rules10:{inbox:'1edbfb498d436331ba2b67a4704c72fcf11a9ac1',scorer:'f8aa6004c7a0990ae99dff51b2da0afe41bad412'},rules11:{inbox:'cde0328d12b6085edca5a6715792b814f5a52a0f',scorer:'fbf6feae2815b401253cb2783d7eddaf4c9c3e84'}};
+const pins={rules10:{inbox:'1edbfb498d436331ba2b67a4704c72fcf11a9ac1',scorer:'f8aa6004c7a0990ae99dff51b2da0afe41bad412'},rules11:{inbox:'cde0328d12b6085edca5a6715792b814f5a52a0f',scorer:'fbf6feae2815b401253cb2783d7eddaf4c9c3e84'},candidate:{inbox:'1011cb0f925e1dffa78d0f4e2ad94788441121bf',scorer:'fbf6feae2815b401253cb2783d7eddaf4c9c3e84'}};
 const runtimes=[];
 try {
  for(const [name,pin] of Object.entries(pins)){
@@ -50,10 +50,12 @@ try {
   }
   runtimes.push(await (name==='rules10'?createBaselineRuntime:createTrainingRuntime)(caller,core,inbox,scorer));
  }
- const totals=Object.fromEntries(['ham','spam'].map(label=>[label,{total:0,rules10:{quarantined:0,unavailable:0},rules11:{quarantined:0,unavailable:0},lost:0,gained:0,lostLimits:{},gainedLimits:{},lostControlFields:{},lostAnchorWhitespaceOnly:0}]));
+ const totals=Object.fromEntries(['ham','spam'].map(label=>[label,{total:0,rules10:{quarantined:0,unavailable:0},rules11:{quarantined:0,unavailable:0},candidate:{quarantined:0,unavailable:0},candidateGained:0,candidateLost:0,lost:0,gained:0,lostLimits:{},gainedLimits:{},lostControlFields:{},lostAnchorWhitespaceOnly:0}]));
  async function evaluate(raw,label){
-  assert(label==='ham'||label==='spam');const [old,current]=await Promise.all(runtimes.map(r=>r.classify(raw)));const stat=totals[label];stat.total++;
-  for(const [name,result] of [['rules10',old],['rules11',current]]){if(result.quarantined)stat[name].quarantined++;if(result.status==='unavailable')stat[name].unavailable++;}
+  assert(label==='ham'||label==='spam');const [old,current,candidate]=await Promise.all(runtimes.map(r=>r.classify(raw)));const stat=totals[label];stat.total++;
+  for(const [name,result] of [['rules10',old],['rules11',current],['candidate',candidate]]){if(result.quarantined)stat[name].quarantined++;if(result.status==='unavailable')stat[name].unavailable++;}
+  if(!current.quarantined&&candidate.quarantined)stat.candidateGained++;
+  if(current.quarantined&&!candidate.quarantined)stat.candidateLost++;
   if(old.quarantined&&!current.quarantined){stat.lost++;if(current.limits.includes('control_chars')){for(const [field,present] of Object.entries(current.flags))if(present)increment(stat.lostControlFields,field);if(current.flags.anchorText&&!current.flags.anchorTextUnsafe)stat.lostAnchorWhitespaceOnly++;}for(const limit of current.limits)increment(stat.lostLimits,limit);if(current.status==='unavailable')increment(stat.lostLimits,'unavailable');}
   if(!old.quarantined&&current.quarantined){stat.gained++;for(const limit of current.limits)increment(stat.gainedLimits,limit);}
  }
