@@ -35,7 +35,10 @@ export function brandImpersonation(input:ScoreInputV1, limits:Set<LimitId>, work
       const href=anchor.href.trim();
       // Encoded scheme handling remains with linkTarget; do not infer redirect destinations from it.
       if(!/^https?:\/\//i.test(href)){limits.add('url_uninspected');continue;}
-      const params=[...new URL(href).searchParams];
+      const url=new URL(href);
+      // Encoded or embedded destinations in paths cannot establish the final host.
+      if(url.pathname.includes('%') || /https?:/i.test(url.pathname)){limits.add('url_uninspected');continue;}
+      const params=[...url.searchParams];
       const redirects=params.filter(([key,value])=>['fallback','url','redirect','redirect_uri','redirect_url','target','destination'].includes(key.toLowerCase()) && /^https?:\/\//i.test(value));
       if(params.length!==redirects.length || redirects.length>1){limits.add('url_uninspected');continue;}
       if(redirects.length===1) {

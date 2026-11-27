@@ -51,6 +51,9 @@ test('unknown, encoded and nested redirect parameters cannot establish an unrela
     'https://tracker.example/?next=https%253A%252F%252Fquickbooks.com%252Freviews',
     'https://tracker.example/?url=https%3A%2F%2Fother.invalid%2F%3Fu%3Dhttps%253A%252F%252Fquickbooks.com',
     'https://tracker.example/?url=https%3A%2F%2Fother.invalid&u=https%3A%2F%2Fquickbooks.com',
+    'https://tracker.example/redirect/https%3A%2F%2Fquickbooks.com%2Freviews',
+    'https://tracker.example/redirect/https%253A%252F%252Fquickbooks.com%252Freviews',
+    'https://tracker.example/redirect/https://quickbooks.com/reviews',
   ]) {
     const result=score({...base,anchors:[{text:'Respond now',href}]});
     assert.ok(!result.reasons.some(reason=>reason.id==='brand_impersonation_combined'));
