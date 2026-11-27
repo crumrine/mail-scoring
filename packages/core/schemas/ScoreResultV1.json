@@ -12,7 +12,7 @@
       "const": "0.1.0"
     },
     "ruleSetVersion": {
-      "const": "rules-10",
+      "const": "rules-11",
       "x-compatibleRuleSetVersions": [
         "rules-1",
         "rules-2",
@@ -23,7 +23,8 @@
         "rules-7",
         "rules-8",
         "rules-9",
-        "rules-10"
+        "rules-10",
+        "rules-11"
       ]
     },
     "status": {
@@ -69,7 +70,7 @@
     },
     "reasons": {
       "type": "array",
-      "maxItems": 19,
+      "maxItems": 20,
       "items": {
         "oneOf": [
           {
@@ -218,6 +219,28 @@
               },
               "reason": {
                 "const": "A sensitive request accompanies suspicious link or identity evidence."
+              }
+            },
+            "required": [
+              "id",
+              "contribution",
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "const": "brand_impersonation_combined"
+              },
+              "contribution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 45
+              },
+              "reason": {
+                "const": "A recognized brand claim, unrelated sender and unrelated action link accompany an account or review lure."
               }
             },
             "required": [

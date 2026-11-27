@@ -20,7 +20,7 @@ const score=(text:string,extra:Record<string,unknown>={})=>scoreRequest(new Text
 const hasSpam=(r:ReturnType<typeof score>)=>r.reasons.some(x=>x.id==='statistical_balanced_evidence_spam');
 test('general spam detects original promotional plain text and inert HTML once, with static evidence',()=>{
  for(const input of [{text:spam},{text:'',html:'<html><body><p>'+spam+'</p></body></html>'},{text:spam+'\n'+spam}]){
-  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-10');assert.equal(r.heuristicScore,60);
+  const r=score(input.text,input);assert.equal(r.ruleSetVersion,'rules-11');assert.equal(r.heuristicScore,60);
   assert.deepEqual(r.reasons,[{id:'statistical_balanced_evidence_spam',contribution:60,reason:REASONS.statistical_balanced_evidence_spam}]);
   assert.equal(r.signals.spam,'present');assert.equal(r.status,'partial');
  }
@@ -177,7 +177,7 @@ test('all frozen authored legitimate controls remain assessed, partial, zero-sco
  const escape=(text:string)=>text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
  for(const sample of controls)for(const extra of [{text:sample.text},{text:'',html:`<p>${escape(sample.text)}</p>`}]){
   assert.equal(sample.label,'ham');const result=score(extra.text,{subject:sample.subject,...extra});
-  assert.equal(result.ruleSetVersion,'rules-10');assert.equal(result.status,'partial');assert.equal(result.heuristicScore,0,sample.id);assert.equal(hasSpam(result),false,sample.id);
+  assert.equal(result.ruleSetVersion,'rules-11');assert.equal(result.status,'partial');assert.equal(result.heuristicScore,0,sample.id);assert.equal(hasSpam(result),false,sample.id);
  }
 });
 

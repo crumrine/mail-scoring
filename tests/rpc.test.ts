@@ -33,10 +33,10 @@ test('consumer wait limit preserves delivery without claiming CPU cancellation',
 });
 test('response guard rejects content, incompatible versions, excess nesting, invalid contributions and limits',()=>{
  const wire=scoreRpc('1',input);const decoded=decodeResponse(wire);assert.ok(decoded?.ok);
- assert.equal(decoded.result.ruleSetVersion,'rules-10');
+ assert.equal(decoded.result.ruleSetVersion,'rules-11');
  const gtubeInput=new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'test',subject:'Test spam mail (GTUBE)',text:'XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X',headers:[],sourceComplete:true}));
  const gtubeWire=scoreRpc('1',gtubeInput);const gtubeDecoded=decodeResponse(gtubeWire);
- assert.ok(gtubeDecoded?.ok);assert.equal(gtubeDecoded.result.ruleSetVersion,'rules-10');
+ assert.ok(gtubeDecoded?.ok);assert.equal(gtubeDecoded.result.ruleSetVersion,'rules-11');
  assert.equal(gtubeDecoded.result.heuristicScore,100);assert.equal(gtubeDecoded.result.reasons[0]?.id,'gtube');
  // Caller-first rollout compatibility: rules-1 remains accepted for legacy reasons, but rejects gtube.
  const rules1Legacy=JSON.parse(wire);rules1Legacy.result.ruleSetVersion='rules-1';
@@ -46,7 +46,7 @@ test('response guard rejects content, incompatible versions, excess nesting, inv
  assert.equal(decodeResponse('{"rpcVersion":"1","ok":false,"error":"invalid_input"}'.padEnd(4097,' ')),null);
  assert.equal(decodeResponse('['.repeat(7)+'0'+']'.repeat(7)),null);
  for(const mutate of [
-  (r:any)=>{r.rpcVersion='2';},(r:any)=>{r.result.ruleSetVersion='rules-11';},(r:any)=>{r.result.extra='PRIVATE_CANARY_877';},
+  (r:any)=>{r.rpcVersion='2';},(r:any)=>{r.result.ruleSetVersion='rules-12';},(r:any)=>{r.result.extra='PRIVATE_CANARY_877';},
   (r:any)=>{r.result.reasons=[{id:'link_mismatch',contribution:30,reason:'PRIVATE_CANARY_877'}];},
   (r:any)=>{r.result.reasons=[{id:'unknown_reason',contribution:10,reason:'Unknown'}];},
   (r:any)=>{r.result.heuristicScore=101;},(r:any)=>{r.result.limitsHit=['PRIVATE_CANARY_877'];},
@@ -58,6 +58,7 @@ test('new statistical evidence requires declared rules-10',()=>{
  const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify({schemaVersion:'1',policyVersion:'test',subject:'',text:STATISTICAL_SPAM,headers:[],sourceComplete:true})));
  const current=decodeResponse(wire);assert.ok(current?.ok);assert.equal(current.result.heuristicScore,60);
  for(const version of ['rules-1','rules-2','rules-3','rules-4','rules-5','rules-6','rules-7','rules-8','rules-9']){const old=JSON.parse(wire);old.result.ruleSetVersion=version;assert.equal(decodeResponse(JSON.stringify(old)),null);}
+ const historical=JSON.parse(wire);historical.result.ruleSetVersion='rules-10';assert.ok(decodeResponse(JSON.stringify(historical))?.ok);
  const ordinary=JSON.parse(scoreRpc('1',input));ordinary.result.ruleSetVersion='rules-2';ordinary.result.limitsHit.push('html_limit');assert.equal(decodeResponse(JSON.stringify(ordinary)),null);
 });
 
@@ -69,4 +70,11 @@ test('historical rules-3 through rules-9 statistical evidence remain strictly re
   assert.ok(decodeResponse(JSON.stringify(current))?.ok);
   current.result.ruleSetVersion='rules-10';assert.equal(decodeResponse(JSON.stringify(current)),null);
  }
+});
+
+test('brand evidence is accepted only under its new rule version',()=>{
+ const value={schemaVersion:'1',policyVersion:'test',subject:'Account notice',headers:[],text:'',sourceComplete:false,addresses:{from:'notice@sender.invalid',displayName:'QuickBooks'},extractedText:'Security team: inspect a negative review.',anchors:[{text:'Respond now',href:'https://destination.invalid/'}]};
+ const wire=scoreRpc('1',new TextEncoder().encode(JSON.stringify(value)));const current=JSON.parse(wire);
+ assert.ok(decodeResponse(wire)?.ok);assert.ok(current.result.reasons.some((r:any)=>r.id==='brand_impersonation_combined'));
+ for(const version of ['rules-1','rules-2','rules-10']){current.result.ruleSetVersion=version;assert.equal(decodeResponse(JSON.stringify(current)),null);}
 });
