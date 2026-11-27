@@ -1,0 +1,7 @@
+# Rules-11 correction: training-only diagnostic plan
+
+The seventh research cohort was selected and independently reviewed before this plan. No seventh-cohort message may be parsed, scored, or used for selection while developing the correction. The sixth is observed, but its per-row data and raw messages must not be used to choose or tune any correction.
+
+Compare the actual Workers MIME/intake/private-RPC/policy path for the merged rules-11 pair against the previous rules-10 pair on the existing three frozen public TRAIN manifests and 100 synthetic clinical training controls only. Require exact manifest hashes and raw message hashes, verify TRAIN IDs and body fingerprints do not overlap the frozen sixth or seventh manifests, and deny outbound network. Report aggregate label, routing, unavailability and static limit/reason counts only. Do not output message text, addresses, subjects, URLs or private metadata.
+
+Use only these TRAIN results and existing documented safety constraints to propose a minimal correction. Preserve boundary checks, quoting/forwarding protection, historical version decoding and recoverable delivery. Any model or cutoff selection requires a predeclared training-only validation grid and zero legitimate catches in the applicable fixed validation folds; do not loosen a guard solely to increase recall. Freeze the chosen implementation, runner and controls before running any observed or seventh cohort. Independently review exact source and rerun all observed cohorts before the untouched seventh under the unchanged acceptance gates.
