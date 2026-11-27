@@ -1,0 +1,226 @@
+[
+  {
+    "mode": "sa",
+    "startedAt": "2026-11-27T17:05:54.085Z",
+    "completedAt": "2026-11-27T17:06:26.245Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "7e14c1524a84a233c24b917944de41871b44edad5d88283972b46e445aa38fe1",
+    "candidate": {
+      "TP": 311,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 822,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "baseline": {
+      "TP": 290,
+      "FP": 0,
+      "TN": 1603,
+      "FN": 843,
+      "spam": 1133,
+      "ham": 1603,
+      "total": 2736
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "enron",
+    "startedAt": "2026-11-27T17:06:26.250Z",
+    "completedAt": "2026-11-27T17:06:53.973Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "6ff0296abfd2881fb138cdb8fdb33679156fc6950b9983920d328266a778b76e",
+    "candidate": {
+      "TP": 472,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 528,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 212,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 788,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "first",
+    "startedAt": "2026-11-27T17:06:53.978Z",
+    "completedAt": "2026-11-27T17:07:14.265Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "5fbb5baa147d87bcb303cf9345d240b99e917a09448458db3db8cd29694cc34b",
+    "candidate": {
+      "TP": 439,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 561,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 64,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 936,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "second",
+    "startedAt": "2026-11-27T17:07:14.270Z",
+    "completedAt": "2026-11-27T17:07:31.837Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "48ec6b22b19114c8690064154bae1a96634f17a3c95bf94c28fea2cceb553aea",
+    "candidate": {
+      "TP": 425,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 575,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 67,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 933,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "third",
+    "startedAt": "2026-11-27T17:07:31.840Z",
+    "completedAt": "2026-11-27T17:07:50.175Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "d38e2d006d5c3860b78c6040f7d2297fd8eb88f089c68a8f16b034a35dfb1955",
+    "candidate": {
+      "TP": 488,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 512,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 62,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 938,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "fourth",
+    "startedAt": "2026-11-27T17:07:50.179Z",
+    "completedAt": "2026-11-27T17:08:02.550Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "ec4d0a144e9648a10ceadf966051ace3b5861087f4ee5f455e17d7e15b662792",
+    "candidate": {
+      "TP": 432,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 568,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 188,
+      "FP": 1,
+      "TN": 999,
+      "FN": 812,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "fifth",
+    "startedAt": "2026-11-27T17:08:02.554Z",
+    "completedAt": "2026-11-27T17:08:22.622Z",
+    "exitCode": 0,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "c4856c9dc281d8d91626ae46d19676c4d9f54d0e8c6f98f58876928787561101",
+    "candidate": {
+      "TP": 404,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 596,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 211,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 789,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": true
+  },
+  {
+    "mode": "sixth",
+    "startedAt": "2026-11-27T17:08:27.306Z",
+    "completedAt": "2026-11-27T17:08:43.384Z",
+    "exitCode": 1,
+    "runnerSha256": "9028d2be81ed1dee6cde04247c7c174a1b55b41d70ab007b60045effd43227e9",
+    "sourceHead": "d530f818c9c975fb79e4954fbdaa7514e8b3926a",
+    "reportSha256": "e3f178e280eaa7d6ac6f6c15cf6e7424c5abfb259d6ea1b9f7a75d96357e8087",
+    "candidate": {
+      "TP": 376,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 624,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "baseline": {
+      "TP": 185,
+      "FP": 0,
+      "TN": 1000,
+      "FN": 815,
+      "spam": 1000,
+      "ham": 1000,
+      "total": 2000
+    },
+    "regressionGatePassed": false
+  }
+]
