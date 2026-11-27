@@ -44,7 +44,7 @@ export function brandImpersonation(input:ScoreInputV1, limits:Set<LimitId>, work
       if(redirects.length===1) {
         work.parses++;
         const redirect=new URL(redirects[0]![1]);
-        if(redirect.search) {limits.add('url_decode_limit');continue;}
+        if(redirect.search || redirect.pathname.includes('%') || /https?:/i.test(redirect.pathname)) {limits.add('url_decode_limit');continue;}
         if(aligned(redirect.hostname.toLowerCase(),brand.domains))continue;
       }
       return true;
