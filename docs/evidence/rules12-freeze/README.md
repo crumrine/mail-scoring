@@ -1,0 +1,9 @@
+# Next untouched cohort: metadata freeze
+
+Before developing a correction to rules-11, select 1,000 legitimate and 1,000 spam messages from the remaining public kitchen-l and GP archive metadata in raw SHA order. Exclude selected TRAIN, all six previously frozen holdout cohorts including the failed sixth, the original observed samples, 100 clinical and 167 authored controls, and private exclusion-only raw/body hashes. Remove duplicate bodies and conflicting labels. Selection uses no predictions or inspectability-based filtering.
+
+The frozen metadata manifest is `harness/evaluation/recall-seventh-holdout-manifest.json`, SHA-256 `d01a25695e6fe3533fdc9f071e71dcf9417014fea1c865e31a08268fd846abc7`. It records 2,000 messages and 8,866,092 selected bytes. No seventh-cohort message has been scored; raw files must be independently hash-verified before use. Omitted `parseUnavailable` means false. Source archives are dated public Enron-Spam research data and are not representative of current private mail. Raw messages and private exclusion data stay outside Git.
+
+The sixth is observed and failed; it is regression evidence only. Independently review and merge this neutral freeze before detector development. Freeze the corrected source, runner and controls before seventh-cohort predictions. Run all earlier observed cohorts first, preserving unavailable results and prior failures, then apply the unchanged zero candidate legitimate catches, at least 50% recall and at least 20-point improvement gates. Source merge or this freeze alone does not authorize production deployment.
+
+Checks: Node 24.15.0 `npm run build`; `node harness/evaluation/freeze-recall-second.mjs --self-check`; reproduce the sixth manifest byte-for-byte and verify the seventh metadata selection with the same pinned inputs and exclusion-only file. No raw research messages or live mailbox were read in this preparation.
