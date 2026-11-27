@@ -35,12 +35,13 @@ export function brandImpersonation(input:ScoreInputV1, limits:Set<LimitId>, work
       const href=anchor.href.trim();
       // Encoded scheme handling remains with linkTarget; do not infer redirect destinations from it.
       if(!/^https?:\/\//i.test(href)){limits.add('url_uninspected');continue;}
-      const redirects=[...new URL(href).searchParams].filter(([key,value])=>['fallback','url','redirect','redirect_uri','redirect_url','target','destination'].includes(key.toLowerCase()) && /^https?:\/\//i.test(value));
-      if(redirects.length>1){limits.add('url_uninspected');continue;}
+      const params=[...new URL(href).searchParams];
+      const redirects=params.filter(([key,value])=>['fallback','url','redirect','redirect_uri','redirect_url','target','destination'].includes(key.toLowerCase()) && /^https?:\/\//i.test(value));
+      if(params.length!==redirects.length || redirects.length>1){limits.add('url_uninspected');continue;}
       if(redirects.length===1) {
         work.parses++;
         const redirect=new URL(redirects[0]![1]);
-        if([...redirect.searchParams.keys()].some(key=>['fallback','url','redirect','redirect_uri','redirect_url','target','destination'].includes(key.toLowerCase()))) {limits.add('url_decode_limit');continue;}
+        if(redirect.search) {limits.add('url_decode_limit');continue;}
         if(aligned(redirect.hostname.toLowerCase(),brand.domains))continue;
       }
       return true;

@@ -44,3 +44,16 @@ test('exact domain boundaries, Unicode brand folding, second brand and ambiguous
     assert.ok(r.limitsHit.some(l=>l==='url_uninspected'||l==='url_decode_limit'));
   }
 });
+
+test('unknown, encoded and nested redirect parameters cannot establish an unrelated destination',()=>{
+  for(const href of [
+    'https://tracker.example/?u=https%3A%2F%2Fquickbooks.com%2Freviews',
+    'https://tracker.example/?next=https%253A%252F%252Fquickbooks.com%252Freviews',
+    'https://tracker.example/?url=https%3A%2F%2Fother.invalid%2F%3Fu%3Dhttps%253A%252F%252Fquickbooks.com',
+    'https://tracker.example/?url=https%3A%2F%2Fother.invalid&u=https%3A%2F%2Fquickbooks.com',
+  ]) {
+    const result=score({...base,anchors:[{text:'Respond now',href}]});
+    assert.ok(!result.reasons.some(reason=>reason.id==='brand_impersonation_combined'));
+    assert.ok(result.limitsHit.some(limit=>limit==='url_uninspected'||limit==='url_decode_limit'));
+  }
+});
