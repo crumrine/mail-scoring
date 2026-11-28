@@ -14,6 +14,8 @@ test('credential request with account lockout and unrelated action link is flagg
 test('credential warnings, related links, missing evidence and quoted text do not trigger',()=>{
  const samples=[
   {...base,extractedText:'Your account is suspended. We will never ask you to verify your password. Visit our help center.'},
+  {...base,extractedText:'Your account is suspended. We will not ask you to enter your password.'},
+  {...base,extractedText:"Your account is suspended. We won't ask you to enter your password."},
   {...base,extractedText:'Warning: a scam says your account is suspended and asks you to verify your password.'},
   {...base,extractedText:'> Your account is suspended. Verify your password immediately.'},
   {...base,subject:'Sign in',extractedText:'Verify your identity and password to sign in.'},
