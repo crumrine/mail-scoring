@@ -23,6 +23,8 @@ test('credential warnings, related links, missing evidence and quoted text do no
   {...base,extractedText:'Your account is suspended. Disregard any request to enter your password.'},
   {...base,extractedText:'Your account is suspended. Please refuse any request to enter your password.'},
   {...base,extractedText:'Your account is suspended. Reject any request to provide your password.'},
+  {...base,extractedText:'Your account is suspended. Confirm your password has been changed.'},
+  {...base,extractedText:'Your account is suspended. Verify your password is updated.'},
   {...base,extractedText:'The message stated: "Your account is suspended. Verify your password immediately."'},
   {...base,extractedText:'The message stated: ‘Your account is suspended. Verify your password immediately.’'},
   {...base,extractedText:'Warning: a scam says your account is suspended and asks you to verify your password.'},

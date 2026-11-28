@@ -12,7 +12,7 @@ export function credentialPhishing(input:ScoreInputV1,limits:Set<LimitId>,featur
   if(/\b(?:scam|phishing|fraud|fraudulent|never|no|not|won't|won’t|cannot|can't|can’t|without|don't|don’t|if|unless|ignore|disregard|warning|warn|suspicious|unsolicited|report)\b/u.test(text) ||
     /\bavoid\s+(?:entering|providing|submitting|sending|verifying)\b/u.test(text) || /["“”‘’]|'[^']*'/u.test(text))return false;
   if(!/\baccount\b.{0,40}\b(?:suspended|locked|disabled|restricted|closed)\b/u.test(text))return false;
-  if(!/(?:^|[.!?]\s*)(?:to [^.!?,]{1,80},\s*)?(?:please\s+)?(?:verify|confirm|enter|provide|submit|send)\s+(?:your\s+)?(?:identity\s+and\s+)?password\b/u.test(text))return false;
+  if(!/(?:^|[.!?]\s*)(?:to [^.!?,]{1,80},\s*)?(?:please\s+)?(?:verify|confirm|enter|provide|submit|send)\s+(?:your\s+)?(?:identity\s+and\s+)?password\b(?!\s+(?:has|have|had|is|was|will|should|must|can|could|needs)\b)/u.test(text))return false;
   for(const anchor of input.anchors??[]) {
     if(anchor.quoted || !/\b(?:verify|confirm|sign in|log in|resolve|restore|secure)\b/u.test(normalizeText([anchor.text]).text))continue;
     try {
