@@ -9,7 +9,8 @@ export function credentialPhishing(input:ScoreInputV1,limits:Set<LimitId>,featur
   const {normalized,from,work}=features;
   if(!from || normalized.quoted || normalized.truncated)return false;
   const text=normalized.text;
-  if(/\b(?:scam|phishing|fraud|fraudulent|never|not|won't|won’t|cannot|can't|can’t|without|don't|don’t)\b/u.test(text))return false;
+  if(/\b(?:scam|phishing|fraud|fraudulent|never|no|not|won't|won’t|cannot|can't|can’t|without|don't|don’t)\b/u.test(text) ||
+    /\bavoid\s+(?:entering|providing|submitting|sending|verifying)\b/u.test(text) || /["“”‘’]|'[^']*'/u.test(text))return false;
   if(!/\baccount\b.{0,40}\b(?:suspended|locked|disabled|restricted|closed)\b/u.test(text))return false;
   if(!/\b(?:verify|confirm|enter|provide|submit|send)\b.{0,50}\bpassword\b/u.test(text))return false;
   for(const anchor of input.anchors??[]) {
