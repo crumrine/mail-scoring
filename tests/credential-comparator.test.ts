@@ -5,7 +5,7 @@ import {test} from 'node:test';
 import {compareReplacement} from '../harness/evaluation/credential-comparator.mjs';
 
 const load=(path:string)=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
-const candidatePins={inbox:'5f2975c236b1d71a786344c7119c9d032e3dbeca',scorer:'3fb922559cbf837e0063b3c6c2cf5a6fa73ebfd1'};
+const candidatePins={inbox:'3ca643981f5c7db993368a1cd16d885910431d91',scorer:'91c8ee30c92485c012b061884dfa42ade8d46dbd'};
 const archive=(name:string)=>{const r=load('../docs/evidence/dev-1009-wordpair/wordpair-'+name+'/report.json');r.identities.candidate.pins={...candidatePins};return r;};
 const authoredIds: string[]=load('../harness/evaluation/wordpair-legitimate-controls.json').records
   .flatMap((c:{id:string})=>['plain','html'].map(kind=>'legitimate_'+c.id+'_'+kind));

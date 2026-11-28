@@ -40,7 +40,7 @@ const clinicalBytes=await readBounded('harness/evaluation/clinical-train.json',1
 assert.equal(hash(clinicalBytes),'8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e');
 const clinical=JSON.parse(clinicalBytes).records;assert.equal(clinical.length,100);
 const scratch=await mkdtemp(join(tmpdir(),'rules12-train-code-'));
-const pins={rules10:{inbox:'1edbfb498d436331ba2b67a4704c72fcf11a9ac1',scorer:'f8aa6004c7a0990ae99dff51b2da0afe41bad412'},rules11:{inbox:'1011cb0f925e1dffa78d0f4e2ad94788441121bf',scorer:'fbf6feae2815b401253cb2783d7eddaf4c9c3e84'},candidate:{inbox:'5f2975c236b1d71a786344c7119c9d032e3dbeca',scorer:'3fb922559cbf837e0063b3c6c2cf5a6fa73ebfd1'}};
+const pins={rules10:{inbox:'1edbfb498d436331ba2b67a4704c72fcf11a9ac1',scorer:'f8aa6004c7a0990ae99dff51b2da0afe41bad412'},rules11:{inbox:'1011cb0f925e1dffa78d0f4e2ad94788441121bf',scorer:'fbf6feae2815b401253cb2783d7eddaf4c9c3e84'},candidate:{inbox:'3ca643981f5c7db993368a1cd16d885910431d91',scorer:'91c8ee30c92485c012b061884dfa42ade8d46dbd'}};
 const runtimes=[];
 try {
  for(const [name,pin] of Object.entries(pins)){
