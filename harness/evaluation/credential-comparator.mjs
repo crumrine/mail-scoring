@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readBounded,sha256} from './files.mjs';
 
 const baselinePins={inbox:'606d0edee433fbf2aee517b1f1b61e631251a79a',scorer:'5ed110e5cdfc9905fc5ee2940a4a39cd9e4864b0'};
-const candidatePins={inbox:'e190789cf8bdf939b79652be1d8c1b9278d4ba0f',scorer:'08ec741f7e14f2e95e1be27db17e30c2902b4260'};
+const candidatePins={inbox:'5f2975c236b1d71a786344c7119c9d032e3dbeca',scorer:'3fb922559cbf837e0063b3c6c2cf5a6fa73ebfd1'};
 const history=[
  ['111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803','1717f679b6a97bbfe9558ba73f15af3583bd43ccf325a25a0367fc6ffabbcfc1',2736,1133],
  ['3153073d1d498c1c1d3cafc63f64aad4415dab57c90e808e9c2a85eea909e380','347019e8e0ee52ca43ae027cbbac911b1d01a82b8d3d1c295a3d32cbd9d878f7',2000,1000],
