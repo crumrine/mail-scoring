@@ -10,6 +10,7 @@ const base={schemaVersion:'1',policyVersion:'test',subject:'Your account access 
 test('credential request with account lockout and unrelated action link is flagged',()=>{
  const r=score(base);assert.equal(r.ruleSetVersion,'rules-12');assert.equal(r.heuristicScore,45);
  assert.equal(r.signals.phishing,'present');assert.equal(r.reasons[0]?.id,'credential_phishing_combined');
+ assert.ok(score({...base,extractedText:'Your account is suspended. To avoid permanent closure, verify your identity and password immediately.'}).reasons.some(r=>r.id==='credential_phishing_combined'));
 });
 test('credential warnings, related links, missing evidence and quoted text do not trigger',()=>{
  const samples=[
@@ -20,6 +21,8 @@ test('credential warnings, related links, missing evidence and quoted text do no
   {...base,extractedText:'Your account is suspended. Avoid entering your password.'},
   {...base,extractedText:'Your account is suspended. If you receive a request to enter your password, ignore it.'},
   {...base,extractedText:'Your account is suspended. Disregard any request to enter your password.'},
+  {...base,extractedText:'Your account is suspended. Please refuse any request to enter your password.'},
+  {...base,extractedText:'Your account is suspended. Reject any request to provide your password.'},
   {...base,extractedText:'The message stated: "Your account is suspended. Verify your password immediately."'},
   {...base,extractedText:'The message stated: ‘Your account is suspended. Verify your password immediately.’'},
   {...base,extractedText:'Warning: a scam says your account is suspended and asks you to verify your password.'},
