@@ -8,7 +8,7 @@ const base={schemaVersion:'1',policyVersion:'synthetic-2',subject:'Account notic
   anchors:[{text:'Respond now',href:'https://tracker.example/route?fallback=https%3A%2F%2Fdestination.invalid%2F'}]};
 const score=(x:unknown)=>scoreRequest(new TextEncoder().encode(JSON.stringify(x)));
 test('HTML feature review lure fires once with static evidence and a finite score',()=>{
-  const r=score(base);assert.equal(r.ruleSetVersion,'rules-11');assert.equal(r.heuristicScore,45);
+  const r=score(base);assert.equal(r.ruleSetVersion,'rules-12');assert.equal(r.heuristicScore,45);
   assert.equal(r.signals.phishing,'present');assert.equal(r.reasons[0]?.id,'brand_impersonation_combined');
   assert.deepEqual(score({...base,anchors:Array(50).fill(base.anchors[0])}),r);
   assert.ok(!JSON.stringify(r).includes('destination.invalid'));

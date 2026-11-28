@@ -6,6 +6,7 @@ import { authenticationFailed } from './vendor/authentication-failed.js';
 import { generalSpam } from './statistical.js';
 import { inspect } from './inspection.js';
 import { brandImpersonation } from './brand.js';
+import { credentialPhishing } from './credential-phishing.js';
 export * from './contract.js';
 export { guardInput, boundedText, parseRequest, readRequest } from './guards.js';
 export function unavailable(error: Exclude<ScoreResultV1['error'],null>): ScoreResultV1 {
@@ -47,6 +48,7 @@ export function score(value:unknown, context:ScoreContext={}):ScoreResultV1 {
   if(features.authority && suspicious)add('impersonation_combined','identity',['phishing']);
   if(features.sensitive && suspicious)add('sensitive_request_combined','content',['spam','phishing']);
   if(brandImpersonation(input,limits,features.work))add('brand_impersonation_combined','brand',['spam','phishing']);
+  if(credentialPhishing(input,limits,features))add('credential_phishing_combined','brand',['spam','phishing']);
   if(input.preferences) {
     if(context.preferencesVerified!==true)limits.add('preferences_unknown');
     else {

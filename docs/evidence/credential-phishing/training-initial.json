@@ -1,0 +1,82 @@
+{
+  "scope": "Frozen public TRAIN and synthetic clinical training controls only; no held-out predictions",
+  "pins": {
+    "rules10": {
+      "inbox": "1edbfb498d436331ba2b67a4704c72fcf11a9ac1",
+      "scorer": "f8aa6004c7a0990ae99dff51b2da0afe41bad412"
+    },
+    "rules11": {
+      "inbox": "1011cb0f925e1dffa78d0f4e2ad94788441121bf",
+      "scorer": "fbf6feae2815b401253cb2783d7eddaf4c9c3e84"
+    },
+    "candidate": {
+      "inbox": "c2b8bb7177558284d3bf991ee42ca978808abd6a",
+      "scorer": "66c6ab8d1a1531d0d2319a440fdf16f66523cad2"
+    }
+  },
+  "manifestHashes": [
+    "111a9d3a05120d099d48967a7e06ee8ca35eec26c95dea7d7ae1b989b626b803",
+    "773885c5637978efcb1ff6a52bca7a07eec73ce6054470874ece00412ed2b131",
+    "e12fc4a6015350407d63925b9929f0cae3d4d93bc91d9d627aeddf03884f5b67"
+  ],
+  "clinicalSha256": "8241ee48539317a9834974202e767ef56e5648c164e499653e794d8ebe9ff75e",
+  "totals": {
+    "ham": {
+      "total": 5567,
+      "rules10": {
+        "quarantined": 0,
+        "unavailable": 11
+      },
+      "rules11": {
+        "quarantined": 0,
+        "unavailable": 39
+      },
+      "candidate": {
+        "quarantined": 0,
+        "unavailable": 39
+      },
+      "candidateGained": 0,
+      "candidateLost": 0,
+      "lost": 0,
+      "gained": 0,
+      "lostLimits": {},
+      "gainedLimits": {},
+      "lostControlFields": {},
+      "lostAnchorWhitespaceOnly": 0
+    },
+    "spam": {
+      "total": 4337,
+      "rules10": {
+        "quarantined": 2842,
+        "unavailable": 27
+      },
+      "rules11": {
+        "quarantined": 2773,
+        "unavailable": 122
+      },
+      "candidate": {
+        "quarantined": 2773,
+        "unavailable": 122
+      },
+      "candidateGained": 0,
+      "candidateLost": 0,
+      "lost": 69,
+      "gained": 0,
+      "lostLimits": {
+        "html_uninspected": 50,
+        "control_chars": 41,
+        "source_incomplete": 50,
+        "auth_unknown": 50,
+        "unavailable": 19,
+        "url_uninspected": 9
+      },
+      "gainedLimits": {},
+      "lostControlFields": {
+        "extractedText": 33,
+        "anchorHref": 8
+      },
+      "lostAnchorWhitespaceOnly": 0
+    }
+  },
+  "networkAttempts": 0
+}
